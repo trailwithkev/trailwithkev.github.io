@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TrailWithKev · Adventures & Itineraries</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:      #000000;
+  --gray-1:     #1d1d1f;
+  --gray-2:     #2d2d2f;
+  --gray-3:     #424245;
+  --gray-4:     #6e6e73;
+  --gray-5:     #86868b;
+  --gray-6:     #adadb0;
+  --white:      #f5f5f7;
+  --pure-white: #ffffff;
+  --blue:       #0071e3;
+  --blue-light: #2997ff;
+  --summit:     #30d158;
+  --summit-glow: rgba(48,209,88,0.12);
+  --amber:      #ffd60a;
+  --radius-sm:  10px;
+  --radius-md:  18px;
+  --radius-lg:  28px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: -apple-system, 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--gray-1); }
+::-webkit-scrollbar-thumb { background: var(--gray-3); border-radius: 3px; }
+
+/* ─── NAV ─── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 52px;
+  gap: 0;
+}
+.nav-brand {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--pure-white);
+  margin-right: 32px;
+  letter-spacing: -0.3px;
+  text-decoration: none;
+}
+.nav-brand span { color: var(--blue-light); }
+.nav a.nav-link {
+  color: var(--gray-5);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0 14px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.nav a.nav-link:hover { color: var(--pure-white); }
+.nav a.nav-link.active { color: var(--pure-white); border-bottom-color: var(--blue-light); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 100px 40px 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,113,227,0.18) 0%, transparent 70%);
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+}
+
+.hero-mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 42%;
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.hero-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: clamp(42px, 7vw, 88px);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--pure-white);
+  line-height: 1.0;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+.hero-title span { color: var(--blue-light); }
+
+.hero-subtitle {
+  font-size: clamp(16px, 2vw, 20px);
+  font-weight: 300;
+  color: var(--gray-5);
+  max-width: 520px;
+  margin: 0 auto 48px;
+  letter-spacing: -0.01em;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin-bottom: 52px;
+}
+
+.chip {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 980px;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--pure-white);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  backdrop-filter: blur(10px);
+}
+.chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--summit);
+  box-shadow: 0 0 6px var(--summit);
+}
+.chip-dot.amber { background: var(--amber); box-shadow: 0 0 6px var(--amber); }
+.chip-dot.blue  { background: var(--blue-light); box-shadow: 0 0 6px var(--blue-light); }
+
+.hero-scroll {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--gray-4);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  animation: bounce 2s infinite;
+}
+.hero-scroll svg { opacity: 0.5; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* ─── SECTION ─── */
+.section {
+  padding: 80px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pure-white);
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.section-desc {
+  font-size: 16px;
+  color: var(--gray-5);
+  max-width: 540px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+/* ─── DIVIDER ─── */
+.divider {
+  height: 0.5px;
+  background: rgba(255,255,255,0.08);
+  margin: 0 40px;
+}
+
+/* ─── CARDS ─── */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: var(--gray-1);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s, transform 0.2s, background 0.2s;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-md);
+  background: radial-gradient(circle at 30% 0%, rgba(41,151,255,0.07) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.card:hover { border-color: rgba(255,255,255,0.22); transform: translateY(-2px); }
+.card:hover::before { opacity: 1; }
+
+.card-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  border-radius: 6px;
+  width: fit-content;
+}
+.badge-upcoming {
+  background: var(--summit-glow);
+  color: var(--summit);
+  border: 1px solid rgba(48,209,88,0.25);
+}
+.badge-past {
+  background: rgba(41,151,255,0.1);
+  color: var(--blue-light);
+  border: 1px solid rgba(41,151,255,0.22);
+}
+.badge-coming-soon {
+  background: rgba(255,214,10,0.08);
+  color: var(--amber);
+  border: 1px solid rgba(255,214,10,0.2);
+}
+
+.card-icon {
+  font-size: 32px;
+  line-height: 1;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--pure-white);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.card-meta {
+  font-size: 13px;
+  color: var(--gray-5);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+.card-meta span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: var(--gray-4);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.card-cta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--blue-light);
+  margin-top: 4px;
+}
+.card-cta svg { transition: transform 0.2s; }
+.card:hover .card-cta svg { transform: translateX(4px); }
+
+.card-disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ─── FOLDER NOTE ─── */
+.folder-note {
+  background: var(--gray-1);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+  padding: 16px 20px;
+  font-size: 13px;
+  color: var(--gray-5);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  font-family: 'SF Mono', 'Menlo', monospace;
+}
+.folder-note span { color: var(--blue-light); }
+
+/* ─── FOOTER ─── */
+footer {
+  padding: 48px 40px;
+  text-align: center;
+  border-top: 0.5px solid rgba(255,255,255,0.08);
+  color: var(--gray-4);
+  font-size: 13px;
+}
+footer a { color: var(--gray-5); text-decoration: none; }
+footer a:hover { color: var(--pure-white); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 600px) {
+  .nav { padding: 0 20px; }
+  .section { padding: 60px 20px; }
+  .divider { margin: 0 20px; }
+  .hero { padding: 80px 24px 60px; }
+  footer { padding: 40px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <a href="/" class="nav-brand">Trail<span>WithKev</span></a>
+  <a href="#future-plans" class="nav-link">Future Plans</a>
+  <a href="#itineraries" class="nav-link">Past Trips</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <!-- Mountain silhouette -->
+  <svg class="hero-mountains" viewBox="0 0 1440 320" preserveAspectRatio="none" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,320 L0,200 L80,160 L160,200 L240,120 L320,180 L400,80 L480,140 L560,60 L640,130 L720,40 L800,110 L880,50 L960,120 L1040,70 L1120,140 L1200,90 L1280,160 L1360,110 L1440,180 L1440,320 Z"/>
+  </svg>
+
+  <p class="hero-eyebrow">TrailWithKev</p>
+  <h1 class="hero-title">Adventures<br><span>Off the Map</span></h1>
+  <p class="hero-subtitle">Hiking logs, road trip itineraries, and summit stories from the trails.</p>
+
+  <div class="hero-scroll">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 9l5 5 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Explore
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FUTURE PLANS -->
+<section class="section" id="future-plans">
+  <p class="section-label">Future Plans</p>
+  <h2 class="section-title">Upcoming Adventures</h2>
+  <p class="section-desc">Trips in planning or actively being prepared for. Check back as departure dates approach.</p>
+
+  <div class="cards-grid">
+
+    <!-- Colorado 2026 -->
+    <div class="card">
+      <div class="card-badge badge-upcoming">
+        <svg width="8" height="8" viewBox="0 0 8 8"><circle cx="4" cy="4" r="4" fill="#30d158"/></svg>
+        Upcoming
+      </div>
+      <div class="card-icon">🏔️</div>
+      <div class="card-title">Colorado 2026</div>
+      <div class="card-meta">
+        <span>📅 Jul 10 – Aug 16</span>
+        <span>📍 Salida · Montrose</span>
+      </div>
+      <p class="card-desc">38-day solo road trip across Colorado — six 14er summits, Telluride, Ouray, Aspen, and remote trailheads only reachable by dirt road.</p>
+    </div>
+
+    <!-- Placeholder -->
+    <div class="card card-disabled">
+      <div class="card-badge badge-coming-soon">Coming Soon</div>
+      <div class="card-icon">🗺️</div>
+      <div class="card-title">Next Destination</div>
+      <div class="card-meta"><span>📅 TBD</span></div>
+      <p class="card-desc">The next adventure is being planned. Stay tuned.</p>
+    </div>
+
+  </div>
+
+
+</section>
+
+<div class="divider"></div>
+
+<!-- PAST ITINERARIES -->
+<section class="section" id="itineraries">
+  <p class="section-label">Past Trips</p>
+  <h2 class="section-title">Where I've Been</h2>
+  <p class="section-desc">Documented adventures — routes, highlights, and lessons learned on the trail.</p>
+
+  <div class="cards-grid">
+
+    <!-- Guatemala -->
+    <a class="card" href="itineraries/guatemala/index.html">
+      <div class="card-badge badge-past">Completed</div>
+      <div class="card-icon">🌋</div>
+      <div class="card-title">Guatemala</div>
+      <div class="card-meta">
+        <span>📍 Central America</span>
+      </div>
+      <p class="card-desc">Volcanoes, colonial towns, and jungle trails. A Central American adventure full of altitude and culture.</p>
+      <div class="card-cta">
+        View Itinerary
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7 3l4 4-4 4" stroke="#2997ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+    </a>
+
+    <!-- More trips placeholder -->
+    <div class="card card-disabled">
+      <div class="card-badge badge-coming-soon">More Coming</div>
+      <div class="card-icon">📸</div>
+      <div class="card-title">More Trips</div>
+      <div class="card-meta"><span>📅 Archive in progress</span></div>
+      <p class="card-desc">More past adventures will be documented and added here over time.</p>
+    </div>
+
+  </div>
+
+
+</section>
+
+<div class="divider"></div>
+
+<!-- FOOTER -->
+<footer>
+  <p style="margin-bottom:8px; font-size:15px; font-weight:500; color: var(--white);">Trail<span style="color:var(--blue-light)">WithKev</span></p>
+  <p>Built for the trail. Documented for the journey.</p>
+</footer>
+
+</body>
+</html>
