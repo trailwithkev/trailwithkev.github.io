@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Colorado 2026 · Adventure Itinerary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & ROOT ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:    #000000;
+  --gray-1:   #1d1d1f;
+  --gray-2:   #2d2d2f;
+  --gray-3:   #424245;
+  --gray-4:   #6e6e73;
+  --gray-5:   #86868b;
+  --gray-6:   #adadb0;
+  --white:    #f5f5f7;
+  --pure-white: #ffffff;
+  --blue:     #0071e3;
+  --blue-light: #2997ff;
+  --blue-glow: rgba(0,113,227,0.15);
+  --summit:   #30d158;
+  --summit-glow: rgba(48,209,88,0.12);
+  --amber:    #ffd60a;
+  --red:      #ff453a;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: -apple-system, 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--gray-1); }
+::-webkit-scrollbar-thumb { background: var(--gray-3); border-radius: 3px; }
+
+/* ─── STICKY NAV ─── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  height: 52px;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-brand {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--pure-white);
+  white-space: nowrap;
+  margin-right: 32px;
+  letter-spacing: -0.3px;
+}
+.nav-brand span { color: var(--blue-light); }
+.nav a {
+  color: var(--gray-5);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0 14px;
+  white-space: nowrap;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+}
+.nav a:hover { color: var(--pure-white); }
+.nav a.active { color: var(--pure-white); border-bottom-color: var(--blue-light); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 100px;
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+}
+
+/* Mountain silhouette SVG background */
+.hero-mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  pointer-events: none;
+  opacity: 0.18;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,113,227,0.2) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 24px;
+}
+
+.hero-number {
+  font-size: clamp(140px, 22vw, 260px);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--pure-white);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.hero-number-label {
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 300;
+  color: var(--gray-5);
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+
+.hero-title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pure-white);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.hero-title span { color: var(--blue-light); }
+
+.hero-subtitle {
+  font-size: clamp(17px, 2.5vw, 22px);
+  font-weight: 400;
+  color: var(--gray-5);
+  max-width: 600px;
+  margin: 0 auto 56px;
+  letter-spacing: -0.01em;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.stat-chip {
+  background: rgba(255,255,255,0.11);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 980px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pure-white);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+.stat-chip .chip-icon { font-size: 16px; }
+.stat-chip strong { color: #ffffff; font-weight: 700; }
+.stat-chip .chip-sub { color: rgba(255,255,255,0.75); font-weight: 500; }
+
+/* ─── SECTION LAYOUT ─── */
+.section {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 100px 40px;
+}
+.section + .section {
+  padding-top: 0;
+}
+
+.section-divider {
+  height: 0.5px;
+  background: rgba(255,255,255,0.1);
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* ─── SECTION HEADERS ─── */
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 12px;
+}
+
+.section-title {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pure-white);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.section-title span { color: var(--blue-light); }
+
+.section-body {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--gray-5);
+  max-width: 640px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* ─── BASECAMP CARDS ─── */
+.basecamp-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.basecamp-card {
+  background: var(--gray-1);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  position: relative;
+  overflow: hidden;
+}
+.basecamp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.basecamp-card:nth-child(1)::before { background: var(--blue); }
+.basecamp-card:nth-child(2)::before { background: var(--summit); }
+.basecamp-card:nth-child(3)::before { background: var(--amber); }
+
+.bc-stop {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  margin-bottom: 8px;
+}
+.bc-town {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--pure-white);
+  margin-bottom: 4px;
+}
+.bc-state {
+  font-size: 13px;
+  color: var(--gray-5);
+  margin-bottom: 20px;
+}
+.bc-dates {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--blue-light);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 6px;
+}
+.bc-nights {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--pure-white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.bc-nights-label { font-size: 12px; color: var(--gray-5); margin-bottom: 20px; }
+
+.bc-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.bc-tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 980px;
+  letter-spacing: 0.02em;
+}
+.bc-tag-blue  { background: rgba(0,113,227,0.15);  color: var(--blue-light); border: 0.5px solid rgba(0,113,227,0.3); }
+.bc-tag-green { background: var(--summit-glow);     color: var(--summit);    border: 0.5px solid rgba(48,209,88,0.3); }
+.bc-tag-amber { background: rgba(255,214,10,0.1);   color: var(--amber);     border: 0.5px solid rgba(255,214,10,0.25); }
+
+/* ─── 14ER TABLE ─── */
+.fourteen-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 12px;
+}
+.fourteen-table thead th {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  padding: 10px 16px;
+  text-align: left;
+  background: var(--gray-1);
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.fourteen-table thead th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+.fourteen-table thead th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+.fourteen-table tbody td {
+  padding: 14px 16px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  font-size: 14px;
+  vertical-align: middle;
+}
+.fourteen-table tbody tr:last-child td { border-bottom: none; }
+.fourteen-table tbody tr:hover td { background: rgba(255,255,255,0.02); }
+
+.peak-name { font-weight: 600; color: var(--pure-white); font-size: 15px; }
+.peak-elev { font-size: 12px; color: var(--gray-5); margin-top: 2px; }
+.class-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 980px;
+}
+.class-2 { background: var(--summit-glow); color: var(--summit); border: 0.5px solid rgba(48,209,88,0.3); }
+.class-3 { background: rgba(255,69,58,0.12); color: var(--red); border: 0.5px solid rgba(255,69,58,0.3); }
+
+.metric { font-size: 13px; color: var(--gray-6); font-variant-numeric: tabular-nums; }
+.metric strong { color: var(--pure-white); font-weight: 600; }
+
+/* ─── WEEK SECTIONS ─── */
+.week-block { margin-bottom: 0; }
+
+.week-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 40px 0 20px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.week-number {
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.06);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  min-width: 80px;
+}
+.week-info { flex: 1; }
+.week-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pure-white);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.week-meta {
+  font-size: 13px;
+  color: var(--gray-5);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.week-meta-item { display: flex; align-items: center; gap: 5px; }
+.week-location {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--blue-light);
+  white-space: nowrap;
+}
+.week-toggle {
+  font-size: 22px;
+  color: var(--gray-4);
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+.week-block.open .week-toggle { transform: rotate(90deg); }
+
+.week-days { display: none; }
+.week-block.open .week-days { display: block; }
+
+/* ─── DAY ROWS ─── */
+.day-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.day-row:hover { background: rgba(255,255,255,0.02); }
+.day-row:last-child { border-bottom: none; }
+
+.day-date-col {
+  padding: 20px 16px 20px 0;
+  border-right: 0.5px solid rgba(255,255,255,0.06);
+}
+.day-dow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  margin-bottom: 2px;
+}
+.day-date-num { font-size: 22px; font-weight: 700; color: var(--pure-white); line-height: 1; letter-spacing: -0.02em; }
+.day-month { font-size: 11px; color: var(--gray-5); margin-top: 2px; }
+
+.day-content-col {
+  padding: 20px 0 20px 20px;
+}
+.day-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.day-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pure-white);
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+.day-type-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 980px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.badge-wfh     { background: rgba(0,113,227,0.15);  color: var(--blue-light); border: 0.5px solid rgba(0,113,227,0.3); }
+.badge-hike    { background: rgba(48,209,88,0.12);  color: var(--summit);    border: 0.5px solid rgba(48,209,88,0.3); }
+.badge-14er    { background: rgba(255,69,58,0.12);  color: var(--red);        border: 0.5px solid rgba(255,69,58,0.3); }
+.badge-rest    { background: rgba(110,110,115,0.2); color: var(--gray-6);    border: 0.5px solid rgba(110,110,115,0.3); }
+.badge-drive   { background: rgba(255,214,10,0.1);  color: var(--amber);     border: 0.5px solid rgba(255,214,10,0.25); }
+.badge-iconic  { background: rgba(191,90,242,0.12); color: #bf5af2;           border: 0.5px solid rgba(191,90,242,0.3); }
+
+.day-schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.schedule-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  font-size: 13px;
+}
+.schedule-time {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gray-4);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  min-width: 72px;
+  padding-top: 2px;
+  letter-spacing: 0.02em;
+}
+.schedule-desc { color: var(--gray-6); line-height: 1.5; }
+.schedule-desc strong { color: var(--pure-white); font-weight: 600; }
+.schedule-desc .highlight { color: var(--summit); font-weight: 600; }
+.schedule-desc .note { color: var(--gray-4); font-size: 12px; }
+
+.summit-callout {
+  background: rgba(48,209,88,0.06);
+  border: 0.5px solid rgba(48,209,88,0.2);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-top: 10px;
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+.summit-callout-icon { font-size: 20px; flex-shrink: 0; }
+.summit-callout-body { }
+.summit-callout-title { font-size: 14px; font-weight: 700; color: var(--summit); letter-spacing: -0.01em; margin-bottom: 4px; }
+.summit-callout-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 12px;
+  color: var(--gray-6);
+}
+.summit-callout-stats span strong { color: var(--pure-white); font-weight: 600; }
+
+.warning-note {
+  background: rgba(255,214,10,0.06);
+  border: 0.5px solid rgba(255,214,10,0.2);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--amber);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+/* ─── ALLTRAILS BUTTON ─── */
+.at-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(48,209,88,0.1);
+  border: 0.5px solid rgba(48,209,88,0.35);
+  border-radius: 980px;
+  padding: 3px 10px 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--summit);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  vertical-align: middle;
+  margin-left: 6px;
+  transition: background 0.15s, border-color 0.15s;
+}
+.at-btn:hover {
+  background: rgba(48,209,88,0.18);
+  border-color: rgba(48,209,88,0.6);
+  color: #fff;
+}
+.at-btn::before { content: '↗'; font-size: 10px; }
+/* Standalone AT button row below a schedule desc */
+.at-btn-row { margin-top: 5px; display: flex; align-items: center; gap: 6px; }
+/* AT button inside summit callout */
+.summit-callout-stats .at-btn { font-size: 11px; margin-left: 0; }
+
+/* ─── REMINDERS TABLE ─── */
+.reminders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.reminder-card {
+  background: var(--gray-1);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  display: flex;
+  gap: 14px;
+}
+.reminder-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.reminder-title { font-size: 14px; font-weight: 700; color: var(--pure-white); margin-bottom: 4px; letter-spacing: -0.01em; }
+.reminder-body { font-size: 13px; color: var(--gray-5); line-height: 1.55; }
+.reminder-body strong { color: var(--blue-light); font-weight: 600; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--gray-1);
+  border-top: 0.5px solid rgba(255,255,255,0.08);
+  padding: 40px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--gray-4);
+}
+footer strong { color: var(--gray-6); }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 768px) {
+  .nav { padding: 0 20px; }
+  .hero { padding: 80px 24px 80px; }
+  .section { padding: 60px 24px; }
+  .basecamp-grid { grid-template-columns: 1fr; }
+  .reminders-grid { grid-template-columns: 1fr; }
+  .day-row { grid-template-columns: 70px 1fr; }
+  .week-number { font-size: 40px; min-width: 56px; }
+  footer { padding: 32px 24px; }
+}
+
+/* ─── ANIMATIONS ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .stat-chip { transition: transform 0.2s, background 0.2s; }
+  .stat-chip:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); }
+  .basecamp-card { transition: transform 0.2s, border-color 0.2s; }
+  .basecamp-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.18); }
+  .reminder-card { transition: transform 0.2s; }
+  .reminder-card:hover { transform: translateY(-2px); }
+}
+
+/* ─── PROGRESS STRIP ─── */
+.progress-strip {
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--blue-light) 40%, var(--summit) 70%, var(--amber) 100%);
+  width: 100%;
+}
+
+/* ─── OVERVIEW HIGHLIGHT ROW ─── */
+.overview-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+.overview-cell {
+  padding: 28px 24px;
+  border-right: 0.5px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+.overview-cell:last-child { border-right: none; }
+.overview-num {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--pure-white);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.overview-label { font-size: 12px; color: var(--gray-5); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ─── SECTION BG ALTERNATES ─── */
+.section-dark { background: var(--gray-1); }
+.section-dark-wrap { background: var(--gray-1); }
+.section-dark-wrap .section { background: transparent; }
+
+/* ─── DAY TYPE INDICATORS ─── */
+.day-date-col[data-type="14er"] .day-date-num { color: var(--summit); }
+.day-date-col[data-type="rest"] .day-date-num  { color: var(--gray-4); }
+.day-date-col[data-type="iconic"] .day-date-num { color: #bf5af2; }
+</style>
+</head>
+<body>
+
+<!-- Progress strip -->
+<div class="progress-strip"></div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="nav">
+  <div class="nav-brand">Colorado <span>2026</span></div>
+  <a href="#overview">Overview</a>
+  <a href="#basecamps">Basecamps</a>
+  <a href="#fourteeners">14ers</a>
+  <a href="#week1">Week 1</a>
+  <a href="#week2">Week 2</a>
+  <a href="#week3">Week 3</a>
+  <a href="#week4">Week 4</a>
+  <a href="#week5">Week 5</a>
+  <a href="#reminders">Reminders</a>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <canvas id="star-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="hero-glow"></div>
+  <svg class="hero-mountains" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,300 L0,220 L80,180 L160,200 L240,140 L340,60 L420,100 L500,40 L580,80 L660,20 L740,70 L820,10 L900,60 L980,30 L1060,90 L1140,50 L1220,110 L1300,80 L1380,140 L1440,120 L1440,300 Z" fill="white"/>
+  </svg>
+  <div class="hero-eyebrow">July 12 — August 14 · 2026</div>
+  <div class="hero-number">34</div>
+  <div class="hero-number-label">days in Colorado</div>
+  <div class="hero-title">The <span>Mountain</span> Summer</div>
+  <div class="hero-subtitle">5 Fourteeners. 3 Basecamps. 28 hiking days. One unforgettable trip.</div>
+  <div class="hero-stats">
+    <div class="stat-chip"><span class="chip-icon">⛰️</span> <strong>5</strong> <span class="chip-sub">14er Summits</span></div>
+    <div class="stat-chip"><span class="chip-icon">🥾</span> <strong>~28</strong> <span class="chip-sub">Hiking Days</span></div>
+    <div class="stat-chip"><span class="chip-icon">💻</span> <strong>WFH</strong> <span class="chip-sub">Mon–Fri · 6–2 MT</span></div>
+    <div class="stat-chip"><span class="chip-icon">📍</span> <strong>3</strong> <span class="chip-sub">Basecamps</span></div>
+    <div class="stat-chip"><span class="chip-icon">👨‍👦</span> <strong>Dad</strong> <span class="chip-sub">joins easy hikes</span></div>
+    <div class="stat-chip"><span class="chip-icon">🎯</span> <strong>14,265 ft</strong> <span class="chip-sub">Highest Summit</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ OVERVIEW ═══════════════════ -->
+<div id="overview">
+<div class="section">
+  <div class="section-eyebrow">Trip at a Glance</div>
+  <div class="section-title">Built for the <span>Summit</span></div>
+  <div class="section-body">WFH 6 AM–2 PM MT every weekday, then full afternoons in the mountains. Weekends are for 14ers, big hikes, and iconic Colorado destinations.</div>
+
+  <div class="overview-row">
+    <div class="overview-cell">
+      <div class="overview-num">34</div>
+      <div class="overview-label">Total Days</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--summit)">5</div>
+      <div class="overview-label">14er Summits</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--blue-light)">3</div>
+      <div class="overview-label">Basecamps</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--amber)">~150</div>
+      <div class="overview-label">Trail Miles</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ BASECAMPS ═══════════════════ -->
+<div id="basecamps">
+<div class="section">
+  <div class="section-eyebrow">Accommodation</div>
+  <div class="section-title">Three <span>Basecamps</span></div>
+  <div class="section-body">Each stop is positioned to put the best hikes within 30–45 minutes. All Airbnb private listings — wifi confirmed for WFH.</div>
+
+  <div class="basecamp-grid">
+    <div class="basecamp-card">
+      <div class="bc-stop">Stop 01</div>
+      <div class="bc-town">Manitou Springs</div>
+      <div class="bc-state">Colorado · 6,320 ft</div>
+      <div class="bc-dates">Jul 12 – Jul 16</div>
+      <div class="bc-nights">4</div>
+      <div class="bc-nights-label">nights</div>
+      <div class="bc-tags">
+        <span class="bc-tag bc-tag-blue">Acclimatize</span>
+        <span class="bc-tag bc-tag-blue">Incline</span>
+        <span class="bc-tag bc-tag-blue">Pikes Peak</span>
+      </div>
+    </div>
+
+    <div class="basecamp-card">
+      <div class="bc-stop">Stop 02</div>
+      <div class="bc-town">Montrose</div>
+      <div class="bc-state">Colorado · 5,794 ft</div>
+      <div class="bc-dates">Jul 16 – Jul 28</div>
+      <div class="bc-nights">12</div>
+      <div class="bc-nights-label">nights</div>
+      <div class="bc-tags">
+        <span class="bc-tag bc-tag-green">Sneffels 14er</span>
+        <span class="bc-tag bc-tag-green">Handies 14er</span>
+        <span class="bc-tag bc-tag-green">Telluride</span>
+        <span class="bc-tag bc-tag-green">Ice Lake</span>
+      </div>
+    </div>
+
+    <div class="basecamp-card">
+      <div class="bc-stop">Stop 03</div>
+      <div class="bc-town">Frisco</div>
+      <div class="bc-state">Colorado · 9,097 ft</div>
+      <div class="bc-dates">Jul 28 – Aug 14</div>
+      <div class="bc-nights">17</div>
+      <div class="bc-nights-label">nights</div>
+      <div class="bc-tags">
+        <span class="bc-tag bc-tag-amber">Quandary 14er</span>
+        <span class="bc-tag bc-tag-amber">Democrat 14er</span>
+        <span class="bc-tag bc-tag-amber">Maroon Bells</span>
+        <span class="bc-tag bc-tag-amber">Breckenridge</span>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ 14ERS ═══════════════════ -->
+<div id="fourteeners">
+<div class="section">
+  <div class="section-eyebrow">Summit Progression</div>
+  <div class="section-title">Five <span>Fourteeners</span></div>
+  <div class="section-body">Ordered from most accessible to most technical. Each summit builds on the experience of the last.</div>
+
+  <div style="border:0.5px solid rgba(255,255,255,0.1);border-radius:var(--radius-md);overflow:hidden;margin-bottom:16px;">
+    <table class="fourteen-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Peak</th>
+          <th>Base</th>
+          <th>Date</th>
+          <th>Class</th>
+          <th>Distance</th>
+          <th>Gain</th>
+          <th>Trail</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-size:13px;font-weight:700;color:var(--gray-4)">01</td>
+          <td>
+            <div class="peak-name">Mt. Sneffels</div>
+            <div class="peak-elev">14,150 ft · San Juan Range</div>
+          </td>
+          <td class="metric">Montrose</td>
+          <td class="metric"><strong>Sat Jul 25</strong></td>
+          <td><span class="class-badge class-3">Class 3</span></td>
+          <td class="metric"><strong>9.6 mi</strong></td>
+          <td class="metric"><strong>3,900 ft</strong></td>
+          <td><a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/mount-sneffels-via-blue-lakes-trail" target="_blank">AllTrails</a></td>
+        </tr>
+        <tr>
+          <td style="font-size:13px;font-weight:700;color:var(--gray-4)">02</td>
+          <td>
+            <div class="peak-name">Handies Peak</div>
+            <div class="peak-elev">14,048 ft · San Juan Range</div>
+          </td>
+          <td class="metric">Montrose</td>
+          <td class="metric"><strong>Sun Jul 26</strong></td>
+          <td><span class="class-badge class-2">Class 2</span></td>
+          <td class="metric"><strong>7.5 mi</strong></td>
+          <td class="metric"><strong>3,000 ft</strong></td>
+          <td><a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/handies-peak" target="_blank">AllTrails</a></td>
+        </tr>
+        <tr>
+          <td style="font-size:13px;font-weight:700;color:var(--gray-4)">03</td>
+          <td>
+            <div class="peak-name">Mt. Sherman</div>
+            <div class="peak-elev">14,036 ft · Mosquito Range</div>
+          </td>
+          <td class="metric">Frisco</td>
+          <td class="metric"><strong>Sun Aug 2</strong></td>
+          <td><span class="class-badge class-2">Class 2</span></td>
+          <td class="metric"><strong>5.8 mi</strong></td>
+          <td class="metric"><strong>2,635 ft</strong></td>
+          <td><a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/mount-sherman-trail" target="_blank">AllTrails</a></td>
+        </tr>
+        <tr>
+          <td style="font-size:13px;font-weight:700;color:var(--gray-4)">04</td>
+          <td>
+            <div class="peak-name">Quandary Peak</div>
+            <div class="peak-elev">14,265 ft · Tenmile Range</div>
+          </td>
+          <td class="metric">Frisco</td>
+          <td class="metric"><strong>Sat Aug 8</strong></td>
+          <td><span class="class-badge class-2">Class 2</span></td>
+          <td class="metric"><strong>6.7 mi</strong></td>
+          <td class="metric"><strong>3,354 ft</strong></td>
+          <td><a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/quandary-peak-trail" target="_blank">AllTrails</a></td>
+        </tr>
+        <tr>
+          <td style="font-size:13px;font-weight:700;color:var(--gray-4)">05</td>
+          <td>
+            <div class="peak-name">Mt. Democrat</div>
+            <div class="peak-elev">14,148 ft · Mosquito Range</div>
+          </td>
+          <td class="metric">Frisco</td>
+          <td class="metric"><strong>Sun Aug 9</strong></td>
+          <td><span class="class-badge class-2">Class 2</span></td>
+          <td class="metric"><strong>6.0 mi</strong></td>
+          <td class="metric"><strong>2,669 ft</strong></td>
+          <td><a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/kite-lake-to-mt-democrat-trail" target="_blank">AllTrails</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="warning-note">⚠️ All 14er starts depart trailhead at 3:45 AM. Summit before 10 AM. Turn around at any lightning — non-negotiable. Dad rests at Airbnb on all 14er days.</div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ WEEKLY ITINERARY ═══════════════════ -->
+<div class="section" style="padding-bottom:0;">
+  <div class="section-eyebrow">Day by Day</div>
+  <div class="section-title">The Full <span>Schedule</span></div>
+  <div class="section-body">WFH every weekday 6 AM–2 PM MT. Afternoons and all weekends are yours. Click any week to expand.</div>
+</div>
+
+<!-- ─── WEEK 1 ─── -->
+<div id="week1" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="week-block open">
+  <div class="week-header" onclick="toggleWeek(this)">
+    <div class="week-number">1</div>
+    <div class="week-info">
+      <div class="week-title">Manitou Springs · Arrival & Incline</div>
+      <div class="week-meta">
+        <span class="week-meta-item">📅 Jul 12 – Jul 18</span>
+        <span class="week-meta-item">📍 Manitou Springs, CO</span>
+        <span class="week-meta-item">🎯 Acclimatize · Manitou Incline · Garden of Gods</span>
+      </div>
+    </div>
+    <div class="week-location">Stop 01 of 03</div>
+    <div class="week-toggle">›</div>
+  </div>
+  <div class="week-days">
+
+    <!-- Sun Jul 12 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Sun</div>
+        <div class="day-date-num">12</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">Arrival Day — Garden of the Gods</div>
+          <span class="day-type-badge badge-hike">Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">Morning</span><span class="schedule-desc">Arrive Manitou Springs · check in · unpack · rest · drink 4–5L water</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:00 PM</span><span class="schedule-desc"><strong>Garden of the Gods</strong> — 1.5 mi easy loop · stunning red rock formations · dad joins · free entry <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/garden-of-the-gods-outer-loop" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">6:00 PM</span><span class="schedule-desc">Dinner on Manitou Ave · explore town · sleep early · no alcohol first 3 days</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mon Jul 13 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Mon</div>
+        <div class="day-date-num">13</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Red Rock Canyon</div>
+          <span class="day-type-badge badge-wfh">WFH + Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc"><strong>Red Rock Canyon Open Space</strong> — 3–4 mi, 400 ft, easy-moderate · dad joins · great acclimatization · free <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/red-rock-rim-trail-to-red-rock-canyon-trail" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Dinner + rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tue Jul 14 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="iconic">
+        <div class="day-dow">Tue</div>
+        <div class="day-date-num">14</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + 🪜 Manitou Incline</div>
+          <span class="day-type-badge badge-iconic">Iconic</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc"><strong>🪜 Manitou Incline</strong> — 0.9 mi, 1,978 ft, extreme · 2,744 railroad tie steps · you solo · summit 8,590 ft · dad waits at bottom <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/the-incline-trail-and-the-barr-trail--2" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">4:00 PM</span><span class="schedule-desc">Descend via Barr Trail (3.1 mi, gradual) · meet dad at trailhead</span></div>
+          <div class="schedule-row"><span class="schedule-time">6:00 PM</span><span class="schedule-desc">Dinner in Manitou Springs · celebrate the Incline ✓</span></div>
+        </div>
+        <div class="warning-note">⚠️ <strong>Book Jul 1 at 9 AM MT sharp</strong> at coloradosprings.gov/incline · free reservation · afternoon slots fill fast · select 2:30–3:00 PM window</div>
+      </div>
+    </div>
+
+    <!-- Wed Jul 15 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="drive">
+        <div class="day-dow">Wed</div>
+        <div class="day-date-num">15</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Move to Montrose</div>
+          <span class="day-type-badge badge-drive">Move Day</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH · request late checkout (until 2 PM) from Manitou Springs host when booking — easy to get on a Wednesday</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:00 PM</span><span class="schedule-desc">Check out · load car · legs are still toast from Incline — the drive is perfect recovery time</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:15 PM</span><span class="schedule-desc">🚗 Drive Manitou Springs → Montrose (~3.5 hrs · I-25 S → US-50 W · all paved · Royal Gorge + Gunnison canyon corridor views)</span></div>
+          <div class="schedule-row"><span class="schedule-time">~5:45 PM</span><span class="schedule-desc">Check in to Montrose Airbnb · groceries · easy dinner · welcome to the San Juans</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thu Jul 16 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="rest">
+        <div class="day-dow">Thu</div>
+        <div class="day-date-num">16</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Settle Into Montrose · Rest</div>
+          <span class="day-type-badge badge-rest">Rest</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH · first full day in Montrose · set up workspace</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">Groceries · explore Montrose town · easy flat stroll · both · legs still recovering from Incline Tuesday</span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Cook dinner at Airbnb · early sleep · first San Juan morning tomorrow</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fri Jul 17 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Fri</div>
+        <div class="day-date-num">17</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Ouray Perimeter Trail</div>
+          <span class="day-type-badge badge-wfh">WFH + Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">🚗 Drive to Ouray (~35 min) · <strong>Ouray Perimeter Trail</strong> — 3.2 mi loop, 600 ft, moderate · dad joins · jaw-dropping canyon walls · first taste of the San Juans <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/ouray-perimeter-trail" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">6:30 PM</span><span class="schedule-desc">Dinner at Ouray Brewing Co · drive back to Montrose</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sat Jul 18 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Sat</div>
+        <div class="day-date-num">18</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">Telluride — Bear Creek Falls + Gondola</div>
+          <span class="day-type-badge badge-hike">Full Day</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">8:00 AM</span><span class="schedule-desc">🚗 Drive Montrose → Telluride (~45 min · US-550 S + CO-62 W + CO-145 W · paved)</span></div>
+          <div class="schedule-row"><span class="schedule-time">9:00 AM</span><span class="schedule-desc"><strong>Bear Creek Falls Trail</strong> — 4.7 mi, 1,095 ft, moderate · you solo · starts from S. Pine St · dad explores Telluride Main Street <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/bear-creek-falls-via-bear-creek-trail" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">12:30 PM</span><span class="schedule-desc">Lunch on Telluride Main Street with dad</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:00 PM</span><span class="schedule-desc">🚠 Free Telluride Gondola → Mountain Village · both · best free activity in Colorado</span></div>
+          <div class="schedule-row"><span class="schedule-time">4:00 PM</span><span class="schedule-desc">🚗 Drive back to Montrose</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /week-days -->
+</div><!-- /week-block -->
+</div>
+
+<!-- ─── WEEK 2 ─── -->
+<div id="week2" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="week-block">
+  <div class="week-header" onclick="toggleWeek(this)">
+    <div class="week-number">2</div>
+    <div class="week-info">
+      <div class="week-title">Montrose · San Juans + Sneffels 14er</div>
+      <div class="week-meta">
+        <span class="week-meta-item">📅 Jul 19 – Jul 25</span>
+        <span class="week-meta-item">📍 Montrose, CO</span>
+        <span class="week-meta-item">⛰️ Sneffels (14,150 ft) · Telluride · Ouray</span>
+      </div>
+    </div>
+    <div class="week-location">Stop 02 of 03</div>
+    <div class="week-toggle">›</div>
+  </div>
+  <div class="week-days">
+
+    <!-- Sun Jul 19 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Sun</div>
+        <div class="day-date-num">19</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">Jud Wiebe Trail + Bridal Veil Falls</div>
+          <span class="day-type-badge badge-hike">Full Day</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">8:00 AM</span><span class="schedule-desc">🚗 Drive to Telluride (~45 min)</span></div>
+          <div class="schedule-row"><span class="schedule-time">9:00 AM</span><span class="schedule-desc"><strong>Jud Wiebe Memorial Trail</strong> — 3 mi loop, 1,300 ft, hard · you solo · best overhead view of Telluride box canyon · dad walks river trail below <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/jud-wiebe-memorial-trail" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">11:30 AM</span><span class="schedule-desc"><strong>Bridal Veil Falls</strong> — 2 mi RT flat · both · 365 ft waterfall · tallest free-falling in Colorado <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/bridal-veil-falls-trail-telluride" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">1:00 PM</span><span class="schedule-desc">Lunch in Telluride · 🚗 drive back to Montrose</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mon Jul 20 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Mon</div>
+        <div class="day-date-num">20</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Cascade Falls + Ouray Hot Springs</div>
+          <span class="day-type-badge badge-wfh">WFH + Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">🚗 Drive to Ouray (~35 min) · <strong>Cascade Falls Trail</strong> — 2.4 mi RT, 600 ft · gorgeous waterfall above town · dad joins <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/lower-cascade-falls-trail" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">5:00 PM</span><span class="schedule-desc">🛁 Ouray Hot Springs Pool · both · natural geothermal mineral springs · ~$20</span></div>
+          <div class="schedule-row"><span class="schedule-time">7:30 PM</span><span class="schedule-desc">Dinner in Ouray · drive back to Montrose</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tue Jul 21 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="rest">
+        <div class="day-dow">Tue</div>
+        <div class="day-date-num">21</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Rest Day</div>
+          <span class="day-type-badge badge-rest">Rest</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">Full rest · short flat walk in Montrose if restless · both</span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Groceries · early dinner · early sleep</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wed Jul 22 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Wed</div>
+        <div class="day-date-num">22</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + See Forever Trail (Gondola)</div>
+          <span class="day-type-badge badge-wfh">WFH + Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">🚗 Drive to Telluride (~45 min) · 🚠 Free gondola to Mountain Village</span></div>
+          <div class="schedule-row"><span class="schedule-time">3:45 PM</span><span class="schedule-desc"><strong>See Forever Trail</strong> — 3 mi easy ridge at 12,000 ft · dad joins · 360° San Juan panorama · minimal effort, maximum views <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/see-forever-to-wasatch-connection-to-bear-creek" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">7:00 PM</span><span class="schedule-desc">🚗 Drive back to Montrose</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thu Jul 23 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Thu</div>
+        <div class="day-date-num">23</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Chief Ouray Mine via Cascade Falls · Gear Prep</div>
+          <span class="day-type-badge badge-wfh">WFH + Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">🚗 Drive to Ouray (~35 min)</span></div>
+          <div class="schedule-row"><span class="schedule-time">3:00 PM</span><span class="schedule-desc"><strong>Chief Ouray Mine via Cascade Falls</strong> — 4.6 mi, 1,929 ft, hard · you solo · steep switchbacks up Ouray Amphitheater · waterfall crossing · historic mine bunkhouse at top · one of Ouray's best kept secrets <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/chief-ouray-mine-trail" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">6:00 PM</span><span class="schedule-desc">Dinner in Ouray · 🚗 drive back to Montrose · full gear prep for <strong>Sneffels weekend</strong> · check 14ers.com forecast</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fri Jul 24 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Fri</div>
+        <div class="day-date-num">24</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Drive to Blue Lakes TH</div>
+          <span class="day-type-badge badge-drive">14er Prep</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH · dad stays at Airbnb</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">Pack car · big dinner at home</span></div>
+          <div class="schedule-row"><span class="schedule-time">4:00 PM</span><span class="schedule-desc">🚗 Drive Montrose → Blue Lakes TH (~45 min · CR-7 · 9 mi slow gravel, sedan-passable)</span></div>
+          <div class="schedule-row"><span class="schedule-time">5:00 PM</span><span class="schedule-desc">Walk to lower Blue Lake — 0.5 mi · electric teal glacial water preview</span></div>
+          <div class="schedule-row"><span class="schedule-time">8:30 PM</span><span class="schedule-desc">🛌 Camp near TH · lights out — 3:00 AM alarm</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sat Jul 25 — 14er #1 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="14er">
+        <div class="day-dow">Sat</div>
+        <div class="day-date-num">25</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">⛰️ MT. SNEFFELS — 14er #1 — 14,150 ft</div>
+          <span class="day-type-badge badge-14er">14er Summit</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">3:00 AM</span><span class="schedule-desc">Wake · final gear check · headlamp on</span></div>
+          <div class="schedule-row"><span class="schedule-time">3:45 AM</span><span class="schedule-desc"><span class="highlight">🏔️ Depart Blue Lakes TH</span> (headlamp) · dad resting at Montrose</span></div>
+          <div class="schedule-row"><span class="schedule-time">~9:00 AM</span><span class="schedule-desc"><span class="highlight">⛰️ SUMMIT — 14,150 ft</span> · sweeping San Juan panorama · take it all in</span></div>
+          <div class="schedule-row"><span class="schedule-time">~12:30 PM</span><span class="schedule-desc">Back at TH · 🚗 drive back to Montrose · shower · big meal</span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Rest · 14er #1 done 🎉 · sleep early — Handies tomorrow</span></div>
+        </div>
+        <div class="summit-callout">
+          <div class="summit-callout-icon">⛰️</div>
+          <div class="summit-callout-body">
+            <div class="summit-callout-title">Mt. Sneffels via Blue Lakes Trail</div>
+            <div class="summit-callout-stats">
+              <span><strong>9.6 mi</strong> round trip</span>
+              <span><strong>3,900 ft</strong> gain</span>
+              <span><strong>Class 3</strong> summit ridge</span>
+              <span><strong>Helmet required</strong> for scramble</span>
+              <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/mount-sneffels-via-blue-lakes-trail" target="_blank">AllTrails</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── WEEK 3 ─── -->
+<div id="week3" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="week-block">
+  <div class="week-header" onclick="toggleWeek(this)">
+    <div class="week-number">3</div>
+    <div class="week-info">
+      <div class="week-title">Montrose → Frisco · Handies + Ice Lake + Move</div>
+      <div class="week-meta">
+        <span class="week-meta-item">📅 Jul 26 – Aug 1</span>
+        <span class="week-meta-item">📍 Montrose → Frisco</span>
+        <span class="week-meta-item">⛰️ Handies (14,048 ft) · Ice Lake · Silverton · Maroon Bells</span>
+      </div>
+    </div>
+    <div class="week-location">Move Week</div>
+    <div class="week-toggle">›</div>
+  </div>
+  <div class="week-days">
+
+    <!-- Sun Jul 26 — 14er #2 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="14er">
+        <div class="day-dow">Sun</div>
+        <div class="day-date-num">26</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">⛰️ HANDIES PEAK — 14er #2 — 14,048 ft</div>
+          <span class="day-type-badge badge-14er">14er Summit</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">3:30 AM</span><span class="schedule-desc">Wake · dad stays at Montrose Airbnb</span></div>
+          <div class="schedule-row"><span class="schedule-time">4:00 AM</span><span class="schedule-desc">🚗 Drive Montrose → Grizzly Gulch TH near Lake City (~2 hrs · US-550 S + US-160 W + CO-149 N · mostly paved)</span></div>
+          <div class="schedule-row"><span class="schedule-time">6:30 AM</span><span class="schedule-desc"><span class="highlight">🏔️ Depart Grizzly Gulch TH</span></span></div>
+          <div class="schedule-row"><span class="schedule-time">~9:30 AM</span><span class="schedule-desc"><span class="highlight">⛰️ SUMMIT — 14,048 ft</span> · 2 Colorado 14ers complete 🎉</span></div>
+          <div class="schedule-row"><span class="schedule-time">~12:00 PM</span><span class="schedule-desc">Back at TH · 🚗 drive back to Montrose (~2 hrs)</span></div>
+        </div>
+        <div class="summit-callout">
+          <div class="summit-callout-icon">⛰️</div>
+          <div class="summit-callout-body">
+            <div class="summit-callout-title">Handies Peak via Grizzly Gulch</div>
+            <div class="summit-callout-stats">
+              <span><strong>7.5 mi</strong> round trip</span>
+              <span><strong>3,000 ft</strong> gain</span>
+              <span><strong>Class 2</strong></span>
+              <span>Most beautiful beginner-friendly 14er in the San Juans</span>
+              <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/handies-peak" target="_blank">AllTrails</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mon Jul 27 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="rest">
+        <div class="day-dow">Mon</div>
+        <div class="day-date-num">27</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Ouray Hot Springs Recovery</div>
+          <span class="day-type-badge badge-rest">Recovery</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">🚗 Drive to Ouray (~35 min) · 🛁 Ouray Hot Springs Pool · both · full body recovery after back-to-back 14er weekend</span></div>
+          <div class="schedule-row"><span class="schedule-time">6:00 PM</span><span class="schedule-desc">Dinner in Ouray · drive back</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tue Jul 28 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="rest">
+        <div class="day-dow">Tue</div>
+        <div class="day-date-num">28</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Rest Day · Pack for Move</div>
+          <span class="day-type-badge badge-rest">Rest</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">Full rest · short walk in Montrose · pack for move to Frisco Friday</span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Early dinner · lights out</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wed Jul 29 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Wed</div>
+        <div class="day-date-num">29</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Ice Lake Basin</div>
+          <span class="day-type-badge badge-hike">Epic Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH · dad stays at Airbnb or drives for scenery</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:00 PM</span><span class="schedule-desc">🚗 Drive Montrose → South Mineral CG near Silverton (~1.5 hrs · US-550 S · Million Dollar Highway)</span></div>
+          <div class="schedule-row"><span class="schedule-time">3:30 PM</span><span class="schedule-desc"><strong>Ice Lake Basin Trail</strong> — 8.6 mi, 2,870 ft, hard · electric teal glacial lake at 12,257 ft · most visually stunning hike of the trip <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/ice-lake-basin-trail" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">7:30 PM</span><span class="schedule-desc">Drive back to Montrose or overnight in Silverton</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thu Jul 30 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Thu</div>
+        <div class="day-date-num">30</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Silverton Exploration</div>
+          <span class="day-type-badge badge-wfh">WFH + Town</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">🚗 Drive to Silverton (~1.5 hrs) · both · walk Blair Street · San Juan County Historical Museum · Molas Lake loop (2 mi easy · massive views) <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/little-molas-and-molas-lakes" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">6:30 PM</span><span class="schedule-desc">Dinner at Handlebars Saloon · drive back to Montrose</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fri Jul 31 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="drive">
+        <div class="day-dow">Fri</div>
+        <div class="day-date-num">31</div>
+        <div class="day-month">Jul</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Move to Frisco</div>
+          <span class="day-type-badge badge-drive">Move Day</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">🚗 Drive Montrose → Frisco (~2.5 hrs · US-50 E + CO-91 N · all paved · Blue Mesa Reservoir and Gunnison Gorge views)</span></div>
+          <div class="schedule-row"><span class="schedule-time">5:00 PM</span><span class="schedule-desc">Check in to Frisco Airbnb · groceries · explore Frisco Main Street · welcome to Summit County</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sat Aug 1 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="iconic">
+        <div class="day-dow">Sat</div>
+        <div class="day-date-num">1</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">Maroon Bells + Aspen Day Trip</div>
+          <span class="day-type-badge badge-iconic">Iconic</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">5:00 AM</span><span class="schedule-desc">🚗 Drive Frisco → Aspen Highlands (~1.5 hrs · CO-91 + CO-82 over Independence Pass · 12,095 ft · all paved · extraordinary drive) · dad joins</span></div>
+          <div class="schedule-row"><span class="schedule-time">7:00 AM</span><span class="schedule-desc">Park at Aspen Highlands · RFTA shuttle to Maroon Lake (~$8 RT) · <span class="note">book at rfta.com 2 weeks ahead</span></span></div>
+          <div class="schedule-row"><span class="schedule-time">7:45 AM</span><span class="schedule-desc"><strong>Maroon Bells Scenic Trail</strong> + Crater Lake — 5.1 mi RT · you hike · dad walks scenic loop at lake level · most-photographed mountains in Colorado <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/maroon-bells-scenic-loop-trail" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">12:30 PM</span><span class="schedule-desc">Reunite · lunch in Aspen · walk downtown pedestrian mall with dad</span></div>
+          <div class="schedule-row"><span class="schedule-time">4:00 PM</span><span class="schedule-desc">🚗 Drive back over Independence Pass at golden hour · stop at 12,095 ft summit</span></div>
+          <div class="schedule-row"><span class="schedule-time">6:00 PM</span><span class="schedule-desc">Back in Frisco</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── WEEK 4 ─── -->
+<div id="week4" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="week-block">
+  <div class="week-header" onclick="toggleWeek(this)">
+    <div class="week-number">4</div>
+    <div class="week-info">
+      <div class="week-title">Frisco · Sherman + Quandary Back-to-Back</div>
+      <div class="week-meta">
+        <span class="week-meta-item">📅 Aug 2 – Aug 8</span>
+        <span class="week-meta-item">📍 Frisco, CO · 9,097 ft</span>
+        <span class="week-meta-item">⛰️ Mt. Sherman (Aug 2) · Quandary Peak (Aug 8) · Breckenridge</span>
+      </div>
+    </div>
+    <div class="week-location">Stop 03 of 03</div>
+    <div class="week-toggle">›</div>
+  </div>
+  <div class="week-days">
+
+    <!-- Sun Aug 2 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="14er">
+        <div class="day-dow">Sun</div>
+        <div class="day-date-num">2</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">⛰️ MT. SHERMAN — 14er #3 — 14,036 ft</div>
+          <span class="day-type-badge badge-14er">14er Summit</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">3:00 AM</span><span class="schedule-desc">Wake · gear on · dad stays at Frisco Airbnb</span></div>
+          <div class="schedule-row"><span class="schedule-time">3:45 AM</span><span class="schedule-desc"><span class="highlight">🏔️ Depart Frisco → Fourmile Creek TH</span> (~1.5 hrs · CO-9 S + CO-285 S + Fourmile Creek Rd · mostly paved, short gravel section near TH)</span></div>
+          <div class="schedule-row"><span class="schedule-time">5:30 AM</span><span class="schedule-desc"><span class="highlight">🏔️ Begin ascent from TH</span> (headlamp)</span></div>
+          <div class="schedule-row"><span class="schedule-time">~8:30 AM</span><span class="schedule-desc"><span class="highlight">⛰️ SUMMIT — 14,036 ft · 3 Colorado 14ers done 🎉</span></span></div>
+          <div class="schedule-row"><span class="schedule-time">~10:30 AM</span><span class="schedule-desc">Back at TH · 🚗 drive back to Frisco · lunch with dad · rest</span></div>
+          <div class="schedule-row"><span class="schedule-time">Afternoon</span><span class="schedule-desc">Gentle Dillon Reservoir walk with dad if legs allow — flat, 2–3 mi <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/dillon-reservoir-lakeshore-perimeter-trail" target="_blank">AllTrails</a></span></div>
+        </div>
+        <div class="summit-callout">
+          <div class="summit-callout-icon">⛰️</div>
+          <div class="summit-callout-body">
+            <div class="summit-callout-title">Mt. Sherman · Fourmile Creek Route</div>
+            <div class="summit-callout-stats">
+              <span><strong>5.8 mi</strong> round trip</span>
+              <span><strong>2,635 ft</strong> gain</span>
+              <span><strong>Class 2</strong></span>
+              <span>One of the most beginner-friendly 14ers · entirely public land · ~1.5 hrs from Frisco</span>
+              <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/mount-sherman-trail" target="_blank">AllTrails</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mon Aug 3 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Mon</div>
+        <div class="day-date-num">3</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Lily Pad Lake Trail</div>
+          <span class="day-type-badge badge-wfh">WFH + Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc"><strong>Lily Pad Lake Trail</strong> — 4.2 mi, 564 ft, easy-moderate · both · beautiful forest and alpine lake · 15 min from Frisco <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/lily-pad-lake-trail" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Dinner + rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tue Aug 4 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="rest">
+        <div class="day-dow">Tue</div>
+        <div class="day-date-num">4</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Rest Day</div>
+          <span class="day-type-badge badge-rest">Rest</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">Walk Frisco Main Street + marina with dad · flat, easy, scenic</span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Early dinner · legs up</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wed Aug 5 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Wed</div>
+        <div class="day-date-num">5</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + McCullough Gulch + Quandary Scout</div>
+          <span class="day-type-badge badge-wfh">WFH + Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">🚗 Drive to Quandary TH (~20 min · CO-9 S · paved) · scout the trailhead · short walk on lower trail (1–2 mi)</span></div>
+          <div class="schedule-row"><span class="schedule-time">3:30 PM</span><span class="schedule-desc"><strong>McCullough Gulch Trail</strong> — 5.5 mi, 1,427 ft, moderate · both · beautiful glacial valley below Quandary <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/mccullough-gulch-trail" target="_blank">AllTrails</a></span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thu Aug 6 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="rest">
+        <div class="day-dow">Thu</div>
+        <div class="day-date-num">6</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Rest Day · Quandary Gear Prep</div>
+          <span class="day-type-badge badge-rest">Rest</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">Easy stroll around Frisco Main Street or along Dillon Reservoir waterfront with dad — flat, 1–2 mi max · save the legs for Saturday</span></div>
+          <div class="schedule-row"><span class="schedule-time">4:00 PM</span><span class="schedule-desc">Full gear prep for Quandary · check 14ers.com forecast · early dinner · 8:30 PM lights out</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fri Aug 7 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Fri</div>
+        <div class="day-date-num">7</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Drive to Quandary TH</div>
+          <span class="day-type-badge badge-drive">14er Prep</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH · dad stays at Frisco Airbnb</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">Light walk only · pack car · big dinner</span></div>
+          <div class="schedule-row"><span class="schedule-time">4:00 PM</span><span class="schedule-desc">🚗 Drive to Quandary TH (~20 min) · camp in car · dad stays at Frisco Airbnb</span></div>
+          <div class="schedule-row"><span class="schedule-time">8:30 PM</span><span class="schedule-desc">🛌 Lights out — 3:00 AM alarm</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sat Aug 8 — 14er #3 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="14er">
+        <div class="day-dow">Sat</div>
+        <div class="day-date-num">8</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">⛰️ QUANDARY PEAK — 14er #3 — 14,265 ft</div>
+          <span class="day-type-badge badge-14er">14er Summit</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">3:00 AM</span><span class="schedule-desc">Wake · gear on</span></div>
+          <div class="schedule-row"><span class="schedule-time">3:45 AM</span><span class="schedule-desc"><span class="highlight">🏔️ Depart Quandary TH</span> (headlamp) · dad resting in Frisco</span></div>
+          <div class="schedule-row"><span class="schedule-time">~8:30 AM</span><span class="schedule-desc"><span class="highlight">⛰️ SUMMIT — 14,265 ft</span> · most popular 14er in Colorado · clear trail entire route</span></div>
+          <div class="schedule-row"><span class="schedule-time">~11:00 AM</span><span class="schedule-desc">Back at TH · 🚗 drive back to Frisco · lunch with dad · rest · 3 Colorado 14ers 🎉</span></div>
+        </div>
+        <div class="summit-callout">
+          <div class="summit-callout-icon">⛰️</div>
+          <div class="summit-callout-body">
+            <div class="summit-callout-title">Quandary Peak · East Ridge Standard Route</div>
+            <div class="summit-callout-stats">
+              <span><strong>6.7 mi</strong> round trip</span>
+              <span><strong>3,354 ft</strong> gain</span>
+              <span><strong>Class 2</strong></span>
+              <span>Best-marked trail of all 4 summits · paved trailhead parking</span>
+              <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/quandary-peak-trail" target="_blank">AllTrails</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── WEEK 5 ─── -->
+<div id="week5" class="section" style="padding-top:0;padding-bottom:60px;">
+<div class="week-block">
+  <div class="week-header" onclick="toggleWeek(this)">
+    <div class="week-number">5</div>
+    <div class="week-info">
+      <div class="week-title">Frisco · Democrat 14er + Final Days + Drive Home</div>
+      <div class="week-meta">
+        <span class="week-meta-item">📅 Aug 9 – Aug 14</span>
+        <span class="week-meta-item">📍 Frisco, CO</span>
+        <span class="week-meta-item">⛰️ Mt. Democrat Sun Aug 9 (14,148 ft) · Mohawk Lakes · Drive Home Fri Aug 14</span>
+      </div>
+    </div>
+    <div class="week-location">Final Week</div>
+    <div class="week-toggle">›</div>
+  </div>
+  <div class="week-days">
+
+    <!-- Sun Aug 9 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="14er">
+        <div class="day-dow">Sun</div>
+        <div class="day-date-num">9</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">⛰️ MT. DEMOCRAT — 14er #5 — 14,148 ft</div>
+          <span class="day-type-badge badge-14er">14er Summit</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">3:00 AM</span><span class="schedule-desc">Wake · gear on · dad stays at Frisco Airbnb · back-to-back 14er weekend — only attempt if Quandary felt strong</span></div>
+          <div class="schedule-row"><span class="schedule-time">3:45 AM</span><span class="schedule-desc"><span class="highlight">🏔️ Depart Frisco → Kite Lake TH</span> (~45 min · CO-9 S + CR-8 · paved to Alma, last 2 mi maintained dirt · sedan OK slowly)</span></div>
+          <div class="schedule-row"><span class="schedule-time">5:00 AM</span><span class="schedule-desc"><span class="highlight">🏔️ Begin ascent from Kite Lake TH</span> (headlamp) · TH is already above treeline — spectacular dawn views from the first step</span></div>
+          <div class="schedule-row"><span class="schedule-time">~7:30 AM</span><span class="schedule-desc"><span class="highlight">⛰️ SUMMIT — 14,148 ft · 5 Colorado 14ers complete 🎉🎉</span></span></div>
+          <div class="schedule-row"><span class="schedule-time">~9:30 AM</span><span class="schedule-desc">Back at TH · 🚗 drive back to Frisco · reunite with dad · big celebratory meal</span></div>
+          <div class="schedule-row"><span class="schedule-time">Afternoon</span><span class="schedule-desc">Tenmile Canyon easy stroll with dad if legs allow <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/ten-mile-canyon-trail-to-frisco-copper-bike-path" target="_blank">AllTrails</a> · or just rest · you've earned it</span></div>
+        </div>
+        <div class="summit-callout">
+          <div class="summit-callout-icon">🏆</div>
+          <div class="summit-callout-body">
+            <div class="summit-callout-title">Mt. Democrat · The Perfect Finale · 5 Summits Complete</div>
+            <div class="summit-callout-stats">
+              <span><strong>6.0 mi</strong> round trip</span>
+              <span><strong>2,669 ft</strong> gain</span>
+              <span><strong>Class 2</strong></span>
+              <span>Shortest of the 5 · TH starts above treeline · back by 9:30 AM</span>
+              <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/kite-lake-to-mt-democrat-trail" target="_blank">AllTrails</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mon Aug 10 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Mon</div>
+        <div class="day-date-num">10</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Peaks Trail</div>
+          <span class="day-type-badge badge-wfh">WFH + Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc"><strong>Peaks Trail</strong> — 5 mi out-back, hard · incredible Tenmile Range ridge views · you solo <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/peaks-trail--2" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Dinner + rest</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tue Aug 11 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="rest">
+        <div class="day-dow">Tue</div>
+        <div class="day-date-num">11</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Rest Day</div>
+          <span class="day-type-badge badge-rest">Rest</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc">Frisco Bay Marina trail with dad · flat easy 2 mi <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/dillon-reservoir-lakeshore-perimeter-trail" target="_blank">AllTrails</a> · early dinner · pack for Mt. Democrat</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wed Aug 12 -->
+    <div class="day-row">
+      <div class="day-date-col">
+        <div class="day-dow">Wed</div>
+        <div class="day-date-num">12</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Mohawk Lakes Trail</div>
+          <span class="day-type-badge badge-wfh">WFH + Hike</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc"><strong>Mohawk Lakes Trail</strong> — 9.4 mi, 2,175 ft, hard · stunning series of alpine lakes · you solo · one of the best hikes in the Breckenridge area <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/mayflower-lake-and-mohawk-lakes" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Dinner + rest · enjoy the last week in Colorado</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thu Aug 13 -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="rest">
+        <div class="day-dow">Thu</div>
+        <div class="day-date-num">13</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH + Final Hike + Pack Up</div>
+          <span class="day-type-badge badge-wfh">WFH + Easy</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH · last work day in Colorado</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:30 PM</span><span class="schedule-desc"><strong>Gold Hill Trail</strong> — one final hike in the Breckenridge area · 6.4 mi, 1,975 ft · or a lighter walk if legs prefer <a class="at-btn" href="https://www.alltrails.com/trail/us/colorado/gold-hill" target="_blank">AllTrails</a></span></div>
+          <div class="schedule-row"><span class="schedule-time">6:00 PM</span><span class="schedule-desc">Final dinner in Frisco or Breckenridge with dad · pack up Airbnb completely tonight</span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Car loaded and ready · early sleep · departure at 2 PM tomorrow after WFH</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fri Aug 14 — Final 14er -->
+    <div class="day-row">
+      <div class="day-date-col" data-type="drive">
+        <div class="day-dow">Fri</div>
+        <div class="day-date-num">14</div>
+        <div class="day-month">Aug</div>
+      </div>
+      <div class="day-content-col">
+        <div class="day-title-row">
+          <div class="day-title">WFH · Then Drive Home to Framingham</div>
+          <span class="day-type-badge badge-drive">Drive Home</span>
+        </div>
+        <div class="day-schedule">
+          <div class="schedule-row"><span class="schedule-time">6 AM–2 PM</span><span class="schedule-desc">💻 WFH · final work session · car already packed from last night</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:00 PM</span><span class="schedule-desc">Log off · say goodbye to Frisco · 5 summits, 34 days, one legendary summer ✅</span></div>
+          <div class="schedule-row"><span class="schedule-time">2:15 PM</span><span class="schedule-desc">🚗 Depart Frisco → I-70 E toward Framingham, MA · ~28 hrs total drive</span></div>
+          <div class="schedule-row"><span class="schedule-time">Evening</span><span class="schedule-desc">Stage overnight in Kansas City or St. Louis (~$90 motel) · Tesla Superchargers on I-70 the whole way</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ REMINDERS ═══════════════════ -->
+<div id="reminders">
+<div class="section">
+  <div class="section-eyebrow">Critical Reminders</div>
+  <div class="section-title">Before You <span>Go</span></div>
+  <div class="section-body">Book these now — some fill within minutes of opening.</div>
+
+  <div class="reminders-grid">
+    <div class="reminder-card">
+      <div class="reminder-icon">🪜</div>
+      <div>
+        <div class="reminder-title">Manitou Incline Reservation</div>
+        <div class="reminder-body">Free but mandatory. Book at coloradosprings.gov/incline. Opens <strong>Jul 1 at 9 AM MT sharp</strong> for July slots. Afternoon slot for <strong>Tue Jul 14</strong> — set a reminder now.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">🚌</div>
+      <div>
+        <div class="reminder-title">RFTA Maroon Bells Shuttle</div>
+        <div class="reminder-body">Required for Maroon Bells access. Book at <strong>rfta.com</strong> ~2 weeks before Aug 1. Also reserve Aspen Highlands parking at aspenparking.com.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">⚡</div>
+      <div>
+        <div class="reminder-title">14er Lightning Rule</div>
+        <div class="reminder-body">All 14er starts depart TH at <strong>3:45 AM</strong>. Summit before 10 AM every time. Turn around at any lightning — no exceptions, not 200 ft from the top.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">⛑️</div>
+      <div>
+        <div class="reminder-title">Mt. Sneffels Helmet</div>
+        <div class="reminder-body">Class 3 summit ridge scramble on Sneffels requires a <strong>climbing helmet</strong>. Pack it before leaving Framingham. Not optional on this route.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">🌡️</div>
+      <div>
+        <div class="reminder-title">Altitude — First Week</div>
+        <div class="reminder-body">Coming from sea level. Drink <strong>4–5L water daily</strong>. No alcohol for the first 3 days. Mild headaches are normal. The gentle Week 1 schedule is intentional.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">💻</div>
+      <div>
+        <div class="reminder-title">Confirm Wifi at All Airbnbs</div>
+        <div class="reminder-body">WFH is non-negotiable. Message every host before booking: <strong>"Does your property have reliable high-speed wifi?"</strong> Get it in writing.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">👨‍👦</div>
+      <div>
+        <div class="reminder-title">Dad on 14er Days</div>
+        <div class="reminder-body">Sneffels (Jul 25), Handies (Jul 26), Sherman (Aug 2), Quandary (Aug 8), Democrat (Aug 9) — dad rests at Airbnb on all 14er days. Plan activities for him on those mornings.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">🛣️</div>
+      <div>
+        <div class="reminder-title">Kite Lake TH Road</div>
+        <div class="reminder-body">CR-8 last 2 miles is dirt. Drive <strong>slowly and carefully</strong> in a sedan — perfectly passable but not for rushing. Allow extra time on the drive to the TH.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <strong>Colorado Adventure · July 12 – August 14, 2026</strong><br>
+  Manitou Springs · Montrose · Frisco · 4 Fourteeners · 34 Days<br><br>
+  <span>Check conditions at 14ers.com · Mountain forecasts at mountain-forecast.com · All hikes on AllTrails</span>
+</footer>
+
+<script>
+function toggleWeek(header) {
+  const block = header.closest('.week-block');
+  block.classList.toggle('open');
+}
+
+// ── Twinkling stars ──────────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('star-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  const COUNT = 180;
+
+  function resize() {
+    const section = canvas.parentElement;
+    canvas.width  = section.offsetWidth;
+    canvas.height = section.offsetHeight;
+  }
+
+  function randomStar() {
+    return {
+      x:     Math.random() * canvas.width,
+      y:     Math.random() * canvas.height,
+      r:     Math.random() * 1.2 + 0.3,
+      alpha: Math.random(),
+      speed: Math.random() * 0.006 + 0.002,
+      phase: Math.random() * Math.PI * 2,
+    };
+  }
+
+  function init() {
+    resize();
+    stars = Array.from({ length: COUNT }, randomStar);
+  }
+
+  function draw(ts) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const t = ts * 0.001;
+    for (const s of stars) {
+      const a = 0.15 + 0.75 * (0.5 + 0.5 * Math.sin(t * s.speed * 6.28 + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${a.toFixed(3)})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init();
+  requestAnimationFrame(draw);
+})();
+
+// Nav active state on scroll
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nav a');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+sections.forEach(section => observer.observe(section));
+
+// Open week 1 by default (already has 'open' class)
+// Smooth fade-in on page load
+document.body.style.opacity = '0';
+window.addEventListener('load', () => {
+  document.body.style.transition = 'opacity 0.4s ease';
+  document.body.style.opacity = '1';
+});
+</script>
+
+</body>
+</html>
