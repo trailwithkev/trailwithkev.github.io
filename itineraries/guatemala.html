@@ -1,11 +1,1971 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guatemala · TrailWithKev</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guatemala · TrailWithKev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & ROOT ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:      #000000;
+  --gray-1:     #1d1d1f;
+  --gray-2:     #2d2d2f;
+  --gray-3:     #424245;
+  --gray-4:     #6e6e73;
+  --gray-5:     #86868b;
+  --gray-6:     #adadb0;
+  --white:      #f5f5f7;
+  --pure-white: #ffffff;
+  --blue:       #0071e3;
+  --blue-light: #2997ff;
+  --blue-glow:  rgba(0,113,227,0.15);
+  --summit:     #30d158;
+  --summit-glow:rgba(48,209,88,0.12);
+  --amber:      #ffd60a;
+  --red:        #ff453a;
+  --teal:       #30d0d0;
+  --volcano:    #ff6b35;
+  --radius-sm:  10px;
+  --radius-md:  18px;
+  --radius-lg:  28px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: -apple-system, 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--gray-1); }
+::-webkit-scrollbar-thumb { background: var(--gray-3); border-radius: 3px; }
+
+/* ─── NAV ─── */
+.nav {
+  position: sticky; top: 0; z-index: 200;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  display: flex; align-items: center; gap: 0;
+  padding: 0 40px; overflow-x: auto; scrollbar-width: none; height: 52px;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-brand {
+  font-size: 17px; font-weight: 600; color: var(--pure-white);
+  white-space: nowrap; margin-right: 32px; letter-spacing: -0.3px; text-decoration: none;
+}
+.nav-brand span { color: var(--blue-light); }
+.nav a {
+  color: var(--gray-5); text-decoration: none; font-size: 13px; font-weight: 400;
+  padding: 0 14px; white-space: nowrap; height: 52px; display: flex; align-items: center;
+  transition: color 0.2s; border-bottom: 2px solid transparent;
+}
+.nav a:hover { color: var(--pure-white); }
+.nav a.active { color: var(--pure-white); border-bottom-color: var(--blue-light); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 120px 40px 100px; position: relative; overflow: hidden; background: var(--black);
+}
+.hero-mountains {
+  position: absolute; bottom: 0; left: 0; right: 0; height: 45%;
+  pointer-events: none; opacity: 0.18;
+}
+.hero-glow {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%, -60%); pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--volcano); margin-bottom: 24px;
+}
+.hero-number {
+  font-size: clamp(140px, 22vw, 260px); font-weight: 700;
+  line-height: 0.85; letter-spacing: -0.04em; color: var(--pure-white);
+  margin-bottom: 8px; position: relative;
+}
+.hero-number-label {
+  font-size: clamp(20px, 3vw, 32px); font-weight: 300; color: var(--gray-5);
+  letter-spacing: -0.02em; margin-bottom: 40px;
+}
+.hero-title {
+  font-size: clamp(32px, 5vw, 56px); font-weight: 700; letter-spacing: -0.03em;
+  color: var(--pure-white); margin-bottom: 16px; line-height: 1.1;
+}
+.hero-title span { color: var(--volcano); }
+.hero-subtitle {
+  font-size: clamp(17px, 2.5vw, 22px); font-weight: 400; color: var(--gray-5);
+  max-width: 600px; margin: 0 auto 56px; letter-spacing: -0.01em;
+}
+.hero-stats {
+  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; position: relative; z-index: 2;
+}
+.stat-chip {
+  background: rgba(255,255,255,0.11); border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 980px; padding: 11px 22px; font-size: 14px; font-weight: 600;
+  color: var(--pure-white); display: flex; align-items: center; gap: 9px;
+  white-space: nowrap; backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+.stat-chip .chip-icon { font-size: 16px; }
+.stat-chip strong { color: #ffffff; font-weight: 700; }
+.stat-chip .chip-sub { color: rgba(255,255,255,0.75); font-weight: 500; }
+
+/* ─── SECTION LAYOUT ─── */
+.section { max-width: 980px; margin: 0 auto; padding: 100px 40px; }
+.section + .section { padding-top: 0; }
+.section-divider { height: 0.5px; background: rgba(255,255,255,0.1); max-width: 980px; margin: 0 auto; }
+
+/* ─── SECTION HEADERS ─── */
+.section-eyebrow {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--volcano); margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(36px, 5vw, 52px); font-weight: 700; letter-spacing: -0.03em;
+  color: var(--pure-white); line-height: 1.05; margin-bottom: 16px;
+}
+.section-title span { color: var(--volcano); }
+.section-body {
+  font-size: 17px; font-weight: 400; color: var(--gray-5);
+  max-width: 640px; line-height: 1.7; margin-bottom: 48px;
+}
+
+/* ─── OVERVIEW ROW ─── */
+.overview-row {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+  border: 0.5px solid rgba(255,255,255,0.1); border-radius: var(--radius-md);
+  overflow: hidden; margin-bottom: 48px;
+}
+.overview-cell { padding: 28px 24px; border-right: 0.5px solid rgba(255,255,255,0.08); text-align: center; }
+.overview-cell:last-child { border-right: none; }
+.overview-num {
+  font-size: 44px; font-weight: 700; letter-spacing: -0.04em;
+  color: var(--pure-white); line-height: 1; margin-bottom: 6px;
+}
+.overview-label { font-size: 12px; color: var(--gray-5); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ─── STOP CARDS ─── */
+.stops-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 24px; }
+.stop-card {
+  background: var(--gray-1); border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md); padding: 18px 16px; position: relative; overflow: hidden;
+}
+.stop-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.stop-card:nth-child(1)::before { background: var(--blue); }
+.stop-card:nth-child(2)::before { background: var(--volcano); }
+.stop-card:nth-child(3)::before { background: var(--teal); }
+.stop-num { font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray-4); margin-bottom: 6px; }
+.stop-town { font-size: 18px; font-weight: 700; letter-spacing: -0.02em; color: var(--pure-white); margin-bottom: 3px; line-height: 1.2; }
+.stop-region { font-size: 11px; color: var(--gray-5); margin-bottom: 12px; line-height: 1.4; }
+.stop-dates { font-size: 11px; font-weight: 500; color: var(--volcano); font-variant-numeric: tabular-nums; margin-bottom: 4px; }
+.stop-role { font-size: 22px; font-weight: 700; color: var(--pure-white); letter-spacing: -0.02em; line-height: 1; margin-bottom: 3px; }
+.stop-role-label { font-size: 11px; color: var(--gray-5); margin-bottom: 14px; }
+.stop-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.stop-tag { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 980px; letter-spacing: 0.02em; }
+.tag-blue   { background: rgba(0,113,227,0.15);    color: var(--blue-light); border: 0.5px solid rgba(0,113,227,0.3); }
+.tag-green  { background: var(--summit-glow);       color: var(--summit);    border: 0.5px solid rgba(48,209,88,0.3); }
+.tag-amber  { background: rgba(255,214,10,0.1);     color: var(--amber);     border: 0.5px solid rgba(255,214,10,0.25); }
+.tag-teal   { background: rgba(48,210,208,0.12);    color: var(--teal);      border: 0.5px solid rgba(48,210,208,0.3); }
+.tag-volcano{ background: rgba(255,107,53,0.12);    color: var(--volcano);   border: 0.5px solid rgba(255,107,53,0.3); }
+
+/* ─── MAP CARD ─── */
+.map-card { border: 0.5px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); overflow: hidden; }
+.map-card-hdr {
+  background: var(--gray-1); border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  padding: 12px 20px; display: flex; align-items: center; justify-content: space-between;
+}
+.map-card-hdr-left {
+  display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600;
+  letter-spacing: 0.06em; text-transform: uppercase; color: var(--gray-6);
+}
+.map-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--volcano); flex-shrink: 0; }
+.map-card-hdr-right { font-size: 11px; color: var(--gray-4); font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+.map-legend {
+  background: var(--gray-1); border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  padding: 6px 20px 8px; display: flex; flex-wrap: wrap; gap: 4px 16px;
+}
+.map-legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--gray-5); text-transform: capitalize; }
+.map-legend-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+#map-container {
+  width: 100%; height: 400px; display: block;
+  filter: grayscale(20%) brightness(0.88) contrast(1.05);
+}
+
+/* ─── DAY BLOCK ─── */
+.day-block { margin-bottom: 0; }
+.day-block-header {
+  display: flex; align-items: baseline; gap: 16px;
+  padding: 40px 0 20px; border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  margin-bottom: 0; cursor: pointer;
+}
+.day-block-num { font-size: 64px; font-weight: 700; color: rgba(255,107,53,0.35); letter-spacing: -0.04em; line-height: 1; min-width: 80px; }
+.day-block-info { flex: 1; }
+.day-block-title { font-size: 22px; font-weight: 700; color: var(--pure-white); letter-spacing: -0.02em; margin-bottom: 4px; }
+.day-block-meta { font-size: 13px; color: var(--gray-5); display: flex; gap: 16px; flex-wrap: wrap; }
+.day-block-meta-item { display: flex; align-items: center; gap: 5px; }
+.day-block-label { font-size: 13px; font-weight: 500; color: var(--volcano); white-space: nowrap; }
+.day-block-toggle { font-size: 22px; color: var(--gray-4); transition: transform 0.3s ease; user-select: none; }
+.day-block.open .day-block-toggle { transform: rotate(90deg); }
+.day-block-events { display: none; }
+.day-block.open .day-block-events { display: block; }
+
+/* ─── DRIVE NOTE ─── */
+.drive-note {
+  background: rgba(255,214,10,0.06); border: 0.5px solid rgba(255,214,10,0.18);
+  border-radius: var(--radius-sm); padding: 10px 14px; margin: 12px 0 0;
+  font-size: 12px; color: var(--amber); display: flex; gap: 8px;
+  align-items: flex-start; line-height: 1.6;
+}
+
+/* ─── EVENT ROWS ─── */
+.event-row {
+  display: grid; grid-template-columns: 90px 1fr; gap: 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  transition: background 0.15s;
+}
+.event-row:last-child { border-bottom: none; }
+.event-row:hover { background: rgba(255,255,255,0.02); }
+.event-time-col { padding: 20px 16px 20px 0; border-right: 0.5px solid rgba(255,255,255,0.06); }
+.event-time { font-size: 14px; font-weight: 700; color: var(--gray-5); font-variant-numeric: tabular-nums; letter-spacing: 0.01em; line-height: 1.2; margin-bottom: 2px; }
+.event-period { font-size: 10px; font-weight: 500; color: var(--gray-4); letter-spacing: 0.07em; text-transform: uppercase; }
+
+.event-time-col[data-type="hike"]    .event-time { color: var(--summit); }
+.event-time-col[data-type="drive"]   .event-time { color: var(--amber); }
+.event-time-col[data-type="iconic"]  .event-time { color: #bf5af2; }
+.event-time-col[data-type="rest"]    .event-time { color: var(--gray-4); }
+.event-time-col[data-type="volcano"] .event-time { color: var(--volcano); }
+.event-time-col[data-type="lake"]    .event-time { color: var(--teal); }
+
+.event-content { padding: 20px 0 20px 20px; }
+.event-title-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.event-title { font-size: 16px; font-weight: 600; color: var(--pure-white); letter-spacing: -0.01em; flex: 1; }
+.event-badge {
+  font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 980px;
+  letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0;
+}
+.badge-hike    { background: rgba(48,209,88,0.12);   color: var(--summit);  border: 0.5px solid rgba(48,209,88,0.3); }
+.badge-drive   { background: rgba(255,214,10,0.1);   color: var(--amber);   border: 0.5px solid rgba(255,214,10,0.25); }
+.badge-rest    { background: rgba(110,110,115,0.2);  color: var(--gray-6);  border: 0.5px solid rgba(110,110,115,0.3); }
+.badge-iconic  { background: rgba(191,90,242,0.12);  color: #bf5af2;        border: 0.5px solid rgba(191,90,242,0.3); }
+.badge-volcano { background: rgba(255,107,53,0.12);  color: var(--volcano); border: 0.5px solid rgba(255,107,53,0.3); }
+.badge-lake    { background: rgba(48,210,208,0.12);  color: var(--teal);    border: 0.5px solid rgba(48,210,208,0.3); }
+
+.event-desc { font-size: 14px; color: var(--gray-5); line-height: 1.65; margin-bottom: 10px; }
+.event-desc strong { color: var(--pure-white); font-weight: 600; }
+.event-desc ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 3px; }
+.event-desc li { padding-left: 14px; position: relative; }
+.event-desc li::before { content: '—'; position: absolute; left: 0; color: var(--gray-4); }
+
+/* ─── EVENT PILLS ─── */
+.event-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.event-pill {
+  font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 980px;
+  background: rgba(255,255,255,0.07); border: 0.5px solid rgba(255,255,255,0.12);
+  color: var(--gray-6); letter-spacing: 0.02em; white-space: nowrap;
+}
+.event-pill.pill-a { background: rgba(255,69,58,0.1); border-color: rgba(255,69,58,0.3); color: #ff6b63; }
+.event-pill.pill-w { background: rgba(255,214,10,0.08); border-color: rgba(255,214,10,0.25); color: var(--amber); }
+
+/* ─── REMINDERS ─── */
+.reminders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.reminder-card {
+  background: var(--gray-1); border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md); padding: 20px 22px; display: flex; gap: 14px;
+}
+.reminder-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.reminder-title { font-size: 14px; font-weight: 700; color: var(--pure-white); margin-bottom: 4px; letter-spacing: -0.01em; }
+.reminder-body { font-size: 13px; color: var(--gray-5); line-height: 1.55; }
+.reminder-body strong { color: var(--volcano); font-weight: 600; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--gray-1); border-top: 0.5px solid rgba(255,255,255,0.08);
+  padding: 40px; text-align: center; font-size: 12px; color: var(--gray-4);
+}
+footer strong { color: var(--gray-6); }
+
+/* ─── PROGRESS STRIP ─── */
+.progress-strip {
+  height: 3px;
+  background: linear-gradient(90deg, var(--volcano) 0%, var(--amber) 50%, var(--teal) 100%);
+  width: 100%;
+}
+
+/* ─── ANIMATIONS ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .stat-chip { transition: transform 0.2s, background 0.2s; }
+  .stat-chip:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); }
+  .stop-card { transition: transform 0.2s, border-color 0.2s; }
+  .stop-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.18); }
+  .reminder-card { transition: transform 0.2s; }
+  .reminder-card:hover { transform: translateY(-2px); }
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .section { padding: 80px 32px; }
+  .stops-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-title { font-size: clamp(28px, 4vw, 40px); }
+}
+@media (max-width: 768px) {
+  .nav { padding: 0 16px; }
+  .hero { padding: 72px 20px 64px; min-height: 90vh; }
+  .hero-number { font-size: clamp(80px, 20vw, 140px); }
+  .hero-number-label { font-size: clamp(15px, 3.5vw, 22px); margin-bottom: 28px; }
+  .hero-title { font-size: clamp(24px, 5.5vw, 40px); }
+  .hero-subtitle { font-size: clamp(14px, 3vw, 17px); margin-bottom: 36px; }
+  .hero-stats { gap: 8px; }
+  .stat-chip { padding: 9px 16px; font-size: 13px; }
+  .section { padding: 56px 20px; }
+  .section-title { font-size: clamp(26px, 5.5vw, 38px); }
+  .section-body { font-size: 15px; margin-bottom: 32px; }
+  .overview-row { grid-template-columns: repeat(2, 1fr); }
+  .overview-cell:nth-child(2) { border-right: none; }
+  .overview-cell { padding: 20px 16px; }
+  .overview-num { font-size: 36px; }
+  .stops-grid { grid-template-columns: 1fr; gap: 10px; }
+  #map-container { height: 300px; }
+  .day-block-header { gap: 10px; padding: 28px 0 16px; }
+  .day-block-num { font-size: 40px; min-width: 52px; }
+  .day-block-title { font-size: 17px; }
+  .day-block-meta { font-size: 12px; gap: 10px; }
+  .day-block-label { font-size: 12px; }
+  .event-row { grid-template-columns: 70px 1fr; }
+  .event-content { padding: 16px 0 16px 14px; }
+  .event-time-col { padding: 16px 12px 16px 0; }
+  .event-title { font-size: 15px; }
+  .event-desc { font-size: 13px; }
+  .reminders-grid { grid-template-columns: 1fr; }
+  footer { padding: 32px 20px; font-size: 11px; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 60px 16px 52px; }
+  .hero-number { font-size: clamp(72px, 22vw, 110px); }
+  .section { padding: 44px 16px; }
+  .overview-cell { padding: 16px 12px; }
+  .overview-num { font-size: 30px; }
+  .stops-grid { grid-template-columns: 1fr; gap: 8px; }
+  #map-container { height: 260px; }
+  .day-block-header { gap: 8px; padding: 20px 0 12px; align-items: flex-start; }
+  .day-block-num { font-size: 30px; min-width: 40px; line-height: 1.1; }
+  .day-block-title { font-size: 15px; }
+  .day-block-label { display: none; }
+  .event-row { grid-template-columns: 58px 1fr; }
+  .event-time-col { padding: 14px 8px 14px 0; }
+  .event-time { font-size: 12px; }
+  .event-period { font-size: 9px; }
+  .event-content { padding: 14px 0 14px 12px; }
+  .event-title { font-size: 14px; }
+  .event-badge { display: none; }
+  .event-pills { gap: 5px; }
+  .event-pill { font-size: 10px; padding: 4px 9px; }
+  footer { padding: 28px 16px; }
+}
+
+/* ─── THEME TOGGLE ─── */
+.theme-toggle {
+  position: fixed; top: 12px; right: 40px; z-index: 400;
+  width: 56px; height: 26px; border-radius: 980px;
+  background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.25);
+  cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5px; transition: background 0.3s, border-color 0.3s;
+}
+.tt-moon, .tt-sun { font-size: 11px; pointer-events: none; }
+.tt-thumb {
+  position: absolute; width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; left: 3px;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4); pointer-events: none;
+}
+html.light .theme-toggle { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.18); }
+html.light .tt-thumb { transform: translateX(30px); background: #1d1d1f; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+@media (max-width: 480px) { .theme-toggle { right: 16px; } }
+
+/* ─── LIGHT MODE ─── */
+html.light body { background: #f5f5f7; color: #1d1d1f; }
+html.light ::-webkit-scrollbar-track { background: #e5e5ea; }
+html.light ::-webkit-scrollbar-thumb { background: #c7c7cc; }
+html.light .nav { background: rgba(245,245,247,0.92); border-bottom-color: rgba(0,0,0,0.1); }
+html.light .nav-brand { color: #1d1d1f; }
+html.light .nav a { color: #636366; }
+html.light .nav a:hover { color: #000; }
+html.light .nav a.active { color: #000; border-bottom-color: #c04a10; }
+html.light #star-canvas { display: none; }
+html.light .hero { background: #f5f5f7; }
+html.light .hero-glow { opacity: 0; }
+html.light .hero-mountains path { fill: rgba(0,0,0,0.06); }
+html.light .hero-eyebrow { color: #c04a10; }
+html.light .hero-number { color: #000; }
+html.light .hero-number-label { color: #636366; }
+html.light .hero-title { color: #000; }
+html.light .hero-title span { color: #c04a10; }
+html.light .hero-subtitle { color: #636366; }
+html.light .stat-chip { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.14); color: #1d1d1f; text-shadow: none; }
+html.light .stat-chip strong { color: #000; }
+html.light .stat-chip .chip-sub { color: rgba(0,0,0,0.55); }
+html.light .section-divider { background: rgba(0,0,0,0.1); }
+html.light .section-eyebrow { color: #c04a10; }
+html.light .section-title { color: #000; }
+html.light .section-title span { color: #c04a10; }
+html.light .section-body { color: #48484a; }
+html.light .overview-row { border-color: rgba(0,0,0,0.1); }
+html.light .overview-cell { border-right-color: rgba(0,0,0,0.08); }
+html.light .overview-num { color: #000; }
+html.light .overview-label { color: #636366; }
+html.light .stop-card { background: #fff; border-color: rgba(0,0,0,0.1); }
+html.light .stop-num { color: #8e8e93; }
+html.light .stop-town { color: #000; }
+html.light .stop-region { color: #636366; }
+html.light .stop-dates { color: #c04a10; }
+html.light .stop-role { color: #000; }
+html.light .stop-role-label { color: #636366; }
+html.light .tag-blue    { background: rgba(0,102,200,0.08);  color: #0055aa; border-color: rgba(0,102,200,0.2); }
+html.light .tag-green   { background: rgba(0,130,50,0.08);   color: #006e28; border-color: rgba(0,130,50,0.2); }
+html.light .tag-amber   { background: rgba(160,100,0,0.08);  color: #7a5200; border-color: rgba(160,100,0,0.2); }
+html.light .tag-teal    { background: rgba(0,130,130,0.08);  color: #006666; border-color: rgba(0,130,130,0.2); }
+html.light .tag-volcano { background: rgba(180,60,10,0.08);  color: #aa3810; border-color: rgba(180,60,10,0.2); }
+html.light .map-card { border-color: rgba(0,0,0,0.1); }
+html.light .map-card-hdr { background: #fff; border-bottom-color: rgba(0,0,0,0.08); }
+html.light .map-card-hdr-left { color: #48484a; }
+html.light .map-card-hdr-right { color: #8e8e93; }
+html.light .map-legend { background: #fff; border-bottom-color: rgba(0,0,0,0.06); }
+html.light .map-legend-item { color: #636366; }
+html.light #map-container { filter: brightness(1.05) contrast(0.95); }
+html.light .map-dot { background: #c04a10; }
+html.light .day-block-header { border-bottom-color: rgba(0,0,0,0.08); }
+html.light .day-block-num { color: rgba(192,74,16,0.22); }
+html.light .day-block-title { color: #000; }
+html.light .day-block-meta { color: #636366; }
+html.light .day-block-label { color: #c04a10; }
+html.light .day-block-toggle { color: #8e8e93; }
+html.light .drive-note { background: rgba(170,110,0,0.07); border-color: rgba(170,110,0,0.22); color: #6e4700; }
+html.light .event-row { border-bottom-color: rgba(0,0,0,0.05); }
+html.light .event-row:hover { background: rgba(0,0,0,0.02); }
+html.light .event-time-col { border-right-color: rgba(0,0,0,0.06); }
+html.light .event-time { color: #8e8e93; }
+html.light .event-period { color: #aeaeb2; }
+html.light .event-time-col[data-type="hike"]    .event-time { color: #1a8f3d; }
+html.light .event-time-col[data-type="drive"]   .event-time { color: #7a5200; }
+html.light .event-time-col[data-type="iconic"]  .event-time { color: #7030b8; }
+html.light .event-time-col[data-type="rest"]    .event-time { color: #8e8e93; }
+html.light .event-time-col[data-type="volcano"] .event-time { color: #aa3810; }
+html.light .event-time-col[data-type="lake"]    .event-time { color: #007070; }
+html.light .event-title { color: #000; }
+html.light .event-desc { color: #48484a; }
+html.light .event-desc strong { color: #1d1d1f; }
+html.light .event-desc li::before { color: #aeaeb2; }
+html.light .event-pill { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); color: #48484a; }
+html.light .event-pill.pill-a { background: rgba(220,50,40,0.08); border-color: rgba(220,50,40,0.25); color: #b81810; }
+html.light .event-pill.pill-w { background: rgba(170,110,0,0.08); border-color: rgba(170,110,0,0.22); color: #6e4700; }
+html.light .badge-hike    { background: rgba(0,130,50,0.1);   color: #006e28; border-color: rgba(0,130,50,0.25); }
+html.light .badge-drive   { background: rgba(160,100,0,0.1);  color: #7a5200; border-color: rgba(160,100,0,0.25); }
+html.light .badge-rest    { background: rgba(0,0,0,0.06);     color: #636366; border-color: rgba(0,0,0,0.14); }
+html.light .badge-iconic  { background: rgba(110,40,180,0.1); color: #7030b8; border-color: rgba(110,40,180,0.25); }
+html.light .badge-volcano { background: rgba(180,60,10,0.1);  color: #aa3810; border-color: rgba(180,60,10,0.25); }
+html.light .badge-lake    { background: rgba(0,130,130,0.1);  color: #006666; border-color: rgba(0,130,130,0.25); }
+html.light .reminder-card { background: #fff; border-color: rgba(0,0,0,0.08); }
+html.light .reminder-title { color: #000; }
+html.light .reminder-body { color: #48484a; }
+html.light .reminder-body strong { color: #c04a10; }
+html.light footer { background: #fff; border-top-color: rgba(0,0,0,0.08); color: #8e8e93; }
+html.light footer strong { color: #48484a; }
+</style>
 </head>
 <body>
+
+<div class="progress-strip"></div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Trail<span>WithKev</span></a>
+  <a href="#overview">Overview</a>
+  <a href="#route">Route</a>
+  <a href="#day0">Day 0</a>
+  <a href="#day1">Day 1</a>
+  <a href="#day2">Day 2</a>
+  <a href="#day3">Day 3</a>
+  <a href="#day4">Day 4</a>
+  <a href="#day5">Day 5</a>
+  <a href="#day6">Day 6</a>
+  <a href="#day7">Day 7</a>
+  <a href="#tips">Tips</a>
+</nav>
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+  <span class="tt-moon">🌙</span>
+  <span class="tt-thumb"></span>
+  <span class="tt-sun">☀️</span>
+</button>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <canvas id="star-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="hero-glow"></div>
+  <svg class="hero-mountains" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,300 L0,240 L80,220 L160,200 L240,160 L320,90 L400,130 L480,60 L560,100 L640,40 L720,85 L800,30 L880,70 L960,45 L1040,100 L1120,65 L1200,120 L1280,80 L1360,140 L1440,110 L1440,300 Z" fill="white"/>
+  </svg>
+  <div class="hero-eyebrow">Guatemala · Antigua &amp; Lake Atitlán</div>
+  <div class="hero-number">8</div>
+  <div class="hero-number-label">days in Guatemala</div>
+  <div class="hero-title">The <span>Guatemala</span> Itinerary</div>
+  <div class="hero-subtitle">Antigua · Volcán Pacaya · Acatenango · Volcán de Fuego · Lake Atitlán · San Pedro</div>
+  <div class="hero-stats">
+    <div class="stat-chip"><span class="chip-icon">🗓️</span> <strong>8</strong> <span class="chip-sub">Days</span></div>
+    <div class="stat-chip"><span class="chip-icon">🌋</span> <strong>3</strong> <span class="chip-sub">Volcanoes</span></div>
+    <div class="stat-chip"><span class="chip-icon">⛺</span> <strong>1</strong> <span class="chip-sub">Overnight Trek</span></div>
+    <div class="stat-chip"><span class="chip-icon">💧</span> <strong>Lake Atitlán</strong> <span class="chip-sub">3 Days</span></div>
+    <div class="stat-chip"><span class="chip-icon">🏘️</span> <strong>Antigua</strong> <span class="chip-sub">Colonial Base</span></div>
+    <div class="stat-chip"><span class="chip-icon">✈️</span> <strong>GUA</strong> <span class="chip-sub">La Aurora Airport</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ OVERVIEW ═══════════════════ -->
+<div id="overview">
+<div class="section">
+  <div class="section-eyebrow">Trip at a Glance</div>
+  <div class="section-title">Eight Days of <span>Volcanoes &amp; Lakes</span></div>
+  <div class="section-body">Land in Guatemala City and get to Antigua — your colonial base for the first half of the trip. Hike an active lava field on Pacaya, spend a night watching Fuego erupt from 400 ft away on Acatenango, then transfer to the shores of Lake Atitlán for cliff diving in San Marcos, a sunrise hike above the lake, and last-day shopping at San Juan's artisan market.</div>
+
+  <div class="overview-row">
+    <div class="overview-cell">
+      <div class="overview-num">8</div>
+      <div class="overview-label">Total Days</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--volcano)">3</div>
+      <div class="overview-label">Volcanoes</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--teal)">1</div>
+      <div class="overview-label">Overnight Trek</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--amber)">2</div>
+      <div class="overview-label">Regions</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ ROUTE ═══════════════════ -->
+<div id="route">
+<div class="section">
+  <div class="section-eyebrow">Route &amp; Bases</div>
+  <div class="section-title">The <span>Guatemala</span> Route</div>
+  <div class="section-body">Fly into Guatemala City and transfer straight to Antigua — the colonial heart of the country. Use it as your base for four days of volcanoes and city life. On Day 4, transfer west to Lake Atitlán and base yourself in San Pedro La Laguna for three full days before heading back to the airport.</div>
+
+  <div class="stops-grid">
+
+    <div class="stop-card">
+      <div class="stop-num">Stop 01 · Arrival</div>
+      <div class="stop-town">GUA Airport</div>
+      <div class="stop-region">Guatemala City · La Aurora International</div>
+      <div class="stop-dates">Arrival Night</div>
+      <div class="stop-role">IN</div>
+      <div class="stop-role-label">Night arrival</div>
+      <div class="stop-tags">
+        <span class="stop-tag tag-blue">La Aurora (GUA)</span>
+        <span class="stop-tag tag-blue">→ Antigua ~45 min</span>
+      </div>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-num">Stop 02 · Days 1–4</div>
+      <div class="stop-town">Antigua Guatemala</div>
+      <div class="stop-region">Central Highlands · UNESCO Colonial City</div>
+      <div class="stop-dates">Days 1 — 4</div>
+      <div class="stop-role">4</div>
+      <div class="stop-role-label">nights base</div>
+      <div class="stop-tags">
+        <span class="stop-tag tag-volcano">Pacaya Volcano</span>
+        <span class="stop-tag tag-volcano">Acatenango Trek</span>
+        <span class="stop-tag tag-volcano">Hobbitenango</span>
+      </div>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-num">Stop 03 · Days 5–7</div>
+      <div class="stop-town">Lake Atitlán</div>
+      <div class="stop-region">San Pedro La Laguna · Western Highlands</div>
+      <div class="stop-dates">Days 5 — 7</div>
+      <div class="stop-role">3</div>
+      <div class="stop-role-label">nights base</div>
+      <div class="stop-tags">
+        <span class="stop-tag tag-teal">San Marcos Diving</span>
+        <span class="stop-tag tag-teal">Indian Nose Sunrise</span>
+        <span class="stop-tag tag-teal">San Juan Market</span>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="map-card">
+    <div class="map-card-hdr">
+      <div class="map-card-hdr-left"><div class="map-dot"></div> Route Map</div>
+      <div class="map-card-hdr-right">Antigua · Atitlán · GUA</div>
+    </div>
+    <div class="map-legend" id="map-legend"></div>
+    <div id="map-container"></div>
+  </div>
+
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ DAY-BY-DAY HEADER ═══════════════════ -->
+<div class="section" style="padding-bottom:0;">
+  <div class="section-eyebrow">Day by Day</div>
+  <div class="section-title">The Full <span>Itinerary</span></div>
+  <div class="section-body">Click any day to expand the full schedule. Day 0 is open by default.</div>
+</div>
+
+<!-- ─── DAY 0 ─── -->
+<div id="day0" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block open">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">0</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Night Flight → Antigua Guatemala</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">✈️ Arrival Night</span>
+        <span class="day-block-meta-item">🚗 GUA → Antigua: ~45 min</span>
+        <span class="day-block-meta-item">🏠 Base: Antigua Guatemala</span>
+      </div>
+    </div>
+    <div class="day-block-label">Arrival</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; GUA Airport → Antigua: ~45 min · Bus, Uber, or hostel shuttle</div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Land-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">✈️ Arrive at La Aurora Airport (GUA)</div>
+          <span class="event-badge badge-drive">Arrival</span>
+        </div>
+        <div class="event-desc">Clear immigration and collect your bags. La Aurora is a small, easy airport — you'll be out quickly. Night arrivals can feel hectic outside; stay calm and assess your options before committing to a ride.</div>
+        <div class="event-pills">
+          <span class="event-pill">Small easy airport</span>
+          <span class="event-pill pill-w">Stay aware outside arrivals</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Late</div>
+        <div class="event-period">Night</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚌 Get to Antigua — Bus, Uber or Shuttle</div>
+          <span class="event-badge badge-drive">Transfer</span>
+        </div>
+        <div class="event-desc">Three solid options. Public bus (chicken bus) is cheapest at ~10–15 GTQ but slower and harder with luggage at night. Uber is reliable, ~150–200 GTQ, and easiest if time is short. Many Antigua hostels offer pre-arranged airport shuttles (~100–150 GTQ) — best booked in advance.</div>
+        <div class="event-pills">
+          <span class="event-pill">Uber: ~150–200 GTQ · Easiest</span>
+          <span class="event-pill pill-w">Hostel shuttle: book in advance</span>
+          <span class="event-pill">Bus: cheapest but tricky at night</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Arriv-</div>
+        <div class="event-period">al</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏨 Check In &amp; Rest</div>
+          <span class="event-badge badge-rest">Check-in</span>
+        </div>
+        <div class="event-desc">Antigua's accommodation is clustered tightly — nearly everything is walkable from the central park. Drop your bags, shower, and sleep. Tomorrow is a full day.</div>
+        <div class="event-pills">
+          <span class="event-pill">Central Antigua is compact</span>
+          <span class="event-pill pill-w">Confirm check-in time ahead</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 1 ─── -->
+<div id="day1" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">1</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Rest, Explore &amp; Eat Your Way Through Antigua</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">🚶 Fully walkable</span>
+        <span class="day-block-meta-item">🏛️ Colonial streets &amp; markets</span>
+        <span class="day-block-meta-item">🍺 Craft beer &amp; nightlife</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 1 of 7</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚶&nbsp; Fully walkable — Antigua's colonial grid is compact and flat</div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Morn-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">☕ Slow Breakfast at a Local Café</div>
+          <span class="event-badge badge-rest">Breakfast</span>
+        </div>
+        <div class="event-desc">Start easy — you just flew in. Antigua has excellent café culture. Grab breakfast at one of the many local spots around the Parque Central. Guatemalan coffee here is some of the best in the world.</div>
+        <div class="event-pills">
+          <span class="event-pill">Local cafés near Parque Central</span>
+          <span class="event-pill">Try Guatemalan drip coffee</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">9:30</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⛰️ Cerro de la Cruz — Panoramic Viewpoint</div>
+          <span class="event-badge badge-hike">Viewpoint</span>
+        </div>
+        <div class="event-desc">The hilltop Cross of the Hill, a short walk or cheap tuk-tuk ride north of the city centre. The classic postcard view — Antigua's terracotta rooftops, the yellow arch, and Volcán de Agua rising perfectly behind. Best in the morning before clouds roll in.</div>
+        <div class="event-pills">
+          <span class="event-pill">~20 min walk or tuk-tuk</span>
+          <span class="event-pill">Best views in Antigua</span>
+          <span class="event-pill pill-w">Go early — clouds build later</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">11:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏛️ Arco de Santa Catalina &amp; Colonial Streets</div>
+          <span class="event-badge badge-iconic">Iconic</span>
+        </div>
+        <div class="event-desc">The iconic yellow Santa Catalina Arch spans 5a Avenida Norte — the most photographed spot in Guatemala. Built in the 17th century to let nuns cross the street unseen. Stroll the cobblestone streets, peek into church courtyards, and soak up the UNESCO atmosphere.</div>
+        <div class="event-pills">
+          <span class="event-pill">Most iconic Antigua photo spot</span>
+          <span class="event-pill">17th century arch</span>
+          <span class="event-pill">Free to view</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">12:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🛒 Mercado Central &amp; Tanque La Unión</div>
+          <span class="event-badge badge-iconic">Market</span>
+        </div>
+        <div class="event-desc">The Mercado Central for the real local experience — fresh produce, street food, textiles, and noise. Just south is Tanque La Unión, an 18th-century public laundry tank still used by locals. A quietly beautiful piece of everyday Antigua life.</div>
+        <div class="event-pills">
+          <span class="event-pill">Local market — cash only</span>
+          <span class="event-pill">Tanque La Unión: free &amp; photogenic</span>
+          <span class="event-pill pill-w">Watch your belongings</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">1:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Lunch — Guatemalan Cuisine</div>
+          <span class="event-badge badge-rest">Lunch</span>
+        </div>
+        <div class="event-desc">For authentic Guatemalan food: <strong>Arín Cuan</strong> for traditional pepián and kak'ik in a beautiful colonial courtyard; <strong>7 Caldos</strong> for hearty soups and local stews; <strong>Cueva de los Urquizu</strong> for a more intimate local feel. All serve classic dishes at fair prices.</div>
+        <div class="event-pills">
+          <span class="event-pill">Arín Cuan — traditional courtyard</span>
+          <span class="event-pill">7 Caldos — soups &amp; stews</span>
+          <span class="event-pill">Cueva de los Urquizu — local gem</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">After-</div>
+        <div class="event-period">noon</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌿 Afternoon Wander — Optional Indian Food</div>
+          <span class="event-badge badge-rest">Explore</span>
+        </div>
+        <div class="event-desc">Digest with a slow afternoon walk through Antigua's backstreets. If you're craving something different, <strong>Delhi 6 Antigua</strong> is a genuinely excellent Indian restaurant — widely recommended and a surprising find in Guatemala.</div>
+        <div class="event-pills">
+          <span class="event-pill">Delhi 6 Antigua — highly rated</span>
+          <span class="event-pill">Cobblestone strolling</span>
+          <span class="event-pill">Explore side streets</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Even-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍺 Craft Beer, Cocktails &amp; Nightlife</div>
+          <span class="event-badge badge-rest">Nightlife</span>
+        </div>
+        <div class="event-desc">Antigua has a punchy bar scene. Craft beer: <strong>Franca</strong> and <strong>Antigua Cervecería</strong> are top picks, or <strong>El Depósito</strong> for a warehouse vibe. Cocktails: <strong>Ulew</strong> does creative mezcal-forward drinks; <strong>El Ilegal</strong> and <strong>Whisky Den</strong> for a late-night drink. Vegan: <strong>La Bruja</strong> — considered one of the best vegan restaurants in Central America.</div>
+        <div class="event-pills">
+          <span class="event-pill">Craft beer: Franca · Antigua Cervecería · El Depósito</span>
+          <span class="event-pill">Cocktails: Ulew · El Ilegal · Whisky Den</span>
+          <span class="event-pill">Vegan: La Bruja — unmissable</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 2 ─── -->
+<div id="day2" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">2</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Pacaya Volcano Morning Trek &amp; Hobbitenango Afternoon</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">🌋 Lava fields at dawn</span>
+        <span class="day-block-meta-item">🔥 Marshmallows on a volcano</span>
+        <span class="day-block-meta-item">🧙 Hobbitenango with Fuego views</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 2 of 7</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; Tour bus pickup near your hotel → Pacaya: ~90 min · Antigua → Hobbitenango: ~15 min by Uber</div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Early</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🎒 Book &amp; Meet Your Tour — Pacaya Volcano</div>
+          <span class="event-badge badge-drive">Tour</span>
+        </div>
+        <div class="event-desc">Book through GetYourGuide — plenty of operators run early morning Pacaya tours with hotel pickup. Early departure means you beat the heat and crowds. Most tours are half-day, getting you back in Antigua by noon.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Book on GetYourGuide</span>
+          <span class="event-pill">Early pickup ~5–6 AM</span>
+          <span class="event-pill">Pickup near your hotel</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Bus</div>
+        <div class="event-period">Ride</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚌 90-Minute Bus Ride — Take Your Motion Sickness Pill</div>
+          <span class="event-badge badge-drive">Transit</span>
+        </div>
+        <div class="event-desc">This is important: take motion sickness medication before boarding. The bus winds through mountain roads with steep curves and switchbacks for nearly 90 minutes. Don't skip this step — it can make or break the whole morning.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Take motion sickness meds!</span>
+          <span class="event-pill">~90 min winding mountain roads</span>
+          <span class="event-pill pill-w">Sit near the front if sensitive</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Morn-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌋 Hike Pacaya Volcano</div>
+          <span class="event-badge badge-hike">Easy–Mod</span>
+        </div>
+        <div class="event-desc">The hike is not difficult — well-maintained trails, moderate elevation gain, manageable for most fitness levels. Your guide speaks decent English and sets a comfortable pace. Not an avid hiker? No problem — horses are available for anyone who'd rather skip the uphill.</div>
+        <div class="event-pills">
+          <span class="event-pill">Easy–Moderate difficulty</span>
+          <span class="event-pill">~2–3 hrs total</span>
+          <span class="event-pill">Horses available for non-hikers</span>
+          <span class="event-pill">English-speaking guides</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="volcano">
+        <div class="event-time">Sum-</div>
+        <div class="event-period">mit</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🔥 Lava Fields — Marshmallows &amp; Pizza</div>
+          <span class="event-badge badge-volcano">Lava</span>
+        </div>
+        <div class="event-desc">When you reach the active lava fields of Pacaya, the heat radiating from the ground is intense and surreal. Most tour companies roast marshmallows over the lava vents — a genuinely unforgettable experience. Some operators cook pizza using the volcanic heat. Check what your chosen tour includes when booking.</div>
+        <div class="event-pills">
+          <span class="event-pill">Marshmallows roasted on lava — most tours</span>
+          <span class="event-pill">Lava pizza — select operators</span>
+          <span class="event-pill pill-w">Check tour inclusions when booking</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Noon</div>
+        <div class="event-period"></div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏠 Return to Antigua — Lunch &amp; Freshen Up</div>
+          <span class="event-badge badge-drive">Return</span>
+        </div>
+        <div class="event-desc">Back in Antigua by midday. You'll be dusty, possibly smelling faintly of sulphur, and hungry. Shower, change, and have a proper lunch before deciding what to do with the afternoon. Pacaya is easy enough that you'll still have energy.</div>
+        <div class="event-pills">
+          <span class="event-pill">Back by ~12 PM</span>
+          <span class="event-pill">Shower + lunch before afternoon</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">After-</div>
+        <div class="event-period">noon</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🧙 Hobbitenango — Scenic Views &amp; the Iconic Swing</div>
+          <span class="event-badge badge-iconic">Iconic</span>
+        </div>
+        <div class="event-desc">Take an Uber from Antigua (~15 min) to this quirky hilltop eco-park inspired by Tolkien's Shire. Spectacular views — rolling green hills, Antigua below, and Volcán de Fuego looming in the distance. The iconic swing over the valley and the giant stone hobbit hand with Fuego as the backdrop are two of the most photographed spots near Antigua.</div>
+        <div class="event-pills">
+          <span class="event-pill">~15 min Uber from Antigua</span>
+          <span class="event-pill">Iconic swing &amp; hobbit hand</span>
+          <span class="event-pill">Fuego volcano views</span>
+          <span class="event-pill pill-w">Go if energy allows</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Even-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner in Antigua — Well Earned</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Head back into Antigua for a relaxed dinner. You've done a volcano and a hobbit hill in one day. Revisit favourites from Day 1 or explore somewhere new. Early night if Acatenango is on your agenda soon.</div>
+        <div class="event-pills">
+          <span class="event-pill">Antigua restaurants nearby</span>
+          <span class="event-pill">Rest up for upcoming days</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 3 ─── -->
+<div id="day3" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">3</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Acatenango &amp; Fuego Volcano — Overnight Summit Hike</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">⛺ Overnight Trek</span>
+        <span class="day-block-meta-item">🔥 Watch Fuego erupt from 400 ft away</span>
+        <span class="day-block-meta-item">🌋 Strenuous — 4–5 hr ascent</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 3 of 7</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; Antigua → Acatenango Trailhead: ~45 min · Tour operator provides transport · ⚠️ This is the most demanding day of the trip — layers are non-negotiable</div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Morn-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🎒 Pack Your Kit — Layers Are Non-Negotiable</div>
+          <span class="event-badge badge-rest">Prep</span>
+        </div>
+        <div class="event-desc">Pack every layer you have: thermal base layer, fleece mid-layer, windproof outer shell, warm hat, gloves, and thick socks. Temperatures drop sharply after sunset and sleeping at basecamp elevation is nothing like sleeping in Antigua. Under-packing layers is the single most common mistake hikers make on this trek.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Pack ALL your layers — not optional</span>
+          <span class="event-pill pill-w">Gloves + hat essential</span>
+          <span class="event-pill">Bring snacks &amp; 2L+ water</span>
+          <span class="event-pill">Trekking poles: highly recommended</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Late</div>
+        <div class="event-period">Morn.</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚐 Tour Pickup &amp; Drive to Trailhead</div>
+          <span class="event-badge badge-drive">Pickup</span>
+        </div>
+        <div class="event-desc">Book via GetYourGuide, OX Expeditions, Wicho &amp; Charlie's, or another reputable Antigua-based operator. All reputable tours include transport, guided ascent and descent, all meals (dinner, breakfast), tents, sleeping bags, and camp beds. <strong>Confirm inclusions before booking.</strong></div>
+        <div class="event-pills">
+          <span class="event-pill">GetYourGuide · OX Expeditions · Wicho &amp; Charlie's</span>
+          <span class="event-pill pill-w">Inclusions: meals · tent · sleeping bag · bed</span>
+          <span class="event-pill">Pickup ~10–11 AM typically</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="volcano">
+        <div class="event-time">Noon</div>
+        <div class="event-period">–5 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌋 The Ascent — Strenuous 4–5 Hour Climb</div>
+          <span class="event-badge badge-volcano">Strenuous</span>
+        </div>
+        <div class="event-desc">The hike is strenuous — full stop. The trail gains significant elevation through dense forest before breaking out onto open volcanic scree. The altitude hits hard in the upper sections. Go at your own pace, breathe steadily, and don't race the group. By the time you reach basecamp at ~11,500 ft, you will be genuinely tired. Take it seriously: this is not Pacaya.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Strenuous — 4–5 hrs ascent</span>
+          <span class="event-pill pill-w">Altitude affects everyone differently</span>
+          <span class="event-pill">Go slow · breathe steady</span>
+          <span class="event-pill">~11,500 ft basecamp elevation</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="volcano">
+        <div class="event-time">Sun-</div>
+        <div class="event-period">set</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🔥 Basecamp &amp; Fuego Eruptions Begin</div>
+          <span class="event-badge badge-volcano">Eruptions</span>
+        </div>
+        <div class="event-desc">Basecamp sits at ~11,500 ft with a direct sightline to Volcán de Fuego, roughly 400 ft away horizontally. As night falls, eruptions become spectacular — massive plumes of ash and lava light up the sky every 20–30 minutes. The rumble of each eruption is felt in your chest before you hear it. Your guides will take you to ~13,000 ft for an even closer view of the active crater.</div>
+        <div class="event-pills">
+          <span class="event-pill">Eruptions every ~20–30 min</span>
+          <span class="event-pill">Felt in your chest — incredible</span>
+          <span class="event-pill">Views to 13,000 ft with guides</span>
+          <span class="event-pill pill-w">Fuego is 400 ft away</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Even-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍲 Dinner at Camp</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Your tour operator cooks a hot meal at basecamp — typically rice, beans, hot soup, and warm drinks. Simple food tastes extraordinary after 5 hours of hiking at altitude. Eat everything. Hydrate aggressively. The cold sets in fast once you stop moving, so layer up immediately.</div>
+        <div class="event-pills">
+          <span class="event-pill">Hot meal &amp; warm drinks included</span>
+          <span class="event-pill pill-w">Eat &amp; hydrate fully</span>
+          <span class="event-pill pill-a">Layer up immediately after arriving</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">9:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🛏️ Sleep at Basecamp — A Rough but Honest Night</div>
+          <span class="event-badge badge-rest">Sleep</span>
+        </div>
+        <div class="event-desc">Sleeping at 11,000+ ft on a foldable camp bed in a shared tent is not luxury — it's adventure. The cold creeps through regardless of layers. Sleep may be light, interrupted, and strange. That's part of it. Accept the discomfort, keep your gear on inside the sleeping bag, and know that the descent and the stories make it all worth it tomorrow morning.</div>
+        <div class="event-pills">
+          <span class="event-pill">Camp bed in shared tent</span>
+          <span class="event-pill pill-w">Cold, interrupted sleep — normal</span>
+          <span class="event-pill pill-a">Keep layers on inside sleeping bag</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 4 ─── -->
+<div id="day4" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">4</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Descend Acatenango · Antigua Farewell · Lake Atitlán</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">🏔️ Descent — sore knees</span>
+        <span class="day-block-meta-item">🚐 Shuttle to Panajachel</span>
+        <span class="day-block-meta-item">⛵ Lancha to San Pedro</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 4 of 7</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; Trailhead → Antigua: ~45 min · Antigua → Panajachel: ~2.5 hrs · ⛵ Panajachel → San Pedro: ~30 min by lancha</div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Early</div>
+        <div class="event-period">Morn.</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">☀️ Breakfast at Basecamp</div>
+          <span class="event-badge badge-rest">Breakfast</span>
+        </div>
+        <div class="event-desc">Your tour operator serves breakfast at camp before the descent. Eat properly — you need fuel in the legs. Take one last look at Fuego in the morning light before shouldering your pack.</div>
+        <div class="event-pills">
+          <span class="event-pill">Breakfast included by tour</span>
+          <span class="event-pill">Last views of Fuego</span>
+          <span class="event-pill pill-w">Pack everything before leaving</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Morn-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏔️ Descent — Knees Will Know About It</div>
+          <span class="event-badge badge-hike">Descent</span>
+        </div>
+        <div class="event-desc">The descent is faster than the climb — expect 2–3 hours down to the trailhead. It's less aerobically demanding but harder on the knees. Take it steady on the loose volcanic scree sections, use trekking poles if you have them.</div>
+        <div class="event-pills">
+          <span class="event-pill">~2–3 hrs descent</span>
+          <span class="event-pill pill-w">Knees take the hit going down</span>
+          <span class="event-pill">Use trekking poles on scree</span>
+          <span class="event-pill">Shuttle back to Antigua included</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Late</div>
+        <div class="event-period">Morn.</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🤝 Tour Office Meetup — Say Your Goodbyes</div>
+          <span class="event-badge badge-rest">Group</span>
+        </div>
+        <div class="event-desc">The shuttle returns the whole group to your tour operator's office in Antigua. Everyone is tired, dusty, and grinning. Take a moment to exchange contacts with the people you shared the summit with. These goodbyes happen fast.</div>
+        <div class="event-pills">
+          <span class="event-pill">Group returns to tour office</span>
+          <span class="event-pill">Exchange contacts before leaving</span>
+          <span class="event-pill pill-w">Tip your guides — they earned it</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Noon</div>
+        <div class="event-period"></div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Lunch in Antigua — Last Meal in Town</div>
+          <span class="event-badge badge-rest">Lunch</span>
+        </div>
+        <div class="event-desc">You're back in Antigua with a window before the shuttle departs. Have a proper sit-down lunch — your body has earned it. Keep it straightforward and efficient: you'll need to be at the shuttle pickup location early.</div>
+        <div class="event-pills">
+          <span class="event-pill">Last Antigua meal — make it count</span>
+          <span class="event-pill pill-w">Keep an eye on your bus time</span>
+          <span class="event-pill">Stay close to the pickup zone</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">After-</div>
+        <div class="event-period">noon</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚐 Shuttle to Panajachel — Know Your Bus Times</div>
+          <span class="event-badge badge-drive">Shuttle</span>
+        </div>
+        <div class="event-desc">Shuttles to Panajachel depart from fixed pickup locations in Antigua — not from your hotel door. Arrive 15–20 minutes early. Departure times: <strong>11 AM, 2 PM, 4 PM, and 5 PM.</strong> If you're heading to any lake village other than Panajachel, take the <strong>2 PM bus</strong> — lanchas stop running at 6:00–6:30 PM. Miss the last lancha and you're looking at a private boat costing up to 500 GTQ.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Arrive pickup point 15–20 min early</span>
+          <span class="event-pill pill-a">Buses don't wait — no exceptions</span>
+          <span class="event-pill pill-w">Lanchas stop 6:00–6:30 PM daily</span>
+          <span class="event-pill pill-w">Miss lancha = private boat up to 500 GTQ</span>
+          <span class="event-pill">All other villages → take the 2 PM bus</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="lake">
+        <div class="event-time">Late</div>
+        <div class="event-period">Aft.</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⛵ Lancha to San Pedro La Laguna</div>
+          <span class="event-badge badge-lake">Lancha</span>
+        </div>
+        <div class="event-desc">From Panajachel's dock, board a lancha to San Pedro La Laguna. The boat ride across the lake — volcanoes rising on three sides, water turning deep blue in the afternoon light — is the perfect decompression after two days on the mountain.</div>
+        <div class="event-pills">
+          <span class="event-pill">~30 min by lancha</span>
+          <span class="event-pill pill-w">Agree price before boarding</span>
+          <span class="event-pill">First views of Atitlán: unforgettable</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Even-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍜 Check In &amp; Dinner in San Pedro</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Check into your hotel, shower off two days of volcano, and breathe. San Pedro has a great local restaurant scene — grab dinner at one of the spots along the waterfront or up in the village centre. Nothing ambitious tonight. You've done Acatenango. Rest is the whole point.</div>
+        <div class="event-pills">
+          <span class="event-pill">Shower · eat · sleep</span>
+          <span class="event-pill">Waterfront dining in San Pedro</span>
+          <span class="event-pill">Early night — fully earned</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 5 ─── -->
+<div id="day5" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">5</div>
+    <div class="day-block-info">
+      <div class="day-block-title">San Marcos La Laguna · Cliff Diving · Panajachel Streets</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">🤿 40-ft diving platform</span>
+        <span class="day-block-meta-item">🍛 Native Mayan food</span>
+        <span class="day-block-meta-item">🏙️ Calle Santander street eats</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 5 of 7</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">⛵&nbsp; San Pedro → San Marcos: ~15–20 min &nbsp;|&nbsp; ⛵ San Marcos → Panajachel: ~20 min &nbsp;|&nbsp; ⛵ Panajachel → San Pedro: ~30 min</div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="lake">
+        <div class="event-time">Morn-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⛵ Lancha to San Marcos La Laguna</div>
+          <span class="event-badge badge-lake">Lancha</span>
+        </div>
+        <div class="event-desc">Take an early lancha from San Pedro to San Marcos La Laguna — a short 15–20 minute ride across the lake. San Marcos is one of the quieter villages but punches well above its weight. Settle in and head straight to the water.</div>
+        <div class="event-pills">
+          <span class="event-pill">~15–20 min lancha from San Pedro</span>
+          <span class="event-pill pill-w">Agree fare before boarding</span>
+          <span class="event-pill pill-a">Bring cash — cards not widely accepted</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">Late</div>
+        <div class="event-period">Morn.</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🤿 Cliff Diving &amp; The 40-ft Platform — Half Day at the Lake</div>
+          <span class="event-badge badge-iconic">Cliff Dive</span>
+        </div>
+        <div class="event-desc">San Marcos is famous for its cliff jumping spots and a purpose-built 40-ft diving platform right on the lake. The platform drops you straight into the deep, clear waters of Atitlán with a volcano backdrop that makes it feel completely surreal. Spend at least half the day here — swim, jump, rest, jump again. This is the antidote to the mountain.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">40-ft platform — commit or don't</span>
+          <span class="event-pill">Spend at least half a day here</span>
+          <span class="event-pill">Cool lake water — volcanic and clear</span>
+          <span class="event-pill">No strong currents — safe for swimming</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Mid-</div>
+        <div class="event-period">day</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍛 Lunch — Native Mayan Food in San Marcos</div>
+          <span class="event-badge badge-rest">Lunch</span>
+        </div>
+        <div class="event-desc">San Marcos has excellent local restaurants serving traditional Mayan food — <strong>pepián</strong> (rich seed-based stew), <strong>jocon</strong> (tomatillo chicken), black bean dishes, and fresh handmade tortillas. Eat at small local spots rather than tourist-facing places. Genuinely outstanding and inexpensive.</div>
+        <div class="event-pills">
+          <span class="event-pill">Try pepián or jocon — traditional Mayan</span>
+          <span class="event-pill">Eat local, not tourist menus</span>
+          <span class="event-pill pill-a">Cash only in most places</span>
+          <span class="event-pill">Inexpensive and outstanding</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">After-</div>
+        <div class="event-period">noon</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">💵 Cash Reminder — Carry GTQ Before Leaving San Pedro</div>
+          <span class="event-badge badge-rest">Tip</span>
+        </div>
+        <div class="event-desc">The further you get from Panajachel, the fewer merchants accept credit cards or USD. In San Marcos and smaller villages, Quetzales (GTQ) is the only reliable way to pay. ATMs are limited and often unreliable outside Panajachel. Withdraw enough GTQ before you leave San Pedro in the morning.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">GTQ cash is king in villages</span>
+          <span class="event-pill pill-w">Cards &amp; USD rarely accepted off the beaten path</span>
+          <span class="event-pill pill-a">Withdraw GTQ before leaving San Pedro</span>
+          <span class="event-pill pill-w">ATMs unreliable outside Panajachel</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">Late</div>
+        <div class="event-period">Aft.</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏙️ Optional: Panajachel Downtown — Streets &amp; Street Food</div>
+          <span class="event-badge badge-iconic">Optional</span>
+        </div>
+        <div class="event-desc">From San Marcos, hop a lancha to Panajachel. Calle Santander is a lively, colour-soaked street lined with vendors, weavings, and street food stalls. The street food here is some of the best eating on the entire trip — grilled corn, chuchitos, tostadas piled high, fresh fruit with chili and lime. Or skip it and head straight back to San Pedro to rest.</div>
+        <div class="event-pills">
+          <span class="event-pill">Calle Santander — the main street</span>
+          <span class="event-pill">Street food is exceptional here</span>
+          <span class="event-pill">Grilled corn · chuchitos · tostadas</span>
+          <span class="event-pill">Or skip and head back to San Pedro</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="lake">
+        <div class="event-time">Even-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⛵ Lancha Back to San Pedro</div>
+          <span class="event-badge badge-lake">Lancha</span>
+        </div>
+        <div class="event-desc">Catch a lancha back to San Pedro before the 6:00–6:30 PM cutoff. Dinner at your hotel or a local restaurant in the village. After cliff diving and a full day of lake life, tonight should be easy — a good meal, a cold drink, and an early night.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Lanchas stop 6:00–6:30 PM</span>
+          <span class="event-pill pill-w">Don't miss the last boat</span>
+          <span class="event-pill">Easy dinner in San Pedro</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 6 ─── -->
+<div id="day6" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">6</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Mayan Face Sunrise Hike · Paddle Boarding · San Juan Market</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">🌄 Sunrise from Indian Nose</span>
+        <span class="day-block-meta-item">🏄 Paddle boarding at dawn</span>
+        <span class="day-block-meta-item">🛺 TukTuk to San Juan artisan market</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 6 of 7</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🛺&nbsp; TukTuk: San Pedro → San Juan La Laguna: ~10–15 GTQ &nbsp;|&nbsp; Note: TukTuks cannot cross town boundaries — expect a handoff at the border</div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Pre-</div>
+        <div class="event-period">Dawn</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⏰ Early Rise — Layers On, Torch Ready</div>
+          <span class="event-badge badge-rest">Prep</span>
+        </div>
+        <div class="event-desc">Set your alarm early — this hike departs before sunrise. It will be cold at the start, especially on the exposed upper sections. Bring every layer you have left from Acatenango. The cold doesn't last long once you're moving, but standing still on the summit waiting for sunrise without layers is miserable.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Early departure — pre-dawn start</span>
+          <span class="event-pill pill-w">Bring all your layers</span>
+          <span class="event-pill">Torch / headlamp useful</span>
+          <span class="event-pill pill-w">Book tour the evening before</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Sun-</div>
+        <div class="event-period">rise</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌄 Mayan Face (Indian Nose) Sunrise Hike</div>
+          <span class="event-badge badge-hike">Sunrise</span>
+        </div>
+        <div class="event-desc">A short but genuinely steep and challenging climb above the lake. The trail rises sharply through forest before breaking out onto the rocky summit at around 7,000 ft. The views from the top are among the best in Guatemala: Lake Atitlán spread out below you, all three volcanoes visible at once, and the morning mist slowly burning off the water.</div>
+        <div class="event-pills">
+          <span class="event-pill">Short but steep — challenging ascent</span>
+          <span class="event-pill">~7,000 ft summit elevation</span>
+          <span class="event-pill">Three volcanoes visible from top</span>
+          <span class="event-pill">One of the best views in Guatemala</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Sum-</div>
+        <div class="event-period">mit</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">☕ Hot Bread &amp; Coffee (or Hot Chocolate) at the Top</div>
+          <span class="event-badge badge-rest">Summit</span>
+        </div>
+        <div class="event-desc">The tour operator serves hot bread with coffee or locally sourced hot chocolate right on the summit. After a cold early morning climb, this is an exceptional treat. The chocolate is made from cacao grown around the lake — it tastes nothing like anything you'd find at home. Take your time at the top.</div>
+        <div class="event-pills">
+          <span class="event-pill">Hot bread + coffee included by tour</span>
+          <span class="event-pill">Try the local hot chocolate</span>
+          <span class="event-pill">Cacao grown around Lake Atitlán</span>
+          <span class="event-pill">Linger — don't rush the descent</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">By</div>
+        <div class="event-period">10 AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏨 Back at the Hotel — Freshen Up</div>
+          <span class="event-badge badge-rest">Rest</span>
+        </div>
+        <div class="event-desc">The hike is done and you'll be back at your hotel by 10 AM. Shower, change, and eat a proper breakfast. You have the rest of the morning and afternoon ahead of you — the day is far from over.</div>
+        <div class="event-pills">
+          <span class="event-pill">Back by 10 AM</span>
+          <span class="event-pill">Shower &amp; breakfast before heading out</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="lake">
+        <div class="event-time">Mid</div>
+        <div class="event-period">Morn.</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏄 Paddle Boarding or Kayaking on Lake Atitlán</div>
+          <span class="event-badge badge-lake">Lake</span>
+        </div>
+        <div class="event-desc">Head down to the waterfront and rent a paddle board or kayak for a few hours. The lake is at its calmest in the morning before afternoon winds pick up — the earlier the better. Paddle out into the open water with volcanoes on every horizon. Prices are very reasonable.</div>
+        <div class="event-pills">
+          <span class="event-pill">Morning = calmest water</span>
+          <span class="event-pill pill-w">Afternoon winds can pick up</span>
+          <span class="event-pill">Paddle boards &amp; kayaks for rent on shore</span>
+          <span class="event-pill pill-a">Cash for rental</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">After-</div>
+        <div class="event-period">noon</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🛺 TukTuk to San Juan La Laguna — Local Market</div>
+          <span class="event-badge badge-drive">TukTuk</span>
+        </div>
+        <div class="event-desc">Hop a TukTuk to San Juan La Laguna. TukTuks are the primary way to get between villages on land and cost around 10–15 GTQ. There's an important quirk: TukTuks from one town are not permitted to enter another town's territory. They will drop you at the boundary line, where a San Juan TukTuk picks you up for the rest of the way.</div>
+        <div class="event-pills">
+          <span class="event-pill">TukTuk: ~10–15 GTQ short distance</span>
+          <span class="event-pill pill-w">TukTuks can't cross town boundaries</span>
+          <span class="event-pill">Expect a handoff at the border</span>
+          <span class="event-pill pill-a">Small GTQ coins handy for fares</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">Late</div>
+        <div class="event-period">Aft.</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🧶 San Juan Market — Textiles, Art &amp; Local Crafts</div>
+          <span class="event-badge badge-iconic">Market</span>
+        </div>
+        <div class="event-desc">San Juan La Laguna is one of the best villages on the lake for authentic handmade goods — natural dye textiles, backstrap-loom weavings, locally grown coffee, and cacao products. Browse the cooperatives and buy directly from the artisans. Prices are fair and quality is excellent. Your last chance to pick up gifts before the trip ends.</div>
+        <div class="event-pills">
+          <span class="event-pill">Natural dye textiles &amp; weavings</span>
+          <span class="event-pill">Local coffee &amp; cacao products</span>
+          <span class="event-pill">Buy direct from cooperatives</span>
+          <span class="event-pill pill-a">Cash only — no cards in San Juan</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Even-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌅 Last Evening in Guatemala — Dinner &amp; Pack Up</div>
+          <span class="event-badge badge-rest">Last Night</span>
+        </div>
+        <div class="event-desc">Back in San Pedro for your final evening. Have a proper farewell dinner — somewhere with a lake view if you can get one. After dinner, pack everything up for an early departure tomorrow. Leave tips for hotel staff, double-check your bags, and get a good night's sleep. Guatemala delivered.</div>
+        <div class="event-pills">
+          <span class="event-pill">Last dinner — make it a good one</span>
+          <span class="event-pill">Tip hotel staff before you leave</span>
+          <span class="event-pill pill-w">Pack tonight — early start tomorrow</span>
+          <span class="event-pill">Get a full night's sleep</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 7 ─── -->
+<div id="day7" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">7</div>
+    <div class="day-block-info">
+      <div class="day-block-title">San Pedro → Antigua → Guatemala City Airport</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">🚐 Breakfast, two buses, a long ride home</span>
+        <span class="day-block-meta-item">⏱️ Total door-to-gate: ~6 hrs</span>
+        <span class="day-block-meta-item">✈️ 2+ hr buffer at GUA — non-negotiable</span>
+      </div>
+    </div>
+    <div class="day-block-label">Departure</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">⛵&nbsp; San Pedro → Panajachel: ~30 min &nbsp;|&nbsp; 🚐 Panajachel → Antigua: ~2.5–3 hrs &nbsp;|&nbsp; 20 min changeover &nbsp;|&nbsp; 🚐 Antigua → GUA Airport: ~1–1.5 hrs &nbsp;|&nbsp; Total: ~6 hrs</div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Morn-</div>
+        <div class="event-period">ing</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">☕ Wake Up, Get Ready &amp; Breakfast at a Local Café</div>
+          <span class="event-badge badge-rest">Breakfast</span>
+        </div>
+        <div class="event-desc">Your last morning in Guatemala. Don't rush it — you've earned a proper sit-down breakfast. Head to a local café in San Pedro for coffee and something fresh. Check out of your hotel, tip the staff, and do a final bag check before you leave for the dock.</div>
+        <div class="event-pills">
+          <span class="event-pill">Last Guatemalan breakfast — savour it</span>
+          <span class="event-pill">Check out &amp; tip hotel staff</span>
+          <span class="event-pill pill-w">Final bag check before leaving</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Mid</div>
+        <div class="event-period">Morn.</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⛵ Lancha to Panajachel &amp; Board Your Bus</div>
+          <span class="event-badge badge-drive">Lancha</span>
+        </div>
+        <div class="event-desc">Take a lancha from San Pedro to Panajachel dock, then make your way to the shuttle pickup point. Arrive at the pickup location early — these buses will not wait. The driver works a route picking up passengers from multiple hotels and stops, which adds time at the start.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Arrive pickup point early</span>
+          <span class="event-pill pill-a">Bus will not wait</span>
+          <span class="event-pill">Lancha to Pana first: ~30 min</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">En</div>
+        <div class="event-period">Route</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚐 Panajachel → Antigua — First Leg (~2.5–3 hrs)</div>
+          <span class="event-badge badge-drive">Bus</span>
+        </div>
+        <div class="event-desc">The first bus leg takes you from Panajachel back through the highlands to Antigua. The route involves pickups along the way. Settle in and don't expect fast time. The full journey from San Pedro to the airport runs roughly 6 hours total — plan your flight around that reality.</div>
+        <div class="event-pills">
+          <span class="event-pill">~2.5–3 hrs Panajachel → Antigua</span>
+          <span class="event-pill">Town pickups en route — adds time</span>
+          <span class="event-pill pill-w">Total door-to-gate: ~6 hrs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Antig-</div>
+        <div class="event-period">ua</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🔄 Bus Change in Antigua — 20-Minute Break</div>
+          <span class="event-badge badge-drive">Transfer</span>
+        </div>
+        <div class="event-desc">You'll stop in Antigua to switch buses. The layover is around 20 minutes — just enough for the bathroom, a quick snack or coffee, and a stretch. Don't wander far from the drop-off point. Your onward bus departs from the same location and the connection has no slack.</div>
+        <div class="event-pills">
+          <span class="event-pill">~20 min layover only</span>
+          <span class="event-pill pill-a">Stay near the bus — don't wander</span>
+          <span class="event-pill">Bathroom + snack opportunity</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Final</div>
+        <div class="event-period">Leg</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏙️ Antigua → GUA Airport — Direct (~1–1.5 hrs)</div>
+          <span class="event-badge badge-drive">Bus</span>
+        </div>
+        <div class="event-desc">The second bus goes directly from Antigua to La Aurora International Airport. Normally 1–1.5 hours, but the highway into Guatemala City is prone to heavy and unpredictable traffic delays. This is exactly where your time buffer gets consumed if something goes wrong.</div>
+        <div class="event-pills">
+          <span class="event-pill">Direct to GUA — no stops</span>
+          <span class="event-pill">~1–1.5 hrs in normal traffic</span>
+          <span class="event-pill pill-w">Highway delays: 30–60+ mins possible</span>
+          <span class="event-pill pill-a">No detour available</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Air-</div>
+        <div class="event-period">port</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">✈️ Arrive GUA — Minimum 2 Hours Before Your Flight</div>
+          <span class="event-badge badge-drive">Depart</span>
+        </div>
+        <div class="event-desc">You need at least 2 hours between the bus's expected drop-off time and your flight departure — and that's a minimum. Traffic delays on the Guatemala City highway are common and sometimes severe with no warning. If your flight doesn't allow a 2-hour buffer, seriously consider overnighting near the airport.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">2 hrs gap minimum — not optional</span>
+          <span class="event-pill pill-w">Traffic can add 30–60+ mins no warning</span>
+          <span class="event-pill">International check-in queues add time</span>
+          <span class="event-pill pill-w">Tight flight? Overnight near GUA instead</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ TIPS ═══════════════════ -->
+<div id="tips">
+<div class="section">
+  <div class="section-eyebrow">Before You Go</div>
+  <div class="section-title">Need-to-Know <span>Tips</span></div>
+  <div class="section-body">A few things that will make or break this trip — especially for Acatenango, the shuttle timings, and getting around Atitlán.</div>
+
+  <div class="reminders-grid">
+    <div class="reminder-card">
+      <div class="reminder-icon">🛡️</div>
+      <div>
+        <div class="reminder-title">Safety</div>
+        <div class="reminder-body">Stay in well-trafficked areas, use recommended taxi services (<strong>Uber is available in Antigua</strong>), and avoid walking alone after dark.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">💵</div>
+      <div>
+        <div class="reminder-title">Currency</div>
+        <div class="reminder-body">Guatemalan Quetzal (GTQ). ATMs widely available in Antigua. <strong>Cash is king</strong> at markets and all villages around Atitlán — withdraw before you leave Panajachel or San Pedro.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">🌋</div>
+      <div>
+        <div class="reminder-title">Volcano Tips</div>
+        <div class="reminder-body">Acatenango requires good fitness and <strong>every layer you own</strong> — temperatures drop sharply overnight near the summit. Book a reputable guided tour only (OX Expeditions, Wicho &amp; Charlie's, or GetYourGuide).</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">⛵</div>
+      <div>
+        <div class="reminder-title">Atitlán Boats</div>
+        <div class="reminder-body">Lanchas (water taxis) are the main transport between villages. <strong>Agree on price before boarding</strong> and check return schedules — lanchas stop running at 6:00–6:30 PM. Don't miss the last boat.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <strong>Guatemala — Antigua &amp; Lake Atitlán</strong><br>
+  La Aurora Airport · Antigua Guatemala · Volcán Pacaya · Acatenango · Volcán de Fuego · Hobbitenango · Panajachel · San Pedro La Laguna · San Marcos · San Juan La Laguna<br><br>
+  <span>Book volcano tours on GetYourGuide · OX Expeditions oxexpeditions.com · Wicho &amp; Charlie's wichoandcharlies.com</span>
+</footer>
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ── Theme toggle ─────────────────────────────────────────────────────────────
+function toggleTheme() {
+  const isLight = document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+(function() {
+  if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light');
+})();
+
+function toggleDay(header) {
+  const block = header.closest('.day-block');
+  block.classList.toggle('open');
+}
+
+(function () {
+  const canvas = document.getElementById('star-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  const COUNT = 180;
+  function resize() {
+    canvas.width  = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+  }
+  function randomStar() {
+    return { x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+             r: Math.random() * 1.2 + 0.3, phase: Math.random() * Math.PI * 2,
+             speed: Math.random() * 0.006 + 0.002 };
+  }
+  function init() { resize(); stars = Array.from({ length: COUNT }, randomStar); }
+  function draw(ts) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const t = ts * 0.001;
+    for (const s of stars) {
+      const a = 0.15 + 0.75 * (0.5 + 0.5 * Math.sin(t * s.speed * 6.28 + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${a.toFixed(3)})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', resize);
+  init();
+  requestAnimationFrame(draw);
+})();
+
+const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('[id]').forEach(s => observer.observe(s));
+
+document.body.style.opacity = '0';
+window.addEventListener('load', () => {
+  document.body.style.transition = 'opacity 0.4s ease';
+  document.body.style.opacity = '1';
+});
+
+const GT_PINS = [
+  { lat: 14.5833, lng: -90.5275, label: "La Aurora Airport (GUA)",              icon: "airport"  },
+  { lat: 14.5586, lng: -90.7295, label: "Antigua Guatemala",                    icon: "village"  },
+  { lat: 14.5659, lng: -90.7275, label: "Cerro de la Cruz",                     icon: "landmark" },
+  { lat: 14.5593, lng: -90.7340, label: "Arco de Santa Catalina",               icon: "landmark" },
+  { lat: 14.5570, lng: -90.7322, label: "Mercado Central, Antigua",             icon: "landmark" },
+  { lat: 14.3815, lng: -90.6015, label: "Volcán Pacaya",                        icon: "volcano"  },
+  { lat: 14.5003, lng: -90.8757, label: "Volcán Acatenango",                    icon: "volcano"  },
+  { lat: 14.4731, lng: -90.8801, label: "Volcán de Fuego",                      icon: "volcano"  },
+  { lat: 14.5731, lng: -90.7089, label: "Hobbitenango",                         icon: "activity" },
+  { lat: 14.7403, lng: -91.1614, label: "Panajachel",                           icon: "village"  },
+  { lat: 14.7380, lng: -91.1601, label: "Calle Santander, Panajachel",          icon: "landmark" },
+  { lat: 14.6949, lng: -91.2726, label: "San Pedro La Laguna",                  icon: "village"  },
+  { lat: 14.7273, lng: -91.2631, label: "San Marcos La Laguna",                 icon: "village"  },
+  { lat: 14.7265, lng: -91.2645, label: "Cliff Diving Platform, San Marcos",    icon: "activity" },
+  { lat: 14.7089, lng: -91.2858, label: "San Juan La Laguna",                   icon: "village"  },
+  { lat: 14.7214, lng: -91.2489, label: "Indian Nose / Nariz del Indio",        icon: "hike"     },
+];
+
+const ICON_COLOUR = {
+  airport: "#6366f1", village: "#10b981", landmark: "#f59e0b",
+  activity: "#3b82f6", hike: "#30d158", volcano: "#ff6b35"
+};
+
+function makeSvgUrl(colour) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="34" viewBox="0 0 28 36"><path d="M14 0C6.27 0 0 6.27 0 14c0 9.33 14 22 14 22S28 23.33 28 14C28 6.27 21.73 0 14 0z" fill="${colour}" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/><circle cx="14" cy="14" r="5.5" fill="white" opacity="0.9"/></svg>`;
+  return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+}
+
+function initMap() {
+  if (typeof L === 'undefined') { setTimeout(initMap, 200); return; }
+  const map = L.map('map-container', { zoomControl: true }).setView([14.62, -91.0], 9);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(map);
+
+  const types = [...new Set(GT_PINS.map(p => p.icon))];
+  const legend = document.getElementById('map-legend');
+  legend.innerHTML = types.map(t =>
+    `<span class="map-legend-item"><span class="map-legend-dot" style="background:${ICON_COLOUR[t]||'#999'}"></span>${t}</span>`
+  ).join('');
+
+  GT_PINS.forEach(pin => {
+    const icon = L.icon({ iconUrl: makeSvgUrl(ICON_COLOUR[pin.icon] || '#f59e0b'),
+      iconSize: [26, 34], iconAnchor: [13, 34], popupAnchor: [0, -34] });
+    L.marker([pin.lat, pin.lng], { icon }).addTo(map)
+      .bindPopup(`<div style="font:600 13px -apple-system,sans-serif;padding:2px 4px;color:#1d1d1f">${pin.label}</div>`);
+  });
+
+  const bounds = L.latLngBounds(GT_PINS.map(p => [p.lat, p.lng]));
+  map.fitBounds(bounds, { padding: [40, 40] });
+}
+
+window.addEventListener('load', initMap);
+</script>
 
 </body>
 </html>

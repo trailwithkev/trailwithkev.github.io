@@ -382,7 +382,7 @@ body {
 .week-number {
   font-size: 64px;
   font-weight: 700;
-  color: rgba(255,255,255,0.06);
+  color: rgba(41,151,255,0.35);
   letter-spacing: -0.04em;
   line-height: 1;
   min-width: 80px;
@@ -664,6 +664,116 @@ footer strong { color: var(--gray-6); }
 .day-date-col[data-type="14er"] .day-date-num { color: var(--summit); }
 .day-date-col[data-type="rest"] .day-date-num  { color: var(--gray-4); }
 .day-date-col[data-type="iconic"] .day-date-num { color: #bf5af2; }
+
+/* ─── THEME TOGGLE ─── */
+.theme-toggle {
+  position: fixed; top: 12px; right: 40px; z-index: 400;
+  width: 56px; height: 26px; border-radius: 980px;
+  background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.25);
+  cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5px; transition: background 0.3s, border-color 0.3s;
+}
+.tt-moon, .tt-sun { font-size: 11px; pointer-events: none; }
+.tt-thumb {
+  position: absolute; width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; left: 3px;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4); pointer-events: none;
+}
+html.light .theme-toggle { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.18); }
+html.light .tt-thumb { transform: translateX(30px); background: #1d1d1f; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+@media (max-width: 480px) { .theme-toggle { right: 16px; } }
+
+/* ─── LIGHT MODE ─── */
+html.light body { background: #f5f5f7; color: #1d1d1f; }
+html.light ::-webkit-scrollbar-track { background: #e5e5ea; }
+html.light ::-webkit-scrollbar-thumb { background: #c7c7cc; }
+html.light .nav { background: rgba(245,245,247,0.92); border-bottom-color: rgba(0,0,0,0.1); }
+html.light .nav-brand { color: #1d1d1f; }
+html.light .nav a { color: #636366; }
+html.light .nav a:hover { color: #000; }
+html.light .nav a.active { color: #000; border-bottom-color: #0055cc; }
+html.light #star-canvas { display: none; }
+html.light .hero { background: #f5f5f7; }
+html.light .hero-glow { opacity: 0; }
+html.light .hero-mountains path { fill: rgba(0,0,0,0.06); }
+html.light .hero-eyebrow { color: #0055cc; }
+html.light .hero-number { color: #000; }
+html.light .hero-number-label { color: #636366; }
+html.light .hero-title { color: #000; }
+html.light .hero-title span { color: #0055cc; }
+html.light .hero-subtitle { color: #636366; }
+html.light .stat-chip { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.14); color: #1d1d1f; text-shadow: none; }
+html.light .stat-chip strong { color: #000; }
+html.light .stat-chip .chip-sub { color: rgba(0,0,0,0.55); }
+html.light .section-divider { background: rgba(0,0,0,0.1); }
+html.light .section-eyebrow { color: #0055cc; }
+html.light .section-title { color: #000; }
+html.light .section-title span { color: #0055cc; }
+html.light .section-body { color: #48484a; }
+html.light .overview-row { border-color: rgba(0,0,0,0.1); }
+html.light .overview-cell { border-right-color: rgba(0,0,0,0.08); }
+html.light .overview-num { color: #000; }
+html.light .overview-label { color: #636366; }
+html.light .basecamp-card { background: #fff; border-color: rgba(0,0,0,0.1); }
+html.light .bc-stop { color: #8e8e93; }
+html.light .bc-town { color: #000; }
+html.light .bc-state { color: #636366; }
+html.light .bc-dates { color: #0055cc; }
+html.light .bc-nights { color: #000; }
+html.light .bc-nights-label { color: #636366; }
+html.light .bc-tag-blue  { background: rgba(0,102,200,0.08); color: #0055aa; border-color: rgba(0,102,200,0.2); }
+html.light .bc-tag-green { background: rgba(0,130,50,0.08);  color: #006e28; border-color: rgba(0,130,50,0.2); }
+html.light .bc-tag-amber { background: rgba(160,100,0,0.08); color: #7a5200; border-color: rgba(160,100,0,0.2); }
+html.light .fourteen-table thead th { background: #fff; color: #8e8e93; border-bottom-color: rgba(0,0,0,0.08); }
+html.light .fourteen-table tbody td { border-bottom-color: rgba(0,0,0,0.06); color: #1d1d1f; }
+html.light .fourteen-table tbody tr:hover td { background: rgba(0,0,0,0.02); }
+html.light .peak-name { color: #000; }
+html.light .peak-elev { color: #636366; }
+html.light .metric { color: #636366; }
+html.light .metric strong { color: #000; }
+html.light .class-2 { background: rgba(0,130,50,0.1);   color: #006e28; border-color: rgba(0,130,50,0.25); }
+html.light .class-3 { background: rgba(220,50,40,0.1);  color: #b81810; border-color: rgba(220,50,40,0.25); }
+html.light .week-header { border-bottom-color: rgba(0,0,0,0.08); }
+html.light .week-number { color: rgba(0,85,204,0.22); }
+html.light .week-title { color: #000; }
+html.light .week-meta { color: #636366; }
+html.light .week-location { color: #0055cc; }
+html.light .week-toggle { color: #8e8e93; }
+html.light .day-row { border-bottom-color: rgba(0,0,0,0.05); }
+html.light .day-row:hover { background: rgba(0,0,0,0.02); }
+html.light .day-date-col { border-right-color: rgba(0,0,0,0.06); }
+html.light .day-dow { color: #8e8e93; }
+html.light .day-date-num { color: #000; }
+html.light .day-date-col[data-type="14er"]   .day-date-num { color: #1a8f3d; }
+html.light .day-date-col[data-type="rest"]   .day-date-num { color: #8e8e93; }
+html.light .day-date-col[data-type="iconic"] .day-date-num { color: #7030b8; }
+html.light .day-month { color: #636366; }
+html.light .day-title { color: #000; }
+html.light .badge-wfh     { background: rgba(0,102,200,0.1);  color: #0055aa; border-color: rgba(0,102,200,0.25); }
+html.light .badge-hike    { background: rgba(0,130,50,0.1);   color: #006e28; border-color: rgba(0,130,50,0.25); }
+html.light .badge-14er    { background: rgba(220,50,40,0.1);  color: #b81810; border-color: rgba(220,50,40,0.25); }
+html.light .badge-drive   { background: rgba(160,100,0,0.1);  color: #7a5200; border-color: rgba(160,100,0,0.25); }
+html.light .badge-rest    { background: rgba(0,0,0,0.06);     color: #636366; border-color: rgba(0,0,0,0.14); }
+html.light .badge-iconic  { background: rgba(110,40,180,0.1); color: #7030b8; border-color: rgba(110,40,180,0.25); }
+html.light .schedule-time { color: #8e8e93; }
+html.light .schedule-desc { color: #48484a; }
+html.light .schedule-desc strong { color: #1d1d1f; }
+html.light .schedule-desc .highlight { color: #006e28; }
+html.light .schedule-desc .note { color: #8e8e93; }
+html.light .summit-callout { background: rgba(0,130,50,0.06); border-color: rgba(0,130,50,0.18); }
+html.light .summit-callout-title { color: #006e28; }
+html.light .summit-callout-stats { color: #48484a; }
+html.light .summit-callout-stats span strong { color: #000; }
+html.light .warning-note { background: rgba(170,110,0,0.06); border-color: rgba(170,110,0,0.2); color: #6e4700; }
+html.light .at-btn { background: rgba(0,130,50,0.08); border-color: rgba(0,130,50,0.3); color: #006e28; }
+html.light .at-btn:hover { background: rgba(0,130,50,0.16); border-color: rgba(0,130,50,0.5); color: #005520; }
+html.light .reminder-card { background: #fff; border-color: rgba(0,0,0,0.08); }
+html.light .reminder-title { color: #000; }
+html.light .reminder-body { color: #48484a; }
+html.light .reminder-body strong { color: #0055cc; }
+html.light footer { background: #fff; border-top-color: rgba(0,0,0,0.08); color: #8e8e93; }
+html.light footer strong { color: #48484a; }
 </style>
 </head>
 <body>
@@ -684,6 +794,11 @@ footer strong { color: var(--gray-6); }
   <a href="#week5">Week 5</a>
   <a href="#reminders">Reminders</a>
 </nav>
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+  <span class="tt-moon">🌙</span>
+  <span class="tt-thumb"></span>
+  <span class="tt-sun">☀️</span>
+</button>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero">
@@ -1858,6 +1973,15 @@ footer strong { color: var(--gray-6); }
 </footer>
 
 <script>
+// ── Theme toggle ─────────────────────────────────────────────────────────────
+function toggleTheme() {
+  const isLight = document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+(function() {
+  if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light');
+})();
+
 function toggleWeek(header) {
   const block = header.closest('.week-block');
   block.classList.toggle('open');

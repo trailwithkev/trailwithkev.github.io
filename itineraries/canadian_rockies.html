@@ -415,7 +415,7 @@ body {
 .day-block-num {
   font-size: 64px;
   font-weight: 700;
-  color: rgba(255,255,255,0.06);
+  color: rgba(41,151,255,0.35);
   letter-spacing: -0.04em;
   line-height: 1;
   min-width: 80px;
@@ -736,6 +736,113 @@ footer strong { color: var(--gray-6); }
 
   footer { padding: 28px 16px; font-size: 11px; word-break: break-word; }
 }
+
+/* ─── THEME TOGGLE ─── */
+.theme-toggle {
+  position: fixed; top: 12px; right: 40px; z-index: 400;
+  width: 56px; height: 26px; border-radius: 980px;
+  background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.25);
+  cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5px; transition: background 0.3s, border-color 0.3s;
+}
+.tt-moon, .tt-sun { font-size: 11px; pointer-events: none; }
+.tt-thumb {
+  position: absolute; width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; left: 3px;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4); pointer-events: none;
+}
+html.light .theme-toggle { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.18); }
+html.light .tt-thumb { transform: translateX(30px); background: #1d1d1f; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+@media (max-width: 480px) { .theme-toggle { right: 16px; } }
+
+/* ─── LIGHT MODE ─── */
+html.light body { background: #f5f5f7; color: #1d1d1f; }
+html.light ::-webkit-scrollbar-track { background: #e5e5ea; }
+html.light ::-webkit-scrollbar-thumb { background: #c7c7cc; }
+html.light .nav { background: rgba(245,245,247,0.92); border-bottom-color: rgba(0,0,0,0.1); }
+html.light .nav-brand { color: #1d1d1f; }
+html.light .nav a { color: #636366; }
+html.light .nav a:hover { color: #000; }
+html.light .nav a.active { color: #000; border-bottom-color: #0055cc; }
+html.light #star-canvas { display: none; }
+html.light .hero { background: #f5f5f7; }
+html.light .hero-glow { opacity: 0; }
+html.light .hero-mountains path { fill: rgba(0,0,0,0.06); }
+html.light .hero-eyebrow { color: #0055cc; }
+html.light .hero-number { color: #000; }
+html.light .hero-number-label { color: #636366; }
+html.light .hero-title { color: #000; }
+html.light .hero-title span { color: #0055cc; }
+html.light .hero-subtitle { color: #636366; }
+html.light .stat-chip { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.14); color: #1d1d1f; text-shadow: none; }
+html.light .stat-chip strong { color: #000; }
+html.light .stat-chip .chip-sub { color: rgba(0,0,0,0.55); }
+html.light .section-divider { background: rgba(0,0,0,0.1); }
+html.light .section-eyebrow { color: #0055cc; }
+html.light .section-title { color: #000; }
+html.light .section-title span { color: #0055cc; }
+html.light .section-body { color: #48484a; }
+html.light .overview-row { border-color: rgba(0,0,0,0.1); }
+html.light .overview-cell { border-right-color: rgba(0,0,0,0.08); }
+html.light .overview-num { color: #000; }
+html.light .overview-label { color: #636366; }
+html.light .stop-card { background: #fff; border-color: rgba(0,0,0,0.1); }
+html.light .stop-num { color: #8e8e93; }
+html.light .stop-town { color: #000; }
+html.light .stop-region { color: #636366; }
+html.light .stop-dates { color: #0055cc; }
+html.light .stop-role { color: #000; }
+html.light .stop-role-label { color: #636366; }
+html.light .tag-blue  { background: rgba(0,102,200,0.08); color: #0055aa; border-color: rgba(0,102,200,0.2); }
+html.light .tag-green { background: rgba(0,130,50,0.08);  color: #006e28; border-color: rgba(0,130,50,0.2); }
+html.light .tag-amber { background: rgba(160,100,0,0.08); color: #7a5200; border-color: rgba(160,100,0,0.2); }
+html.light .tag-teal  { background: rgba(0,130,130,0.08); color: #006666; border-color: rgba(0,130,130,0.2); }
+html.light .map-card { border-color: rgba(0,0,0,0.1); }
+html.light .map-card-hdr { background: #fff; border-bottom-color: rgba(0,0,0,0.08); }
+html.light .map-card-hdr-left { color: #48484a; }
+html.light .map-card-hdr-right { color: #8e8e93; }
+html.light .map-legend { background: #fff; border-bottom-color: rgba(0,0,0,0.06); }
+html.light .map-legend-item { color: #636366; }
+html.light #map-container { filter: brightness(1.05) contrast(0.95); }
+html.light .map-dot { background: #0055cc; }
+html.light .day-block-header { border-bottom-color: rgba(0,0,0,0.08); }
+html.light .day-block-num { color: rgba(0,85,204,0.22); }
+html.light .day-block-title { color: #000; }
+html.light .day-block-meta { color: #636366; }
+html.light .day-block-label { color: #0055cc; }
+html.light .day-block-toggle { color: #8e8e93; }
+html.light .drive-note { background: rgba(170,110,0,0.07); border-color: rgba(170,110,0,0.22); color: #6e4700; }
+html.light .event-row { border-bottom-color: rgba(0,0,0,0.05); }
+html.light .event-row:hover { background: rgba(0,0,0,0.02); }
+html.light .event-time-col { border-right-color: rgba(0,0,0,0.06); }
+html.light .event-time { color: #8e8e93; }
+html.light .event-period { color: #aeaeb2; }
+html.light .event-time-col[data-type="glacier"] .event-time { color: #007070; }
+html.light .event-time-col[data-type="hike"]    .event-time { color: #1a8f3d; }
+html.light .event-time-col[data-type="drive"]   .event-time { color: #7a5200; }
+html.light .event-time-col[data-type="iconic"]  .event-time { color: #7030b8; }
+html.light .event-time-col[data-type="rest"]    .event-time { color: #8e8e93; }
+html.light .event-title { color: #000; }
+html.light .event-desc { color: #48484a; }
+html.light .event-desc strong { color: #1d1d1f; }
+html.light .event-desc li::before { color: #aeaeb2; }
+html.light .event-pill { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.12); color: #48484a; }
+html.light .event-pill.pill-a { background: rgba(220,50,40,0.08); border-color: rgba(220,50,40,0.25); color: #b81810; }
+html.light .event-pill.pill-w { background: rgba(170,110,0,0.08); border-color: rgba(170,110,0,0.22); color: #6e4700; }
+html.light .event-pill.pill-at { background: rgba(0,130,50,0.08); border-color: rgba(0,130,50,0.3); color: #006e28; }
+html.light a.pill-at { color: #006e28 !important; }
+html.light .badge-hike    { background: rgba(0,130,50,0.1);   color: #006e28; border-color: rgba(0,130,50,0.25); }
+html.light .badge-drive   { background: rgba(160,100,0,0.1);  color: #7a5200; border-color: rgba(160,100,0,0.25); }
+html.light .badge-rest    { background: rgba(0,0,0,0.06);     color: #636366; border-color: rgba(0,0,0,0.14); }
+html.light .badge-iconic  { background: rgba(110,40,180,0.1); color: #7030b8; border-color: rgba(110,40,180,0.25); }
+html.light .badge-glacier { background: rgba(0,130,130,0.1);  color: #006666; border-color: rgba(0,130,130,0.25); }
+html.light .reminder-card { background: #fff; border-color: rgba(0,0,0,0.08); }
+html.light .reminder-title { color: #000; }
+html.light .reminder-body { color: #48484a; }
+html.light .reminder-body strong { color: #0055cc; }
+html.light footer { background: #fff; border-top-color: rgba(0,0,0,0.08); color: #8e8e93; }
+html.light footer strong { color: #48484a; }
 </style>
 </head>
 <body>
@@ -756,6 +863,11 @@ footer strong { color: var(--gray-6); }
   <a href="#day6">Day 6</a>
   <a href="#tips">Tips</a>
 </nav>
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+  <span class="tt-moon">🌙</span>
+  <span class="tt-thumb"></span>
+  <span class="tt-sun">☀️</span>
+</button>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero">
@@ -2443,6 +2555,15 @@ footer strong { color: var(--gray-6); }
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
+// ── Theme toggle ─────────────────────────────────────────────────────────────
+function toggleTheme() {
+  const isLight = document.documentElement.classList.toggle('light');
+  localStorage.setItem('theme', isLight ? 'light' : 'dark');
+}
+(function() {
+  if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light');
+})();
+
 // ── Day block toggle ──────────────────────────────────────────────────────────
 function toggleDay(header) {
   const block = header.closest('.day-block');
