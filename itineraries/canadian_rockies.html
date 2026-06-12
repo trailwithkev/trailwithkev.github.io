@@ -1,0 +1,2592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Canadian Rockies · June 2025 · TrailWithKev</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & ROOT ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:      #000000;
+  --gray-1:     #1d1d1f;
+  --gray-2:     #2d2d2f;
+  --gray-3:     #424245;
+  --gray-4:     #6e6e73;
+  --gray-5:     #86868b;
+  --gray-6:     #adadb0;
+  --white:      #f5f5f7;
+  --pure-white: #ffffff;
+  --blue:       #0071e3;
+  --blue-light: #2997ff;
+  --blue-glow:  rgba(0,113,227,0.15);
+  --summit:     #30d158;
+  --summit-glow:rgba(48,209,88,0.12);
+  --amber:      #ffd60a;
+  --red:        #ff453a;
+  --teal:       #30d0d0;
+  --radius-sm:  10px;
+  --radius-md:  18px;
+  --radius-lg:  28px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: -apple-system, 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SCROLLBAR ─── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--gray-1); }
+::-webkit-scrollbar-thumb { background: var(--gray-3); border-radius: 3px; }
+
+/* ─── STICKY NAV ─── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 40px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  height: 52px;
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-brand {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--pure-white);
+  white-space: nowrap;
+  margin-right: 32px;
+  letter-spacing: -0.3px;
+  text-decoration: none;
+}
+.nav-brand span { color: var(--blue-light); }
+.nav a {
+  color: var(--gray-5);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0 14px;
+  white-space: nowrap;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+}
+.nav a:hover { color: var(--pure-white); }
+.nav a.active { color: var(--pure-white); border-bottom-color: var(--blue-light); }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 100px;
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+}
+.hero-mountains {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  pointer-events: none;
+  opacity: 0.18;
+}
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0,113,227,0.2) 0%, transparent 70%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+}
+.hero-eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 24px;
+}
+.hero-number {
+  font-size: clamp(140px, 22vw, 260px);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--pure-white);
+  margin-bottom: 8px;
+  position: relative;
+}
+.hero-number-label {
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 300;
+  color: var(--gray-5);
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+}
+.hero-title {
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pure-white);
+  margin-bottom: 16px;
+  line-height: 1.1;
+}
+.hero-title span { color: var(--blue-light); }
+.hero-subtitle {
+  font-size: clamp(17px, 2.5vw, 22px);
+  font-weight: 400;
+  color: var(--gray-5);
+  max-width: 600px;
+  margin: 0 auto 56px;
+  letter-spacing: -0.01em;
+}
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+.stat-chip {
+  background: rgba(255,255,255,0.11);
+  border: 1px solid rgba(255,255,255,0.22);
+  border-radius: 980px;
+  padding: 11px 22px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pure-white);
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
+.stat-chip .chip-icon { font-size: 16px; }
+.stat-chip strong { color: #ffffff; font-weight: 700; }
+.stat-chip .chip-sub { color: rgba(255,255,255,0.75); font-weight: 500; }
+
+/* ─── SECTION LAYOUT ─── */
+.section { max-width: 980px; margin: 0 auto; padding: 100px 40px; }
+.section + .section { padding-top: 0; }
+.section-divider {
+  height: 0.5px;
+  background: rgba(255,255,255,0.1);
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+/* ─── SECTION HEADERS ─── */
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--blue-light);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pure-white);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.section-title span { color: var(--blue-light); }
+.section-body {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--gray-5);
+  max-width: 640px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+/* ─── OVERVIEW ROW ─── */
+.overview-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+.overview-cell {
+  padding: 28px 24px;
+  border-right: 0.5px solid rgba(255,255,255,0.08);
+  text-align: center;
+}
+.overview-cell:last-child { border-right: none; }
+.overview-num {
+  font-size: 44px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: var(--pure-white);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.overview-label { font-size: 12px; color: var(--gray-5); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ─── ROUTE STOP CARDS (like basecamps) ─── */
+.stops-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.stop-card {
+  background: var(--gray-1);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  padding: 18px 16px;
+  position: relative;
+  overflow: hidden;
+}
+.stop-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.stop-card:nth-child(1)::before { background: var(--blue); }
+.stop-card:nth-child(2)::before { background: var(--summit); }
+.stop-card:nth-child(3)::before { background: var(--amber); }
+.stop-card:nth-child(4)::before { background: var(--teal); }
+.stop-num {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray-4);
+  margin-bottom: 6px;
+}
+.stop-town {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--pure-white);
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+.stop-region {
+  font-size: 11px;
+  color: var(--gray-5);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+.stop-dates {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--blue-light);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+}
+.stop-role {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pure-white);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.stop-role-label { font-size: 11px; color: var(--gray-5); margin-bottom: 14px; }
+.stop-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.stop-tag {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 10px;
+  border-radius: 980px;
+  letter-spacing: 0.02em;
+}
+.tag-blue  { background: rgba(0,113,227,0.15);  color: var(--blue-light); border: 0.5px solid rgba(0,113,227,0.3); }
+.tag-green { background: var(--summit-glow);     color: var(--summit);    border: 0.5px solid rgba(48,209,88,0.3); }
+.tag-amber { background: rgba(255,214,10,0.1);   color: var(--amber);     border: 0.5px solid rgba(255,214,10,0.25); }
+.tag-teal  { background: rgba(48,210,208,0.12);  color: var(--teal);      border: 0.5px solid rgba(48,210,208,0.3); }
+
+/* ─── MAP CARD ─── */
+.map-card {
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.map-card-hdr {
+  background: var(--gray-1);
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.map-card-hdr-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gray-6);
+}
+.map-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  flex-shrink: 0;
+}
+.map-card-hdr-right {
+  font-size: 11px;
+  color: var(--gray-4);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+}
+.map-legend {
+  background: var(--gray-1);
+  border-bottom: 0.5px solid rgba(255,255,255,0.06);
+  padding: 6px 20px 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  color: var(--gray-5);
+  text-transform: capitalize;
+}
+.map-legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+#map-container {
+  width: 100%;
+  height: 400px;
+  display: block;
+  filter: grayscale(20%) brightness(0.88) contrast(1.05);
+}
+
+/* ─── DAY BLOCK (week-block pattern) ─── */
+.day-block { margin-bottom: 0; }
+.day-block-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 40px 0 20px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  margin-bottom: 0;
+  cursor: pointer;
+}
+.day-block-num {
+  font-size: 64px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.06);
+  letter-spacing: -0.04em;
+  line-height: 1;
+  min-width: 80px;
+}
+.day-block-info { flex: 1; }
+.day-block-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--pure-white);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.day-block-meta {
+  font-size: 13px;
+  color: var(--gray-5);
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.day-block-meta-item { display: flex; align-items: center; gap: 5px; }
+.day-block-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--blue-light);
+  white-space: nowrap;
+}
+.day-block-toggle {
+  font-size: 22px;
+  color: var(--gray-4);
+  transition: transform 0.3s ease;
+  user-select: none;
+}
+.day-block.open .day-block-toggle { transform: rotate(90deg); }
+.day-block-events { display: none; }
+.day-block.open .day-block-events { display: block; }
+
+/* ─── DRIVE NOTE ─── */
+.drive-note {
+  background: rgba(255,214,10,0.06);
+  border: 0.5px solid rgba(255,214,10,0.18);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin: 12px 0 0;
+  font-size: 12px;
+  color: var(--amber);
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+/* ─── EVENT ROWS ─── */
+.event-row {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  cursor: default;
+  transition: background 0.15s;
+}
+.event-row:last-child { border-bottom: none; }
+.event-row:hover { background: rgba(255,255,255,0.02); }
+
+.event-time-col {
+  padding: 20px 16px 20px 0;
+  border-right: 0.5px solid rgba(255,255,255,0.06);
+}
+.event-time {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--gray-5);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+.event-period {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--gray-4);
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+/* Time color by event type */
+.event-time-col[data-type="glacier"] .event-time { color: var(--teal); }
+.event-time-col[data-type="hike"]    .event-time { color: var(--summit); }
+.event-time-col[data-type="drive"]   .event-time { color: var(--amber); }
+.event-time-col[data-type="iconic"]  .event-time { color: #bf5af2; }
+.event-time-col[data-type="rest"]    .event-time { color: var(--gray-4); }
+
+.event-content {
+  padding: 20px 0 20px 20px;
+}
+.event-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.event-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--pure-white);
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+.event-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 980px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.badge-glacier { background: rgba(48,208,208,0.12); color: var(--teal);      border: 0.5px solid rgba(48,208,208,0.3); }
+.badge-hike    { background: rgba(48,209,88,0.12);  color: var(--summit);    border: 0.5px solid rgba(48,209,88,0.3); }
+.badge-drive   { background: rgba(255,214,10,0.1);  color: var(--amber);     border: 0.5px solid rgba(255,214,10,0.25); }
+.badge-rest    { background: rgba(110,110,115,0.2); color: var(--gray-6);    border: 0.5px solid rgba(110,110,115,0.3); }
+.badge-iconic  { background: rgba(191,90,242,0.12); color: #bf5af2;           border: 0.5px solid rgba(191,90,242,0.3); }
+
+.event-desc {
+  font-size: 14px;
+  color: var(--gray-5);
+  line-height: 1.65;
+  margin-bottom: 10px;
+}
+.event-desc strong { color: var(--pure-white); font-weight: 600; }
+.event-desc ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 3px; }
+.event-desc li { padding-left: 14px; position: relative; }
+.event-desc li::before { content: '—'; position: absolute; left: 0; color: var(--gray-4); }
+
+/* ─── EVENT PILLS ─── */
+.event-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.event-pill {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 980px;
+  background: rgba(255,255,255,0.07);
+  border: 0.5px solid rgba(255,255,255,0.12);
+  color: var(--gray-6);
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.event-pill.pill-a {
+  background: rgba(255,69,58,0.1);
+  border-color: rgba(255,69,58,0.3);
+  color: #ff6b63;
+}
+.event-pill.pill-w {
+  background: rgba(255,214,10,0.08);
+  border-color: rgba(255,214,10,0.25);
+  color: var(--amber);
+}
+.event-pill.pill-at {
+  background: rgba(48,209,88,0.15);
+  border-color: rgba(48,209,88,0.4);
+  color: #30d158;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ─── REMINDERS ─── */
+.reminders-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.reminder-card {
+  background: var(--gray-1);
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-md);
+  padding: 20px 22px;
+  display: flex;
+  gap: 14px;
+}
+.reminder-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.reminder-title { font-size: 14px; font-weight: 700; color: var(--pure-white); margin-bottom: 4px; letter-spacing: -0.01em; }
+.reminder-body { font-size: 13px; color: var(--gray-5); line-height: 1.55; }
+.reminder-body strong { color: var(--blue-light); font-weight: 600; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--gray-1);
+  border-top: 0.5px solid rgba(255,255,255,0.08);
+  padding: 40px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--gray-4);
+}
+footer strong { color: var(--gray-6); }
+
+/* ─── PROGRESS STRIP ─── */
+.progress-strip {
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue) 0%, var(--teal) 50%, var(--summit) 100%);
+  width: 100%;
+}
+
+/* ─── ANIMATIONS ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .stat-chip { transition: transform 0.2s, background 0.2s; }
+  .stat-chip:hover { transform: translateY(-2px); background: rgba(255,255,255,0.09); }
+  .stop-card { transition: transform 0.2s, border-color 0.2s; }
+  .stop-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.18); }
+  .reminder-card { transition: transform 0.2s; }
+  .reminder-card:hover { transform: translateY(-2px); }
+}
+
+/* ─── RESPONSIVE ─── */
+
+/* Tablet: 1024px and below — tighten grid before 768px kicks in */
+@media (max-width: 1024px) {
+  .section { padding: 80px 32px; }
+  .stops-grid { grid-template-columns: repeat(2, 1fr); }
+  .section-title { font-size: clamp(28px, 4vw, 40px); }
+}
+
+/* Tablet portrait / large mobile: 768px and below */
+@media (max-width: 768px) {
+  .nav { padding: 0 16px; }
+  .hero { padding: 72px 20px 64px; min-height: 90vh; }
+  .hero-number { font-size: clamp(80px, 20vw, 140px); }
+  .hero-number-label { font-size: clamp(15px, 3.5vw, 22px); margin-bottom: 28px; }
+  .hero-title { font-size: clamp(24px, 5.5vw, 40px); }
+  .hero-subtitle { font-size: clamp(14px, 3vw, 17px); margin-bottom: 36px; }
+  .hero-stats { gap: 8px; }
+  .stat-chip { padding: 9px 16px; font-size: 13px; }
+
+  .section { padding: 56px 20px; }
+  .section + .section { padding-top: 0; }
+  .section-title { font-size: clamp(26px, 5.5vw, 38px); }
+  .section-body { font-size: 15px; margin-bottom: 32px; }
+
+  .overview-row { grid-template-columns: repeat(2, 1fr); }
+  .overview-cell:nth-child(2) { border-right: none; }
+  .overview-cell { padding: 20px 16px; }
+  .overview-num { font-size: 36px; }
+
+  .stops-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .stop-town { font-size: 16px; }
+
+  #map-container { height: 300px; }
+  .map-legend { gap: 4px 12px; padding: 6px 16px 8px; }
+
+  .day-block-header { gap: 10px; padding: 28px 0 16px; }
+  .day-block-num { font-size: 40px; min-width: 52px; }
+  .day-block-title { font-size: 17px; }
+  .day-block-meta { font-size: 12px; gap: 10px; }
+  .day-block-label { font-size: 12px; }
+  .day-block-toggle { font-size: 20px; }
+
+  .event-row { grid-template-columns: 70px 1fr; }
+  .event-content { padding: 16px 0 16px 14px; }
+  .event-time-col { padding: 16px 12px 16px 0; }
+  .event-title { font-size: 15px; }
+  .event-desc { font-size: 13px; }
+
+  .reminders-grid { grid-template-columns: 1fr; }
+  .reminder-card { padding: 16px 18px; }
+
+  footer { padding: 32px 20px; font-size: 11px; }
+}
+
+/* Small mobile: 480px and below */
+@media (max-width: 480px) {
+  .hero { padding: 60px 16px 52px; }
+  .hero-number { font-size: clamp(72px, 22vw, 110px); }
+  .hero-number-label { font-size: 14px; margin-bottom: 20px; }
+  .hero-title { font-size: clamp(22px, 6.5vw, 32px); }
+  .hero-subtitle { font-size: 13px; margin-bottom: 28px; }
+  .stat-chip { padding: 8px 13px; font-size: 12px; gap: 6px; }
+
+  .section { padding: 44px 16px; }
+  .section-title { font-size: clamp(22px, 6vw, 30px); }
+  .section-body { font-size: 14px; }
+
+  .overview-cell { padding: 16px 12px; }
+  .overview-num { font-size: 30px; }
+  .overview-label { font-size: 11px; }
+
+  .stops-grid { grid-template-columns: 1fr; gap: 8px; }
+  .stop-town { font-size: 17px; }
+
+  #map-container { height: 260px; }
+  .map-legend { flex-wrap: wrap; }
+  .map-legend-item { font-size: 10px; }
+
+  .day-block-header { gap: 8px; padding: 20px 0 12px; align-items: flex-start; }
+  .day-block-num { font-size: 30px; min-width: 40px; line-height: 1.1; }
+  .day-block-title { font-size: 15px; }
+  .day-block-meta { font-size: 11px; gap: 8px; }
+  .day-block-label { display: none; }
+
+  .event-row { grid-template-columns: 58px 1fr; }
+  .event-time-col { padding: 14px 8px 14px 0; }
+  .event-time { font-size: 12px; }
+  .event-period { font-size: 9px; }
+  .event-content { padding: 14px 0 14px 12px; }
+  .event-title { font-size: 14px; }
+  .event-title-row { gap: 6px; margin-bottom: 8px; }
+  .event-badge { display: none; }
+  .event-desc { font-size: 13px; }
+  .event-pills { gap: 5px; }
+  .event-pill { font-size: 10px; padding: 4px 9px; }
+  /* Ensure AllTrails pill links are tappable — min 44px height */
+  a.pill-at { padding: 10px 12px; font-size: 11px; }
+
+  .drive-note { font-size: 11px; padding: 9px 12px; }
+
+  .reminders-grid { gap: 10px; }
+  .reminder-card { padding: 14px 16px; gap: 10px; }
+  .reminder-title { font-size: 13px; }
+  .reminder-body { font-size: 12px; }
+
+  footer { padding: 28px 16px; font-size: 11px; word-break: break-word; }
+}
+</style>
+</head>
+<body>
+
+<!-- Progress strip -->
+<div class="progress-strip"></div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="nav">
+  <a href="../index.html" class="nav-brand">Trail<span>WithKev</span></a>
+  <a href="#overview">Overview</a>
+  <a href="#route">Route</a>
+  <a href="#day1">Day 1</a>
+  <a href="#day2">Day 2</a>
+  <a href="#day3">Day 3</a>
+  <a href="#day4">Day 4</a>
+  <a href="#day5">Day 5</a>
+  <a href="#day6">Day 6</a>
+  <a href="#tips">Tips</a>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <canvas id="star-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+  <div class="hero-glow"></div>
+  <svg class="hero-mountains" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,300 L0,230 L60,200 L120,220 L200,140 L290,70 L370,110 L450,50 L530,90 L610,30 L690,80 L780,20 L860,65 L950,35 L1030,90 L1120,55 L1200,105 L1290,75 L1380,130 L1440,110 L1440,300 Z" fill="white"/>
+  </svg>
+  <div class="hero-eyebrow">June 14–19, 2025 · Canadian Rockies</div>
+  <div class="hero-number">6</div>
+  <div class="hero-number-label">days in the Rockies</div>
+  <div class="hero-title">The <span>Canadian Rockies</span></div>
+  <div class="hero-subtitle">Banff NP · Lake Louise · Moraine Lake · Columbia Icefield · Yoho · Glacier NP · Kootenay</div>
+  <div class="hero-stats">
+    <div class="stat-chip"><span class="chip-icon">🗓️</span> <strong>6</strong> <span class="chip-sub">Days</span></div>
+    <div class="stat-chip"><span class="chip-icon">🏔️</span> <strong>4</strong> <span class="chip-sub">National Parks</span></div>
+    <div class="stat-chip"><span class="chip-icon">🧊</span> <strong>1</strong> <span class="chip-sub">Glacier Tour</span></div>
+    <div class="stat-chip"><span class="chip-icon">🚗</span> <strong>~700 km</strong> <span class="chip-sub">Total Route</span></div>
+    <div class="stat-chip"><span class="chip-icon">🐻</span> <strong>Bear Spray</strong> <span class="chip-sub">Every Trail</span></div>
+    <div class="stat-chip"><span class="chip-icon">✈️</span> <strong>Jun 20 · 7 AM</strong> <span class="chip-sub">YYC Flight</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════ OVERVIEW ═══════════════════ -->
+<div id="overview">
+<div class="section">
+  <div class="section-eyebrow">Trip at a Glance</div>
+  <div class="section-title">Six Days of <span>Wild</span></div>
+  <div class="section-body">Ride the Parks Canada shuttle to the impossible turquoise of Lake Louise and Moraine Lake, ride the Banff Gondola to the Sulphur Mountain summit, walk on 10,000-year-old glacial ice at the Columbia Icefield, loop Emerald Lake in Yoho, cross 8 bridges over Marble Canyon's limestone gorge, and soak in Radium Hot Springs before the flight home.</div>
+
+  <div class="overview-row">
+    <div class="overview-cell">
+      <div class="overview-num">6</div>
+      <div class="overview-label">Total Days</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--blue-light)">4</div>
+      <div class="overview-label">National Parks</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--teal)">1</div>
+      <div class="overview-label">Glacier Walk</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--amber)">700</div>
+      <div class="overview-label">km Route</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ ROUTE STOPS ═══════════════════ -->
+<div id="route">
+<div class="section">
+  <div class="section-eyebrow">Route &amp; Stops</div>
+  <div class="section-title">The Rocky Mountain <span>Route</span></div>
+  <div class="section-body">Start in Banff for three nights — your base for Lake Louise, Moraine Lake, and Sulphur Mountain. Then drive north on the Icefields Parkway to the Columbia Icefield, settle into Golden for two nights as base for Yoho and Glacier NP, then loop through Kootenay NP on the way east to Calgary for the flight home.</div>
+
+  <div class="stops-grid">
+
+    <div class="stop-card">
+      <div class="stop-num">Stop 01 · Days 1–3</div>
+      <div class="stop-town">Banff / Canmore</div>
+      <div class="stop-region">Alberta · Banff National Park · Jun 14–16</div>
+      <div class="stop-dates">Jun 14 — Jun 16</div>
+      <div class="stop-role">3</div>
+      <div class="stop-role-label">nights base</div>
+      <div class="stop-tags">
+        <span class="stop-tag tag-blue">Lake Louise</span>
+        <span class="stop-tag tag-blue">Moraine Lake</span>
+        <span class="stop-tag tag-blue">Banff Gondola</span>
+      </div>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-num">Stop 02 · Day 4 checkout</div>
+      <div class="stop-town">Dead Man's Flats</div>
+      <div class="stop-region">Alberta · Near Canmore · Checkout Jun 17</div>
+      <div class="stop-dates">Morning of Jun 17</div>
+      <div class="stop-role">OUT</div>
+      <div class="stop-role-label">Checkout day</div>
+      <div class="stop-tags">
+        <span class="stop-tag tag-blue">Lake Agnes Trail</span>
+        <span class="stop-tag tag-green">→ Golden BC</span>
+      </div>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-num">Stop 03 · Days 4–6</div>
+      <div class="stop-town">Golden</div>
+      <div class="stop-region">British Columbia · Jun 17–19</div>
+      <div class="stop-dates">Jun 17 — Jun 19</div>
+      <div class="stop-role">2</div>
+      <div class="stop-role-label">nights base</div>
+      <div class="stop-tags">
+        <span class="stop-tag tag-green">Yoho NP</span>
+        <span class="stop-tag tag-green">Glacier NP</span>
+        <span class="stop-tag tag-green">Kootenay NP</span>
+      </div>
+    </div>
+
+    <div class="stop-card">
+      <div class="stop-num">Stop 04 · Day 6 Eve</div>
+      <div class="stop-town">Calgary</div>
+      <div class="stop-region">Alberta (YYC) · Jun 19 Night</div>
+      <div class="stop-dates">Jun 19 eve — Jun 20 depart</div>
+      <div class="stop-role">FLY</div>
+      <div class="stop-role-label">Jun 20 · 7 AM YYC</div>
+      <div class="stop-tags">
+        <span class="stop-tag tag-amber">Hotel near YYC</span>
+        <span class="stop-tag tag-amber">5 AM Alarm</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Route Map -->
+  <div class="map-card">
+    <div class="map-card-hdr">
+      <div class="map-card-hdr-left">
+        <div class="map-dot"></div>
+        Route Map
+      </div>
+      <div class="map-card-hdr-right" id="map-km">· ~700 km</div>
+    </div>
+    <div class="map-legend" id="map-legend"></div>
+    <div id="map-container"></div>
+  </div>
+
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ DAY-BY-DAY HEADER ═══════════════════ -->
+<div class="section" style="padding-bottom:0;">
+  <div class="section-eyebrow">Day by Day</div>
+  <div class="section-title">The Full <span>Itinerary</span></div>
+  <div class="section-body">Click any day to expand the full schedule. Day 1 is open by default.</div>
+</div>
+
+<!-- ─── DAY 1 ─── -->
+<div id="day1" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block open">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">1</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Lake Louise · Moraine Lake · Banff Town · Sulphur Mountain</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Saturday · June 14</span>
+        <span class="day-block-meta-item">🏔️ Parks Canada Shuttle — Lake Louise + Moraine Lake</span>
+        <span class="day-block-meta-item">🚡 Banff Gondola at sunset</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 1 of 6</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚌&nbsp; Parks Canada Shuttle departs from Lake Louise Park &amp; Ride — <strong>book shuttle tickets in advance</strong> at reservation.pc.gc.ca · Private vehicles not permitted at Moraine Lake in peak season &nbsp;|&nbsp; Lake Louise → Banff town: ~45 min (Hwy 1 East)</div>
+
+    <!-- 7:00 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">7:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚌 Board Parks Canada Shuttle — Lake Louise Park &amp; Ride</div>
+          <span class="event-badge badge-hike">Shuttle</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Lake Louise Park &amp; Ride lot</li>
+          <li>Moraine Lake shuttle stop</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Reserve shuttle in advance!</span>
+          <span class="event-pill">reservation.pc.gc.ca</span>
+          <span class="event-pill">Parks Canada pass required</span>
+          <span class="event-pill">~20 min ride to Lake Louise</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7:30 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">7:30</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">💎 Lake Louise — Lakeshore &amp; Victoria Glacier Views</div>
+          <span class="event-badge badge-hike">Scenic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Lake Louise Lakeshore Trail</li>
+          <li>Victoria Glacier viewpoint</li>
+          <li>Fairmont Chateau Lake Louise</li>
+          <li>Canoe rentals at the boathouse</li>
+          <li>Plain of Six Glaciers Teahouse Trail (optional)</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Lakeshore Trail: 3.4 km return · Easy</span>
+          <span class="event-pill">Flat, fully accessible</span>
+          <span class="event-pill">Canoe rentals at boathouse</span>
+          <span class="event-pill">Fairmont Chateau Lake Louise</span>
+          <span class="event-pill">Victoria Glacier viewpoint</span>
+          <span class="event-pill">Plain of Six Glaciers teahouse (optional, moderate)</span>
+          <a href="https://www.alltrails.com/trail/canada/alberta/lake-louise-lakeshore" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/alberta/lake-louise-lakeshore" aria-label="View Lake Louise Lakeshore on AllTrails">🔗 AllTrails — Lakeshore</a>
+          <a href="https://www.alltrails.com/trail/canada/alberta/plain-of-six-glaciers-trail" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/alberta/plain-of-six-glaciers-trail" aria-label="View Plain of Six Glaciers on AllTrails">🔗 AllTrails — Six Glaciers</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10:00 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">10:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏔️ Moraine Lake — Valley of the Ten Peaks</div>
+          <span class="event-badge badge-iconic">Iconic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Rockpile Trail viewpoint</li>
+          <li>Valley of the Ten Peaks panorama</li>
+          <li>Moraine Lake Lakeshore Trail</li>
+          <li>Lodge at Moraine Lake</li>
+          <li>Canoe rentals</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Rockpile Trail: 0.8 km · Easy</span>
+          <span class="event-pill">Valley of the Ten Peaks panorama</span>
+          <span class="event-pill">Lakeshore Trail: 3 km · Easy</span>
+          <span class="event-pill">Canoe rentals</span>
+          <span class="event-pill">Lodge at Moraine Lake</span>
+          <span class="event-pill">Fed by 10 glaciers</span>
+          <a href="https://www.alltrails.com/trail/canada/alberta/rockpile" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/alberta/rockpile" aria-label="View Moraine Lake Rockpile on AllTrails">🔗 AllTrails — Rockpile</a>
+          <a href="https://www.alltrails.com/trail/canada/alberta/moraine-lake-trail" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/alberta/moraine-lake-trail" aria-label="View Moraine Lake Shoreline on AllTrails">🔗 AllTrails — Lakeshore</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">12:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍴 Lunch in Banff Town</div>
+          <span class="event-badge badge-rest">Lunch</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Block Kitchen + Bar</li>
+          <li>The Bison Restaurant</li>
+          <li>Tooloulou's Café</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~45 min drive to Banff</span>
+          <span class="event-pill">Block Kitchen + Bar</span>
+          <span class="event-pill">The Bison Restaurant</span>
+          <span class="event-pill">Tooloulou's Café</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2:00 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">2:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏘️ Banff Town Exploration</div>
+          <span class="event-badge badge-iconic">Town</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Banff Avenue</li>
+          <li>Bow Falls</li>
+          <li>Cave &amp; Basin National Historic Site</li>
+          <li>Whyte Museum of the Canadian Rockies</li>
+          <li>Buffalo Nations Luxton Museum</li>
+          <li>Banff Park Museum</li>
+          <li>Central Park</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Banff Avenue shops &amp; galleries</span>
+          <span class="event-pill">Bow Falls (1 km walk)</span>
+          <span class="event-pill">Cave &amp; Basin NHS (15 min west)</span>
+          <span class="event-pill">Whyte Museum</span>
+          <span class="event-pill">Buffalo Nations Luxton Museum</span>
+          <span class="event-pill">Banff Park Museum NHS</span>
+          <span class="event-pill">Central Park — Bow River walk</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5:00 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">5:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚡 Banff Gondola &amp; Sulphur Mountain Summit</div>
+          <span class="event-badge badge-iconic">Gondola</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Summit Ridge Boardwalk</li>
+          <li>Cosmic Ray Station National Historic Site</li>
+          <li>Sanson Peak viewpoint</li>
+          <li>Bighorn sheep on the ridge</li>
+          <li>Sky Bistro</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Book gondola tickets in advance</span>
+          <span class="event-pill">8-min gondola ride · 2,281 m summit</span>
+          <span class="event-pill">Summit Ridge Boardwalk: 1 km</span>
+          <span class="event-pill">Cosmic Ray Station NHS</span>
+          <span class="event-pill">360° panoramic views</span>
+          <span class="event-pill">Bighorn sheep on the ridge</span>
+          <span class="event-pill">Sky Bistro (dinner at the top)</span>
+          <span class="event-pill">Fully accessible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8:00 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">8:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏨 Return to Accommodation</div>
+          <span class="event-badge badge-rest">Check-in</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Return to Banff or Canmore base</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Banff or Canmore base</span>
+          <span class="event-pill">Rest up for Day 2</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 2 ─── -->
+<div id="day2" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">2</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Johnston Canyon · Banff Viewpoints · Upper Hot Springs</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Sunday · June 15</span>
+        <span class="day-block-meta-item">🥾 Johnston Canyon Lower + Upper Falls</span>
+        <span class="day-block-meta-item">♨️ Banff Upper Hot Springs at dusk</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 2 of 6</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; Banff → Johnston Canyon: ~25 min west on Bow Valley Pkwy (Hwy 1A) &nbsp;|&nbsp; Johnston Canyon → Banff town: ~25 min back &nbsp;|&nbsp; Banff Upper Hot Springs: 5 min south on Mountain Ave</div>
+
+    <!-- 7:30 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">7:30</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive to Johnston Canyon via Bow Valley Parkway</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Take the scenic Bow Valley Parkway (Hwy 1A) instead of the highway</li>
+          <li>Watch for elk, deer, and wolves along the roadside in the morning</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~25 min drive</span>
+          <span class="event-pill">Bow Valley Pkwy (Hwy 1A)</span>
+          <span class="event-pill pill-w">Wildlife active at dawn — drive slow</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8:00 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">8:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏞️ Johnston Canyon — Lower &amp; Upper Falls</div>
+          <span class="event-badge badge-hike">Moderate</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li><strong>Lower Falls</strong> (2.6 km return): paved catwalk hugging the canyon walls — a narrow slot gorge above a roaring 10 m waterfall</li>
+          <li><strong>Upper Falls</strong> (5.4 km return from trailhead): continues deeper into the canyon to a dramatic 30 m cascade plunging into a turquoise pool</li>
+          <li>The catwalks are bolted directly into the limestone canyon walls — one of the most unique trail experiences in Banff</li>
+          <li><strong>Inkpots option</strong>: add 6 km return to cold mineral springs in an open meadow (hikers only)</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Lower Falls: 2.6 km · Easy–Mod</span>
+          <span class="event-pill">Upper Falls: 5.4 km · Moderate</span>
+          <span class="event-pill">~2.5–3 hrs total</span>
+          <span class="event-pill">Canyon catwalk</span>
+          <span class="event-pill">+170m elevation to Upper Falls</span>
+          <span class="event-pill">Bear spray required</span>
+          <a href="https://www.alltrails.com/trail/canada/alberta/johnston-canyon-to-lower-falls" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/alberta/johnston-canyon-to-lower-falls" aria-label="View Johnston Canyon Lower Falls on AllTrails">🔗 AllTrails — Lower Falls</a>
+          <a href="https://www.alltrails.com/trail/canada/alberta/johnston-canyon-to-upper-falls" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/alberta/johnston-canyon-to-upper-falls" aria-label="View Johnston Canyon Upper Falls on AllTrails">🔗 AllTrails — Upper Falls</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11:00 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">11:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍳 Brunch in Banff Town</div>
+          <span class="event-badge badge-rest">Brunch</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Elk &amp; Oat — popular brunch spot on Banff Avenue, known for their eggs and seasonal menu</li>
+          <li>Whitebark Café — light bites and great coffee inside the Banff Centre complex</li>
+          <li>Coyotes Deli &amp; Grill — hearty southwestern-style brunch, local favourite</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~25 min back to Banff</span>
+          <span class="event-pill">Elk &amp; Oat</span>
+          <span class="event-pill">Whitebark Café</span>
+          <span class="event-pill">Coyotes Deli &amp; Grill</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">12:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌅 Vermilion Lakes — Mount Rundle Reflections</div>
+          <span class="event-badge badge-iconic">Iconic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Three glacier-fed lakes just minutes from Banff town — mirror-perfect reflections of Mount Rundle</li>
+          <li>One of the most photographed spots in the entire Canadian Rockies</li>
+          <li>Flat gravel path along the shoreline — all ages, no elevation</li>
+          <li>Excellent wildlife spotting: osprey, beaver, and elk frequently seen here</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">5 min from Banff</span>
+          <span class="event-pill">Flat path · All ages</span>
+          <span class="event-pill">Best photo light: afternoon</span>
+          <span class="event-pill">Wildlife hotspot</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">1:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏔️ Tunnel Mountain — Panoramic Summit Hike</div>
+          <span class="event-badge badge-hike">Easy</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>2.4 km one-way trail (4.8 km return) with 300m of gradual elevation gain</li>
+          <li>360° panorama from the summit: Banff town below, Cascade Mountain, Mount Rundle, the Bow Valley</li>
+          <li>Trailhead 15 min walk from downtown Banff — no driving needed</li>
+          <li>Bighorn sheep frequently spotted on the rocky slopes</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">4.8 km return · Easy</span>
+          <span class="event-pill">~1.5 hrs</span>
+          <span class="event-pill">+300m elevation</span>
+          <span class="event-pill">360° summit views</span>
+          <span class="event-pill">Bighorn sheep</span>
+          <a href="https://www.alltrails.com/trail/canada/alberta/tunnel-mountain-summit" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/alberta/tunnel-mountain-summit" aria-label="View Tunnel Mountain Summit on AllTrails">🔗 AllTrails</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">3:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🗿 Hoodoos Viewpoint — Unique Rock Formations</div>
+          <span class="event-badge badge-iconic">Scenic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Towering columns of glacial till capped with harder rock — sculpted over thousands of years by erosion</li>
+          <li>Dramatic backdrop: Mount Rundle and the Bow River valley</li>
+          <li>Short paved trail with information boards on the geology</li>
+          <li>Quick stop — 30 min is plenty before heading to rest</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">10 min southeast of Banff</span>
+          <span class="event-pill">Short paved trail</span>
+          <span class="event-pill">~30 min</span>
+          <span class="event-pill">Fully accessible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">4:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🛋️ Rest &amp; Freshen Up Before Hot Springs</div>
+          <span class="event-badge badge-rest">Rest</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Head back to accommodation to rest after the big hike day</li>
+          <li>Grab a coffee on Banff Avenue — Evelyn's Coffee Bar is a local staple</li>
+          <li>Pack swimsuit and towel for the hot springs</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Rest up</span>
+          <span class="event-pill">Bring swimsuit + towel</span>
+          <span class="event-pill">Towels rentable at the springs</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7:00 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">7:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">♨️ Banff Upper Hot Springs</div>
+          <span class="event-badge badge-iconic">Hot Springs</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Natural mineral springs on the slopes of Sulphur Mountain — 37–40°C year-round</li>
+          <li>Outdoor pool with stunning views of the surrounding peaks at dusk</li>
+          <li>Towel and swimsuit rentals available on-site</li>
+          <li>Open until 11 PM — perfect for a late, relaxing soak after a full hike day</li>
+          <li>Historic site: originally developed in 1886, one of the oldest hot springs in Canada</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">5 min south of Banff town</span>
+          <span class="event-pill">37–40°C mineral pool</span>
+          <span class="event-pill">Open until 11 PM</span>
+          <span class="event-pill">Towel + suit rental available</span>
+          <span class="event-pill">Mountain views at dusk</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9:00 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">9:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner in Banff Town</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Nourish Bistro — plant-forward dinner menu, cozy atmosphere on Bear St</li>
+          <li>The Bison Restaurant &amp; Terrace — elevated Canadian cuisine, great for a post-hike celebratory meal</li>
+          <li>Block Kitchen + Bar — lively atmosphere, solid burgers and cocktails</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Nourish Bistro</span>
+          <span class="event-pill">The Bison Restaurant</span>
+          <span class="event-pill">Block Kitchen + Bar</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 3 ─── -->
+<div id="day3" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">3</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Icefields Parkway · Columbia Icefield Glacier · Jasper</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Monday · June 16</span>
+        <span class="day-block-meta-item">🏔️ Bow Lake · Peyto Lake · Weeping Wall</span>
+        <span class="day-block-meta-item">🧊 Glacier Adventure 2:15 PM (booked)</span>
+        <span class="day-block-meta-item">🏘️ Jasper quick stops post-glacier</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 3 of 6</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; Banff → Columbia Icefield: ~230 km · ~2 hr 45 min direct &nbsp;|&nbsp; Icefield → Jasper: ~105 km · ~1 hr 20 min &nbsp;|&nbsp; Jasper → Dead Man's Flats: ~290 km · ~3 hrs 30 min &nbsp;|&nbsp; ⚠️ This is a big driving day — plan to overnight in Jasper or leave Jasper by 9 PM for a late return</div>
+
+    <!-- 8:00 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">8:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Depart — Head North on Icefields Parkway (Hwy 93N)</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Pick up the Icefields Parkway at Lake Louise (~45 min from Banff)</li>
+          <li>Often called the most scenic drive in the world — 230 km of peaks, glaciers, and turquoise lakes</li>
+          <li>Gas up before leaving Banff — next services aren't until Saskatchewan River Crossing</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Gas up in Banff before leaving</span>
+          <span class="event-pill">Hwy 1W → Hwy 93N at Lake Louise</span>
+          <span class="event-pill pill-w">Wildlife common at this hour — drive alert</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9:10 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">9:10</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏔️ Crowfoot Glacier Viewpoint</div>
+          <span class="event-badge badge-iconic">Viewpoint</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Named for its three-toed crow's foot shape — now just two toes remain due to glacial retreat, a striking visual of climate change</li>
+          <li>Signed roadside pullout with unobstructed views across Bow Lake toward the glacier face</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~90 km from Banff</span>
+          <span class="event-pill">Roadside pullout</span>
+          <span class="event-pill">5–10 min stop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9:20 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">9:20</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌊 Bow Lake — Glacier-Fed Turquoise Shoreline</div>
+          <span class="event-badge badge-iconic">Scenic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>The largest lake on the Icefields Parkway — fed directly by the Bow Glacier and its meltwater streams</li>
+          <li>Iconic turquoise colour from glacial rock flour suspended in the water</li>
+          <li>Num-Ti-Jah Lodge sits on the northern shore — built in 1920 by legendary outfitter Jimmy Simpson</li>
+          <li>Flat gravel path from the parking area along the lakeshore — no elevation, no hiking required</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~95 km from Banff</span>
+          <span class="event-pill">Flat lakeshore path</span>
+          <span class="event-pill">~20 min stop</span>
+          <span class="event-pill">Num-Ti-Jah Lodge</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9:50 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">9:50</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🦊 Peyto Lake Lookout — Bow Summit</div>
+          <span class="event-badge badge-iconic">Iconic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>The most photographed viewpoint on the entire Icefields Parkway — the lake's shape resembles a howling wolf, its colour an impossible electric blue-green from glacial flour</li>
+          <li>Bow Summit is the highest point on any public road in Canada at 2,069 m</li>
+          <li>Paved accessible boardwalk leads to the main viewpoint — short walk, no hiking required</li>
+          <li>Named after trapper Bill Peyto who camped here in the 1890s</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~105 km from Banff</span>
+          <span class="event-pill">Paved accessible boardwalk</span>
+          <span class="event-pill">~25 min stop</span>
+          <span class="event-pill">2,069 m — highest paved road in Canada</span>
+          <span class="event-pill">Most photographed Parkway stop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10:45 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">10:45</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⛽ Saskatchewan River Crossing — Gas + Break</div>
+          <span class="event-badge badge-drive">Rest Stop</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>The only services between Lake Louise and the Icefield — gas, food, and restrooms at the Crossing Resort</li>
+          <li>Confluence of the North Saskatchewan, Howse, and Mistaya rivers — dramatic braided river valley viewpoint from the roadside</li>
+          <li>Optional: <strong>Mistaya Canyon</strong> is 5 km south — a 0.5 km walk through a narrow limestone gorge to a bridge over a roaring creek (20 min total)</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~145 km from Banff</span>
+          <span class="event-pill pill-a">Last gas before the Icefield!</span>
+          <span class="event-pill">Grab coffee / snacks here</span>
+          <span class="event-pill">Mistaya Canyon option: +20 min</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 11:20 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">11:20</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">💧 Weeping Wall</div>
+          <span class="event-badge badge-iconic">Viewpoint</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>A 100+ metre curtain of waterfalls cascading down the sheer face of Cirrus Mountain — meltwater seeping through the limestone and spilling over in dozens of rivulets</li>
+          <li>Visible directly from the highway — pull into the signed gravel lot and step out for photos</li>
+          <li>In winter this becomes a world-class ice climbing destination; in June the water is in full flow</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~168 km from Banff</span>
+          <span class="event-pill">Roadside pullout</span>
+          <span class="event-pill">5–10 min stop</span>
+          <span class="event-pill">Best viewed from the lot</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">12:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍴 Lunch at Columbia Icefield Discovery Centre</div>
+          <span class="event-badge badge-rest">Lunch</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Arrive at the Icefield Centre with ~1.5 hrs to spare before the tour — perfect time for a proper lunch</li>
+          <li>Restaurant has panoramic floor-to-ceiling windows facing the Athabasca Glacier — the best view of any lunch spot on the trip</li>
+          <li>Browse the glaciology exhibits inside the centre before heading out</li>
+          <li>Check in at the tour desk when you arrive to confirm your 2:15 PM booking</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~230 km from Banff</span>
+          <span class="event-pill">Glacier-facing windows</span>
+          <span class="event-pill">Check in at tour desk on arrival</span>
+          <span class="event-pill">Glaciology exhibits</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2:15 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="glacier">
+        <div class="event-time">2:15</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🧊 Columbia Icefield Glacier Adventure</div>
+          <span class="event-badge badge-glacier">Booked · 2:15 PM</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li><strong>Ice Explorer snowcoach</strong>: massive all-terrain vehicle drives you from the Icefield Centre directly onto the surface of Athabasca Glacier</li>
+          <li>Walk on 10,000-year-old glacial ice — taste pristine meltwater straight from the glacier</li>
+          <li>Guides explain the ice's layers, the glacier's recession over the past century, and the Columbia Icefield below you</li>
+          <li><strong>Glacier Skywalk</strong> (if combo booked): glass-floored platform cantilevered 280 m above the Sunwapta Valley — 1 km paved interpretive trail, fully accessible</li>
+          <li>Dress warm — it's 10–15°C colder on the glacier than in the valley</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Booked — 2:15 PM</span>
+          <span class="event-pill">~3.5–4 hrs total</span>
+          <span class="event-pill">Ends ~6:00 PM</span>
+          <span class="event-pill pill-w">Layers + warm jacket on glacier!</span>
+          <span class="event-pill">Snowcoach ride included</span>
+          <span class="event-pill">Skywalk: 280 m above valley floor</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6:15 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">6:15</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">💦 Sunwapta Falls — Quick Stop En Route to Jasper</div>
+          <span class="event-badge badge-hike">Scenic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Twin waterfalls where the Sunwapta River drops through a narrow canyon — dramatic even from the parking lot</li>
+          <li>~55 km north of the Icefield, directly on the route to Jasper — no detour needed</li>
+          <li>Short flat 5-min walk from the lot to the main falls viewpoint</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">55 km north of Icefield</span>
+          <span class="event-pill">On-route to Jasper</span>
+          <span class="event-pill">5 min walk · ~15 min stop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">7:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏘️ Jasper — Pyramid Lake + Townsite</div>
+          <span class="event-badge badge-iconic">Town</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li><strong>Pyramid Lake</strong> (~8 km from town): drive up to the lake and walk onto Pyramid Island — a small island connected by a footbridge with views back to Pyramid Mountain. One of the best reflections in Jasper NP</li>
+          <li><strong>Jasper townsite</strong>: stroll Patricia Street and Connaught Drive — a quieter, less touristy vibe than Banff with great local restaurants</li>
+          <li>Elk frequently wander through the Jasper townsite in the evenings — keep your distance</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~105 km north of Icefield</span>
+          <span class="event-pill">Pyramid Island footbridge</span>
+          <span class="event-pill">Elk in townsite at dusk</span>
+          <span class="event-pill">~45 min total</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">8:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner in Jasper</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Downstream Bar &amp; Grill — local favourite on Patricia St, solid comfort food and cold Alberta beer</li>
+          <li>Famoso Neapolitan Pizzeria — popular wood-fired pizza spot in the townsite</li>
+          <li>Evil Dave's Grill — eclectic menu, one of Jasper's most beloved spots</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Downstream Bar &amp; Grill</span>
+          <span class="event-pill">Famoso Pizzeria</span>
+          <span class="event-pill">Evil Dave's Grill</span>
+          <span class="event-pill pill-a">Leave Jasper by 9:30 PM latest for return drive</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 4 ─── -->
+<div id="day4" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">4</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Lake Agnes + Little Beehive · Drive to Golden, BC</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Tuesday · June 17</span>
+        <span class="day-block-meta-item">🥾 Lake Agnes Tea House + Little Beehive summit</span>
+        <span class="day-block-meta-item">🏘️ Check in — Golden, BC</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 4 of 6</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚌&nbsp; Parks Canada Shuttle from Lake Louise Park &amp; Ride to Lake Louise Lakeshore — <strong>shuttle time determines the whole day's schedule</strong> · Book at reservation.pc.gc.ca &nbsp;|&nbsp; Lake Louise → Golden: ~1 hr 20 min via Hwy 1 West &nbsp;|&nbsp; Checkout of Dead Man's Flats Airbnb before heading to Lake Louise</div>
+
+    <!-- Checkout -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Early</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏠 Checkout — Dead Man's Flats Airbnb</div>
+          <span class="event-badge badge-drive">Checkout</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Pack everything — you're heading to Golden after the trail, not coming back</li>
+          <li>Quick breakfast in Canmore (~10 min west): Communitea Café or Beamer's Coffee Bar</li>
+          <li>Allow ~35 min to reach Lake Louise Park &amp; Ride from Dead Man's Flats</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Dead Man's Flats AB</span>
+          <span class="event-pill">~35 min to Lake Louise Park &amp; Ride</span>
+          <span class="event-pill">Bags go in the car — driving to Golden after</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shuttle TBD -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">TBD</div>
+        <div class="event-period">Shuttle</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚌 Parks Canada Shuttle — Lake Louise Park &amp; Ride</div>
+          <span class="event-badge badge-hike">Shuttle</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Board at the Lake Louise Park &amp; Ride lot — private vehicles not permitted at Lake Louise in peak season</li>
+          <li>~20 min shuttle ride to the Lake Louise lakeshore</li>
+          <li>Aim for the earliest available shuttle to maximize time on the trail and reach Golden by evening</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill pill-a">Reserve shuttle in advance at reservation.pc.gc.ca</span>
+          <span class="event-pill">Earlier = better — trail gets busy by 10 AM</span>
+          <span class="event-pill">Parks Canada Discovery Pass required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lake Agnes + Little Beehive -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">TBD</div>
+        <div class="event-period">Trail</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Lake Agnes Tea House + Little Beehive Summit</div>
+          <span class="event-badge badge-hike">Moderate</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li><strong>Mirror Lake</strong> (~2 km in): first major landmark — a serene alpine lake perfectly reflecting Mount St. Piran</li>
+          <li><strong>Lake Agnes &amp; Tea House</strong> (~3.7 km): a dramatic hanging valley with a glacial lake tucked between rocky peaks — the Tea House has been serving hikers since 1905. Order tea and a scone before pushing higher</li>
+          <li><strong>Little Beehive</strong> (~5 km): adds ~100m more elevation above Lake Agnes for a wide-open panorama — Lake Louise far below, Victoria Glacier, and the Bow Valley stretching to the horizon</li>
+          <li>The trail climbs 400m total via a well-maintained rocky switchback path with wooden staircases — manageable but steady</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~9 km return · Moderate</span>
+          <span class="event-pill">~400m elevation gain</span>
+          <span class="event-pill">3.5–4.5 hrs total</span>
+          <span class="event-pill">Tea House at Lake Agnes (~3.7 km)</span>
+          <span class="event-pill">Little Beehive panorama at ~5 km</span>
+          <span class="event-pill">Bear spray required</span>
+          <span class="event-pill pill-w">Bring layers — wind at the top</span>
+          <a href="https://www.alltrails.com/trail/canada/alberta/little-beehive-via-lake-agnes-trail" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/alberta/little-beehive-via-lake-agnes-trail" aria-label="View Lake Agnes Tea House and Little Beehive on AllTrails">🔗 AllTrails</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lunch -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Post</div>
+        <div class="event-period">Hike</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍴 Lunch near Lake Louise</div>
+          <span class="event-badge badge-rest">Lunch</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Lakeside Boathouse Restaurant — right on the Lake Louise lakeshore, casual menu with the iconic lake view as your backdrop</li>
+          <li>Fairmont Chateau Lake Louise (Walliser Stube) — more upscale, Swiss-inspired fondue and mountain dishes</li>
+          <li>Laggan's Mountain Bakery — popular quick-serve bakery in the Lake Louise village, great sandwiches and baked goods for a faster turnaround before Golden</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Lakeside Boathouse</span>
+          <span class="event-pill">Walliser Stube — Fairmont</span>
+          <span class="event-pill">Laggan's Bakery (quick option)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drive to Golden -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Post</div>
+        <div class="event-period">Lunch</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive Lake Louise → Golden, BC</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Hwy 1 West through Yoho National Park — the highway drops through the famous Kicking Horse Pass into British Columbia</li>
+          <li>Kicking Horse Canyon hugs the highway for the final stretch into Golden — dramatic cliff walls and the turquoise river below</li>
+          <li>Watch for bears and mountain goats along the canyon walls</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~1 hr 20 min · ~80 km</span>
+          <span class="event-pill">Hwy 1 West through Yoho NP</span>
+          <span class="event-pill">Kicking Horse Pass into BC</span>
+          <span class="event-pill pill-w">Watch for wildlife in canyon</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Check in -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">~4:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏠 Check In — Golden, BC Airbnb</div>
+          <span class="event-badge badge-rest">Check-in</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>606 7 Street North, Unit 201, Golden, BC V0A 1H0</li>
+          <li>Drop bags, freshen up after the trail day</li>
+          <li>Central location — easy walking distance to the Kicking Horse Pedestrian Bridge and downtown strip</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">606 7 St North #201 · Golden BC</span>
+          <span class="event-pill">V0A 1H0</span>
+          <span class="event-pill">Walking distance to town centre</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kicking Horse Bridge -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">~5:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌉 Kicking Horse Pedestrian Bridge + Riverfront</div>
+          <span class="event-badge badge-iconic">Golden</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Canada's longest freestanding timber-frame pedestrian bridge — a gorgeous piece of engineering spanning the Kicking Horse River right in downtown Golden</li>
+          <li>Walk across for views up and down the turquoise river, flanked by the Purcell and Rocky mountain ranges</li>
+          <li>The riverside pathway connects to the town centre — great for a post-check-in stretch after a long day</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">In downtown Golden</span>
+          <span class="event-pill">Free · Always open</span>
+          <span class="event-pill">Canada's longest timber pedestrian bridge</span>
+          <span class="event-pill">~30 min stroll</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Golden Skybridge optional -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">~6:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌁 Golden Skybridge (Optional) — Canada's Highest Suspension Bridges</div>
+          <span class="event-badge badge-iconic">Scenic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Two suspension bridges spanning a canyon 130 m above the Kicking Horse River — the highest in Canada</li>
+          <li>Canyon Ridge Trail loops between the two bridges through old-growth forest above the gorge</li>
+          <li>Treetop Village and zipline also on-site if you want more adventure</li>
+          <li>Located 14 km south of Golden — worth it if energy allows after the Lake Agnes trail day</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">14 km south of Golden</span>
+          <span class="event-pill">Canada's highest suspension bridges</span>
+          <span class="event-pill">~1.5–2 hrs</span>
+          <span class="event-pill pill-a">Check closing time before going</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dinner -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">~8:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner in Golden</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Whitetooth Bistro — beloved local spot on 9th Ave, casual yet elevated mountain dining, great for a post-trail meal</li>
+          <li>Cedar House Restaurant — cozy fine dining in the woods outside town; amuse-bouche, fresh-baked bread, creative mains (reserve ahead)</li>
+          <li>Reposados — new local favourite, fresh tacos and Mexican-inspired dishes from two local Golden women</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Whitetooth Bistro</span>
+          <span class="event-pill">Cedar House Restaurant (reserve ahead)</span>
+          <span class="event-pill">Reposados</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 5 ─── -->
+<div id="day5" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">5</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Iceline + Little Yoho Loop · Yoho Viewpoints · Golden</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Wednesday · June 18</span>
+        <span class="day-block-meta-item">🥾 Iceline Loop — 20.3 km · 1,090 m gain · Hard</span>
+        <span class="day-block-meta-item">🚂 Spiral Tunnels · 🌊 Natural Bridge · 💦 Wapta Falls</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 5 of 6</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; Golden → Takakkaw Falls trailhead: ~50 min (Hwy 1E + Yoho Valley Rd · 17 km NE of Field) &nbsp;|&nbsp; <strong>4 AM start strongly recommended</strong> — finishes ~noon, leaving a full afternoon for viewpoints. An 8–9 AM start pushes the loop to 4:30–6 PM with no time for stops &nbsp;|&nbsp; ⚠️ Yoho Valley Road opens mid-June — should be clear for June 18</div>
+
+    <!-- 3:15 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">3:15</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⏰ Wake Up + Drive to Takakkaw Falls Trailhead</div>
+          <span class="event-badge badge-drive">Depart</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Pack everything the night before — packed lunch, snacks, layers, headlamps, bear spray, trekking poles</li>
+          <li>~50 min drive from Golden: Hwy 1 East through Kicking Horse Canyon → Field → Yoho Valley Road (17 km to trailhead)</li>
+          <li>Arrive trailhead by 4:00 AM — limited parking, early arrival guarantees a spot</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~50 min drive from Golden</span>
+          <span class="event-pill pill-a">Pack everything the night before!</span>
+          <span class="event-pill">Headlamps required for first ~90 min</span>
+          <span class="event-pill">Packed lunch + snacks for ~8 hrs</span>
+          <span class="event-pill">Bear spray · Trekking poles recommended</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4:00 AM — Main Trail -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">4:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Iceline + Little Yoho Valley + Yoho Valley Trail Loop</div>
+          <span class="event-badge badge-hike">Hard</span>
+        </div>
+        <div class="event-desc">
+          <p style="margin-bottom:10px">Top-10 day hike in all of Canada. <strong>Hike clockwise</strong> — gets the brutal elevation gain done early and protects the knees on descent. 360° glacier panoramas from the exposed Iceline ridge timed to morning golden hour.</p>
+          <ul>
+            <li><strong>0 km · Takakkaw Falls (1,510 m)</strong> — start just past the iconic 373 m waterfall. Sunrise hits the falls at ~5:30 AM if you're near it</li>
+            <li><strong>0–4 km · Iceline Switchbacks</strong> — the hardest climbing of the day, ~500 m gain in steep rocky zigzags. Headlamps until ~5:30 AM, then first light on the valley below</li>
+            <li><strong>~7 km · Iceline Summit (2,229 m)</strong> — the payoff. Six glaciers visible at once: Emerald, Daly, Fairy, Diableret, Niles and Yoho. The Presidents and Vice President peaks dominate the horizon. Alpine tundra ridge walk for several km</li>
+            <li><strong>~11 km · Little Yoho Valley + Stanley Mitchell Hut</strong> — descend into the hanging valley. Alpine Club of Canada hut in a pristine meadow. Eat lunch here beside the Little Yoho River</li>
+            <li><strong>~15 km · Twin Falls junction</strong> — optional 1 km detour to Twin Falls, two side-by-side cascades dropping 90 m</li>
+            <li><strong>~18 km · Laughing Falls</strong> — beautiful 25 m cascade where the Laughing Creek joins the Yoho River</li>
+            <li><strong>~20.3 km · Back at Takakkaw Falls</strong> — finish at the trailhead, ~noon if 4 AM start</li>
+          </ul>
+        </div>
+        <div class="event-pills">
+          <span class="event-pill">20.3 km loop · Hard</span>
+          <span class="event-pill">1,090 m elevation gain</span>
+          <span class="event-pill">~7.5–8.5 hrs</span>
+          <span class="event-pill">Clockwise recommended</span>
+          <span class="event-pill">6 glaciers from the summit</span>
+          <span class="event-pill">Top 10 hike in Canada</span>
+          <span class="event-pill pill-w">Layers for the exposed Iceline ridge</span>
+          <span class="event-pill pill-a">Parks Canada pass required</span>
+          <a href="https://www.alltrails.com/trail/canada/british-columbia/iceline-little-yoho-valley-and-yoho-valley-trail-loop" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/british-columbia/iceline-little-yoho-valley-and-yoho-valley-trail-loop" aria-label="View Iceline Little Yoho Loop on AllTrails">🔗 AllTrails</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12:00 PM — Post-hike rest -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">12:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥪 Rest + Snack at Trailhead</div>
+          <span class="event-badge badge-rest">Recovery</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Change shoes, eat something substantial before the driving afternoon</li>
+          <li>Whiskey Jack Hostel is right at the trailhead — they sometimes have coffee available</li>
+          <li>The afternoon viewpoints are all accessible by car — no more hiking required</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Trailhead at Takakkaw Falls</span>
+          <span class="event-pill">Whiskey Jack Hostel nearby</span>
+          <span class="event-pill">~30–45 min</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12:45 PM — Cathedral Mountain -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">12:45</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏔️ Cathedral Mountain Viewpoint — Upper Spiral Tunnel</div>
+          <span class="event-badge badge-iconic">Viewpoint</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>2.3 km down Yoho Valley Road on the way out — you'll pass it automatically</li>
+          <li>Roadside pullout looking up at the upper Spiral Tunnel entrance carved directly into Cathedral Mountain — the engineering is visible on the sheer cliff face above you</li>
+          <li>Gives context for the Lower Spiral Tunnels viewpoint coming up next</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">On-route · No detour</span>
+          <span class="event-pill">Roadside pullout</span>
+          <span class="event-pill">5–10 min</span>
+          <span class="event-pill">Upper tunnel entrance visible</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 1:15 PM — Spiral Tunnels -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">1:15</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚂 Lower Spiral Tunnels Viewpoint</div>
+          <span class="event-badge badge-iconic">Historic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>The Spiral Tunnels are a feat of 1909 railway engineering — two figure-8 tunnels bored inside Mount Ogden and Cathedral Mountain to reduce the deadly 4.5% "Big Hill" gradient to a safe 2.2%</li>
+          <li>From this viewpoint you can watch a full freight train exit the lower tunnel while its tail is still entering — the train loops 180° inside the mountain, so the head and tail are visible simultaneously</li>
+          <li>~25–30 freight trains pass daily; no fixed schedule but the wait is usually under 30 min. Check <a href="https://www.field.ca" style="color:var(--blue-light)">field.ca</a> for Rocky Mountaineer schedule if you want the scenic train</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">7.4 km east of Field on Hwy 1</span>
+          <span class="event-pill">~25–30 trains/day</span>
+          <span class="event-pill">Wait up to 30 min for a train</span>
+          <span class="event-pill">1909 engineering landmark</span>
+          <span class="event-pill">Head + tail visible at once</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2:00 PM — Natural Bridge -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">2:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌊 Natural Bridge</div>
+          <span class="event-badge badge-iconic">Scenic</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>The Kicking Horse River has eroded a natural rock arch — the water now surges through a narrow slot beneath the bridge rather than over it, where a waterfall once roared</li>
+          <li>Completely flat — 1-minute walk from the parking lot to the viewpoint bridge spanning the river just downstream</li>
+          <li>The turquoise of the Kicking Horse here rivals anything you've seen in the parks</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">3 km west of Field on Emerald Lake Rd</span>
+          <span class="event-pill">1 min walk from parking</span>
+          <span class="event-pill">Wheelchair accessible</span>
+          <span class="event-pill">~15 min stop</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2:30 PM — Wapta Falls -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">2:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">💦 Wapta Falls — Widest Falls in Yoho</div>
+          <span class="event-badge badge-hike">Easy</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>The Kicking Horse River drops 18 m over a 107 m-wide ledge — the widest waterfall in Yoho NP, an impressive wall of white water</li>
+          <li>2.4 km one-way trail (4.8 km return) through mixed forest — relatively flat with gentle terrain, easy after the Iceline day</li>
+          <li>The viewing platform puts you eye-level with the full width of the falls — bring a rain layer for the mist</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">26 km west of Field · on Hwy 1</span>
+          <span class="event-pill">4.8 km return · Easy</span>
+          <span class="event-pill">~1.5 hrs</span>
+          <span class="event-pill">107 m wide — widest in Yoho</span>
+          <span class="event-pill pill-w">Light rain layer for mist</span>
+          <a href="https://www.alltrails.com/trail/canada/british-columbia/wapta-falls" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/british-columbia/wapta-falls" aria-label="View Wapta Falls on AllTrails">🔗 AllTrails</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4:15 PM — Drive back -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">4:15</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive Back to Golden</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Wapta Falls → Golden: ~30 min west on Hwy 1 through Kicking Horse Canyon</li>
+          <li>Evening light in the canyon is spectacular — Purcell Mountains glow warm to the west</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~30 min to Golden</span>
+          <span class="event-pill">Kicking Horse Canyon views</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7:00 PM — Dinner -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">7:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner in Golden — You Earned It</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Cedar House Restaurant — the top pick after a big trail day: cozy mountain fine dining, amuse-bouche, house-baked bread, creative mains (reserve ahead)</li>
+          <li>Whitetooth Bistro — reliable local favourite on 9th Ave, more casual and no reservation needed</li>
+          <li>Eagle's Eye Restaurant — if energy allows, take the gondola up Kicking Horse Mountain Resort for dinner with 360° mountain views (closes earlier, check times)</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Cedar House Restaurant (reserve ahead)</span>
+          <span class="event-pill">Whitetooth Bistro</span>
+          <span class="event-pill">Eagle's Eye — gondola dinner (check hours)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 6 ─── -->
+<div id="day6" class="section" style="padding-top:0;padding-bottom:60px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">6</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Kootenay NP → Hot Springs → Calgary</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Thursday · June 19</span>
+        <span class="day-block-meta-item">🎨 Paint Pots · Marble Canyon</span>
+        <span class="day-block-meta-item">♨️ Radium Hot Springs → YYC</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 6 of 6</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; Golden → Kootenay NP (Radium): ~1 hr south on Hwy 95 &nbsp;|&nbsp; Radium → Calgary: ~3 hrs via Hwy 93 + Hwy 1 East &nbsp;|&nbsp; Depart Radium ≤ 4:30 PM</div>
+
+    <!-- 7:30 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">7:30</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive Golden → Kootenay NP</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Hwy 95 south through the Columbia River Valley — flanked by two mountain ranges</li>
+          <li>Gas up in Radium before entering the park</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~1 hr drive</span>
+          <span class="event-pill">Columbia Valley views</span>
+          <span class="event-pill">Gas up in Radium</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9:00 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">9:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🎨 Paint Pots — Ochre Springs</div>
+          <span class="event-badge badge-iconic">Cultural</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>1 km flat boardwalk to iron-rich ochre springs</li>
+          <li>Vivid pools of burnt orange and deep red mineral water</li>
+          <li>Sacred First Nations pigment source — used for millennia</li>
+          <li>Fully accessible</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">1 km boardwalk · Easy</span>
+          <span class="event-pill">~45 min</span>
+          <span class="event-pill">Fully accessible</span>
+          <span class="event-pill">Culturally significant</span>
+          <a href="https://www.alltrails.com/trail/canada/british-columbia/paint-pots" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/british-columbia/paint-pots" aria-label="View Paint Pots on AllTrails">🔗 AllTrails</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 10:30 AM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">10:30</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏞️ Marble Canyon Loop</div>
+          <span class="event-badge badge-hike">Easy–Mod</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>3.4 km loop through a deep limestone gorge</li>
+          <li>8 bridges crossing above the roaring turquoise creek</li>
+          <li>Canyon walls narrow to just a few feet apart at the top</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">3.4 km loop · Easy–Mod</span>
+          <span class="event-pill">~1.5 hrs</span>
+          <span class="event-pill">8 bridges</span>
+          <span class="event-pill">Minimal elevation</span>
+          <a href="https://www.alltrails.com/trail/canada/british-columbia/marble-canyon" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/british-columbia/marble-canyon" aria-label="View Marble Canyon on AllTrails">🔗 AllTrails</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 12:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">12:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Stanley Glacier Trail (Hikers Only)</div>
+          <span class="event-badge badge-hike">Moderate</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>10 km return through fire-regenerated valley to a hanging glacier viewpoint</li>
+          <li>Non-hikers: relax in Radium town (10 min away) or leisurely lunch</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">10 km return · Moderate</span>
+          <span class="event-pill">~3 hrs</span>
+          <span class="event-pill">+365m elevation</span>
+          <span class="event-pill pill-w">Start by 12:30 sharp</span>
+          <a href="https://www.alltrails.com/trail/canada/alberta/stanley-glacier-trail" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="canada/alberta/stanley-glacier-trail" aria-label="View Stanley Glacier Trail on AllTrails">🔗 AllTrails</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3:00 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">3:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">♨️ Radium Hot Springs Pools</div>
+          <span class="event-badge badge-iconic">Hot Springs</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Canada's largest natural hot springs pool</li>
+          <li>38°C mineral-rich water</li>
+          <li>Towel and swimsuit rentals available</li>
+          <li>Accessible for all ages</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">38°C mineral pool</span>
+          <span class="event-pill">All ages</span>
+          <span class="event-pill">Towel rental available</span>
+          <span class="event-pill pill-a">Depart by 4:30 PM latest!</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4:30 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">4:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive Radium → Calgary (~3 hrs)</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Hwy 93 east through Banff NP — spectacular at dusk</li>
+          <li>Quick dinner stop in Banff town</li>
+          <li>Watch for wildlife along the roadside at dusk</li>
+          <li>Mountains give way to prairie as you reach Calgary</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">~3 hrs driving</span>
+          <span class="event-pill">Banff dinner stop</span>
+          <span class="event-pill">Arrive Calgary ~7:30 PM</span>
+          <span class="event-pill pill-w">Watch for wildlife at dusk</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8:00 PM -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">8:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🛬 Arrive Calgary · Pre-Flight Night</div>
+          <span class="event-badge badge-rest">Check-in</span>
+        </div>
+        <div class="event-desc"><ul>
+          <li>Hotel near YYC — Hampton Inn or Acclaim Hotel are 5 min from the terminal</li>
+          <li>Be at the airport by 5 AM for the 7 AM flight</li>
+        </ul></div>
+        <div class="event-pills">
+          <span class="event-pill">Stay near YYC terminal</span>
+          <span class="event-pill pill-a">Airport by 5:00 AM for 7 AM flight</span>
+          <span class="event-pill">Confirm airport shuttle/parking</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ TIPS ═══════════════════ -->
+<div id="tips">
+<div class="section">
+  <div class="section-eyebrow">Before You Go</div>
+  <div class="section-title">Critical <span>Tips</span></div>
+  <div class="section-body">A few things to lock in before you leave — some require advance booking or can't be fixed once you're on the road.</div>
+
+  <div class="reminders-grid">
+    <div class="reminder-card">
+      <div class="reminder-icon">✈️</div>
+      <div>
+        <div class="reminder-title">Flight Reminder</div>
+        <div class="reminder-body">June 20 · 7 AM YYC. Be at the airport by <strong>5:00 AM</strong>. Book a hotel within 5 min of the terminal for June 19 night — Hampton Inn or Acclaim Hotel YYC are both solid.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">🎫</div>
+      <div>
+        <div class="reminder-title">Book Early</div>
+        <div class="reminder-body"><strong>Parks Canada shuttle</strong> (Lake Louise / Moraine Lake), <strong>Banff Gondola</strong>, and <strong>Columbia Icefield Glacier Adventure + Skywalk</strong> all sell out in June. Also pick up a Parks Canada Discovery Pass — covers all national parks on this trip.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">🐻</div>
+      <div>
+        <div class="reminder-title">Wildlife Safety</div>
+        <div class="reminder-body">Bear spray on <strong>every trail</strong>. Make noise while hiking. June is peak bear activity season in all four national parks. Keep food in the car, not in camp.</div>
+      </div>
+    </div>
+    <div class="reminder-card">
+      <div class="reminder-icon">🌡️</div>
+      <div>
+        <div class="reminder-title">June Weather</div>
+        <div class="reminder-body">Expect <strong>10–18°C</strong>, afternoon showers possible. Layer up and pack a waterproof shell. Snow is still possible near the Icefield — dress like it's October near the glacier.</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <strong>Canadian Rockies · June 14–19, 2025</strong><br>
+  Banff NP · Lake Louise · Moraine Lake · Columbia Icefield · Golden · Yoho NP · Glacier NP · Kootenay NP · Calgary<br><br>
+  <span>Parks Canada parkscanada.gc.ca · Columbia Icefield tickets explorerockies.com · Banff Gondola banffjaspercollection.com</span>
+</footer>
+
+<!-- ═══════════════════ SCRIPTS ═══════════════════ -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ── Day block toggle ──────────────────────────────────────────────────────────
+function toggleDay(header) {
+  const block = header.closest('.day-block');
+  block.classList.toggle('open');
+}
+
+// ── Twinkling stars ───────────────────────────────────────────────────────────
+(function () {
+  const canvas = document.getElementById('star-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let stars = [];
+  const COUNT = 180;
+
+  function resize() {
+    canvas.width  = canvas.parentElement.offsetWidth;
+    canvas.height = canvas.parentElement.offsetHeight;
+  }
+  function randomStar() {
+    return { x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+             r: Math.random() * 1.2 + 0.3, phase: Math.random() * Math.PI * 2,
+             speed: Math.random() * 0.006 + 0.002 };
+  }
+  function init() { resize(); stars = Array.from({ length: COUNT }, randomStar); }
+  function draw(ts) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const t = ts * 0.001;
+    for (const s of stars) {
+      const a = 0.15 + 0.75 * (0.5 + 0.5 * Math.sin(t * s.speed * 6.28 + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${a.toFixed(3)})`;
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+  window.addEventListener('resize', resize);
+  init();
+  requestAnimationFrame(draw);
+})();
+
+// ── Nav active state on scroll ────────────────────────────────────────────────
+const navLinks = document.querySelectorAll('.nav a[href^="#"]');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(link => {
+        link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+document.querySelectorAll('[id]').forEach(s => observer.observe(s));
+
+// ── Fade-in on load ───────────────────────────────────────────────────────────
+document.body.style.opacity = '0';
+window.addEventListener('load', () => {
+  document.body.style.transition = 'opacity 0.4s ease';
+  document.body.style.opacity = '1';
+});
+
+// ── Leaflet map ───────────────────────────────────────────────────────────────
+const ALL_PINS = [
+  { lat: 51.2453, lng: -115.8330, label: "Johnston Canyon",            icon: "hike",      show: "all" },
+  { lat: 51.1955, lng: -115.5728, label: "Vermilion Lakes",             icon: "landmark",  show: "all" },
+  { lat: 51.1790, lng: -115.5645, label: "Tunnel Mountain",             icon: "hike",      show: "all" },
+  { lat: 51.1652, lng: -115.5407, label: "Hoodoos Viewpoint",           icon: "landmark",  show: "all" },
+  { lat: 51.1737, lng: -115.5540, label: "Banff Upper Hot Springs",     icon: "activity",  show: "all" },
+  { lat: 51.4153, lng: -116.1773, label: "Lake Louise",                icon: "landmark",  show: "all" },
+  { lat: 51.3238, lng: -116.1838, label: "Moraine Lake",               icon: "landmark",  show: "all" },
+  { lat: 51.1784, lng: -115.5708, label: "Banff Town",                 icon: "village",   show: "all" },
+  { lat: 51.1563, lng: -115.5581, label: "Banff Gondola / Sulphur Mtn",icon: "activity",  show: "all" },
+  { lat: 51.0844, lng: -115.1556, label: "Dead Man's Flats Airbnb",    icon: "village",   show: "all" },
+  { lat: 51.6716, lng: -116.4637, label: "Bow Lake",                   icon: "landmark",  show: "all" },
+  { lat: 51.7276, lng: -116.5270, label: "Peyto Lake / Bow Summit",     icon: "landmark",  show: "all" },
+  { lat: 51.9540, lng: -116.7912, label: "Saskatchewan River Crossing", icon: "activity",  show: "all" },
+  { lat: 52.0800, lng: -116.9710, label: "Weeping Wall",                icon: "landmark",  show: "all" },
+  { lat: 52.8734, lng: -118.0828, label: "Jasper",                      icon: "village",   show: "all" },
+  { lat: 52.6882, lng: -117.9050, label: "Sunwapta Falls",              icon: "landmark",  show: "all" },
+  { lat: 52.2195, lng: -117.2243, label: "Columbia Icefield Centre",   icon: "activity",  show: "all" },
+  { lat: 52.2020, lng: -117.6413, label: "Sunwapta Falls",             icon: "landmark",  show: "all" },
+  { lat: 51.2961, lng: -116.9631, label: "Golden, BC",                 icon: "village",   show: "all" },
+  { lat: 51.2851, lng: -116.9755, label: "Kicking Horse Pedestrian Bridge", icon: "landmark", show: "all" },
+  { lat: 51.2202, lng: -116.9845, label: "Golden Skybridge",           icon: "activity",  show: "all" },
+  { lat: 51.4375, lng: -116.5327, label: "Emerald Lake, Yoho NP",     icon: "landmark",  show: "all" },
+  { lat: 51.5002, lng: -116.4773, label: "Takakkaw Falls / Iceline Trailhead", icon: "hike", show: "all" },
+  { lat: 51.4148, lng: -116.5350, label: "Natural Bridge, Yoho NP",   icon: "landmark",  show: "all" },
+  { lat: 51.4002, lng: -116.3855, label: "Lower Spiral Tunnels Viewpoint", icon: "activity", show: "all" },
+  { lat: 51.3197, lng: -116.7750, label: "Wapta Falls, Yoho NP",      icon: "landmark",  show: "all" },
+  { lat: 51.2988, lng: -117.5228, label: "Rogers Pass, Glacier NP",    icon: "activity",  show: "all" },
+  { lat: 50.9987, lng: -116.2295, label: "Paint Pots, Kootenay NP",    icon: "landmark",  show: "all" },
+  { lat: 51.0114, lng: -116.1559, label: "Marble Canyon",              icon: "landmark",  show: "all" },
+  { lat: 50.6237, lng: -116.0729, label: "Radium Hot Springs",         icon: "activity",  show: "all" },
+  { lat: 51.0447, lng: -114.0719, label: "Calgary (YYC)",              icon: "airport",   show: "all" },
+];
+
+const ICON_COLOUR = { airport:"#6366f1", village:"#10b981", landmark:"#f59e0b", activity:"#3b82f6", hike:"#30d158" };
+
+function makeSvgUrl(colour) {
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="26" height="34" viewBox="0 0 28 36"><path d="M14 0C6.27 0 0 6.27 0 14c0 9.33 14 22 14 22S28 23.33 28 14C28 6.27 21.73 0 14 0z" fill="${colour}" stroke="rgba(255,255,255,0.7)" stroke-width="1.5"/><circle cx="14" cy="14" r="5.5" fill="white" opacity="0.9"/></svg>`;
+  return "data:image/svg+xml;charset=UTF-8," + encodeURIComponent(svg);
+}
+
+function initMap() {
+  if (typeof L === 'undefined') { setTimeout(initMap, 200); return; }
+  const map = L.map('map-container', { zoomControl: true }).setView([51.4, -116.0], 7);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    maxZoom: 19,
+  }).addTo(map);
+
+  const types = [...new Set(ALL_PINS.map(p => p.icon))];
+  const legend = document.getElementById('map-legend');
+  legend.innerHTML = types.map(t =>
+    `<span class="map-legend-item"><span class="map-legend-dot" style="background:${ICON_COLOUR[t]||'#999'}"></span>${t}</span>`
+  ).join('');
+
+  ALL_PINS.forEach(pin => {
+    const icon = L.icon({ iconUrl: makeSvgUrl(ICON_COLOUR[pin.icon]||'#f59e0b'),
+      iconSize:[26,34], iconAnchor:[13,34], popupAnchor:[0,-34] });
+    L.marker([pin.lat, pin.lng], { icon }).addTo(map)
+      .bindPopup(`<div style="font:600 13px -apple-system,sans-serif;padding:2px 4px;color:#1d1d1f">${pin.label}</div>`);
+  });
+
+  const bounds = L.latLngBounds(ALL_PINS.map(p => [p.lat, p.lng]));
+  map.fitBounds(bounds, { padding: [40, 40] });
+}
+
+window.addEventListener('load', initMap);
+
+// ── AllTrails smart links — open app on mobile, web on desktop ────────────────
+document.addEventListener('click', function(e) {
+  const el = e.target.closest('a.pill-at');
+  if (!el) return;
+  const slug = el.dataset.atSlug;
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile && slug) {
+    e.preventDefault();
+    window.location = 'alltrails://explore/trail/' + slug;
+    setTimeout(() => { window.location = 'https://www.alltrails.com/trail/' + slug; }, 1500);
+  }
+  // desktop: let the default href open in new tab normally
+});
+</script>
+
+</body>
+</html>
