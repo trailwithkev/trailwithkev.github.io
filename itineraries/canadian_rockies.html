@@ -415,7 +415,7 @@ body {
 .day-block-num {
   font-size: 64px;
   font-weight: 700;
-  color: rgba(41,151,255,0.35);
+  color: rgba(41,151,255,0.65);
   letter-spacing: -0.04em;
   line-height: 1;
   min-width: 80px;
@@ -602,14 +602,28 @@ body {
 
 /* ─── FOOTER ─── */
 footer {
-  background: var(--gray-1);
-  border-top: 0.5px solid rgba(255,255,255,0.08);
+  background: var(--gray-2);
+  border-top: 1px solid rgba(255,255,255,0.14);
   padding: 40px;
   text-align: center;
   font-size: 12px;
-  color: var(--gray-4);
+  color: var(--gray-6);
 }
-footer strong { color: var(--gray-6); }
+footer strong { color: var(--white); }
+.footer-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--gray-5);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 12px 0 16px;
+  transition: color 0.2s;
+}
+.footer-instagram:hover { color: var(--pure-white); }
+html.light .footer-instagram { color: #636366; }
+html.light .footer-instagram:hover { color: #000; }
 
 /* ─── PROGRESS STRIP ─── */
 .progress-strip {
@@ -757,16 +771,16 @@ html.light .tt-thumb { transform: translateX(30px); background: #1d1d1f; box-sha
 @media (max-width: 480px) { .theme-toggle { right: 16px; } }
 
 /* ─── LIGHT MODE ─── */
-html.light body { background: #f5f5f7; color: #1d1d1f; }
+html.light body { background: #f0ede8; color: #1d1d1f; }
 html.light ::-webkit-scrollbar-track { background: #e5e5ea; }
 html.light ::-webkit-scrollbar-thumb { background: #c7c7cc; }
-html.light .nav { background: rgba(245,245,247,0.92); border-bottom-color: rgba(0,0,0,0.1); }
+html.light .nav { background: rgba(240,237,232,0.92); border-bottom-color: rgba(0,0,0,0.1); }
 html.light .nav-brand { color: #1d1d1f; }
 html.light .nav a { color: #636366; }
 html.light .nav a:hover { color: #000; }
 html.light .nav a.active { color: #000; border-bottom-color: #0055cc; }
 html.light #star-canvas { display: none; }
-html.light .hero { background: #f5f5f7; }
+html.light .hero { background: #f0ede8; }
 html.light .hero-glow { opacity: 0; }
 html.light .hero-mountains path { fill: rgba(0,0,0,0.06); }
 html.light .hero-eyebrow { color: #0055cc; }
@@ -807,7 +821,7 @@ html.light .map-legend-item { color: #636366; }
 html.light #map-container { filter: brightness(1.05) contrast(0.95); }
 html.light .map-dot { background: #0055cc; }
 html.light .day-block-header { border-bottom-color: rgba(0,0,0,0.08); }
-html.light .day-block-num { color: rgba(0,85,204,0.22); }
+html.light .day-block-num { color: rgba(0,85,204,0.55); }
 html.light .day-block-title { color: #000; }
 html.light .day-block-meta { color: #636366; }
 html.light .day-block-label { color: #0055cc; }
@@ -841,8 +855,77 @@ html.light .reminder-card { background: #fff; border-color: rgba(0,0,0,0.08); }
 html.light .reminder-title { color: #000; }
 html.light .reminder-body { color: #48484a; }
 html.light .reminder-body strong { color: #0055cc; }
-html.light footer { background: #fff; border-top-color: rgba(0,0,0,0.08); color: #8e8e93; }
-html.light footer strong { color: #48484a; }
+html.light footer { background: #e8e4de; border-top-color: rgba(0,0,0,0.12); color: #48484a; }
+html.light footer strong { color: #1d1d1f; }
+
+/* ─── INSTAGRAM NAV ICON ─── */
+.nav-instagram {
+  margin-left: auto;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--gray-5);
+  text-decoration: none;
+  padding: 0 12px;
+  height: 52px;
+  transition: color 0.2s;
+  margin-right: 72px;
+}
+.nav-instagram:hover { color: var(--pure-white); }
+html.light .nav-instagram { color: #636366; }
+html.light .nav-instagram:hover { color: #000; }
+@media (max-width: 480px) { .nav-instagram { margin-right: 50px; padding: 0 8px; } }
+
+/* ─── MOUNTAIN SIDE DECORATIONS ─── */
+.mountain-left, .mountain-right {
+  position: fixed;
+  top: 52px;
+  bottom: 0;
+  width: 240px;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+  display: none;
+}
+@media (min-width: 1460px) {
+  .mountain-left, .mountain-right { display: block; }
+}
+.mountain-left {
+  left: 0;
+  mask: linear-gradient(to bottom, transparent 0%, black 28%, black 100%),
+        linear-gradient(to right, black 0%, black 65%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask: linear-gradient(to bottom, transparent 0%, black 28%, black 100%),
+                linear-gradient(to right, black 0%, black 65%, transparent 100%);
+  -webkit-mask-composite: source-in;
+}
+.mountain-right {
+  right: 0;
+  mask: linear-gradient(to bottom, transparent 0%, black 28%, black 100%),
+        linear-gradient(to right, transparent 0%, black 35%, black 100%);
+  mask-composite: intersect;
+  -webkit-mask: linear-gradient(to bottom, transparent 0%, black 28%, black 100%),
+                linear-gradient(to right, transparent 0%, black 35%, black 100%);
+  -webkit-mask-composite: source-in;
+}
+.mountain-left svg, .mountain-right svg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.mountain-right svg { transform: scaleX(-1); }
+.mt-far  { fill: rgba(72,98,190,0.08); }
+.mt-mid  { fill: rgba(58,82,175,0.17); }
+.mt-near { fill: rgba(46,68,162,0.28); }
+.mt-snow { fill: rgba(200,215,255,0.26); }
+.mt-band { fill: none; stroke: rgba(58,82,175,0.09); stroke-width: 0.7; }
+html.light .mt-far  { fill: rgba(90,115,198,0.07); }
+html.light .mt-mid  { fill: rgba(75,100,182,0.12); }
+html.light .mt-near { fill: rgba(60,85,168,0.19); }
+html.light .mt-snow { fill: rgba(248,252,255,0.82); }
+html.light .mt-band { stroke: rgba(75,100,182,0.10); }
 </style>
 </head>
 <body>
@@ -862,12 +945,47 @@ html.light footer strong { color: #48484a; }
   <a href="#day5">Day 5</a>
   <a href="#day6">Day 6</a>
   <a href="#tips">Tips</a>
+  <a href="https://www.instagram.com/trailwithkev/" class="nav-instagram" target="_blank" rel="noopener noreferrer" aria-label="TrailWithKev on Instagram">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4.5"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+    </svg>
+  </a>
 </nav>
 <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
   <span class="tt-moon">🌙</span>
   <span class="tt-thumb"></span>
   <span class="tt-sun">☀️</span>
 </button>
+
+<!-- Mountain side decorations -->
+<div class="mountain-left" aria-hidden="true">
+  <svg viewBox="0 0 240 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <path class="mt-far" d="M0,900 L0,435 C25,415 50,400 80,382 C110,362 140,348 170,330 C195,314 215,302 240,288 L240,900 Z"/>
+    <path class="mt-mid" d="M0,900 L0,540 L20,518 L32,524 L48,500 L64,478 L72,484 L88,460 L102,440 L110,446 L124,422 L138,402 L145,408 L156,385 L166,368 L172,374 L184,350 L194,335 L198,340 L210,315 L220,300 L226,306 L232,285 L238,270 L240,262 L240,900 Z"/>
+    <path class="mt-near" d="M0,900 L0,650 L18,628 L28,635 L42,612 L52,618 L62,598 L75,575 L82,582 L92,558 L105,535 L112,542 L120,520 L133,498 L140,504 L148,485 L158,465 L165,472 L172,452 L182,432 L188,438 L196,418 L206,398 L214,390 L220,374 L226,380 L230,360 L238,342 L240,335 L240,900 Z"/>
+    <path class="mt-snow" d="M220,374 L226,380 L230,360 L238,342 L240,335 L240,358 L234,370 L228,382 L222,392 L216,402 L210,408 L206,398 L214,390 L220,374 Z"/>
+    <path class="mt-snow" d="M172,452 L182,432 L188,438 L188,455 L182,462 L175,468 L172,465 Z"/>
+    <path class="mt-snow" d="M133,498 L140,504 L148,485 L148,498 L142,508 L136,513 L133,512 Z"/>
+    <path class="mt-band" d="M55,622 L80,606 L108,590 L135,573 L158,558 L180,544"/>
+    <path class="mt-band" d="M100,556 L126,540 L152,524 L176,510 L200,494 L220,482"/>
+    <path class="mt-band" d="M145,505 L168,490 L192,474 L215,458 L232,448"/>
+  </svg>
+</div>
+<div class="mountain-right" aria-hidden="true">
+  <svg viewBox="0 0 240 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
+    <path class="mt-far" d="M0,900 L0,435 C25,415 50,400 80,382 C110,362 140,348 170,330 C195,314 215,302 240,288 L240,900 Z"/>
+    <path class="mt-mid" d="M0,900 L0,540 L20,518 L32,524 L48,500 L64,478 L72,484 L88,460 L102,440 L110,446 L124,422 L138,402 L145,408 L156,385 L166,368 L172,374 L184,350 L194,335 L198,340 L210,315 L220,300 L226,306 L232,285 L238,270 L240,262 L240,900 Z"/>
+    <path class="mt-near" d="M0,900 L0,650 L18,628 L28,635 L42,612 L52,618 L62,598 L75,575 L82,582 L92,558 L105,535 L112,542 L120,520 L133,498 L140,504 L148,485 L158,465 L165,472 L172,452 L182,432 L188,438 L196,418 L206,398 L214,390 L220,374 L226,380 L230,360 L238,342 L240,335 L240,900 Z"/>
+    <path class="mt-snow" d="M220,374 L226,380 L230,360 L238,342 L240,335 L240,358 L234,370 L228,382 L222,392 L216,402 L210,408 L206,398 L214,390 L220,374 Z"/>
+    <path class="mt-snow" d="M172,452 L182,432 L188,438 L188,455 L182,462 L175,468 L172,465 Z"/>
+    <path class="mt-snow" d="M133,498 L140,504 L148,485 L148,498 L142,508 L136,513 L133,512 Z"/>
+    <path class="mt-band" d="M55,622 L80,606 L108,590 L135,573 L158,558 L180,544"/>
+    <path class="mt-band" d="M100,556 L126,540 L152,524 L176,510 L200,494 L220,482"/>
+    <path class="mt-band" d="M145,505 L168,490 L192,474 L215,458 L232,448"/>
+  </svg>
+</div>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero">
@@ -1031,10 +1149,10 @@ html.light footer strong { color: #48484a; }
 
     <div class="drive-note">🚌&nbsp; Parks Canada Shuttle departs from Lake Louise Park &amp; Ride — <strong>book shuttle tickets in advance</strong> at reservation.pc.gc.ca · Private vehicles not permitted at Moraine Lake in peak season &nbsp;|&nbsp; Lake Louise → Banff town: ~45 min (Hwy 1 East)</div>
 
-    <!-- 7:00 AM -->
+    <!-- 8:00 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">7:00</div>
+        <div class="event-time">8:00</div>
         <div class="event-period">AM</div>
       </div>
       <div class="event-content">
@@ -1047,7 +1165,7 @@ html.light footer strong { color: #48484a; }
           <li>Moraine Lake shuttle stop</li>
         </ul></div>
         <div class="event-pills">
-          <span class="event-pill pill-a">Reserve shuttle in advance!</span>
+          <span class="event-pill pill-at">✅ Reservation confirmed — 8:00–9:00 AM</span>
           <span class="event-pill">reservation.pc.gc.ca</span>
           <span class="event-pill">Parks Canada pass required</span>
           <span class="event-pill">~20 min ride to Lake Louise</span>
@@ -1055,10 +1173,10 @@ html.light footer strong { color: #48484a; }
       </div>
     </div>
 
-    <!-- 7:30 AM -->
+    <!-- 9:00 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">7:30</div>
+        <div class="event-time">9:00</div>
         <div class="event-period">AM</div>
       </div>
       <div class="event-content">
@@ -1174,10 +1292,10 @@ html.light footer strong { color: #48484a; }
       </div>
     </div>
 
-    <!-- 5:00 PM -->
+    <!-- 6:00 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">5:00</div>
+        <div class="event-time">6:00</div>
         <div class="event-period">PM</div>
       </div>
       <div class="event-content">
@@ -1205,10 +1323,10 @@ html.light footer strong { color: #48484a; }
       </div>
     </div>
 
-    <!-- 8:00 PM -->
+    <!-- 8:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">8:00</div>
+        <div class="event-time">8:30</div>
         <div class="event-period">PM</div>
       </div>
       <div class="event-content">
@@ -2547,7 +2665,15 @@ html.light footer strong { color: #48484a; }
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer>
   <strong>Canadian Rockies · June 14–19, 2025</strong><br>
-  Banff NP · Lake Louise · Moraine Lake · Columbia Icefield · Golden · Yoho NP · Glacier NP · Kootenay NP · Calgary<br><br>
+  Banff NP · Lake Louise · Moraine Lake · Columbia Icefield · Golden · Yoho NP · Glacier NP · Kootenay NP · Calgary<br>
+  <a href="https://www.instagram.com/trailwithkev/" class="footer-instagram" target="_blank" rel="noopener noreferrer">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <circle cx="12" cy="12" r="4.5"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+    </svg>
+    @trailwithkev
+  </a><br>
   <span>Parks Canada parkscanada.gc.ca · Columbia Icefield tickets explorerockies.com · Banff Gondola banffjaspercollection.com</span>
 </footer>
 
