@@ -78,8 +78,14 @@ body {
   margin-right: 32px;
   letter-spacing: -0.3px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 .nav-brand span { color: var(--blue-light); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
 .nav a.nav-link {
   color: var(--gray-5);
   text-decoration: none;
@@ -95,6 +101,40 @@ body {
 }
 .nav a.nav-link:hover { color: var(--pure-white); }
 .nav a.nav-link.active { color: var(--pure-white); border-bottom-color: var(--blue-light); }
+.nav-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-5);
+  gap: 5px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+html.light .nav-hamburger { color: #636366; }
 
 /* ─── HERO ─── */
 .hero {
@@ -418,7 +458,29 @@ html.light .footer-instagram:hover { color: #000; }
 /* Tablet: 768px and below */
 @media (max-width: 768px) {
   .nav { padding: 0 16px; }
-  .nav-brand { margin-right: 20px; font-size: 16px; }
+  .nav-brand { margin-right: 16px; font-size: 16px; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 52px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    padding: 6px 0 10px;
+    z-index: 199;
+  }
+  .nav-links.open { display: flex; }
+  .nav a.nav-link { height: 44px; padding: 0 20px; border-bottom: none; font-size: 15px; justify-content: flex-start; border-left: 2px solid transparent; }
+  .nav a.nav-link.active { border-bottom-color: transparent; border-left-color: var(--blue-light); }
+  .nav-instagram { height: 44px; padding: 0 16px; margin-left: 0; }
+  .nav-hamburger { display: flex; }
+  .nav-actions { gap: 2px; }
+  html.light .nav-links { background: rgba(240,237,232,0.97); }
   .hero { padding: 72px 24px 56px; min-height: 80vh; }
   .hero-title { font-size: clamp(32px, 8vw, 60px); }
   .hero-subtitle { font-size: clamp(15px, 3vw, 18px); margin-bottom: 36px; }
@@ -435,8 +497,7 @@ html.light .footer-instagram:hover { color: #000; }
 /* Small mobile: 480px and below */
 @media (max-width: 480px) {
   .nav { padding: 0 14px; }
-  .nav-brand { font-size: 15px; margin-right: 14px; }
-  .nav a.nav-link { padding: 0 10px; font-size: 12px; }
+  .nav-brand { font-size: 15px; margin-right: 12px; }
   .hero { padding: 60px 16px 48px; }
   .hero-title { font-size: clamp(28px, 9vw, 44px); }
   .hero-subtitle { font-size: 14px; margin-bottom: 28px; }
@@ -456,7 +517,7 @@ html.light .footer-instagram:hover { color: #000; }
 
 /* ─── THEME TOGGLE ─── */
 .theme-toggle {
-  position: fixed; top: 12px; right: 40px; z-index: 400;
+  flex-shrink: 0;
   width: 56px; height: 26px; border-radius: 980px;
   background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.25);
   cursor: pointer; display: flex; align-items: center; justify-content: space-between;
@@ -471,7 +532,6 @@ html.light .footer-instagram:hover { color: #000; }
 }
 html.light .theme-toggle { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.18); }
 html.light .tt-thumb { transform: translateX(30px); background: #1d1d1f; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
-@media (max-width: 480px) { .theme-toggle { right: 16px; } }
 
 /* ─── LIGHT MODE ─── */
 html.light body { background: #f0ede8; color: #1d1d1f; }
@@ -512,7 +572,6 @@ html.light footer a:hover { color: #000; }
 
 /* ─── INSTAGRAM NAV ICON ─── */
 .nav-instagram {
-  margin-left: auto;
   flex-shrink: 0;
   display: flex;
   align-items: center;
@@ -521,12 +580,10 @@ html.light footer a:hover { color: #000; }
   padding: 0 12px;
   height: 52px;
   transition: color 0.2s;
-  margin-right: 72px;
 }
 .nav-instagram:hover { color: var(--pure-white); }
 html.light .nav-instagram { color: #636366; }
 html.light .nav-instagram:hover { color: #000; }
-@media (max-width: 480px) { .nav-instagram { margin-right: 50px; padding: 0 8px; } }
 </style>
 </head>
 <body>
@@ -534,21 +591,28 @@ html.light .nav-instagram:hover { color: #000; }
 <!-- NAV -->
 <nav class="nav">
   <a href="/" class="nav-brand">Trail<span>WithKev</span></a>
-  <a href="#future-plans" class="nav-link">Future Plans</a>
-  <a href="#itineraries" class="nav-link">Past Trips</a>
-  <a href="https://www.instagram.com/trailwithkev/" class="nav-instagram" target="_blank" rel="noopener noreferrer" aria-label="TrailWithKev on Instagram">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-      <circle cx="12" cy="12" r="4.5"/>
-      <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
-    </svg>
-  </a>
+  <div class="nav-links">
+    <a href="#future-plans" class="nav-link">Future Plans</a>
+    <a href="#itineraries" class="nav-link">Past Trips</a>
+    <a href="https://www.instagram.com/trailwithkev/" class="nav-instagram" target="_blank" rel="noopener noreferrer" aria-label="TrailWithKev on Instagram">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+        <circle cx="12" cy="12" r="4.5"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+  </div>
+  <div class="nav-actions">
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+      <span class="tt-moon">🌙</span>
+      <span class="tt-thumb"></span>
+      <span class="tt-sun">☀️</span>
+    </button>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
-<button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
-  <span class="tt-moon">🌙</span>
-  <span class="tt-thumb"></span>
-  <span class="tt-sun">☀️</span>
-</button>
 
 <!-- HERO -->
 <section class="hero">
@@ -688,6 +752,32 @@ function toggleTheme() {
   localStorage.setItem('theme', isLight ? 'light' : 'dark');
 }
 if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light');
+
+(function() {
+  const hamburger = document.querySelector('.nav-hamburger');
+  const navLinks = document.querySelector('.nav-links');
+  if (!hamburger || !navLinks) return;
+  hamburger.addEventListener('click', function(e) {
+    e.stopPropagation();
+    const isOpen = hamburger.classList.toggle('open');
+    navLinks.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', String(isOpen));
+  });
+  navLinks.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav')) {
+      hamburger.classList.remove('open');
+      navLinks.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    }
+  });
+})();
 </script>
 </body>
 </html>
