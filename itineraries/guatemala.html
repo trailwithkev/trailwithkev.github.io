@@ -81,13 +81,13 @@ body {
   overflow-x: auto; scrollbar-width: none;
 }
 .nav-links::-webkit-scrollbar { display: none; }
-.nav a {
+.nav-links a {
   color: var(--gray-5); text-decoration: none; font-size: 13px; font-weight: 400;
   padding: 0 14px; white-space: nowrap; height: 52px; display: flex; align-items: center;
   transition: color 0.2s; border-bottom: 2px solid transparent;
 }
-.nav a:hover { color: var(--pure-white); }
-.nav a.active { color: var(--pure-white); border-bottom-color: var(--blue-light); }
+.nav-links a:hover { color: var(--pure-white); }
+.nav-links a.active { color: var(--pure-white); border-bottom-color: var(--blue-light); }
 .nav-actions {
   margin-left: auto; display: flex; align-items: center; gap: 4px; flex-shrink: 0;
 }
@@ -195,7 +195,13 @@ html.light .nav-hamburger { color: #636366; }
 .stop-card {
   background: var(--gray-1); border: 0.5px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-md); padding: 18px 16px; position: relative; overflow: hidden;
+  text-decoration: none; color: inherit; display: block;
 }
+.stop-link-hint {
+  font-size: 11px; color: var(--gray-4); margin-top: 12px;
+  letter-spacing: 0.04em; display: flex; align-items: center; gap: 4px; transition: color 0.2s;
+}
+a.stop-card:hover .stop-link-hint { color: var(--gray-6); }
 .stop-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
 .stop-card:nth-child(1)::before { background: var(--blue); }
 .stop-card:nth-child(2)::before { background: var(--volcano); }
@@ -378,8 +384,8 @@ html.light .footer-instagram:hover { color: #000; }
     padding: 6px 0 10px; z-index: 199; max-height: calc(100vh - 52px); overflow-y: auto;
   }
   .nav-links.open { display: flex; }
-  .nav a { height: 44px; padding: 0 20px; border-bottom: none; font-size: 15px; border-left: 2px solid transparent; }
-  .nav a.active { border-bottom-color: transparent; border-left-color: var(--blue-light); }
+  .nav-links a { height: 44px; padding: 0 20px; border-bottom: none; font-size: 15px; border-left: 2px solid transparent; }
+  .nav-links a.active { border-bottom-color: transparent; border-left-color: var(--blue-light); }
   .nav-hamburger { display: flex; }
   .nav-actions { gap: 2px; }
   html.light .nav-links { background: rgba(240,237,232,0.97); }
@@ -445,7 +451,9 @@ html.light .footer-instagram:hover { color: #000; }
   cursor: pointer; display: flex; align-items: center; justify-content: space-between;
   padding: 0 5px; transition: background 0.3s, border-color 0.3s;
 }
-.tt-moon, .tt-sun { font-size: 11px; pointer-events: none; }
+.tt-moon, .tt-sun { font-size: 11px; pointer-events: none; display: flex; align-items: center; }
+.tt-moon { color: rgba(255,255,255,0.85); }
+html.light .tt-moon { color: #3a3a3c; }
 .tt-thumb {
   position: absolute; width: 20px; height: 20px; border-radius: 50%;
   background: #fff; left: 3px;
@@ -453,7 +461,7 @@ html.light .footer-instagram:hover { color: #000; }
   box-shadow: 0 1px 4px rgba(0,0,0,0.4); pointer-events: none;
 }
 html.light .theme-toggle { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.18); }
-html.light .tt-thumb { transform: translateX(30px); background: #1d1d1f; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+html.light .tt-thumb { transform: translateX(30px); background: #636366; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
 
 /* ─── LIGHT MODE ─── */
 html.light body { background: #f0ede8; color: #1d1d1f; }
@@ -461,9 +469,9 @@ html.light ::-webkit-scrollbar-track { background: #e5e5ea; }
 html.light ::-webkit-scrollbar-thumb { background: #c7c7cc; }
 html.light .nav { background: rgba(240,237,232,0.92); border-bottom-color: rgba(0,0,0,0.1); }
 html.light .nav-brand { color: #1d1d1f; }
-html.light .nav a { color: #636366; }
-html.light .nav a:hover { color: #000; }
-html.light .nav a.active { color: #000; border-bottom-color: #c04a10; }
+html.light .nav-links a { color: #636366; }
+html.light .nav-links a:hover { color: #000; }
+html.light .nav-links a.active { color: #000; border-bottom-color: #c04a10; }
 html.light #star-canvas { display: none; }
 html.light .hero { background: #f0ede8; }
 html.light .hero-glow { opacity: 0; }
@@ -493,6 +501,8 @@ html.light .stop-region { color: #636366; }
 html.light .stop-dates { color: #c04a10; }
 html.light .stop-role { color: #000; }
 html.light .stop-role-label { color: #636366; }
+html.light .stop-link-hint { color: #aeaeb2; }
+html.light a.stop-card:hover .stop-link-hint { color: #636366; }
 html.light .tag-blue    { background: rgba(0,102,200,0.08);  color: #0055aa; border-color: rgba(0,102,200,0.2); }
 html.light .tag-green   { background: rgba(0,130,50,0.08);   color: #006e28; border-color: rgba(0,130,50,0.2); }
 html.light .tag-amber   { background: rgba(160,100,0,0.08);  color: #7a5200; border-color: rgba(160,100,0,0.2); }
@@ -640,7 +650,7 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
       </svg>
     </a>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
-      <span class="tt-moon">🌙</span>
+      <span class="tt-moon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
       <span class="tt-thumb"></span>
       <span class="tt-sun">☀️</span>
     </button>
@@ -739,7 +749,7 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 
   <div class="stops-grid">
 
-    <div class="stop-card">
+    <a class="stop-card" href="#day0">
       <div class="stop-num">Stop 01 · Arrival</div>
       <div class="stop-town">GUA Airport</div>
       <div class="stop-region">Guatemala City · La Aurora International</div>
@@ -750,9 +760,10 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
         <span class="stop-tag tag-blue">La Aurora (GUA)</span>
         <span class="stop-tag tag-blue">→ Antigua ~45 min</span>
       </div>
-    </div>
+      <div class="stop-link-hint">View Arrival Day ›</div>
+    </a>
 
-    <div class="stop-card">
+    <a class="stop-card" href="#day1">
       <div class="stop-num">Stop 02 · Days 1–4</div>
       <div class="stop-town">Antigua Guatemala</div>
       <div class="stop-region">Central Highlands · UNESCO Colonial City</div>
@@ -764,9 +775,10 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
         <span class="stop-tag tag-volcano">Acatenango Trek</span>
         <span class="stop-tag tag-volcano">Hobbitenango</span>
       </div>
-    </div>
+      <div class="stop-link-hint">View Days 1–4 ›</div>
+    </a>
 
-    <div class="stop-card">
+    <a class="stop-card" href="#day5">
       <div class="stop-num">Stop 03 · Days 5–7</div>
       <div class="stop-town">Lake Atitlán</div>
       <div class="stop-region">San Pedro La Laguna · Western Highlands</div>
@@ -778,7 +790,8 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
         <span class="stop-tag tag-teal">Indian Nose Sunrise</span>
         <span class="stop-tag tag-teal">San Juan Market</span>
       </div>
-    </div>
+      <div class="stop-link-hint">View Days 5–7 ›</div>
+    </a>
 
   </div>
 
@@ -2014,7 +2027,8 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
     </svg>
     @trailwithkev
   </a><br>
-  <span>Book volcano tours on GetYourGuide · OX Expeditions oxexpeditions.com · Wicho &amp; Charlie's wichoandcharlies.com</span>
+  <span>Book volcano tours on GetYourGuide · OX Expeditions oxexpeditions.com · Wicho &amp; Charlie's wichoandcharlies.com</span><br><br>
+  <span style="font-size:11px; opacity:0.6;">&copy; 2024–2026 TrailWithKev. All rights reserved. &nbsp;·&nbsp; <a href="../terms.html">Terms &amp; Conditions</a></span>
 </footer>
 
 <!-- ═══════════════════ SCRIPTS ═══════════════════ -->
@@ -2061,6 +2075,18 @@ function toggleDay(header) {
   const block = header.closest('.day-block');
   block.classList.toggle('open');
 }
+
+document.querySelectorAll('a.stop-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const target = document.querySelector(card.getAttribute('href'));
+    if (!target) return;
+    const block = target.querySelector('.day-block');
+    if (block && !block.classList.contains('open')) {
+      document.querySelectorAll('.day-block.open').forEach(b => b.classList.remove('open'));
+      block.classList.add('open');
+    }
+  });
+});
 
 (function () {
   const canvas = document.getElementById('star-canvas');
