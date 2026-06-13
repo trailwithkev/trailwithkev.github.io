@@ -89,7 +89,7 @@ body {
 .nav a:hover { color: var(--pure-white); }
 .nav a.active { color: var(--pure-white); border-bottom-color: var(--blue-light); }
 .nav-actions {
-  margin-left: 8px; display: flex; align-items: center; gap: 4px; flex-shrink: 0;
+  margin-left: auto; display: flex; align-items: center; gap: 4px; flex-shrink: 0;
 }
 .nav-hamburger {
   display: none; flex-direction: column; justify-content: center; align-items: center;
@@ -439,6 +439,7 @@ html.light .footer-instagram:hover { color: #000; }
 /* ─── THEME TOGGLE ─── */
 .theme-toggle {
   flex-shrink: 0;
+  position: relative;
   width: 56px; height: 26px; border-radius: 980px;
   background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.25);
   cursor: pointer; display: flex; align-items: center; justify-content: space-between;
