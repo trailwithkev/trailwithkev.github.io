@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
   <rect width="32" height="32" rx="6" fill="#0a0a0a"/>
-  <polygon points="16,6 28,26 4,26" fill="none" stroke="#4ade80" stroke-width="2" stroke-linejoin="round"/>
-  <polygon points="10,26 19,12 28,26" fill="#4ade80" opacity="0.25"/>
+  <!-- Everest-like silhouette: tall asymmetric peak, jagged ridgeline, south summit bump -->
+  <path d="M2,28 L6,19 L5,18 L9,12 L8,11 L15,3 L19,8 L18,10 L23,17 L30,28 Z" fill="#0071e3"/>
+  <!-- Snow cap -->
+  <path d="M15,3 L19,8 L18,10 L16,8 L14,9 L9,12 L8,11 Z" fill="rgba(255,255,255,0.88)"/>
 </svg>
