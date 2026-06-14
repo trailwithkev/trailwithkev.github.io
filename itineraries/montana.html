@@ -13,7 +13,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Montana &amp; Wyoming · Aug 2025 · TrailWithKev">
 <meta name="twitter:description" content="12-day camping trip through Yellowstone, Grand Teton, and Glacier National Parks — wolves in Lamar Valley, Old Faithful, Grinnell Glacier, and more.">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/jpeg" href="/public/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -881,7 +881,8 @@ html.light .nav-instagram:hover { color: #000; }
   display: none;
 }
 @media (min-width: 1460px) {
-  .mountain-left, .mountain-right { display: block; }
+  .mountain-left, .mountain-right { display: block; opacity: 0; transition: opacity 0.7s ease; }
+  body.past-hero .mountain-left, body.past-hero .mountain-right { opacity: 1; }
 }
 .mountain-left {
   left: 0;
@@ -947,7 +948,7 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="nav-actions">
     <a href="https://www.instagram.com/trailwithkev/" class="nav-instagram" target="_blank" rel="noopener noreferrer" aria-label="TrailWithKev on Instagram">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
         <defs><linearGradient id="ig-grad-n" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs>
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-n)"/>
         <circle cx="12" cy="12" r="4.5" stroke="url(#ig-grad-n)"/>
@@ -1372,20 +1373,1046 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
 </div>
 </div>
 
-<!-- ─── DAYS 3–12 COMING SOON ─── -->
-<div class="section" style="padding-top:0;padding-bottom:100px;">
-  <div style="border:0.5px solid rgba(255,255,255,0.08);border-radius:18px;padding:60px 40px;text-align:center;color:var(--gray-4);">
-    <div style="font-size:40px;margin-bottom:16px;">📅</div>
-    <div style="font-size:18px;font-weight:600;color:var(--gray-5);margin-bottom:8px;">Days 3–12 coming soon</div>
-    <div style="font-size:14px;color:var(--gray-4);">Old Faithful · Cascade Canyon · Grinnell Glacier · Iceberg Lake · Bozeman</div>
+<!-- ─── DAY 3 ─── -->
+<div id="day3" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">3</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Old Faithful · Grand Prismatic · Hayden Valley</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Monday · Aug 25</span>
+        <span class="day-block-meta-item">🌋 Old Faithful &amp; Grand Prismatic Spring</span>
+        <span class="day-block-meta-item">🦬 Hayden Valley wildlife</span>
+        <span class="day-block-meta-item">⛺ Colter Bay RV Park</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 3 of 12</div>
+    <div class="day-block-toggle">›</div>
   </div>
+  <div class="day-block-events">
+
+    <!-- Sunrise -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">Early</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌅 Sunrise — Colter Bay Picnic Area</div>
+          <span class="event-badge badge-iconic">Sunrise</span>
+        </div>
+        <div class="event-desc">Catch first light over Jackson Lake and the Tetons from the Colter Bay Picnic Area — just steps from camp.</div>
+        <div class="event-pills">
+          <span class="event-pill">Right at camp</span>
+          <span class="event-pill">Teton views over Jackson Lake</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kayaking -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">8:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🛶 Kayaking — Colter Bay (TBC)</div>
+          <span class="event-badge badge-hike">Activity</span>
+        </div>
+        <div class="event-desc">Kayaking on Jackson Lake pending availability — check rental options at Colter Bay Marina. Breakfast and lunch at campsite.</div>
+        <div class="event-pills">
+          <span class="event-pill">Need to confirm rental</span>
+          <span class="event-pill">Colter Bay Marina</span>
+          <span class="event-pill">Breakfast &amp; lunch at camp</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- West Thumb -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">10:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌊 West Thumb Geyser Basin</div>
+          <span class="event-badge badge-iconic">Geothermal</span>
+        </div>
+        <div class="event-desc">Steaming hot springs and geysers right at the edge of Yellowstone Lake — a surreal combination of deep-blue water and boiling thermal pools.</div>
+        <div class="event-pills">
+          <span class="event-pill">Boardwalk loop</span>
+          <span class="event-pill">Yellowstone Lake views</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Old Faithful -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">12:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌋 Old Faithful</div>
+          <span class="event-badge badge-iconic">Iconic</span>
+        </div>
+        <div class="event-desc">Time your visit using the <strong>latest eruption predictions</strong> posted at the visitor center. The geyser erupts roughly every 90 minutes and shoots water 100–180 ft in the air for about 1.5–5 minutes.</div>
+        <div class="event-pills">
+          <span class="event-pill">Check eruption prediction board</span>
+          <span class="event-pill">~90 min interval</span>
+          <span class="event-pill">Visitor center nearby</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grand Prismatic -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">2:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🎨 Grand Prismatic Spring</div>
+          <span class="event-badge badge-iconic">Iconic</span>
+        </div>
+        <div class="event-desc">The largest hot spring in the US — a vivid rainbow of orange, yellow, and deep blue from the mineral-rich waters. Park at the <strong>Grand Prismatic Spring Parking Lot</strong> and walk the boardwalk for ground-level views, or hike up the Fairy Falls trailhead for the classic aerial perspective.</div>
+        <div class="event-pills">
+          <span class="event-pill">Grand Prismatic Parking Lot</span>
+          <span class="event-pill">Boardwalk loop</span>
+          <span class="event-pill">Fairy Falls overlook optional</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hayden Valley -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="wildlife">
+        <div class="event-time">5:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🦬 Hayden Valley Wildlife</div>
+          <span class="event-badge badge-wildlife">Wildlife</span>
+        </div>
+        <div class="event-desc">One of the best spots in Yellowstone to see bison, grizzly bears, wolves, and elk. Drive slowly through the valley and pull over at any of the roadside turnouts — the evening hours are prime wildlife time.</div>
+        <div class="event-pills">
+          <span class="event-pill">Prime bison territory</span>
+          <span class="event-pill">Grizzly &amp; wolf sightings</span>
+          <span class="event-pill pill-a">Bear spray required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dinner -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">7:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Cook at camp or grab a bite at Colter Bay Village.</div>
+        <div class="event-pills">
+          <span class="event-pill">Cook at camp</span>
+          <span class="event-pill">Colter Bay Village dining</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 4 ─── -->
+<div id="day4" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">4</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Mormon Row Sunrise · Cascade Canyon · Jackson Dinner</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Tuesday · Aug 26</span>
+        <span class="day-block-meta-item">🌅 Mormon Row sunrise at 6:35 AM</span>
+        <span class="day-block-meta-item">🥾 Cascade Canyon — 9.8 mi</span>
+        <span class="day-block-meta-item">🤠 Dinner in Jackson, WY</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 4 of 12</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🌅&nbsp; Mormon Row is 39 mins from camp — wake up at 5:00 AM to reach it in time for sunrise at 6:35 AM. Some cloud cover possible today.</div>
+
+    <!-- Mormon Row -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">6:35</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌅 Sunrise — Mormon Row</div>
+          <span class="event-badge badge-iconic">Sunrise</span>
+        </div>
+        <div class="event-desc">The most photographed spot in Grand Teton — the iconic <strong>Moulton Barn</strong> with the jagged Teton peaks as a backdrop. Arrive early to beat the crowds and catch the golden hour light on the barns and mountains.</div>
+        <div class="event-pills">
+          <span class="event-pill">Wake up 5:00 AM</span>
+          <span class="event-pill">39 min drive from camp</span>
+          <span class="event-pill">Sunrise 6:35 AM</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Breakfast -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">8:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍳 Breakfast</div>
+          <span class="event-badge badge-rest">Breakfast</span>
+        </div>
+        <div class="event-desc">Head into town for a proper sit-down breakfast before the big hike.</div>
+        <div class="event-pills">
+          <span class="event-pill">Pioneer Grill</span>
+          <span class="event-pill">Cafe Genevieve</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Oxbow Bend & Signal Mountain -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">9:30</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏔️ Oxbow Bend · Signal Mountain Summit Road</div>
+          <span class="event-badge badge-iconic">Scenic</span>
+        </div>
+        <div class="event-desc">Swing by <strong>Oxbow Bend</strong> for calm Snake River reflections and wildlife (moose, herons, bald eagles). Then drive <strong>Signal Mountain Summit Road</strong> to the <strong>Jackson Point Overlook</strong> for a panoramic view of the entire Teton Range above Jackson Lake.</div>
+        <div class="event-pills">
+          <span class="event-pill">Oxbow Bend — wildlife &amp; reflections</span>
+          <span class="event-pill">Signal Mountain Road — drive-up</span>
+          <span class="event-pill">Jackson Point Overlook</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cascade Canyon -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">11:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Cascade Canyon Trail</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">One of Grand Teton's classic hikes — a flat canyon walk alongside a rushing creek with towering walls and Teton peaks overhead. The trail follows Cascade Creek deep into the mountains toward Lake Solitude.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Moderate · 9.8 mi · 1,118 ft gain · ~3h 48m</span>
+          <span class="event-pill">Park at String Lake Parking Lot</span>
+          <span class="event-pill pill-a">Bear spray required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dinner Jackson -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">7:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner in Jackson, WY</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Head into Jackson for a well-earned dinner after the canyon hike.</div>
+        <div class="event-pills">
+          <span class="event-pill">Miazga's</span>
+          <span class="event-pill">Hand Fire Pizza</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 5 ─── -->
+<div id="day5" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">5</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Laundry Day · Taggart &amp; Phelps Lakes · Thai Dinner</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Wednesday · Aug 27</span>
+        <span class="day-block-meta-item">🧺 Laundry &amp; rest day</span>
+        <span class="day-block-meta-item">🥾 Taggart + Bradley Lakes · Phelps Lake Loop</span>
+        <span class="day-block-meta-item">🍜 Cozy dinner — Thai Plate</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 5 of 12</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🌧️&nbsp; Rain expected today — good day for laundry and shorter, sheltered hikes. Cliff jumping at Phelps Lake is optional depending on conditions.</div>
+
+    <!-- Laundry -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Morning</div>
+        <div class="event-period"></div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🧺 Laundry Day</div>
+          <span class="event-badge badge-rest">Rest</span>
+        </div>
+        <div class="event-desc">Take care of laundry and recharge. Breakfast outside today.</div>
+        <div class="event-pills">
+          <span class="event-pill">Laundry at camp facilities</span>
+          <span class="event-pill">Breakfast outside</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Taggart & Bradley -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">10:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Taggart Lake &amp; Bradley Lake</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">Two stunning alpine lakes with crystal-clear water and Teton reflections. The loop connects both lakes through forest and moraine terrain — a great moderate hike for a rainy day.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Moderate · 6 mi · 761 ft gain · ~2h 30m</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lunch -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">12:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍕 Cozy Lunch</div>
+          <span class="event-badge badge-rest">Lunch</span>
+        </div>
+        <div class="event-desc">Warm up indoors with a cozy lunch after the morning hike.</div>
+        <div class="event-pills">
+          <span class="event-pill">Leek's Pizzeria</span>
+          <span class="event-pill">Dornan's Pizza &amp; Pasta Company</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phelps Lake -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">2:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Phelps Lake Loop · Cliff Jumping (Optional)</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">A forested loop around secluded Phelps Lake — one of Grand Teton's hidden gems. At the far end of the lake there's a popular cliff jumping spot if the weather cooperates.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Moderate · 6.6 mi · 613 ft gain · ~2h 31m</span>
+          <span class="event-pill">Cliff jumping — weather dependent</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Drinks -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">5:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍺 StillWest Brewery &amp; Grill</div>
+          <span class="event-badge badge-rest">Drinks</span>
+        </div>
+        <div class="event-desc">Post-hike drinks at StillWest Brewery before dinner.</div>
+        <div class="event-pills">
+          <span class="event-pill">StillWest Brewery &amp; Grill</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dinner -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">7:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍜 Cozy Dinner — Thai Plate</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Warm up with a cozy dinner on a rainy evening.</div>
+        <div class="event-pills">
+          <span class="event-pill">Thai Plate</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 6 ─── -->
+<div id="day6" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">6</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Schwabacher Landing Sunrise · Drive to Glacier NP</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Thursday · Aug 28</span>
+        <span class="day-block-meta-item">🌅 Schwabacher Landing sunrise</span>
+        <span class="day-block-meta-item">🚗 8h 21m drive to Glacier Campground</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 6 of 12</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; Long drive day — 8h 21m from Colter Bay to Glacier Campground. Leave after the sunrise stop and pick up groceries on the way. Rain forecast in Wyoming.</div>
+
+    <!-- Sunrise -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">~6:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌅 Sunrise — Schwabacher Landing</div>
+          <span class="event-badge badge-iconic">Sunrise</span>
+        </div>
+        <div class="event-desc">A hidden gem off the main road — calm Snake River pools mirror the Teton Range perfectly in the early morning light. Wake up at 5:00 AM for the 36-minute drive.</div>
+        <div class="event-pills">
+          <span class="event-pill">Wake up 5:00 AM</span>
+          <span class="event-pill">36 min drive from camp</span>
+          <span class="event-pill">Mirror Teton reflections</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkout -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">8:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏕️ Checkout Colter Bay · Drive North</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc">Break camp and hit the road for the long drive north to Glacier National Park. Stop for groceries along the way.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">~8h 21m drive</span>
+          <span class="event-pill">Pick up groceries en route</span>
+          <span class="event-pill">Colter Bay → Glacier Campground</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrive Glacier -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">~6:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⛺ Arrive — Glacier Campground</div>
+          <span class="event-badge badge-camp">Camp</span>
+        </div>
+        <div class="event-desc">Set up camp and rest after the long drive. Big hiking days ahead in Glacier National Park.</div>
+        <div class="event-pills">
+          <span class="event-pill">Glacier Campground</span>
+          <span class="event-pill">Rest up for big hikes</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 7 ─── -->
+<div id="day7" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">7</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Grinnell Glacier · Hidden Lake Overlook</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Friday · Aug 29</span>
+        <span class="day-block-meta-item">🧊 Grinnell Glacier — 10.9 mi</span>
+        <span class="day-block-meta-item">🏔️ Hidden Lake Overlook — 2.7 mi</span>
+        <span class="day-block-meta-item">⛺ Glacier Campground</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 7 of 12</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🧊&nbsp; Grinnell Glacier is the crown jewel of Glacier NP — a hard hike but completely worth every step. Boat ride option skips the lower section but where's the fun in that?</div>
+
+    <!-- Breakfast -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">7:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">☕ Breakfast at Camp</div>
+          <span class="event-badge badge-rest">Breakfast</span>
+        </div>
+        <div class="event-desc">Early breakfast at camp to fuel up for the biggest hike of the trip.</div>
+        <div class="event-pills">
+          <span class="event-pill">Pack trail snacks &amp; water</span>
+          <span class="event-pill">Early start recommended</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grinnell Glacier -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">8:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🧊 Grinnell Glacier Trail</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">One of the most spectacular hikes in North America — through wildflower meadows, past turquoise lakes, and up to an active glacier at the base of the Continental Divide. The boat ride shortcut is available but the full trail is the real experience (no cheating).
+          <ul>
+            <li>Boat ride option available from Many Glacier Hotel dock</li>
+            <li>Trail climbs past Swiftcurrent and Josephine Lakes</li>
+            <li>Final push up to the glacial moraine</li>
+            <li>Grinnell Lake glows bright teal at the base</li>
+          </ul>
+        </div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Hard · 10.9 mi · 2,080 ft gain · ~5h 18m</span>
+          <span class="event-pill pill-a">Bear spray required</span>
+          <span class="event-pill">Many Glacier trailhead</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden Lake -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">3:30</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏔️ Hidden Lake Overlook</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">A short but stunning hike from Logan Pass to an overlook above deep-blue Hidden Lake, framed by the Garden Wall. Bighorn sheep are commonly spotted on the rocky slopes.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Easy · 2.7 mi · 551 ft gain · ~1h 21m</span>
+          <span class="event-pill">Logan Pass trailhead</span>
+          <span class="event-pill">Bighorn sheep common here</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dinner -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">7:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner at Camp</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Cook at camp and rest up after an enormous day on the trails.</div>
+        <div class="event-pills">
+          <span class="event-pill">Dinner at camp</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 8 ─── -->
+<div id="day8" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">8</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Avalanche Lake · Iceberg Lake · West Glacier</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Saturday · Aug 30</span>
+        <span class="day-block-meta-item">🥾 Avalanche Lake — 5.9 mi</span>
+        <span class="day-block-meta-item">🧊 Iceberg Lake — 9.6 mi</span>
+        <span class="day-block-meta-item">🏘️ Explore West Glacier &amp; Apgar</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 8 of 12</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">⚠️&nbsp; Cracker Lake Trail may be closed — confirm status before planning. Pick two of the three main hikes depending on energy levels after yesterday's Grinnell climb.</div>
+
+    <!-- Breakfast -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">7:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">☕ Breakfast at Camp</div>
+          <span class="event-badge badge-rest">Breakfast</span>
+        </div>
+        <div class="event-desc">Fuel up early — another big day of hikes ahead.</div>
+        <div class="event-pills">
+          <span class="event-pill">Breakfast at campsite</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Avalanche Lake -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">8:30</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Avalanche Lake Trail</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">A fan favorite — a forested trail through the Trail of the Cedars before opening to a dramatic glacially-carved lake ringed by waterfalls pouring off sheer cliff walls. One of the most accessible stunning hikes in the park.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Medium · 5.9 mi · 757 ft gain · ~2h 28m</span>
+          <span class="event-pill">Trail of the Cedars en route</span>
+          <span class="event-pill pill-a">Bear spray required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Iceberg Lake -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">12:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🧊 Iceberg Lake Trail</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">A hidden gem in Many Glacier — a stunning cirque lake that holds floating icebergs well into summer even as the meadows bloom around it. The trail winds through wildflower-filled open meadows with frequent wildlife sightings.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Hard · 9.6 mi · 1,459 ft gain · ~4h 16m</span>
+          <span class="event-pill">Many Glacier trailhead</span>
+          <span class="event-pill">Floating ice in summer</span>
+          <span class="event-pill pill-a">Bear spray required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cracker Lake -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Alt</div>
+        <div class="event-period"></div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏔️ Cracker Lake (Alternative — Check Status)</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">A jaw-dropping turquoise lake below the towering faces of the Allen Mountain — one of the most vivid colors in all of Glacier. Confirm the trail is open before planning.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Hard · 12.5 mi · 1,617 ft gain · ~5h 16m</span>
+          <span class="event-pill pill-a">May be closed — verify first</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Evening -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">5:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏘️ Explore West Glacier &amp; Apgar Village</div>
+          <span class="event-badge badge-rest">Evening</span>
+        </div>
+        <div class="event-desc">Stroll around West Glacier and Apgar Village on Lake McDonald — browse the small shops, take in the lake views, and find dinner outside the park.</div>
+        <div class="event-pills">
+          <span class="event-pill">Apgar Village — Lake McDonald</span>
+          <span class="event-pill">West Glacier dining</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 9 ─── -->
+<div id="day9" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">9</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Laundry · Highline Trail · St. Mary &amp; Virginia Falls</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Sunday · Aug 31</span>
+        <span class="day-block-meta-item">🧺 Laundry day</span>
+        <span class="day-block-meta-item">🥾 Haystack Butte via Highline — 8.4 mi</span>
+        <span class="day-block-meta-item">💧 St. Mary &amp; Virginia Falls — 3.1 mi</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 9 of 12</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <!-- Laundry -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Morning</div>
+        <div class="event-period"></div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🧺 Laundry Day</div>
+          <span class="event-badge badge-rest">Rest</span>
+        </div>
+        <div class="event-desc">Laundry and breakfast at camp before heading out for the day's hikes.</div>
+        <div class="event-pills">
+          <span class="event-pill">Breakfast at campsite</span>
+          <span class="event-pill">Laundry at camp facilities</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Highline Trail -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">9:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Haystack Butte via Highline Trail</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">Glacier's most famous trail — a narrow ledge path carved into the cliff face above Logan Pass with dramatic views across the entire park. The route to Haystack Butte offers sweeping vistas of the Livingston Range and the Going-to-the-Sun corridor.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Hard · 8.4 mi · 1,758 ft gain</span>
+          <span class="event-pill">Logan Pass trailhead</span>
+          <span class="event-pill">Narrow cliff ledge section at start</span>
+          <span class="event-pill pill-a">Bear spray required</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- St. Mary & Virginia Falls -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">3:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">💧 St. Mary &amp; Virginia Falls Trail</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">A gentle and rewarding evening hike to two beautiful waterfalls through forest and meadow. Virginia Falls is a multi-tiered cascade that's especially impressive in late summer flow.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">Easy · 3.1 mi · 452 ft gain · ~1h 22m</span>
+          <span class="event-pill">St. Mary area, east side of park</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dinner -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Evening</div>
+        <div class="event-period"></div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Dinner depending on energy levels — cook at camp or eat out nearby.</div>
+        <div class="event-pills">
+          <span class="event-pill">Depending on capacity</span>
+          <span class="event-pill">Last night at Glacier camp</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 10 ─── -->
+<div id="day10" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">10</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Drive to Bozeman · For The Love Farms</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Monday · Sep 1</span>
+        <span class="day-block-meta-item">🏕️ Break camp — Glacier Campground</span>
+        <span class="day-block-meta-item">🚗 5h 13m drive to Bozeman</span>
+        <span class="day-block-meta-item">🏡 For The Love Farms (Airbnb)</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 10 of 12</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <div class="drive-note">🚗&nbsp; 5h 13m drive from Glacier Campground to For The Love Farms near Bozeman. Last night camping is over — time for a real bed.</div>
+
+    <!-- Camp breakdown -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">8:00</div>
+        <div class="event-period">AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏕️ Camp Breakdown · Drive to Bozeman</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc">Pack up camp for the last time and hit the road south toward Bozeman. Enjoy the Montana highway scenery on the drive down.</div>
+        <div class="event-pills">
+          <span class="event-pill pill-w">~5h 13m drive</span>
+          <span class="event-pill">Glacier Campground → For The Love Farms</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Arrive -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">~2:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏡 Arrive — For The Love Farms (Airbnb)</div>
+          <span class="event-badge badge-rest">Check-In</span>
+        </div>
+        <div class="event-desc">Check in to the farm stay Airbnb outside Bozeman. Unwind, shower properly, and enjoy sleeping indoors after nine nights in the wild.</div>
+        <div class="event-pills">
+          <span class="event-pill">For The Love Farms</span>
+          <span class="event-pill">Bozeman, Montana</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 11 ─── -->
+<div id="day11" class="section" style="padding-top:0;padding-bottom:40px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">11</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Explore Bozeman · Kevin Flies Out</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Tuesday · Sep 2</span>
+        <span class="day-block-meta-item">🏙️ Explore Bozeman</span>
+        <span class="day-block-meta-item">✈️ Kevin departs 5:28 PM</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 11 of 12</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <!-- Morning work -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Morning</div>
+        <div class="event-period"></div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">💼 Work from the Farm</div>
+          <span class="event-badge badge-rest">Work</span>
+        </div>
+        <div class="event-desc">Remote work in the morning from the Airbnb before heading out to explore Bozeman.</div>
+        <div class="event-pills">
+          <span class="event-pill">Work from For The Love Farms</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bozeman -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">Afternoon</div>
+        <div class="event-period"></div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏙️ Explore Bozeman</div>
+          <span class="event-badge badge-iconic">Explore</span>
+        </div>
+        <div class="event-desc">Wander Bozeman's vibrant downtown — a walkable strip of restaurants, breweries, local shops, and galleries with the Bridger Mountains as a backdrop. A great college town with a lot to offer.</div>
+        <div class="event-pills">
+          <span class="event-pill">Bozeman downtown</span>
+          <span class="event-pill">Local breweries</span>
+          <span class="event-pill">Montana State University area</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kevin flies out -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">5:28</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">✈️ Kevin Departs — Bozeman Yellowstone Airport</div>
+          <span class="event-badge badge-drive">Flight</span>
+        </div>
+        <div class="event-desc">Kevin's flight departs at 5:28 PM from Bozeman Yellowstone International Airport (BZN).</div>
+        <div class="event-pills">
+          <span class="event-pill">Departure 5:28 PM</span>
+          <span class="event-pill">Bozeman Yellowstone Intl (BZN)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<!-- ─── DAY 12 ─── -->
+<div id="day12" class="section" style="padding-top:0;padding-bottom:100px;">
+<div class="day-block">
+  <div class="day-block-header" onclick="toggleDay(this)">
+    <div class="day-block-num">12</div>
+    <div class="day-block-info">
+      <div class="day-block-title">Final Morning · Fly Home</div>
+      <div class="day-block-meta">
+        <span class="day-block-meta-item">📅 Wednesday · Sep 3</span>
+        <span class="day-block-meta-item">✈️ Flight at 12:00 PM</span>
+      </div>
+    </div>
+    <div class="day-block-label">Day 12 of 12</div>
+    <div class="day-block-toggle">›</div>
+  </div>
+  <div class="day-block-events">
+
+    <!-- Morning work -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Morning</div>
+        <div class="event-period"></div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">💼 Final Morning Work</div>
+          <span class="event-badge badge-rest">Work</span>
+        </div>
+        <div class="event-desc">Last morning at For The Love Farms. Wrap up any remote work before heading to the airport for the midday flight home.</div>
+        <div class="event-pills">
+          <span class="event-pill">For The Love Farms</span>
+          <span class="event-pill">Pack up &amp; check out</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Flight -->
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">12:00</div>
+        <div class="event-period">PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">✈️ Flight Home — Bozeman Yellowstone Airport</div>
+          <span class="event-badge badge-drive">Flight</span>
+        </div>
+        <div class="event-desc">Departure at 12:00 PM from Bozeman Yellowstone International Airport. End of an epic 12-day adventure through three of America's greatest national parks.</div>
+        <div class="event-pills">
+          <span class="event-pill">Departure 12:00 PM</span>
+          <span class="event-pill">Bozeman Yellowstone Intl (BZN)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 </div>
 
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer>
   <strong>TrailWithKev</strong> · Montana &amp; Wyoming · August 2025<br>
   <a href="https://www.instagram.com/trailwithkev/" class="footer-instagram" target="_blank" rel="noopener noreferrer">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <defs><linearGradient id="ig-grad-f" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs>
       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-f)"/>
       <circle cx="12" cy="12" r="4.5" stroke="url(#ig-grad-f)"/>
@@ -1434,6 +2461,15 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   resize();
   draw();
   window.addEventListener('resize', resize);
+})();
+
+/* ── Side mountains: show after hero ── */
+(function () {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  new IntersectionObserver(([entry]) => {
+    document.body.classList.toggle('past-hero', !entry.isIntersecting);
+  }, { threshold: 0 }).observe(hero);
 })();
 
 /* ── Theme toggle ── */
