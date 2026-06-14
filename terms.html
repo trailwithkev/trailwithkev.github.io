@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms & Conditions · TrailWithKev</title>
 <meta name="description" content="Terms and conditions for TrailWithKev — a personal travel and hiking itinerary site.">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/jpeg" href="/public/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -64,8 +64,48 @@ body {
   color: var(--pure-white);
   letter-spacing: -0.3px;
   text-decoration: none;
+  flex-shrink: 0;
 }
 .nav-brand span { color: var(--blue-light); }
+.nav-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+.nav-instagram {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--gray-5);
+  text-decoration: none;
+  padding: 0 12px;
+  height: 52px;
+  transition: color 0.2s;
+}
+.nav-instagram:hover { color: var(--pure-white); }
+html.light .nav-instagram { color: #636366; }
+html.light .nav-instagram:hover { color: #000; }
+.theme-toggle {
+  flex-shrink: 0;
+  position: relative;
+  width: 56px; height: 26px; border-radius: 980px;
+  background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.25);
+  cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5px; transition: background 0.3s, border-color 0.3s;
+}
+.tt-moon, .tt-sun { font-size: 11px; pointer-events: none; display: flex; align-items: center; }
+.tt-moon { color: rgba(255,255,255,0.85); }
+html.light .tt-moon { color: #3a3a3c; }
+.tt-thumb {
+  position: absolute; width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; left: 3px;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4); pointer-events: none;
+}
+html.light .theme-toggle { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.18); }
+html.light .tt-thumb { transform: translateX(30px); background: #636366; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
 
 /* ─── CONTENT ─── */
 .page-wrap {
@@ -127,17 +167,19 @@ footer a { color: var(--gray-6); text-decoration: none; }
 footer a:hover { color: var(--pure-white); }
 
 /* ─── LIGHT MODE ─── */
-html.light body { background: #f2ede7; color: #1d1d1f; }
-html.light .nav { background: rgba(242,237,231,0.85); border-bottom-color: rgba(0,0,0,0.1); }
+html.light body { background: #f0ede8; color: #1d1d1f; }
+html.light .nav { background: rgba(240,237,232,0.92); border-bottom-color: rgba(0,0,0,0.1); }
 html.light .nav-brand { color: #1d1d1f; }
 html.light h2 { color: #1d1d1f; }
 html.light p { color: #48484a; }
+html.light .divider { background: rgba(0,0,0,0.1); }
 html.light footer { background: #e8e4de; border-top-color: rgba(0,0,0,0.12); color: #48484a; }
 html.light footer a { color: #3a3a3c; }
 html.light footer a:hover { color: #000; }
 
 @media (max-width: 600px) {
   .nav { padding: 0 16px; }
+  .nav-instagram { padding: 0 8px; }
   .page-wrap { padding: 40px 20px 72px; }
   .page-title { font-size: 26px; }
   footer { padding: 32px 16px; font-size: 12px; }
@@ -148,6 +190,21 @@ html.light footer a:hover { color: #000; }
 
 <nav class="nav">
   <a href="/" class="nav-brand">Trail<span>WithKev</span></a>
+  <div class="nav-actions">
+    <a href="https://www.instagram.com/trailwithkev/" class="nav-instagram" target="_blank" rel="noopener noreferrer" aria-label="TrailWithKev on Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <defs><linearGradient id="ig-grad-t" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-t)"/>
+        <circle cx="12" cy="12" r="4.5" stroke="url(#ig-grad-t)"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-grad-t)" stroke="none"/>
+      </svg>
+    </a>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+      <span class="tt-moon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+      <span class="tt-thumb"></span>
+      <span class="tt-sun">☀️</span>
+    </button>
+  </div>
 </nav>
 
 <div class="page-wrap">
@@ -191,9 +248,12 @@ html.light footer a:hover { color: #000; }
 
 <script>
 (function() {
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') document.documentElement.classList.add('light');
+  try { if (localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light'); } catch(e){}
 })();
+function toggleTheme() {
+  document.documentElement.classList.toggle('light');
+  try { localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark'); } catch(e){}
+}
 </script>
 </body>
 </html>

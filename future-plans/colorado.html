@@ -15,7 +15,7 @@
 <meta name="twitter:title" content="Colorado 2026 · Adventure Itinerary · TrailWithKev">
 <meta name="twitter:description" content="Upcoming Colorado adventure itinerary — trails, peaks, and plans for 2026.">
 <meta name="twitter:image" content="https://trailwithkev.github.io/img/og-colorado.jpg">
-<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/jpeg" href="/public/favicon.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -109,7 +109,7 @@ body {
 .nav a:hover { color: var(--pure-white); }
 .nav a.active { color: var(--pure-white); border-bottom-color: var(--blue-light); }
 .nav-actions {
-  margin-left: 8px;
+  margin-left: auto;
   display: flex;
   align-items: center;
   gap: 4px;
@@ -679,13 +679,71 @@ footer strong { color: var(--gray-6); }
   .nav-hamburger { display: flex; }
   .nav-actions { gap: 2px; }
   html.light .nav-links { background: rgba(240,237,232,0.97); }
-  .hero { padding: 80px 24px 80px; }
-  .section { padding: 60px 24px; }
+  .hero { padding: 72px 20px 64px; min-height: 90vh; }
+  .hero-number { font-size: clamp(80px, 20vw, 140px); }
+  .hero-number-label { font-size: clamp(15px, 3.5vw, 22px); margin-bottom: 28px; }
+  .hero-title { font-size: clamp(24px, 5.5vw, 40px); }
+  .hero-subtitle { font-size: clamp(14px, 3vw, 17px); margin-bottom: 36px; }
+  .hero-stats { gap: 8px; }
+  .stat-chip { padding: 9px 16px; font-size: 13px; }
+  .section { padding: 56px 20px; }
+  .section + .section { padding-top: 0; }
+  .section-title { font-size: clamp(26px, 5.5vw, 38px); }
+  .section-body { font-size: 15px; margin-bottom: 32px; }
+  .overview-row { grid-template-columns: repeat(2, 1fr); }
+  .overview-cell:nth-child(2) { border-right: none; }
+  .overview-cell { padding: 20px 16px; }
+  .overview-num { font-size: 36px; }
   .basecamp-grid { grid-template-columns: 1fr; }
-  .reminders-grid { grid-template-columns: 1fr; }
-  .day-row { grid-template-columns: 70px 1fr; }
+  .week-header { gap: 10px; padding: 28px 0 16px; }
   .week-number { font-size: 40px; min-width: 56px; }
-  footer { padding: 32px 24px; }
+  .week-title { font-size: 17px; }
+  .week-meta { font-size: 12px; gap: 10px; }
+  .week-location { display: none; }
+  .week-toggle { font-size: 20px; }
+  .day-row { grid-template-columns: 70px 1fr; }
+  .day-content-col { padding: 16px 0 16px 14px; }
+  .day-date-col { padding: 16px 12px 16px 0; }
+  .day-title { font-size: 15px; }
+  .reminders-grid { grid-template-columns: 1fr; }
+  .reminder-card { padding: 16px 18px; }
+  footer { padding: 32px 20px; font-size: 11px; }
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 60px 16px 52px; }
+  .hero-number { font-size: clamp(72px, 22vw, 110px); }
+  .hero-number-label { font-size: 14px; margin-bottom: 20px; }
+  .hero-title { font-size: clamp(22px, 6.5vw, 32px); }
+  .hero-subtitle { font-size: 13px; margin-bottom: 28px; }
+  .stat-chip { padding: 8px 13px; font-size: 12px; gap: 6px; }
+  .section { padding: 44px 16px; }
+  .section-title { font-size: clamp(22px, 6vw, 30px); }
+  .section-body { font-size: 14px; }
+  .overview-cell { padding: 16px 12px; }
+  .overview-num { font-size: 30px; }
+  .overview-label { font-size: 11px; }
+  .basecamp-grid { grid-template-columns: 1fr; gap: 8px; }
+  .bc-town { font-size: 22px; }
+  .week-header { gap: 8px; padding: 20px 0 12px; align-items: flex-start; }
+  .week-number { font-size: 30px; min-width: 40px; line-height: 1.1; }
+  .week-title { font-size: 15px; }
+  .week-meta { font-size: 11px; gap: 8px; }
+  .day-row { grid-template-columns: 58px 1fr; }
+  .day-date-col { padding: 14px 8px 14px 0; }
+  .day-date-num { font-size: 18px; }
+  .day-content-col { padding: 14px 0 14px 12px; }
+  .day-title { font-size: 14px; }
+  .day-title-row { gap: 6px; margin-bottom: 8px; }
+  .day-type-badge { display: none; }
+  .schedule-row { font-size: 12px; }
+  .schedule-time { min-width: 58px; font-size: 10px; }
+  .warning-note { font-size: 11px; padding: 9px 12px; }
+  .reminders-grid { gap: 10px; }
+  .reminder-card { padding: 14px 16px; gap: 10px; }
+  .reminder-title { font-size: 13px; }
+  .reminder-body { font-size: 12px; }
+  footer { padding: 28px 16px; font-size: 11px; word-break: break-word; }
 }
 
 /* ─── ANIMATIONS ─── */
@@ -744,12 +802,15 @@ footer strong { color: var(--gray-6); }
 /* ─── THEME TOGGLE ─── */
 .theme-toggle {
   flex-shrink: 0;
+  position: relative;
   width: 56px; height: 26px; border-radius: 980px;
   background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.25);
   cursor: pointer; display: flex; align-items: center; justify-content: space-between;
   padding: 0 5px; transition: background 0.3s, border-color 0.3s;
 }
-.tt-moon, .tt-sun { font-size: 11px; pointer-events: none; }
+.tt-moon, .tt-sun { font-size: 11px; pointer-events: none; display: flex; align-items: center; }
+.tt-moon { color: rgba(255,255,255,0.85); }
+html.light .tt-moon { color: #3a3a3c; }
 .tt-thumb {
   position: absolute; width: 20px; height: 20px; border-radius: 50%;
   background: #fff; left: 3px;
@@ -758,6 +819,21 @@ footer strong { color: var(--gray-6); }
 }
 html.light .theme-toggle { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.18); }
 html.light .tt-thumb { transform: translateX(30px); background: #636366; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+
+/* ─── INSTAGRAM NAV ICON ─── */
+.nav-instagram {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  color: var(--gray-5);
+  text-decoration: none;
+  padding: 0 12px;
+  height: 52px;
+  transition: color 0.2s;
+}
+.nav-instagram:hover { color: var(--pure-white); }
+html.light .nav-instagram { color: #636366; }
+html.light .nav-instagram:hover { color: #000; }
 
 /* ─── LIGHT MODE ─── */
 html.light body { background: #f5f5f7; color: #1d1d1f; }
@@ -858,7 +934,7 @@ html.light footer strong { color: #48484a; }
 
 <!-- ═══════════════════ NAV ═══════════════════ -->
 <nav class="nav">
-  <div class="nav-brand">Colorado <span>2026</span></div>
+  <a href="../index.html" class="nav-brand">Colorado <span>2026</span></a>
   <div class="nav-links">
     <a href="#overview">Overview</a>
     <a href="#basecamps">Basecamps</a>
@@ -871,8 +947,16 @@ html.light footer strong { color: #48484a; }
     <a href="#reminders">Reminders</a>
   </div>
   <div class="nav-actions">
+    <a href="https://www.instagram.com/trailwithkev/" class="nav-instagram" target="_blank" rel="noopener noreferrer" aria-label="TrailWithKev on Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <defs><linearGradient id="ig-grad-co" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-co)"/>
+        <circle cx="12" cy="12" r="4.5" stroke="url(#ig-grad-co)"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-grad-co)" stroke="none"/>
+      </svg>
+    </a>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
-      <span class="tt-moon">🌙</span>
+      <span class="tt-moon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
       <span class="tt-thumb"></span>
       <span class="tt-sun">☀️</span>
     </button>
