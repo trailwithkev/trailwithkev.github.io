@@ -250,12 +250,53 @@ html.light .nav-hamburger { color: #636366; }
   letter-spacing: 0.06em;
   text-transform: uppercase;
   animation: bounce 2s infinite;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
 }
+.hero-scroll:hover { color: var(--gray-6); }
 .hero-scroll svg { opacity: 0.5; }
+.hero-scroll:hover svg { opacity: 0.8; }
 
 @keyframes bounce {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(6px); }
+}
+
+/* ─── HERO STARS (dark mode) ─── */
+#hero-stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+html.light #hero-stars { display: none; }
+
+/* ─── HERO SUN (light mode) ─── */
+.hero-sun {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  right: 14%;
+  top: 6%;
+  display: none;
+}
+html.light .hero-sun { display: block; animation: sun-pulse 4s ease-in-out infinite; }
+.hero-sun-rays { transform-origin: 60px 60px; animation: sun-spin 28s linear infinite; }
+@keyframes sun-pulse {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(255,200,10,0.4)); }
+  50%       { filter: drop-shadow(0 0 40px rgba(255,200,10,0.75)); }
+}
+@keyframes sun-spin {
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 768px) {
+  .hero-sun { right: 4%; top: 5%; transform: scale(0.75); transform-origin: top right; }
+}
+@media (max-width: 480px) {
+  .hero-sun { right: 2%; top: 3%; transform: scale(0.58); }
 }
 
 /* ─── SECTION ─── */
@@ -547,13 +588,15 @@ html.light .nav a.nav-link:hover { color: #000; }
 html.light .nav a.nav-link.active { color: #000; border-bottom-color: #0055cc; }
 html.light .hero { background: #f0ede8; }
 html.light .hero-glow { opacity: 0; }
-html.light .hero-mountains path { fill: rgba(0,0,0,0.06); }
+html.light .hero-mountains path { fill: rgba(0,0,0,0.18); }
 html.light .hero-eyebrow { color: #0055cc; }
 html.light .hero-title { color: #000; }
 html.light .hero-title span { color: #0055cc; }
 html.light .hero-subtitle { color: #636366; }
 html.light .chip { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.14); color: #1d1d1f; }
-html.light .hero-scroll { color: #8e8e93; }
+html.light .hero-scroll { color: #3a3a3c; }
+html.light .hero-scroll svg { opacity: 0.85; }
+html.light .hero-scroll:hover { color: #000; }
 html.light .section-label { color: #0055cc; }
 html.light .section-title { color: #000; }
 html.light .section-desc { color: #636366; }
@@ -620,6 +663,56 @@ html.light .nav-instagram:hover { color: #000; }
 
 <!-- HERO -->
 <section class="hero">
+  <canvas id="hero-stars"></canvas>
+
+  <!-- Sun (light mode only) -->
+  <div class="hero-sun" aria-hidden="true">
+    <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="sun-body" cx="40%" cy="36%" r="68%">
+          <stop offset="0%"   stop-color="#FFFFFF"/>
+          <stop offset="18%"  stop-color="#FFF8CC"/>
+          <stop offset="52%"  stop-color="#FFD60A"/>
+          <stop offset="100%" stop-color="#FFA020"/>
+        </radialGradient>
+        <radialGradient id="sun-halo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#FFD60A" stop-opacity="0.32"/>
+          <stop offset="50%"  stop-color="#FFAA00" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#FF8800" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <!-- Atmospheric halo -->
+      <circle cx="60" cy="60" r="58" fill="url(#sun-halo)"/>
+      <!-- Rays (spin slowly) -->
+      <g class="hero-sun-rays" stroke="#FFB800" stroke-linecap="round">
+        <!-- 8 long rays every 45° -->
+        <g stroke-width="2.6">
+          <line x1="60" y1="35"  x2="60"   y2="13"/>
+          <line x1="77.7" y1="42.3" x2="93.5" y2="26.5"/>
+          <line x1="85"  y1="60"  x2="107"  y2="60"/>
+          <line x1="77.7" y1="77.7" x2="93.5" y2="93.5"/>
+          <line x1="60"  y1="85"  x2="60"   y2="107"/>
+          <line x1="42.3" y1="77.7" x2="26.5" y2="93.5"/>
+          <line x1="35"  y1="60"  x2="13"   y2="60"/>
+          <line x1="42.3" y1="42.3" x2="26.5" y2="26.5"/>
+        </g>
+        <!-- 8 short rays at 22.5° offsets -->
+        <g stroke-width="1.8" opacity="0.7">
+          <line x1="69.6" y1="36.9" x2="75.1" y2="24.4"/>
+          <line x1="83.1" y1="50.4" x2="95.6" y2="44.9"/>
+          <line x1="83.1" y1="69.6" x2="95.6" y2="75.1"/>
+          <line x1="69.6" y1="83.1" x2="75.1" y2="95.6"/>
+          <line x1="50.4" y1="83.1" x2="44.9" y2="95.6"/>
+          <line x1="36.9" y1="69.6" x2="24.4" y2="75.1"/>
+          <line x1="36.9" y1="50.4" x2="24.4" y2="44.9"/>
+          <line x1="50.4" y1="36.9" x2="44.9" y2="24.4"/>
+        </g>
+      </g>
+      <!-- Sun body -->
+      <circle cx="60" cy="60" r="22" fill="url(#sun-body)"/>
+    </svg>
+  </div>
+
   <div class="hero-glow"></div>
 
   <!-- Mountain silhouette -->
@@ -631,10 +724,10 @@ html.light .nav-instagram:hover { color: #000; }
   <h1 class="hero-title">Adventures<br><span>Off the Map</span></h1>
   <p class="hero-subtitle">Hiking logs, road trip itineraries, and summit stories from the trails.</p>
 
-  <div class="hero-scroll">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 9l5 5 5-5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  <a class="hero-scroll" href="#future-plans">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 9l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     Explore
-  </div>
+  </a>
 </section>
 
 <div class="divider"></div>
@@ -790,6 +883,47 @@ if (localStorage.getItem('theme') === 'light') document.documentElement.classLis
       hamburger.setAttribute('aria-expanded', 'false');
     }
   });
+})();
+
+/* ── Twinkling stars ── */
+(function () {
+  const canvas = document.getElementById('hero-stars');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let stars = [], t = 0;
+
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    const skyH = canvas.height * 0.60;
+    const count = Math.min(Math.floor(canvas.width * skyH / 5500), 220);
+    stars = Array.from({ length: count }, () => ({
+      x:     Math.random() * canvas.width,
+      y:     Math.random() * skyH,
+      r:     Math.random() * 1.3 + 0.25,
+      base:  Math.random() * 0.55 + 0.2,
+      phase: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.022 + 0.006,
+    }));
+  }
+
+  function draw() {
+    requestAnimationFrame(draw);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (document.documentElement.classList.contains('light')) return;
+    t++;
+    for (const s of stars) {
+      const a = s.base * (0.4 + 0.6 * Math.sin(t * s.speed + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${a})`;
+      ctx.fill();
+    }
+  }
+
+  resize();
+  draw();
+  window.addEventListener('resize', resize);
 })();
 </script>
 </body>
