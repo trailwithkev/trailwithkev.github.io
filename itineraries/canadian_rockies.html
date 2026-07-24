@@ -371,13 +371,6 @@ a.stop-card:hover .stop-link-hint { color: var(--gray-6); }
   margin-bottom: 12px;
   line-height: 1.4;
 }
-.stop-dates {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--blue-light);
-  font-variant-numeric: tabular-nums;
-  margin-bottom: 4px;
-}
 .stop-role {
   font-size: 22px;
   font-weight: 700;
@@ -398,7 +391,6 @@ a.stop-card:hover .stop-link-hint { color: var(--gray-6); }
 .tag-blue  { background: rgba(0,113,227,0.15);  color: var(--blue-light); border: 0.5px solid rgba(0,113,227,0.3); }
 .tag-green { background: var(--summit-glow);     color: var(--summit);    border: 0.5px solid rgba(48,209,88,0.3); }
 .tag-amber { background: rgba(255,214,10,0.1);   color: var(--amber);     border: 0.5px solid rgba(255,214,10,0.25); }
-.tag-teal  { background: rgba(48,210,208,0.12);  color: var(--teal);      border: 0.5px solid rgba(48,210,208,0.3); }
 
 /* ─── MAP CARD ─── */
 .map-card {
@@ -557,13 +549,6 @@ a.stop-card:hover .stop-link-hint { color: var(--gray-6); }
   letter-spacing: 0.01em;
   line-height: 1.2;
   margin-bottom: 2px;
-}
-.event-period {
-  font-size: 10px;
-  font-weight: 500;
-  color: var(--gray-4);
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
 }
 /* Time color by event type */
 .event-time-col[data-type="glacier"] .event-time { color: var(--teal); }
@@ -824,7 +809,6 @@ html.light footer a:hover { color: #000; }
   .event-row { grid-template-columns: 58px 1fr; }
   .event-time-col { padding: 14px 8px 14px 0; }
   .event-time { font-size: 12px; }
-  .event-period { font-size: 9px; }
   .event-content { padding: 14px 0 14px 12px; }
   .event-title { font-size: 14px; }
   .event-title-row { gap: 6px; margin-bottom: 8px; }
@@ -901,7 +885,6 @@ html.light .stop-card { background: #fff; border-color: rgba(0,0,0,0.1); }
 html.light .stop-num { color: #8e8e93; }
 html.light .stop-town { color: #000; }
 html.light .stop-region { color: #636366; }
-html.light .stop-dates { color: #0055cc; }
 html.light .stop-role { color: #000; }
 html.light .stop-role-label { color: #636366; }
 html.light .stop-link-hint { color: #aeaeb2; }
@@ -909,7 +892,6 @@ html.light a.stop-card:hover .stop-link-hint { color: #636366; }
 html.light .tag-blue  { background: rgba(0,102,200,0.08); color: #0055aa; border-color: rgba(0,102,200,0.2); }
 html.light .tag-green { background: rgba(0,130,50,0.08);  color: #006e28; border-color: rgba(0,130,50,0.2); }
 html.light .tag-amber { background: rgba(160,100,0,0.08); color: #7a5200; border-color: rgba(160,100,0,0.2); }
-html.light .tag-teal  { background: rgba(0,130,130,0.08); color: #006666; border-color: rgba(0,130,130,0.2); }
 html.light .map-card { border-color: rgba(0,0,0,0.1); }
 html.light .map-card-hdr { background: #fff; border-bottom-color: rgba(0,0,0,0.08); }
 html.light .map-card-hdr-left { color: #48484a; }
@@ -929,7 +911,6 @@ html.light .event-row { border-bottom-color: rgba(0,0,0,0.05); }
 html.light .event-row:hover { background: rgba(0,0,0,0.02); }
 html.light .event-time-col { border-right-color: rgba(0,0,0,0.06); }
 html.light .event-time { color: #8e8e93; }
-html.light .event-period { color: #aeaeb2; }
 html.light .event-time-col[data-type="glacier"] .event-time { color: #007070; }
 html.light .event-time-col[data-type="hike"]    .event-time { color: #1a8f3d; }
 html.light .event-time-col[data-type="drive"]   .event-time { color: #7a5200; }
@@ -981,9 +962,13 @@ html.light .nav-instagram:hover { color: #000; }
   z-index: 1;
   overflow: hidden;
   display: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 @media (min-width: 1460px) {
-  .mountain-left, .mountain-right { display: none; }
+  .mountain-left, .mountain-right { display: block; }
+  body.past-hero .mountain-left, body.past-hero .mountain-right { opacity: 1; }
+  body.in-footer .mountain-left, body.in-footer .mountain-right { opacity: 0; }
 }
 .mountain-left {
   left: 0;
@@ -1014,12 +999,14 @@ html.light .nav-instagram:hover { color: #000; }
 .mt-far  { fill: rgba(72,98,190,0.08); }
 .mt-mid  { fill: rgba(58,82,175,0.17); }
 .mt-near { fill: rgba(46,68,162,0.28); }
-.mt-snow { fill: rgba(200,215,255,0.26); }
+.mt-glacier { fill: rgba(195,225,255,0.34); }
+.mt-crevasse { fill: none; stroke: rgba(90,140,210,0.3); stroke-width: 0.8; stroke-linecap: round; }
 .mt-band { fill: none; stroke: rgba(58,82,175,0.09); stroke-width: 0.7; }
 html.light .mt-far  { fill: rgba(90,115,198,0.07); }
 html.light .mt-mid  { fill: rgba(75,100,182,0.12); }
 html.light .mt-near { fill: rgba(60,85,168,0.19); }
-html.light .mt-snow { fill: rgba(248,252,255,0.82); }
+html.light .mt-glacier { fill: rgba(235,246,255,0.88); }
+html.light .mt-crevasse { stroke: rgba(70,120,190,0.35); }
 html.light .mt-band { stroke: rgba(75,100,182,0.10); }
 </style>
 </head>
@@ -1068,12 +1055,15 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <path class="mt-far" d="M0,900 L0,435 C25,415 50,400 80,382 C110,362 140,348 170,330 C195,314 215,302 240,288 L240,900 Z"/>
     <path class="mt-mid" d="M0,900 L0,540 L20,518 L32,524 L48,500 L64,478 L72,484 L88,460 L102,440 L110,446 L124,422 L138,402 L145,408 L156,385 L166,368 L172,374 L184,350 L194,335 L198,340 L210,315 L220,300 L226,306 L232,285 L238,270 L240,262 L240,900 Z"/>
     <path class="mt-near" d="M0,900 L0,650 L18,628 L28,635 L42,612 L52,618 L62,598 L75,575 L82,582 L92,558 L105,535 L112,542 L120,520 L133,498 L140,504 L148,485 L158,465 L165,472 L172,452 L182,432 L188,438 L196,418 L206,398 L214,390 L220,374 L226,380 L230,360 L238,342 L240,335 L240,900 Z"/>
-    <path class="mt-snow" d="M220,374 L226,380 L230,360 L238,342 L240,335 L240,358 L234,370 L228,382 L222,392 L216,402 L210,408 L206,398 L214,390 L220,374 Z"/>
-    <path class="mt-snow" d="M172,452 L182,432 L188,438 L188,455 L182,462 L175,468 L172,465 Z"/>
-    <path class="mt-snow" d="M133,498 L140,504 L148,485 L148,498 L142,508 L136,513 L133,512 Z"/>
-    <path class="mt-band" d="M55,622 L80,606 L108,590 L135,573 L158,558 L180,544"/>
+    <path class="mt-glacier" d="M220,374 L226,380 L230,360 L238,342 L240,335 L240,358 L234,370 L228,382 L222,392 L216,402 L210,408 L206,398 L214,390 L220,374 Z"/>
+    <path class="mt-glacier" d="M172,452 L182,432 L188,438 L188,455 L182,462 L175,468 L172,465 Z"/>
+    <path class="mt-glacier" d="M206,398 C198,415 188,432 178,448 C170,462 165,478 168,495 C171,510 180,518 190,514 C198,510 202,496 204,480 C207,458 210,440 214,420 C217,408 213,400 206,398 Z"/>
     <path class="mt-band" d="M100,556 L126,540 L152,524 L176,510 L200,494 L220,482"/>
     <path class="mt-band" d="M145,505 L168,490 L192,474 L215,458 L232,448"/>
+    <path class="mt-crevasse" d="M182,440 L192,432"/>
+    <path class="mt-crevasse" d="M188,458 L200,449"/>
+    <path class="mt-crevasse" d="M180,476 L194,466"/>
+    <path class="mt-crevasse" d="M186,494 L200,486"/>
   </svg>
 </div>
 <div class="mountain-right" aria-hidden="true">
@@ -1081,12 +1071,15 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <path class="mt-far" d="M0,900 L0,435 C25,415 50,400 80,382 C110,362 140,348 170,330 C195,314 215,302 240,288 L240,900 Z"/>
     <path class="mt-mid" d="M0,900 L0,540 L20,518 L32,524 L48,500 L64,478 L72,484 L88,460 L102,440 L110,446 L124,422 L138,402 L145,408 L156,385 L166,368 L172,374 L184,350 L194,335 L198,340 L210,315 L220,300 L226,306 L232,285 L238,270 L240,262 L240,900 Z"/>
     <path class="mt-near" d="M0,900 L0,650 L18,628 L28,635 L42,612 L52,618 L62,598 L75,575 L82,582 L92,558 L105,535 L112,542 L120,520 L133,498 L140,504 L148,485 L158,465 L165,472 L172,452 L182,432 L188,438 L196,418 L206,398 L214,390 L220,374 L226,380 L230,360 L238,342 L240,335 L240,900 Z"/>
-    <path class="mt-snow" d="M220,374 L226,380 L230,360 L238,342 L240,335 L240,358 L234,370 L228,382 L222,392 L216,402 L210,408 L206,398 L214,390 L220,374 Z"/>
-    <path class="mt-snow" d="M172,452 L182,432 L188,438 L188,455 L182,462 L175,468 L172,465 Z"/>
-    <path class="mt-snow" d="M133,498 L140,504 L148,485 L148,498 L142,508 L136,513 L133,512 Z"/>
-    <path class="mt-band" d="M55,622 L80,606 L108,590 L135,573 L158,558 L180,544"/>
+    <path class="mt-glacier" d="M220,374 L226,380 L230,360 L238,342 L240,335 L240,358 L234,370 L228,382 L222,392 L216,402 L210,408 L206,398 L214,390 L220,374 Z"/>
+    <path class="mt-glacier" d="M172,452 L182,432 L188,438 L188,455 L182,462 L175,468 L172,465 Z"/>
+    <path class="mt-glacier" d="M206,398 C198,415 188,432 178,448 C170,462 165,478 168,495 C171,510 180,518 190,514 C198,510 202,496 204,480 C207,458 210,440 214,420 C217,408 213,400 206,398 Z"/>
     <path class="mt-band" d="M100,556 L126,540 L152,524 L176,510 L200,494 L220,482"/>
     <path class="mt-band" d="M145,505 L168,490 L192,474 L215,458 L232,448"/>
+    <path class="mt-crevasse" d="M182,440 L192,432"/>
+    <path class="mt-crevasse" d="M188,458 L200,449"/>
+    <path class="mt-crevasse" d="M180,476 L194,466"/>
+    <path class="mt-crevasse" d="M186,494 L200,486"/>
   </svg>
 </div>
 
@@ -1199,7 +1192,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
       <div class="stop-role-label">Departure day</div>
       <div class="stop-tags">
         <span class="stop-tag tag-amber">Hotel near YYC</span>
-        <span class="stop-tag tag-amber">5 AM Alarm</span>
+        <span class="stop-tag tag-amber">Dawn Alarm</span>
       </div>
       <div class="stop-link-hint">View Day 6 ›</div>
     </a>
@@ -1253,8 +1246,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 8:00 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">8:00</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1272,8 +1264,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 9:00 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">9:00</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1291,8 +1282,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 10:30 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">10:30</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1311,8 +1301,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 12:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">12:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1331,8 +1320,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 2:00 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">2:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1351,8 +1339,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 6:00 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">6:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Dusk</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1371,8 +1358,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 8:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">8:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Evening</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1410,8 +1396,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 7:30 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">7:30</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1429,8 +1414,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 8:00 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">8:00</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1449,8 +1433,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 11:00 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">11:00</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1469,8 +1452,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 12:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">12:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1488,8 +1470,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 1:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">1:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1507,8 +1488,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 3:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">3:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1526,18 +1506,17 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 7:00 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">7:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Evening</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
           <div class="event-title">♨️ Banff Upper Hot Springs</div>
           <span class="event-badge badge-iconic">Hot Springs</span>
         </div>
-        <div class="event-desc">Natural 37–40°C mineral pool on the slopes of Sulphur Mountain with stunning mountain views at dusk. Open until 11 PM.</div>
+        <div class="event-desc">Natural 37–40°C mineral pool on the slopes of Sulphur Mountain with stunning mountain views at dusk. Open until late night.</div>
         <div class="event-pills">
           <span class="event-pill">5 min south of Banff</span>
-          <span class="event-pill">Open until 11 PM</span>
+          <span class="event-pill">Open until late night</span>
           <span class="event-pill">Towel + suit rental</span>
         </div>
       </div>
@@ -1546,8 +1525,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 9:00 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">9:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Night</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1585,13 +1563,12 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Banff → Columbia Icefield: ~230 km · ~2 hr 45 min &nbsp;|&nbsp; Icefield → Jasper: ~105 km · ~1 hr 20 min &nbsp;|&nbsp; ⚠️ Big driving day — plan to overnight in Jasper or leave by 9 PM for the return</div>
+    <div class="drive-note">🚗&nbsp; Banff → Columbia Icefield: ~230 km · ~2 hr 45 min &nbsp;|&nbsp; Icefield → Jasper: ~105 km · ~1 hr 20 min &nbsp;|&nbsp; ⚠️ Big driving day — plan to overnight in Jasper or start the return by night</div>
 
     <!-- 8:00 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">8:00</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1609,8 +1586,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 9:10 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">9:10</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1627,8 +1603,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 9:20 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">9:20</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1646,8 +1621,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 9:50 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">9:50</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1665,8 +1639,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 10:45 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">10:45</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1684,8 +1657,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 11:20 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">11:20</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1702,8 +1674,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 12:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">12:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1721,8 +1692,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 2:15 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="glacier">
-        <div class="event-time">2:15</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1731,7 +1701,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
         </div>
         <div class="event-desc">Ice Explorer snowcoach drives onto Athabasca Glacier — walk on 10,000-year-old ice and taste glacial meltwater. Glacier Skywalk: glass-floored platform 280 m above the Sunwapta Valley.</div>
         <div class="event-pills">
-          <span class="event-pill">~3.5–4 hrs · Ends ~6:00 PM</span>
+          <span class="event-pill">~3.5–4 hrs · Ends by dusk</span>
           <span class="event-pill pill-w">Layers + warm jacket on glacier!</span>
         </div>
       </div>
@@ -1740,8 +1710,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 6:15 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">6:15</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Dusk</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1758,8 +1727,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 7:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">7:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Evening</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1777,8 +1745,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 8:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">8:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Evening</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1789,7 +1756,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
         <div class="event-pills">
           <span class="event-pill">Downstream Bar &amp; Grill</span>
           <span class="event-pill">Famoso Pizzeria</span>
-          <span class="event-pill pill-a">Leave by 9:30 PM for return drive</span>
+          <span class="event-pill pill-a">Leave by night for return drive</span>
         </div>
       </div>
     </div>
@@ -1821,8 +1788,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- Checkout -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">Early</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Dawn</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1841,14 +1807,13 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
         <div class="event-time">TBD</div>
-        <div class="event-period">Shuttle</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
           <div class="event-title">🚌 Parks Canada Shuttle — Lake Louise Park &amp; Ride</div>
           <span class="event-badge badge-drive">Shuttle</span>
         </div>
-        <div class="event-desc">Board at the Park &amp; Ride lot — aim for the earliest available shuttle. Trail gets busy by 10 AM.</div>
+        <div class="event-desc">Board at the Park &amp; Ride lot — aim for the earliest available shuttle. Trail gets busy by late morning.</div>
         <div class="event-pills">
           <span class="event-pill pill-a">Reserve in advance at reservation.pc.gc.ca</span>
           <span class="event-pill">Parks Canada pass required</span>
@@ -1860,7 +1825,6 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
         <div class="event-time">TBD</div>
-        <div class="event-period">Trail</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1879,8 +1843,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- Lunch -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">Post</div>
-        <div class="event-period">Trail</div>
+        <div class="event-time">Post-Trail</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1899,8 +1862,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- Drive to Golden -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">Post</div>
-        <div class="event-period">Lunch</div>
+        <div class="event-time">Post-Lunch</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1918,8 +1880,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- Check in -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">~4:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1933,8 +1894,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- Kicking Horse Bridge -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">~5:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Dusk</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1951,8 +1911,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- Golden Skybridge optional -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">~6:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Dusk</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1970,8 +1929,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- Dinner -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">~8:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Evening</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1999,7 +1957,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <div class="day-block-info">
       <div class="day-block-title">Iceline + Little Yoho Loop · Spiral Tunnels · Wapta Falls</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">🥾 Iceline Loop — 20.3 km · 1,090 m gain · Hard · 4 AM start</span>
+        <span class="day-block-meta-item">🥾 Iceline Loop — 20.3 km · 1,090 m gain · Hard · Dawn start</span>
         <span class="day-block-meta-item">🚂 Spiral Tunnels · 🌊 Natural Bridge · 💦 Wapta Falls</span>
       </div>
     </div>
@@ -2008,20 +1966,19 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Golden → Takakkaw Falls trailhead: ~50 min (Hwy 1E + Yoho Valley Rd) &nbsp;|&nbsp; <strong>4 AM start strongly recommended</strong> — finishes ~noon, leaving a full afternoon for viewpoints &nbsp;|&nbsp; ⚠️ Pack everything the night before</div>
+    <div class="drive-note">🚗&nbsp; Golden → Takakkaw Falls trailhead: ~50 min (Hwy 1E + Yoho Valley Rd) &nbsp;|&nbsp; <strong>Dawn start strongly recommended</strong> — finishes around midday, leaving a full afternoon for viewpoints &nbsp;|&nbsp; ⚠️ Pack everything the night before</div>
 
     <!-- 3:15 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">3:15</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Night</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
           <div class="event-title">⏰ Wake Up + Drive to Takakkaw Falls Trailhead</div>
           <span class="event-badge badge-drive">Depart</span>
         </div>
-        <div class="event-desc">~50 min drive from Golden via Hwy 1 East + Yoho Valley Road. Arrive by 4 AM — limited parking.</div>
+        <div class="event-desc">~50 min drive from Golden via Hwy 1 East + Yoho Valley Road. Arrive by dawn — limited parking.</div>
         <div class="event-pills">
           <span class="event-pill pill-a">Pack the night before: headlamps, layers, bear spray, packed lunch</span>
         </div>
@@ -2031,8 +1988,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 4:00 AM — Main Trail -->
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">4:00</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Dawn</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2051,8 +2007,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 12:00 PM — Post-hike rest -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">12:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2069,8 +2024,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 12:45 PM — Spiral Tunnels -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">12:45</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2088,8 +2042,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 2:00 PM — Natural Bridge -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">2:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2106,8 +2059,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 2:30 PM — Wapta Falls -->
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">2:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2125,8 +2077,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 4:15 PM — Drive back -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">4:15</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2143,8 +2094,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 7:00 PM — Dinner -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">7:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Evening</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2181,13 +2131,12 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Golden → Kootenay NP (Radium): ~1 hr south on Hwy 95 &nbsp;|&nbsp; Radium → Calgary: ~3 hrs via Hwy 93 + Hwy 1 East &nbsp;|&nbsp; Depart Radium by 4:30 PM</div>
+    <div class="drive-note">🚗&nbsp; Golden → Kootenay NP (Radium): ~1 hr south on Hwy 95 &nbsp;|&nbsp; Radium → Calgary: ~3 hrs via Hwy 93 + Hwy 1 East &nbsp;|&nbsp; Depart Radium by afternoon</div>
 
     <!-- 7:30 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">7:30</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2204,8 +2153,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 9:00 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">9:00</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2223,8 +2171,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 10:30 AM -->
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">10:30</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2242,8 +2189,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 12:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">12:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2262,8 +2208,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 3:00 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">3:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2273,7 +2218,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
         <div class="event-desc">Canada's largest natural hot springs — 38°C mineral pool. Towel and suit rentals available. All ages.</div>
         <div class="event-pills">
           <span class="event-pill">38°C · Towel rental available</span>
-          <span class="event-pill pill-a">Depart by 4:30 PM!</span>
+          <span class="event-pill pill-a">Depart by afternoon!</span>
         </div>
       </div>
     </div>
@@ -2281,8 +2226,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 4:30 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">4:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2291,7 +2235,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
         </div>
         <div class="event-desc">Hwy 93 east through Banff NP at dusk — quick dinner stop in Banff town. Mountains give way to prairie as you reach Calgary.</div>
         <div class="event-pills">
-          <span class="event-pill">~3 hrs · Arrive ~7:30 PM</span>
+          <span class="event-pill">~3 hrs · Arrive by evening</span>
           <span class="event-pill pill-w">Wildlife at dusk — drive alert</span>
         </div>
       </div>
@@ -2300,8 +2244,7 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
     <!-- 8:00 PM -->
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">8:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Evening</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -2383,13 +2326,18 @@ html.light .mt-band { stroke: rgba(75,100,182,0.10); }
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-// ── Side mountains: show after hero ──────────────────────────────────────────
+// ── Side mountains: show after hero, hide over footer ─────────────────────────
 (function () {
   const hero = document.querySelector('.hero');
   if (!hero) return;
   new IntersectionObserver(([entry]) => {
     document.body.classList.toggle('past-hero', !entry.isIntersecting);
   }, { threshold: 0 }).observe(hero);
+  const footer = document.querySelector('footer');
+  if (!footer) return;
+  new IntersectionObserver(([entry]) => {
+    document.body.classList.toggle('in-footer', entry.isIntersecting);
+  }, { threshold: 0 }).observe(footer);
 })();
 
 // ── Theme toggle ─────────────────────────────────────────────────────────────

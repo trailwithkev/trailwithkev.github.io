@@ -215,8 +215,6 @@ a.stop-card:hover .stop-link-hint { color: var(--gray-6); }
 .stop-tags { display: flex; flex-wrap: wrap; gap: 5px; }
 .stop-tag { font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 980px; letter-spacing: 0.02em; }
 .tag-blue   { background: rgba(0,113,227,0.15);    color: var(--blue-light); border: 0.5px solid rgba(0,113,227,0.3); }
-.tag-green  { background: var(--summit-glow);       color: var(--summit);    border: 0.5px solid rgba(48,209,88,0.3); }
-.tag-amber  { background: rgba(255,214,10,0.1);     color: var(--amber);     border: 0.5px solid rgba(255,214,10,0.25); }
 .tag-teal   { background: rgba(48,210,208,0.12);    color: var(--teal);      border: 0.5px solid rgba(48,210,208,0.3); }
 .tag-volcano{ background: rgba(255,107,53,0.12);    color: var(--volcano);   border: 0.5px solid rgba(255,107,53,0.3); }
 
@@ -508,8 +506,6 @@ html.light .stop-role-label { color: #636366; }
 html.light .stop-link-hint { color: #aeaeb2; }
 html.light a.stop-card:hover .stop-link-hint { color: #636366; }
 html.light .tag-blue    { background: rgba(0,102,200,0.08);  color: #0055aa; border-color: rgba(0,102,200,0.2); }
-html.light .tag-green   { background: rgba(0,130,50,0.08);   color: #006e28; border-color: rgba(0,130,50,0.2); }
-html.light .tag-amber   { background: rgba(160,100,0,0.08);  color: #7a5200; border-color: rgba(160,100,0,0.2); }
 html.light .tag-teal    { background: rgba(0,130,130,0.08);  color: #006666; border-color: rgba(0,130,130,0.2); }
 html.light .tag-volcano { background: rgba(180,60,10,0.08);  color: #aa3810; border-color: rgba(180,60,10,0.2); }
 html.light .map-card { border-color: rgba(0,0,0,0.1); }
@@ -583,9 +579,13 @@ html.light .nav-instagram:hover { color: #000; }
   z-index: 1;
   overflow: hidden;
   display: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 @media (min-width: 1460px) {
-  .mountain-left, .mountain-right { display: none; }
+  .mountain-left, .mountain-right { display: block; }
+  body.past-hero .mountain-left, body.past-hero .mountain-right { opacity: 1; }
+  body.in-footer .mountain-left, body.in-footer .mountain-right { opacity: 0; }
 }
 .mountain-left {
   left: 0;
@@ -616,12 +616,14 @@ html.light .nav-instagram:hover { color: #000; }
 .mt-far  { fill: rgba(120,60,30,0.08); }
 .mt-mid  { fill: rgba(105,48,22,0.17); }
 .mt-near { fill: rgba(88,38,15,0.28); }
-.mt-snow { fill: rgba(255,230,210,0.22); }
+.mt-lava { fill: rgba(255,90,30,0.42); }
+.mt-smoke { fill: rgba(150,150,150,0.16); }
 .mt-band { fill: none; stroke: rgba(105,48,22,0.09); stroke-width: 0.7; }
 html.light .mt-far  { fill: rgba(140,80,40,0.07); }
 html.light .mt-mid  { fill: rgba(120,65,28,0.12); }
 html.light .mt-near { fill: rgba(100,50,18,0.18); }
-html.light .mt-snow { fill: rgba(255,248,240,0.82); }
+html.light .mt-lava { fill: rgba(230,70,20,0.45); }
+html.light .mt-smoke { fill: rgba(130,130,130,0.20); }
 html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 </style>
 </head>
@@ -671,12 +673,15 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
     <path class="mt-far" d="M0,900 L0,440 C20,422 45,408 75,390 C108,370 138,358 168,340 C192,325 215,312 240,298 L240,900 Z"/>
     <path class="mt-mid" d="M0,900 L0,550 L22,528 L36,534 L54,508 L70,486 L80,492 L98,466 L114,444 L122,450 L140,424 L155,406 L162,413 L175,388 L188,370 L194,376 L208,350 L220,332 L228,340 L238,315 L240,305 L240,900 Z"/>
     <path class="mt-near" d="M0,900 L0,660 L16,640 L26,647 L40,624 L54,602 L62,608 L76,583 L92,560 L100,567 L115,542 L130,518 L138,525 L152,498 L164,478 L170,485 L182,460 L194,438 L200,444 L212,418 L224,396 L230,404 L238,378 L240,365 L240,900 Z"/>
-    <path class="mt-snow" d="M224,396 L230,404 L238,378 L240,365 L240,390 L234,406 L228,418 L222,428 L216,436 L210,428 L212,418 L224,396 Z"/>
-    <path class="mt-snow" d="M182,460 L194,438 L200,444 L200,462 L194,470 L186,476 L182,473 Z"/>
-    <path class="mt-snow" d="M152,498 L164,478 L170,485 L170,500 L164,508 L156,513 L152,511 Z"/>
+    <path class="mt-lava" d="M224,396 L230,404 L238,378 L240,365 L240,390 L234,406 L228,418 L222,428 L216,436 L210,428 L212,418 L224,396 Z"/>
     <path class="mt-band" d="M58,628 L84,612 L112,596 L138,578 L162,562 L185,548"/>
     <path class="mt-band" d="M104,564 L130,548 L156,530 L180,516 L204,500 L225,487"/>
     <path class="mt-band" d="M152,510 L175,494 L200,477 L222,460 L238,450"/>
+    <ellipse class="mt-smoke" cx="232" cy="335" rx="16" ry="11"/>
+    <ellipse class="mt-smoke" cx="220" cy="292" rx="22" ry="14"/>
+    <ellipse class="mt-smoke" cx="208" cy="248" rx="28" ry="17"/>
+    <ellipse class="mt-smoke" cx="198" cy="202" rx="33" ry="19"/>
+    <ellipse class="mt-smoke" cx="190" cy="158" rx="37" ry="21"/>
   </svg>
 </div>
 <div class="mountain-right" aria-hidden="true">
@@ -684,12 +689,15 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
     <path class="mt-far" d="M0,900 L0,440 C20,422 45,408 75,390 C108,370 138,358 168,340 C192,325 215,312 240,298 L240,900 Z"/>
     <path class="mt-mid" d="M0,900 L0,550 L22,528 L36,534 L54,508 L70,486 L80,492 L98,466 L114,444 L122,450 L140,424 L155,406 L162,413 L175,388 L188,370 L194,376 L208,350 L220,332 L228,340 L238,315 L240,305 L240,900 Z"/>
     <path class="mt-near" d="M0,900 L0,660 L16,640 L26,647 L40,624 L54,602 L62,608 L76,583 L92,560 L100,567 L115,542 L130,518 L138,525 L152,498 L164,478 L170,485 L182,460 L194,438 L200,444 L212,418 L224,396 L230,404 L238,378 L240,365 L240,900 Z"/>
-    <path class="mt-snow" d="M224,396 L230,404 L238,378 L240,365 L240,390 L234,406 L228,418 L222,428 L216,436 L210,428 L212,418 L224,396 Z"/>
-    <path class="mt-snow" d="M182,460 L194,438 L200,444 L200,462 L194,470 L186,476 L182,473 Z"/>
-    <path class="mt-snow" d="M152,498 L164,478 L170,485 L170,500 L164,508 L156,513 L152,511 Z"/>
+    <path class="mt-lava" d="M224,396 L230,404 L238,378 L240,365 L240,390 L234,406 L228,418 L222,428 L216,436 L210,428 L212,418 L224,396 Z"/>
     <path class="mt-band" d="M58,628 L84,612 L112,596 L138,578 L162,562 L185,548"/>
     <path class="mt-band" d="M104,564 L130,548 L156,530 L180,516 L204,500 L225,487"/>
     <path class="mt-band" d="M152,510 L175,494 L200,477 L222,460 L238,450"/>
+    <ellipse class="mt-smoke" cx="232" cy="335" rx="16" ry="11"/>
+    <ellipse class="mt-smoke" cx="220" cy="292" rx="22" ry="14"/>
+    <ellipse class="mt-smoke" cx="208" cy="248" rx="28" ry="17"/>
+    <ellipse class="mt-smoke" cx="198" cy="202" rx="33" ry="19"/>
+    <ellipse class="mt-smoke" cx="190" cy="158" rx="37" ry="21"/>
   </svg>
 </div>
 
@@ -940,8 +948,8 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">9:30</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Morn-</div>
+        <div class="event-period">ing</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -959,8 +967,8 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">11:00</div>
-        <div class="event-period">AM</div>
+        <div class="event-time">Late</div>
+        <div class="event-period">Morn.</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -978,8 +986,7 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">12:00</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Noon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -997,8 +1004,8 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">1:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">After-</div>
+        <div class="event-period">noon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1089,7 +1096,7 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
         <div class="event-desc">Book through GetYourGuide — plenty of operators run early morning Pacaya tours with hotel pickup. Early departure means you beat the heat and crowds. Most tours are half-day, getting you back in Antigua by noon.</div>
         <div class="event-pills">
           <span class="event-pill pill-w">Book on GetYourGuide</span>
-          <span class="event-pill">Early pickup ~5–6 AM</span>
+          <span class="event-pill">Early morning pickup</span>
           <span class="event-pill">Pickup near your hotel</span>
         </div>
       </div>
@@ -1156,7 +1163,6 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
         <div class="event-time">Noon</div>
-        <div class="event-period"></div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1165,7 +1171,7 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
         </div>
         <div class="event-desc">Back in Antigua by midday. You'll be dusty, possibly smelling faintly of sulphur, and hungry. Shower, change, and have a proper lunch before deciding what to do with the afternoon. Pacaya is easy enough that you'll still have energy.</div>
         <div class="event-pills">
-          <span class="event-pill">Back by ~12 PM</span>
+          <span class="event-pill">Back by midday</span>
           <span class="event-pill">Shower + lunch before afternoon</span>
         </div>
       </div>
@@ -1267,15 +1273,15 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
         <div class="event-pills">
           <span class="event-pill">GetYourGuide · OX Expeditions · Wicho &amp; Charlie's</span>
           <span class="event-pill pill-w">Inclusions: meals · tent · sleeping bag · bed</span>
-          <span class="event-pill">Pickup ~10–11 AM typically</span>
+          <span class="event-pill">Late-morning pickup typically</span>
         </div>
       </div>
     </div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="volcano">
-        <div class="event-time">Noon</div>
-        <div class="event-period">–5 PM</div>
+        <div class="event-time">Mid-</div>
+        <div class="event-period">Aft.</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1333,8 +1339,7 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">9:30</div>
-        <div class="event-period">PM</div>
+        <div class="event-time">Night</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1435,7 +1440,6 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
         <div class="event-time">Noon</div>
-        <div class="event-period"></div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
@@ -1461,13 +1465,13 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
           <div class="event-title">🚐 Shuttle to Panajachel — Know Your Bus Times</div>
           <span class="event-badge badge-drive">Shuttle</span>
         </div>
-        <div class="event-desc">Shuttles to Panajachel depart from fixed pickup locations in Antigua — not from your hotel door. Arrive 15–20 minutes early. Departure times: <strong>11 AM, 2 PM, 4 PM, and 5 PM.</strong> If you're heading to any lake village other than Panajachel, take the <strong>2 PM bus</strong> — lanchas stop running at 6:00–6:30 PM. Miss the last lancha and you're looking at a private boat costing up to 500 GTQ.</div>
+        <div class="event-desc">Shuttles to Panajachel depart from fixed pickup locations in Antigua — not from your hotel door. Arrive 15–20 minutes early. Departures run <strong>late morning, early afternoon, mid-afternoon, and dusk.</strong> If you're heading to any lake village other than Panajachel, take the <strong>early-afternoon bus</strong> — lanchas stop running around dusk. Miss the last lancha and you're looking at a private boat costing up to 500 GTQ.</div>
         <div class="event-pills">
           <span class="event-pill pill-a">Arrive pickup point 15–20 min early</span>
           <span class="event-pill pill-a">Buses don't wait — no exceptions</span>
-          <span class="event-pill pill-w">Lanchas stop 6:00–6:30 PM daily</span>
+          <span class="event-pill pill-w">Lanchas stop running around dusk daily</span>
           <span class="event-pill pill-w">Miss lancha = private boat up to 500 GTQ</span>
-          <span class="event-pill">All other villages → take the 2 PM bus</span>
+          <span class="event-pill">All other villages → take the early-afternoon bus</span>
         </div>
       </div>
     </div>
@@ -1643,9 +1647,9 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
           <div class="event-title">⛵ Lancha Back to San Pedro</div>
           <span class="event-badge badge-lake">Lancha</span>
         </div>
-        <div class="event-desc">Catch a lancha back to San Pedro before the 6:00–6:30 PM cutoff. Dinner at your hotel or a local restaurant in the village. After cliff diving and a full day of lake life, tonight should be easy — a good meal, a cold drink, and an early night.</div>
+        <div class="event-desc">Catch a lancha back to San Pedro before the dusk cutoff. Dinner at your hotel or a local restaurant in the village. After cliff diving and a full day of lake life, tonight should be easy — a good meal, a cold drink, and an early night.</div>
         <div class="event-pills">
-          <span class="event-pill pill-a">Lanchas stop 6:00–6:30 PM</span>
+          <span class="event-pill pill-a">Lanchas stop running around dusk</span>
           <span class="event-pill pill-w">Don't miss the last boat</span>
           <span class="event-pill">Easy dinner in San Pedro</span>
         </div>
@@ -1738,17 +1742,17 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">By</div>
-        <div class="event-period">10 AM</div>
+        <div class="event-time">Late</div>
+        <div class="event-period">Morn.</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
           <div class="event-title">🏨 Back at the Hotel — Freshen Up</div>
           <span class="event-badge badge-rest">Rest</span>
         </div>
-        <div class="event-desc">The hike is done and you'll be back at your hotel by 10 AM. Shower, change, and eat a proper breakfast. You have the rest of the morning and afternoon ahead of you — the day is far from over.</div>
+        <div class="event-desc">The hike is done and you'll be back at your hotel by late morning. Shower, change, and eat a proper breakfast. You have the rest of the morning and afternoon ahead of you — the day is far from over.</div>
         <div class="event-pills">
-          <span class="event-pill">Back by 10 AM</span>
+          <span class="event-pill">Back by late morning</span>
           <span class="event-pill">Shower &amp; breakfast before heading out</span>
         </div>
       </div>
@@ -2013,7 +2017,7 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
       <div class="reminder-icon">⛵</div>
       <div>
         <div class="reminder-title">Atitlán Boats</div>
-        <div class="reminder-body">Lanchas (water taxis) are the main transport between villages. <strong>Agree on price before boarding</strong> and check return schedules — lanchas stop running at 6:00–6:30 PM. Don't miss the last boat.</div>
+        <div class="reminder-body">Lanchas (water taxis) are the main transport between villages. <strong>Agree on price before boarding</strong> and check return schedules — lanchas stop running around dusk. Don't miss the last boat.</div>
       </div>
     </div>
   </div>
@@ -2041,13 +2045,18 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-// ── Side mountains: show after hero ──────────────────────────────────────────
+// ── Side mountains: show after hero, hide over footer ─────────────────────────
 (function () {
   const hero = document.querySelector('.hero');
   if (!hero) return;
   new IntersectionObserver(([entry]) => {
     document.body.classList.toggle('past-hero', !entry.isIntersecting);
   }, { threshold: 0 }).observe(hero);
+  const footer = document.querySelector('footer');
+  if (!footer) return;
+  new IntersectionObserver(([entry]) => {
+    document.body.classList.toggle('in-footer', entry.isIntersecting);
+  }, { threshold: 0 }).observe(footer);
 })();
 
 // ── Theme toggle ─────────────────────────────────────────────────────────────
