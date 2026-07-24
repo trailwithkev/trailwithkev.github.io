@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NH 48 4000-Footers Checklist · TrailWithKev</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Personal checklist tracking progress on New Hampshire's 48 4,000-footers — dates hiked and trails used.">
+<link rel="icon" type="image/jpeg" href="/public/favicon.jpg?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & ROOT ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --black:      #000000;
+  --gray-1:     #1d1d1f;
+  --gray-2:     #2d2d2f;
+  --gray-3:     #424245;
+  --gray-4:     #6e6e73;
+  --gray-5:     #86868b;
+  --gray-6:     #adadb0;
+  --white:      #f5f5f7;
+  --pure-white: #ffffff;
+  --blue:       #0071e3;
+  --blue-light: #2997ff;
+  --summit:     #30d158;
+  --summit-glow:rgba(48,209,88,0.12);
+  --amber:      #ffd60a;
+  --teal:       #30d0d0;
+  --radius-sm:  10px;
+  --radius-md:  18px;
+  --radius-lg:  28px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--black);
+  color: var(--white);
+  font-family: -apple-system, 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--gray-1); }
+::-webkit-scrollbar-thumb { background: var(--gray-3); border-radius: 3px; }
+
+/* ─── STICKY NAV ─── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.82);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  height: 52px;
+  gap: 0;
+}
+.nav-brand {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--pure-white);
+  margin-right: 32px;
+  letter-spacing: -0.3px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.nav-brand span { color: var(--blue-light); }
+.nav-links { display: flex; align-items: center; flex: 1; }
+.nav-links a {
+  color: var(--gray-5);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 400;
+  padding: 0 14px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--pure-white); }
+.nav-actions { margin-left: auto; display: flex; align-items: center; gap: 4px; flex-shrink: 0; }
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--gray-5);
+  gap: 5px;
+}
+.nav-hamburger span {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.25s ease, opacity 0.2s ease;
+  transform-origin: center;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+html.light .nav-hamburger { color: #636366; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 40px 100px;
+  position: relative;
+  overflow: hidden;
+  background: var(--black);
+}
+.hero-mountains { position: absolute; bottom: 0; left: 0; right: 0; height: 45%; pointer-events: none; opacity: 0.18; }
+.hero-glow {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(48,209,88,0.15) 0%, transparent 70%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -60%);
+  pointer-events: none;
+}
+
+/* ─── HERO SUN (light mode) ─── */
+.hero-sun { position: absolute; pointer-events: none; z-index: 1; right: 14%; top: 6%; display: none; }
+html.light .hero-sun { display: block; animation: sun-pulse 4s ease-in-out infinite; }
+.hero-sun-rays { transform-origin: 60px 60px; animation: sun-spin 28s linear infinite; }
+@keyframes sun-pulse {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(255,200,10,0.4)); }
+  50%       { filter: drop-shadow(0 0 40px rgba(255,200,10,0.75)); }
+}
+@keyframes sun-spin { to { transform: rotate(360deg); } }
+@media (max-width: 768px) { .hero-sun { right: 4%; top: 5%; transform: scale(0.75); transform-origin: top right; } }
+@media (max-width: 480px) { .hero-sun { right: 2%; top: 3%; transform: scale(0.58); } }
+
+#star-canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+html.light #star-canvas { display: none; }
+
+.hero-eyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--summit);
+  margin-bottom: 24px;
+  position: relative; z-index: 2;
+}
+.hero-number {
+  font-size: clamp(120px, 20vw, 220px);
+  font-weight: 700;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  color: var(--pure-white);
+  margin-bottom: 8px;
+  position: relative; z-index: 2;
+}
+.hero-number-label {
+  font-size: clamp(20px, 3vw, 32px);
+  font-weight: 300;
+  color: var(--gray-5);
+  letter-spacing: -0.02em;
+  margin-bottom: 40px;
+  position: relative; z-index: 2;
+}
+.hero-title {
+  font-size: clamp(30px, 4.6vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pure-white);
+  margin-bottom: 16px;
+  line-height: 1.1;
+  position: relative; z-index: 2;
+}
+.hero-title span { color: var(--summit); }
+.hero-subtitle {
+  font-size: clamp(16px, 2.4vw, 20px);
+  font-weight: 400;
+  color: var(--gray-5);
+  max-width: 620px;
+  margin: 0 auto 48px;
+  letter-spacing: -0.01em;
+  position: relative; z-index: 2;
+}
+
+.hero-progress-wrap {
+  width: 100%;
+  max-width: 480px;
+  position: relative; z-index: 2;
+}
+.hero-progress-bar {
+  height: 10px;
+  border-radius: 980px;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.14);
+  overflow: hidden;
+}
+.hero-progress-fill {
+  height: 100%;
+  border-radius: 980px;
+  background: linear-gradient(90deg, var(--summit), var(--teal));
+  width: 0%;
+  transition: width 0.4s ease;
+}
+.hero-progress-label {
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--gray-5);
+  font-weight: 500;
+}
+.hero-progress-label strong { color: var(--pure-white); }
+
+/* ─── SECTION LAYOUT ─── */
+.section { max-width: 1080px; margin: 0 auto; padding: 90px 40px; }
+.section + .section { padding-top: 0; }
+.section-divider { height: 0.5px; background: rgba(255,255,255,0.1); max-width: 1080px; margin: 0 auto; }
+
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--summit);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-size: clamp(30px, 4.4vw, 46px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--pure-white);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.section-title span { color: var(--summit); }
+.section-body {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--gray-5);
+  max-width: 680px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+.section-body a { color: var(--summit); }
+
+/* ─── STATS ROW ─── */
+.overview-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+.overview-cell { padding: 26px 20px; border-right: 0.5px solid rgba(255,255,255,0.08); text-align: center; }
+.overview-cell:last-child { border-right: none; }
+.overview-num { font-size: 40px; font-weight: 700; letter-spacing: -0.04em; color: var(--pure-white); line-height: 1; margin-bottom: 6px; }
+.overview-label { font-size: 12px; color: var(--gray-5); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
+
+/* ─── CONTROLS ─── */
+.checklist-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin: 32px 0 20px;
+}
+.control-btn {
+  background: rgba(255,255,255,0.06);
+  border: 0.5px solid rgba(255,255,255,0.16);
+  color: var(--gray-6);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  padding: 9px 16px;
+  border-radius: 980px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  font-family: inherit;
+}
+.control-btn:hover { background: rgba(255,255,255,0.12); color: var(--pure-white); }
+.control-search {
+  flex: 1;
+  min-width: 180px;
+  background: rgba(255,255,255,0.06);
+  border: 0.5px solid rgba(255,255,255,0.16);
+  color: var(--pure-white);
+  font-size: 13px;
+  padding: 9px 16px;
+  border-radius: 980px;
+  font-family: inherit;
+}
+.control-search::placeholder { color: var(--gray-5); }
+.control-search:focus, .control-btn:focus { outline: 1.5px solid var(--summit); outline-offset: 1px; }
+
+/* ─── TABLE ─── */
+.checklist-table-wrap {
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  overflow-x: auto;
+}
+table.checklist {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 760px;
+}
+.checklist thead th {
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--gray-5);
+  background: var(--gray-1);
+  padding: 14px 16px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  white-space: nowrap;
+}
+.checklist tbody tr {
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+  transition: background 0.15s;
+}
+.checklist tbody tr:last-child { border-bottom: none; }
+.checklist tbody tr:hover { background: rgba(255,255,255,0.02); }
+.checklist tbody tr.done { background: var(--summit-glow); }
+.checklist tbody tr.done:hover { background: rgba(48,209,88,0.16); }
+.checklist td { padding: 12px 16px; vertical-align: middle; font-size: 14px; }
+
+.cell-check { text-align: center; width: 44px; }
+.peak-check {
+  display: inline-block;
+  width: 22px; height: 22px;
+  border-radius: 7px;
+  border: 1.5px solid rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.04);
+  position: relative;
+  vertical-align: middle;
+}
+.peak-check.is-done { background: var(--summit); border-color: var(--summit); }
+.peak-check.is-done::after {
+  content: '';
+  position: absolute;
+  left: 6px; top: 2px;
+  width: 6px; height: 11px;
+  border: solid #05230f;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+.cell-rank { color: var(--gray-5); font-variant-numeric: tabular-nums; width: 40px; }
+.cell-peak { font-weight: 600; color: var(--pure-white); }
+.cell-peak .peak-range { display: block; font-size: 11.5px; font-weight: 400; color: var(--gray-5); margin-top: 2px; }
+.peak-at-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--summit);
+  text-decoration: none;
+  border: 0.5px solid rgba(48,209,88,0.35);
+  background: rgba(48,209,88,0.1);
+  border-radius: 980px;
+  padding: 3px 9px 3px 8px;
+  white-space: normal;
+  line-height: 1.3;
+  transition: background 0.2s, border-color 0.2s;
+}
+.peak-at-link svg { flex-shrink: 0; }
+.peak-at-link:hover { background: rgba(48,209,88,0.18); border-color: rgba(48,209,88,0.55); }
+.cell-elev { color: var(--gray-5); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cell-date, .cell-trail { color: var(--gray-5); }
+.cell-date { white-space: nowrap; font-variant-numeric: tabular-nums; }
+tr.done .cell-date, tr.done .cell-trail { color: var(--pure-white); }
+.empty-dash { opacity: 0.35; }
+
+/* ─── COMBO TRAILS ─── */
+.combo-list { display: flex; flex-direction: column; gap: 10px; }
+.combo-item {
+  border: 0.5px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-md);
+  background: var(--gray-1);
+  overflow: hidden;
+}
+.combo-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  cursor: pointer;
+  user-select: none;
+}
+.combo-header-info { flex: 1; min-width: 0; }
+.combo-name { font-size: 16px; font-weight: 600; color: var(--pure-white); letter-spacing: -0.01em; line-height: 1.35; }
+.combo-count { font-size: 12px; color: var(--summit); font-weight: 600; margin-top: 4px; }
+.combo-toggle { font-size: 20px; color: var(--gray-4); transition: transform 0.3s ease; flex-shrink: 0; }
+.combo-item.open .combo-toggle { transform: rotate(90deg); }
+.combo-body { display: none; padding: 0 22px 20px; }
+.combo-item.open .combo-body { display: block; }
+.combo-peaks { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+.combo-peak-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 0.5px solid rgba(255,255,255,0.12);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 13px;
+  color: var(--pure-white);
+}
+.combo-peak-chip .chip-rank {
+  background: var(--summit-glow);
+  color: var(--summit);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  border-radius: 6px;
+  padding: 2px 6px;
+  flex-shrink: 0;
+}
+.combo-at-link { margin-top: 0; }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--gray-2);
+  border-top: 1px solid rgba(255,255,255,0.14);
+  padding: 40px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--gray-6);
+}
+footer strong { color: var(--white); }
+footer a { color: var(--gray-5); text-decoration: none; }
+footer a:hover { color: var(--pure-white); }
+.footer-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--gray-5);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 12px 0 16px;
+  transition: color 0.2s;
+}
+.footer-instagram:hover { color: var(--pure-white); }
+
+/* ─── PROGRESS STRIP ─── */
+.progress-strip { height: 3px; background: linear-gradient(90deg, var(--summit) 0%, var(--teal) 50%, var(--blue) 100%); width: 100%; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .section { padding: 72px 32px; }
+  .section-title { font-size: clamp(26px, 4vw, 38px); }
+}
+@media (max-width: 768px) {
+  .nav { padding: 0 16px; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 52px; left: 0; right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background: rgba(10,10,10,0.97);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+    padding: 6px 0 10px;
+    z-index: 199;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { height: 44px; padding: 0 20px; border-bottom: none; font-size: 15px; border-left: 2px solid transparent; }
+  .nav-hamburger { display: flex; }
+  .nav-actions { gap: 2px; }
+  .hero { padding: 72px 20px 56px; min-height: 86vh; }
+  .hero-number { font-size: clamp(70px, 20vw, 120px); }
+  .hero-number-label { font-size: clamp(15px, 3.5vw, 22px); margin-bottom: 24px; }
+  .hero-title { font-size: clamp(22px, 5.5vw, 36px); }
+  .hero-subtitle { font-size: clamp(14px, 3vw, 17px); margin-bottom: 32px; }
+  .section { padding: 56px 20px; }
+  .section + .section { padding-top: 0; }
+  .section-title { font-size: clamp(24px, 5.5vw, 34px); }
+  .section-body { font-size: 14px; margin-bottom: 28px; }
+  .overview-row { grid-template-columns: repeat(2, 1fr); }
+  .overview-cell:nth-child(2) { border-right: none; }
+  .overview-cell { padding: 18px 14px; }
+  .overview-num { font-size: 32px; }
+  .checklist-controls { margin: 24px 0 16px; }
+  footer { padding: 32px 20px; font-size: 11px; }
+}
+@media (max-width: 480px) {
+  .hero { padding: 60px 16px 48px; }
+  .hero-number { font-size: clamp(60px, 22vw, 96px); }
+  .hero-title { font-size: clamp(20px, 6.5vw, 28px); }
+  .hero-subtitle { font-size: 13px; margin-bottom: 26px; }
+  .section { padding: 44px 16px; }
+  .section-title { font-size: clamp(20px, 6vw, 28px); }
+  .overview-cell { padding: 14px 10px; }
+  .overview-num { font-size: 26px; }
+  .overview-label { font-size: 10.5px; }
+  footer { padding: 28px 16px; font-size: 11px; word-break: break-word; }
+}
+
+/* ─── THEME TOGGLE ─── */
+.theme-toggle {
+  flex-shrink: 0;
+  position: relative;
+  width: 56px; height: 26px; border-radius: 980px;
+  background: rgba(255,255,255,0.12); border: 0.5px solid rgba(255,255,255,0.25);
+  cursor: pointer; display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5px; transition: background 0.3s, border-color 0.3s;
+}
+.tt-moon, .tt-sun { font-size: 11px; pointer-events: none; display: flex; align-items: center; }
+.tt-moon { color: rgba(255,255,255,0.85); }
+html.light .tt-moon { color: #3a3a3c; }
+.tt-thumb {
+  position: absolute; width: 20px; height: 20px; border-radius: 50%;
+  background: #fff; left: 3px;
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4); pointer-events: none;
+}
+html.light .theme-toggle { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.18); }
+html.light .tt-thumb { transform: translateX(30px); background: #636366; box-shadow: 0 1px 3px rgba(0,0,0,0.2); }
+
+/* ─── LIGHT MODE ─── */
+html.light body { background: #f0ede8; color: #1d1d1f; }
+html.light ::-webkit-scrollbar-track { background: #e5e5ea; }
+html.light ::-webkit-scrollbar-thumb { background: #c7c7cc; }
+html.light .nav { background: rgba(240,237,232,0.92); border-bottom-color: rgba(0,0,0,0.1); }
+html.light .nav-brand { color: #1d1d1f; }
+html.light .nav-links a { color: #636366; }
+html.light .nav-links a:hover { color: #000; }
+html.light .nav-links { background: rgba(240,237,232,0.97); }
+html.light .hero { background: #f0ede8; }
+html.light .hero-glow { opacity: 0; }
+html.light .hero-mountains path { fill: rgba(0,0,0,0.32); }
+html.light .hero-eyebrow { color: #1a8f3d; }
+html.light .hero-number { color: #000; }
+html.light .hero-number-label { color: #636366; }
+html.light .hero-title { color: #000; }
+html.light .hero-title span { color: #1a8f3d; }
+html.light .hero-subtitle { color: #636366; }
+html.light .hero-progress-bar { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.16); }
+html.light .hero-progress-label { color: #636366; }
+html.light .hero-progress-label strong { color: #000; }
+html.light .section-divider { background: rgba(0,0,0,0.1); }
+html.light .section-eyebrow { color: #1a8f3d; }
+html.light .section-title { color: #000; }
+html.light .section-title span { color: #1a8f3d; }
+html.light .section-body { color: #48484a; }
+html.light .section-body a { color: #1a8f3d; }
+html.light .overview-row { border-color: rgba(0,0,0,0.1); }
+html.light .overview-cell { border-right-color: rgba(0,0,0,0.08); }
+html.light .overview-num { color: #000; }
+html.light .overview-label { color: #636366; }
+html.light .control-btn { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.16); color: #48484a; }
+html.light .control-btn:hover { background: rgba(0,0,0,0.09); color: #000; }
+html.light .control-search { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.16); color: #1d1d1f; }
+html.light .control-search::placeholder { color: #8e8e93; }
+html.light .checklist-table-wrap { border-color: rgba(0,0,0,0.1); }
+html.light .checklist thead th { background: #ece8e1; color: #636366; border-bottom-color: rgba(0,0,0,0.1); }
+html.light .checklist tbody tr { border-bottom-color: rgba(0,0,0,0.06); }
+html.light .checklist tbody tr:hover { background: rgba(0,0,0,0.025); }
+html.light .checklist tbody tr.done { background: rgba(0,130,50,0.07); }
+html.light .checklist tbody tr.done:hover { background: rgba(0,130,50,0.12); }
+html.light .cell-rank { color: #8e8e93; }
+html.light .cell-peak { color: #000; }
+html.light .cell-peak .peak-range { color: #636366; }
+html.light .peak-at-link { color: #1a8f3d; background: rgba(0,130,50,0.08); border-color: rgba(0,130,50,0.28); }
+html.light .peak-at-link:hover { background: rgba(0,130,50,0.14); border-color: rgba(0,130,50,0.45); }
+html.light .cell-elev { color: #636366; }
+html.light .cell-date, html.light .cell-trail { color: #636366; }
+html.light tr.done .cell-date, html.light tr.done .cell-trail { color: #000; }
+html.light .peak-check { border-color: rgba(0,0,0,0.28); background: rgba(0,0,0,0.03); }
+html.light .peak-check.is-done { background: #1a8f3d; border-color: #1a8f3d; }
+html.light .combo-item { background: #fff; border-color: rgba(0,0,0,0.1); }
+html.light .combo-name { color: #000; }
+html.light .combo-count { color: #1a8f3d; }
+html.light .combo-toggle { color: #8e8e93; }
+html.light .combo-peak-chip { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.12); color: #1d1d1f; }
+html.light .combo-peak-chip .chip-rank { background: rgba(0,130,50,0.1); color: #1a8f3d; }
+html.light footer { background: #e8e4de; border-top-color: rgba(0,0,0,0.12); color: #48484a; }
+html.light footer strong { color: #1d1d1f; }
+html.light .footer-instagram { color: #636366; }
+html.light .footer-instagram:hover { color: #000; }
+html.light footer a { color: #3a3a3c; }
+html.light footer a:hover { color: #000; }
+html.light .nav-hamburger { color: #636366; }
+
+/* ─── INSTAGRAM NAV ICON ─── */
+.nav-instagram { flex-shrink: 0; display: flex; align-items: center; color: var(--gray-5); text-decoration: none; padding: 0 12px; height: 52px; transition: color 0.2s; }
+.nav-instagram:hover { color: var(--pure-white); }
+html.light .nav-instagram { color: #636366; }
+html.light .nav-instagram:hover { color: #000; }
+</style>
+</head>
+<body>
+
+<!-- Progress strip -->
+<div class="progress-strip"></div>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav class="nav">
+  <a href="/" class="nav-brand">Trail<span>WithKev</span></a>
+  <div class="nav-links">
+    <a href="#overview">Overview</a>
+    <a href="#checklist">Checklist</a>
+    <a href="#combo-trails">Combo Trails</a>
+  </div>
+  <div class="nav-actions">
+    <a href="https://www.instagram.com/trailwithkev/" class="nav-instagram" target="_blank" rel="noopener noreferrer" aria-label="TrailWithKev on Instagram">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <defs><linearGradient id="ig-grad-n" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs>
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-n)"/>
+        <circle cx="12" cy="12" r="4.5" stroke="url(#ig-grad-n)"/>
+        <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-grad-n)" stroke="none"/>
+      </svg>
+    </a>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode">
+      <span class="tt-moon"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></span>
+      <span class="tt-thumb"></span>
+      <span class="tt-sun">☀️</span>
+    </button>
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <canvas id="star-canvas"></canvas>
+
+  <!-- Sun (light mode only) -->
+  <div class="hero-sun" aria-hidden="true">
+    <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="sun-body" cx="40%" cy="36%" r="68%">
+          <stop offset="0%"   stop-color="#FFFFFF"/>
+          <stop offset="18%"  stop-color="#FFF8CC"/>
+          <stop offset="52%"  stop-color="#FFD60A"/>
+          <stop offset="100%" stop-color="#FFA020"/>
+        </radialGradient>
+        <radialGradient id="sun-halo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#FFD60A" stop-opacity="0.32"/>
+          <stop offset="50%"  stop-color="#FFAA00" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#FF8800" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="60" cy="60" r="58" fill="url(#sun-halo)"/>
+      <g class="hero-sun-rays" stroke="#FFB800" stroke-linecap="round">
+        <g stroke-width="2.6">
+          <line x1="60" y1="35"  x2="60"   y2="13"/>
+          <line x1="77.7" y1="42.3" x2="93.5" y2="26.5"/>
+          <line x1="85"  y1="60"  x2="107"  y2="60"/>
+          <line x1="77.7" y1="77.7" x2="93.5" y2="93.5"/>
+          <line x1="60"  y1="85"  x2="60"   y2="107"/>
+          <line x1="42.3" y1="77.7" x2="26.5" y2="93.5"/>
+          <line x1="35"  y1="60"  x2="13"   y2="60"/>
+          <line x1="42.3" y1="42.3" x2="26.5" y2="26.5"/>
+        </g>
+        <g stroke-width="1.8" opacity="0.7">
+          <line x1="69.6" y1="36.9" x2="75.1" y2="24.4"/>
+          <line x1="83.1" y1="50.4" x2="95.6" y2="44.9"/>
+          <line x1="83.1" y1="69.6" x2="95.6" y2="75.1"/>
+          <line x1="69.6" y1="83.1" x2="75.1" y2="95.6"/>
+          <line x1="50.4" y1="83.1" x2="44.9" y2="95.6"/>
+          <line x1="36.9" y1="69.6" x2="24.4" y2="75.1"/>
+          <line x1="36.9" y1="50.4" x2="24.4" y2="44.9"/>
+          <line x1="50.4" y1="36.9" x2="44.9" y2="24.4"/>
+        </g>
+      </g>
+      <circle cx="60" cy="60" r="22" fill="url(#sun-body)"/>
+    </svg>
+  </div>
+
+  <div class="hero-glow"></div>
+  <svg class="hero-mountains" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,300 L0,240 L80,190 L160,215 L260,130 L360,60 L450,100 L560,40 L660,85 L760,25 L850,70 L960,35 L1060,80 L1160,50 L1260,95 L1360,70 L1440,120 L1440,300 Z" fill="white"/>
+  </svg>
+
+  <div class="hero-eyebrow">New Hampshire</div>
+  <div class="hero-number">48</div>
+  <div class="hero-number-label">4,000-footers</div>
+  <div class="hero-title">The NH 48 <span>Checklist</span></div>
+  <div class="hero-subtitle">Tracking every 4,000-foot peak in the White Mountains — dates hiked, trails taken, and the ones still left to climb.</div>
+
+  <div class="hero-progress-wrap">
+    <div class="hero-progress-bar"><div class="hero-progress-fill" id="hero-progress-fill"></div></div>
+    <div class="hero-progress-label"><strong id="hero-progress-count">0</strong> / 48 summits completed</div>
+  </div>
+</section>
+
+<!-- ═══════════════════ OVERVIEW ═══════════════════ -->
+<div id="overview">
+<div class="section">
+  <div class="section-eyebrow">Trip at a Glance</div>
+  <div class="section-title">Peak Bagging, <span>Tracked</span></div>
+  <div class="section-body">The official list of New Hampshire's 48 mountains over 4,000 feet, as maintained by the <a href="https://4000footers.com/list_nh48_print.shtml" target="_blank" rel="noopener noreferrer">AMC Four Thousand Footer Club</a>. Progress below reflects every peak actually climbed, with the date and trail logged for each one.</div>
+
+  <div class="overview-row">
+    <div class="overview-cell">
+      <div class="overview-num">48</div>
+      <div class="overview-label">Total Peaks</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--summit)" id="stat-done">0</div>
+      <div class="overview-label">Completed</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--teal)" id="stat-remaining">48</div>
+      <div class="overview-label">Remaining</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--amber)">6,288'</div>
+      <div class="overview-label">Highest · Washington</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ CHECKLIST ═══════════════════ -->
+<div id="checklist">
+<div class="section">
+  <div class="section-eyebrow">The List</div>
+  <div class="section-title">All 48 <span>Summits</span></div>
+  <div class="section-body">Ranked by elevation, highest to lowest. Green rows are done.</div>
+
+  <div class="checklist-controls">
+    <input type="text" class="control-search" id="search-input" placeholder="Search a peak...">
+    <button class="control-btn" id="show-remaining-btn">Show Remaining Only</button>
+  </div>
+
+  <div class="checklist-table-wrap">
+    <table class="checklist" id="checklist-table">
+      <thead>
+        <tr>
+          <th class="cell-check">Done</th>
+          <th>#</th>
+          <th>Peak</th>
+          <th>Elevation</th>
+          <th>Date Hiked</th>
+          <th>Trail(s) Hiked</th>
+        </tr>
+      </thead>
+      <tbody id="checklist-body">
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ COMBO TRAILS ═══════════════════ -->
+<div id="combo-trails">
+<div class="section">
+  <div class="section-eyebrow">Multi-Summit Routes</div>
+  <div class="section-title">Trails That Bag <span>More Than One</span></div>
+  <div class="section-body">Some of the 48 sit close enough together that a single trail reaches more than one summit in the same hike. Expand a trail below to see which peaks it covers.</div>
+
+  <div class="combo-list" id="combo-list"></div>
+</div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <strong>TrailWithKev</strong> · NH 48 Checklist<br>
+  <a href="https://www.instagram.com/trailwithkev/" class="footer-instagram" target="_blank" rel="noopener noreferrer">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <defs><linearGradient id="ig-grad-f" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs>
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" stroke="url(#ig-grad-f)"/>
+      <circle cx="12" cy="12" r="4.5" stroke="url(#ig-grad-f)"/>
+      <circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig-grad-f)" stroke="none"/>
+    </svg>
+    @trailwithkev
+  </a><br>
+  <span style="opacity:0.5;">List source: 4000footers.com · Always carry the Ten Essentials · Leave No Trace</span><br><br>
+  <span style="font-size:11px;">&copy; 2024–2026 TrailWithKev. All rights reserved. &nbsp;·&nbsp; <a href="/terms.html">Terms &amp; Conditions</a></span>
+</footer>
+
+<script>
+/* ── Peak data: rank, name, elevation (ft), range, done, date hiked (YYYY-MM-DD), trail note, AllTrails trail name, AllTrails slug ──
+   This is the only source of truth — edit these values directly to log a hike.
+   The page itself does not let visitors change anything. */
+const PEAKS = [
+  [1,  "Mount Washington", 6288, "Presidential Range", false, "", "", "Mount Washington and Monroe via Ammonoosuc Ravine Trail", "us/new-hampshire/mount-washington-and-monroe-via-ammonoosuc-ravine-trail"],
+  [2,  "Mount Adams", 5774, "Presidential Range", false, "", "", "Mount Jefferson, Adams, and Madison", "us/new-hampshire/mount-jefferson-adams-and-madison"],
+  [3,  "Mount Jefferson", 5712, "Presidential Range", false, "", "", "Mount Jefferson, Adams, and Madison", "us/new-hampshire/mount-jefferson-adams-and-madison"],
+  [4,  "Mount Monroe", 5384, "Presidential Range", false, "", "", "Mount Washington and Monroe via Ammonoosuc Ravine Trail", "us/new-hampshire/mount-washington-and-monroe-via-ammonoosuc-ravine-trail"],
+  [5,  "Mount Madison", 5367, "Presidential Range", false, "", "", "Mount Jefferson, Adams, and Madison", "us/new-hampshire/mount-jefferson-adams-and-madison"],
+  [6,  "Mount Lafayette", 5260, "Franconia Range", true, "2025-09-27", "Franconia Ridge Trail", "Mount Lafayette and Franconia Ridge Trail Loop", "us/new-hampshire/mount-lafayette-and-franconia-ridge-trail-loop"],
+  [7,  "Mount Lincoln", 5089, "Franconia Range", true, "2025-09-27", "Franconia Ridge Trail", "Mount Lafayette and Franconia Ridge Trail Loop", "us/new-hampshire/mount-lafayette-and-franconia-ridge-trail-loop"],
+  [8,  "South Twin Mountain", 4902, "Twin Range", false, "", "", "North Twin and South Twin Mountain via North Twin Trail", "us/new-hampshire/north-twin-and-south-twin-mountain-via-north-twin-trail"],
+  [9,  "Carter Dome", 4832, "Carter-Moriah Range", false, "", "", "Carter Notch Hut, Dome, and 19 Mile Brook Trail", "us/new-hampshire/carter-notch-hut-dome-and-19-mile-brook-trail"],
+  [10, "Mount Moosilauke", 4802, "Western White Mountains", false, "", "", "Mount Moosilauke via Gorge Brook Trail", "us/new-hampshire/mount-moosilauke-via-gorge-brook-trail"],
+  [11, "Mount Eisenhower", 4780, "Presidential Range", false, "", "", "Mount Jackson, Mount Pierce, and Mount Eisenhower", "us/new-hampshire/mount-jackson-mount-pierce-and-mount-eisenhower"],
+  [12, "North Twin Mountain", 4761, "Twin Range", false, "", "", "North Twin Trail", "us/new-hampshire/north-twin-trail"],
+  [13, "Mount Carrigain", 4700, "Pemigewasset Wilderness", false, "", "", "Mount Carrigain via Signal Ridge Trail", "us/new-hampshire/signal-ridge-trail-to-mount-carrigain"],
+  [14, "Mount Bond", 4698, "Pemigewasset Wilderness", false, "", "", "Bondcliff, Mount Bond, and West Bond", "us/new-hampshire/bondcliff-mount-bond-and-west-bond"],
+  [15, "Middle Carter Mountain", 4610, "Carter-Moriah Range", false, "", "", "Carter Dome, South Carter, Middle Carter", "us/new-hampshire/carter-dome-south-carter-middle-carter"],
+  [16, "West Bond", 4540, "Pemigewasset Wilderness", false, "", "", "Bondcliff, Mount Bond, and West Bond", "us/new-hampshire/bondcliff-mount-bond-and-west-bond"],
+  [17, "Mount Garfield", 4500, "Franconia Range", false, "", "", "Mount Garfield Trail", "us/new-hampshire/mount-garfield-trail"],
+  [18, "Mount Liberty", 4459, "Franconia Range", false, "", "", "Mt. Liberty and Flume via Liberty Springs and Franconia Ridge Trail", "us/new-hampshire/mount-liberty-and-mount-flume-via-whitehouse-liberty-springs-and-franconia-ridge-tr"],
+  [19, "South Carter Mountain", 4430, "Carter-Moriah Range", false, "", "", "Carter Dome, South Carter, Middle Carter", "us/new-hampshire/carter-dome-south-carter-middle-carter"],
+  [20, "Wildcat Mountain, A Peak", 4422, "Carter-Moriah Range", false, "", "", "Wildcat Ridge Trail", "us/new-hampshire/wildcat-ridge-trail--3"],
+  [21, "Mount Hancock", 4420, "Pemigewasset Wilderness", false, "", "", "Hancock Trail", "us/new-hampshire/hancock-trail"],
+  [22, "South Kinsman Mountain", 4358, "Kinsman Range", false, "", "", "North Kinsman and South Kinsman Trail via Fishin Jimmy Trail", "us/new-hampshire/north-kinsman-and-south-kinsman-trail-via-lonesome-lake-and-appalachian-trail"],
+  [23, "Mount Field", 4340, "Willey Range", false, "", "", "Mount Willey, Mount Field and Mount Tom via Ethan Pond Trail", "us/new-hampshire/mount-willey-mount-field-and-mount-tom-via-ethan-pond-trail"],
+  [24, "Mount Osceola", 4340, "Sandwich Range", true, "2026-05-23", "Mount Osceola and East Osceola", "Mount Osceola and East Osceola", "us/new-hampshire/mount-osceola-and-east-osceola"],
+  [25, "Mount Flume", 4328, "Franconia Range", false, "", "", "Mt. Liberty and Flume via Liberty Springs and Franconia Ridge Trail", "us/new-hampshire/mount-liberty-and-mount-flume-via-whitehouse-liberty-springs-and-franconia-ridge-tr"],
+  [26, "South Hancock", 4319, "Pemigewasset Wilderness", false, "", "", "Hancock Trail", "us/new-hampshire/hancock-trail"],
+  [27, "Mount Pierce", 4310, "Presidential Range", false, "", "", "Mount Jackson, Mount Pierce, and Mount Eisenhower", "us/new-hampshire/mount-jackson-mount-pierce-and-mount-eisenhower"],
+  [28, "North Kinsman Mountain", 4293, "Kinsman Range", false, "", "", "North Kinsman and South Kinsman Trail via Fishin Jimmy Trail", "us/new-hampshire/north-kinsman-and-south-kinsman-trail-via-lonesome-lake-and-appalachian-trail"],
+  [29, "Mount Willey", 4285, "Willey Range", false, "", "", "Mount Willey, Mount Field and Mount Tom via Ethan Pond Trail", "us/new-hampshire/mount-willey-mount-field-and-mount-tom-via-ethan-pond-trail"],
+  [30, "Bondcliff", 4265, "Pemigewasset Wilderness", false, "", "", "Bondcliff, Mount Bond, and West Bond", "us/new-hampshire/bondcliff-mount-bond-and-west-bond"],
+  [31, "Zealand Mountain", 4260, "Twin Range", false, "", "", "Zealand Summit via Zealand Trail and Appalachian Trail", "us/new-hampshire/zealand-summit-via-zealand-trail-and-appalachian-trail"],
+  [32, "North Tripyramid", 4180, "Sandwich Range", false, "", "", "Mount Tripyramid Loop Trail", "us/new-hampshire/mount-tripyramid-loop-trail"],
+  [33, "Mount Cabot", 4170, "Pilot-Kilkenny Range", false, "", "", "Mount Cabot via Bunnell Notch Trail", "us/new-hampshire/mount-cabot-trail"],
+  [34, "East Osceola", 4156, "Sandwich Range", true, "2026-05-23", "Mount Osceola and East Osceola", "Mount Osceola and East Osceola", "us/new-hampshire/mount-osceola-and-east-osceola"],
+  [35, "Middle Tripyramid", 4140, "Sandwich Range", false, "", "", "Mount Tripyramid Loop Trail", "us/new-hampshire/mount-tripyramid-loop-trail"],
+  [36, "Cannon Mountain", 4100, "Franconia Range", false, "", "", "Cannon Mountain via Kinsman Ridge Trail", "us/new-hampshire/cannon-mountain-via-kinsman-ridge-trail"],
+  [37, "Mount Hale", 4054, "Twin Range", false, "", "", "Mount Hale via Hale Brook Trail", "us/new-hampshire/mount-hale-via-hale-brook-trail"],
+  [38, "Mount Jackson", 4052, "Presidential Range", false, "", "", "Mount Jackson, Mount Pierce, and Mount Eisenhower", "us/new-hampshire/mount-jackson-mount-pierce-and-mount-eisenhower"],
+  [39, "Mount Tom", 4051, "Willey Range", false, "", "", "Mount Willey, Mount Field and Mount Tom via Ethan Pond Trail", "us/new-hampshire/mount-willey-mount-field-and-mount-tom-via-ethan-pond-trail"],
+  [40, "Wildcat Mountain, D Peak", 4050, "Carter-Moriah Range", false, "", "", "Wildcat D via Wildcat Ridge Trail", "us/new-hampshire/wildcat-d-via-wildcat-ridge-trail"],
+  [41, "Mount Moriah", 4049, "Carter-Moriah Range", false, "", "", "Mount Moriah via Carter Moriah Trail", "us/new-hampshire/mount-moriah-via-carter-moriah-trail"],
+  [42, "Mount Passaconaway", 4043, "Sandwich Range", false, "", "", "Mount Whiteface and Passaconaway Loop", "us/new-hampshire/mount-whiteface-and-passaconway-loop"],
+  [43, "Owl's Head", 4025, "Pemigewasset Wilderness", false, "", "", "Owl's Head Path via Lincoln Brook Trail", "us/new-hampshire/owl-s-head-path-via-lincoln-brook-trail"],
+  [44, "Galehead Mountain", 4024, "Twin Range", false, "", "", "Galehead Mountain via Gale River Trail", "us/new-hampshire/galehead-mountain-via-gale-river-trail"],
+  [45, "Mount Whiteface", 4020, "Sandwich Range", false, "", "", "Mount Whiteface and Passaconaway Loop", "us/new-hampshire/mount-whiteface-and-passaconway-loop"],
+  [46, "Mount Waumbek", 4006, "Pilot-Kilkenny Range", false, "", "", "Mt. Waumbek and Mt. Starr King via Starr King and Kilkenny Ridge Trail", "us/new-hampshire/mount-waumbek-and-mount-starr-king-trail"],
+  [47, "Mount Isolation", 4004, "Presidential Range", false, "", "", "Mount Isolation via Rocky Branch Trail", "us/new-hampshire/mount-isolation-via-isolation-trail"],
+  [48, "Mount Tecumseh", 4003, "Sandwich Range", false, "", "", "Mount Tecumseh Trail via Waterville Trailhead", "us/new-hampshire/mount-tecumseh-trail-via-waterville-trailhead"],
+];
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+
+function formatDate(iso) {
+  if (!iso) return '<span class="empty-dash">—</span>';
+  const [y, m, d] = iso.split('-').map(Number);
+  return new Date(y, m - 1, d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function updateStats() {
+  const done = PEAKS.filter(p => p[4]).length;
+  document.getElementById('stat-done').textContent = done;
+  document.getElementById('stat-remaining').textContent = 48 - done;
+  document.getElementById('hero-progress-count').textContent = done;
+  document.getElementById('hero-progress-fill').style.width = (done / 48 * 100) + '%';
+}
+
+const tbody = document.getElementById('checklist-body');
+
+function renderTable() {
+  tbody.innerHTML = '';
+  PEAKS.forEach(([rank, name, elev, range, done, date, trail, atName, atSlug]) => {
+    const tr = document.createElement('tr');
+    tr.dataset.name = name.toLowerCase();
+    if (done) tr.classList.add('done');
+
+    const atLink = atSlug ? `
+      <a href="https://www.alltrails.com/trail/${atSlug}" class="peak-at-link" target="_blank" rel="noopener" data-at-slug="${atSlug}" onclick="handleATLink(event, this)" aria-label="View ${escapeHtml(atName)} on AllTrails">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        ${escapeHtml(atName)}
+      </a>` : '';
+
+    tr.innerHTML = `
+      <td class="cell-check"><span class="peak-check${done ? ' is-done' : ''}" aria-label="${done ? 'Completed' : 'Not completed'}"></span></td>
+      <td class="cell-rank">${rank}</td>
+      <td class="cell-peak">${escapeHtml(name)}<span class="peak-range">${escapeHtml(range)}</span>${atLink}</td>
+      <td class="cell-elev">${elev.toLocaleString()}'</td>
+      <td class="cell-date">${formatDate(date)}</td>
+      <td class="cell-trail">${trail ? escapeHtml(trail) : '<span class="empty-dash">—</span>'}</td>
+    `;
+
+    tbody.appendChild(tr);
+  });
+}
+
+let showRemainingOnly = false;
+
+function applyFilters() {
+  const q = document.getElementById('search-input').value.trim().toLowerCase();
+  tbody.querySelectorAll('tr').forEach(tr => {
+    const matchesSearch = !q || tr.dataset.name.includes(q);
+    const matchesRemaining = !showRemainingOnly || !tr.classList.contains('done');
+    tr.style.display = (matchesSearch && matchesRemaining) ? '' : 'none';
+  });
+}
+
+document.getElementById('search-input').addEventListener('input', applyFilters);
+
+document.getElementById('show-remaining-btn').addEventListener('click', function() {
+  showRemainingOnly = !showRemainingOnly;
+  this.style.color = showRemainingOnly ? 'var(--summit)' : '';
+  this.textContent = showRemainingOnly ? 'Showing Remaining Only' : 'Show Remaining Only';
+  applyFilters();
+});
+
+renderTable();
+updateStats();
+
+/* ── Combo trails: group peaks that share the same AllTrails listing ── */
+function renderComboTrails() {
+  const groups = {};
+  PEAKS.forEach(([rank, name, elev, range, done, date, trail, atName, atSlug]) => {
+    if (!atSlug) return;
+    if (!groups[atSlug]) groups[atSlug] = { atName, atSlug, peaks: [] };
+    groups[atSlug].peaks.push({ rank, name });
+  });
+
+  const combos = Object.values(groups)
+    .filter(g => g.peaks.length > 1)
+    .sort((a, b) => a.peaks[0].rank - b.peaks[0].rank);
+
+  const list = document.getElementById('combo-list');
+  list.innerHTML = combos.map((g, i) => `
+    <div class="combo-item" data-combo-index="${i}">
+      <div class="combo-header" onclick="toggleCombo(this)">
+        <div class="combo-header-info">
+          <div class="combo-name">${escapeHtml(g.atName)}</div>
+          <div class="combo-count">${g.peaks.length} summits on this trail</div>
+        </div>
+        <div class="combo-toggle">›</div>
+      </div>
+      <div class="combo-body">
+        <div class="combo-peaks">
+          ${g.peaks.map(p => `<div class="combo-peak-chip"><span class="chip-rank">#${p.rank}</span>${escapeHtml(p.name)}</div>`).join('')}
+        </div>
+        <a href="https://www.alltrails.com/trail/${g.atSlug}" class="peak-at-link combo-at-link" target="_blank" rel="noopener" data-at-slug="${g.atSlug}" onclick="handleATLink(event, this)" aria-label="View ${escapeHtml(g.atName)} on AllTrails">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          ${escapeHtml(g.atName)}
+        </a>
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleCombo(header) {
+  header.closest('.combo-item').classList.toggle('open');
+}
+
+renderComboTrails();
+
+/* ── AllTrails link: opens the app on mobile, falls back to the website ── */
+function handleATLink(e, el) {
+  const slug = el.dataset.atSlug;
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile) {
+    e.preventDefault();
+    const appUrl = 'alltrails://explore/trail/' + slug;
+    const webUrl = 'https://www.alltrails.com/trail/' + slug;
+    window.location = appUrl;
+    setTimeout(function() { window.location = webUrl; }, 1500);
+  }
+  // desktop: default <a target="_blank"> behavior opens the website
+}
+
+/* ── Star canvas ── */
+(function () {
+  const canvas = document.getElementById('star-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let stars = [], t = 0;
+  function resize() {
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+    const skyH = canvas.height * 0.52;
+    const count = Math.min(Math.floor(canvas.width * skyH / 4000), 300);
+    stars = Array.from({ length: count }, () => ({
+      x:     Math.random() * canvas.width,
+      y:     Math.random() * skyH,
+      r:     Math.random() * 2.0 + 0.5,
+      base:  Math.random() * 0.6 + 0.25,
+      phase: Math.random() * Math.PI * 2,
+      speed: Math.random() * 0.022 + 0.006,
+    }));
+  }
+  function draw() {
+    requestAnimationFrame(draw);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    if (document.documentElement.classList.contains('light')) return;
+    t++;
+    for (const s of stars) {
+      const a = s.base * (0.4 + 0.6 * Math.sin(t * s.speed + s.phase));
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(255,255,255,${a})`;
+      ctx.fill();
+    }
+  }
+  resize();
+  draw();
+  window.addEventListener('resize', resize);
+})();
+
+/* ── Theme toggle ── */
+function toggleTheme(){
+  document.documentElement.classList.toggle('light');
+  try { localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark'); } catch(e){}
+}
+(function(){
+  try { if(localStorage.getItem('theme') === 'light') document.documentElement.classList.add('light'); } catch(e){}
+})();
+
+/* ── Hamburger nav ── */
+(function(){
+  const btn = document.querySelector('.nav-hamburger');
+  const links = document.querySelector('.nav-links');
+  if (!btn || !links) return;
+  btn.addEventListener('click', () => {
+    const open = btn.classList.toggle('open');
+    links.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      btn.classList.remove('open');
+      links.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+    });
+  });
+})();
+</script>
+</body>
+</html>
