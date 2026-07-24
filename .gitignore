@@ -144,3 +144,5 @@ vite.config.ts.timestamp-*
 
 # Local notes
 DESIGN_IDEAS.md
+.claude/
+.idea/
