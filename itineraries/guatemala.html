@@ -15,7 +15,7 @@
 <meta name="twitter:title" content="Guatemala · TrailWithKev">
 <meta name="twitter:description" content="Guatemala itinerary — volcano hikes, Antigua, and an overnight on Acatenango watching Fuego erupt.">
 <meta name="twitter:image" content="https://trailwithkev.github.io/img/og-guatemala.jpg">
-<link rel="icon" type="image/jpeg" href="/public/favicon.jpg">
+<link rel="icon" type="image/jpeg" href="/public/favicon.jpg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -120,6 +120,31 @@ html.light .nav-hamburger { color: #636366; }
   background: radial-gradient(circle, rgba(255,107,53,0.18) 0%, transparent 70%);
   top: 50%; left: 50%; transform: translate(-50%, -60%); pointer-events: none;
 }
+/* ─── HERO SUN (light mode) ─── */
+.hero-sun {
+  position: absolute;
+  pointer-events: none;
+  z-index: 1;
+  right: 14%;
+  top: 6%;
+  display: none;
+}
+html.light .hero-sun { display: block; animation: sun-pulse 4s ease-in-out infinite; }
+.hero-sun-rays { transform-origin: 60px 60px; animation: sun-spin 28s linear infinite; }
+@keyframes sun-pulse {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(255,200,10,0.4)); }
+  50%       { filter: drop-shadow(0 0 40px rgba(255,200,10,0.75)); }
+}
+@keyframes sun-spin {
+  to { transform: rotate(360deg); }
+}
+@media (max-width: 768px) {
+  .hero-sun { right: 4%; top: 5%; transform: scale(0.75); transform-origin: top right; }
+}
+@media (max-width: 480px) {
+  .hero-sun { right: 2%; top: 3%; transform: scale(0.58); }
+}
+
 .hero-eyebrow {
   font-size: 13px; font-weight: 500; letter-spacing: 0.08em;
   text-transform: uppercase; color: var(--volcano); margin-bottom: 24px;
@@ -477,7 +502,7 @@ html.light .nav-links a.active { color: #000; border-bottom-color: #c04a10; }
 html.light #star-canvas { display: none; }
 html.light .hero { background: #f0ede8; }
 html.light .hero-glow { opacity: 0; }
-html.light .hero-mountains path { fill: rgba(0,0,0,0.06); }
+html.light .hero-mountains path { fill: rgba(0,0,0,0.32); }
 html.light .hero-eyebrow { color: #c04a10; }
 html.light .hero-number { color: #000; }
 html.light .hero-number-label { color: #636366; }
@@ -704,6 +729,49 @@ html.light .mt-band { stroke: rgba(120,65,28,0.10); }
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero">
   <canvas id="star-canvas" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;"></canvas>
+
+  <!-- Sun (light mode only) -->
+  <div class="hero-sun" aria-hidden="true">
+    <svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="sun-body" cx="40%" cy="36%" r="68%">
+          <stop offset="0%"   stop-color="#FFFFFF"/>
+          <stop offset="18%"  stop-color="#FFF8CC"/>
+          <stop offset="52%"  stop-color="#FFD60A"/>
+          <stop offset="100%" stop-color="#FFA020"/>
+        </radialGradient>
+        <radialGradient id="sun-halo" cx="50%" cy="50%" r="50%">
+          <stop offset="0%"   stop-color="#FFD60A" stop-opacity="0.32"/>
+          <stop offset="50%"  stop-color="#FFAA00" stop-opacity="0.12"/>
+          <stop offset="100%" stop-color="#FF8800" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <circle cx="60" cy="60" r="58" fill="url(#sun-halo)"/>
+      <g class="hero-sun-rays" stroke="#FFB800" stroke-linecap="round">
+        <g stroke-width="2.6">
+          <line x1="60" y1="35"  x2="60"   y2="13"/>
+          <line x1="77.7" y1="42.3" x2="93.5" y2="26.5"/>
+          <line x1="85"  y1="60"  x2="107"  y2="60"/>
+          <line x1="77.7" y1="77.7" x2="93.5" y2="93.5"/>
+          <line x1="60"  y1="85"  x2="60"   y2="107"/>
+          <line x1="42.3" y1="77.7" x2="26.5" y2="93.5"/>
+          <line x1="35"  y1="60"  x2="13"   y2="60"/>
+          <line x1="42.3" y1="42.3" x2="26.5" y2="26.5"/>
+        </g>
+        <g stroke-width="1.8" opacity="0.7">
+          <line x1="69.6" y1="36.9" x2="75.1" y2="24.4"/>
+          <line x1="83.1" y1="50.4" x2="95.6" y2="44.9"/>
+          <line x1="83.1" y1="69.6" x2="95.6" y2="75.1"/>
+          <line x1="69.6" y1="83.1" x2="75.1" y2="95.6"/>
+          <line x1="50.4" y1="83.1" x2="44.9" y2="95.6"/>
+          <line x1="36.9" y1="69.6" x2="24.4" y2="75.1"/>
+          <line x1="36.9" y1="50.4" x2="24.4" y2="44.9"/>
+          <line x1="50.4" y1="36.9" x2="44.9" y2="24.4"/>
+        </g>
+      </g>
+      <circle cx="60" cy="60" r="22" fill="url(#sun-body)"/>
+    </svg>
+  </div>
   <div class="hero-glow"></div>
   <svg class="hero-mountains" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,300 L0,240 L80,220 L160,200 L240,160 L320,90 L400,130 L480,60 L560,100 L640,40 L720,85 L800,30 L880,70 L960,45 L1040,100 L1120,65 L1200,120 L1280,80 L1360,140 L1440,110 L1440,300 Z" fill="white"/>
