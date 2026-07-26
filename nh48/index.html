@@ -265,15 +265,16 @@ html.light #star-canvas { display: none; }
 /* ─── STATS ROW ─── */
 .overview-row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 0;
   border: 0.5px solid rgba(255,255,255,0.1);
   border-radius: var(--radius-md);
   overflow: hidden;
   margin-bottom: 8px;
 }
-.overview-cell { padding: 26px 20px; border-right: 0.5px solid rgba(255,255,255,0.08); text-align: center; }
-.overview-cell:last-child { border-right: none; }
+.overview-cell { padding: 26px 20px; border-right: 0.5px solid rgba(255,255,255,0.08); text-align: center; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+.overview-cell:nth-child(3n) { border-right: none; }
+.overview-cell:nth-last-child(-n+3) { border-bottom: none; }
 .overview-num { font-size: 40px; font-weight: 700; letter-spacing: -0.04em; color: var(--pure-white); line-height: 1; margin-bottom: 6px; }
 .overview-label { font-size: 12px; color: var(--gray-5); font-weight: 500; text-transform: uppercase; letter-spacing: 0.06em; }
 
@@ -504,7 +505,10 @@ footer a:hover { color: var(--pure-white); }
   .section-title { font-size: clamp(24px, 5.5vw, 34px); }
   .section-body { font-size: 14px; margin-bottom: 28px; }
   .overview-row { grid-template-columns: repeat(2, 1fr); }
-  .overview-cell:nth-child(2) { border-right: none; }
+  .overview-cell:nth-child(3n) { border-right: 0.5px solid rgba(255,255,255,0.08); }
+  .overview-cell:nth-child(2n) { border-right: none; }
+  .overview-cell:nth-last-child(-n+3) { border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+  .overview-cell:nth-last-child(-n+2) { border-bottom: none; }
   .overview-cell { padding: 18px 14px; }
   .overview-num { font-size: 32px; }
   .checklist-controls { margin: 24px 0 16px; }
@@ -737,6 +741,14 @@ html.light .nav-instagram:hover { color: #000; }
       <div class="overview-num" style="color:var(--amber)">6,288'</div>
       <div class="overview-label">Highest · Washington</div>
     </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--summit)" id="stat-distance">0</div>
+      <div class="overview-label">Miles Hiked</div>
+    </div>
+    <div class="overview-cell">
+      <div class="overview-num" style="color:var(--teal)" id="stat-elevgain">0</div>
+      <div class="overview-label">Elevation Gain</div>
+    </div>
   </div>
 </div>
 </div>
@@ -827,14 +839,14 @@ const PEAKS = [
   [15, "Middle Carter Mountain", 4610, "Carter-Moriah Range", false, "", "", "Carter Dome, South Carter, Middle Carter", "us/new-hampshire/carter-dome-south-carter-middle-carter"],
   [16, "West Bond", 4540, "Pemigewasset Wilderness", false, "", "", "Bondcliff, Mount Bond, and West Bond", "us/new-hampshire/bondcliff-mount-bond-and-west-bond"],
   [17, "Mount Garfield", 4500, "Franconia Range", false, "", "", "Mount Garfield Trail", "us/new-hampshire/mount-garfield-trail"],
-  [18, "Mount Liberty", 4459, "Franconia Range", false, "", "", "Mt. Liberty and Flume via Liberty Springs and Franconia Ridge Trail", "us/new-hampshire/mount-liberty-and-mount-flume-via-whitehouse-liberty-springs-and-franconia-ridge-tr"],
+  [18, "Mount Liberty", 4459, "Franconia Range", true, "2026-07-25", "Liberty Springs and Franconia Ridge Trail", "Mt. Liberty and Flume via Liberty Springs and Franconia Ridge Trail", "us/new-hampshire/mount-liberty-and-mount-flume-via-whitehouse-liberty-springs-and-franconia-ridge-tr"],
   [19, "South Carter Mountain", 4430, "Carter-Moriah Range", false, "", "", "Carter Dome, South Carter, Middle Carter", "us/new-hampshire/carter-dome-south-carter-middle-carter"],
   [20, "Wildcat Mountain, A Peak", 4422, "Carter-Moriah Range", false, "", "", "Wildcat Ridge Trail", "us/new-hampshire/wildcat-ridge-trail--3"],
   [21, "Mount Hancock", 4420, "Pemigewasset Wilderness", false, "", "", "Hancock Trail", "us/new-hampshire/hancock-trail"],
   [22, "South Kinsman Mountain", 4358, "Kinsman Range", false, "", "", "North Kinsman and South Kinsman Trail via Fishin Jimmy Trail", "us/new-hampshire/north-kinsman-and-south-kinsman-trail-via-lonesome-lake-and-appalachian-trail"],
   [23, "Mount Field", 4340, "Willey Range", false, "", "", "Mount Willey, Mount Field and Mount Tom via Ethan Pond Trail", "us/new-hampshire/mount-willey-mount-field-and-mount-tom-via-ethan-pond-trail"],
   [24, "Mount Osceola", 4340, "Sandwich Range", true, "2026-05-23", "Mount Osceola and East Osceola", "Mount Osceola and East Osceola", "us/new-hampshire/mount-osceola-and-east-osceola"],
-  [25, "Mount Flume", 4328, "Franconia Range", false, "", "", "Mt. Liberty and Flume via Liberty Springs and Franconia Ridge Trail", "us/new-hampshire/mount-liberty-and-mount-flume-via-whitehouse-liberty-springs-and-franconia-ridge-tr"],
+  [25, "Mount Flume", 4328, "Franconia Range", true, "2026-07-25", "Liberty Springs and Franconia Ridge Trail", "Mt. Liberty and Flume via Liberty Springs and Franconia Ridge Trail", "us/new-hampshire/mount-liberty-and-mount-flume-via-whitehouse-liberty-springs-and-franconia-ridge-tr"],
   [26, "South Hancock", 4319, "Pemigewasset Wilderness", false, "", "", "Hancock Trail", "us/new-hampshire/hancock-trail"],
   [27, "Mount Pierce", 4310, "Presidential Range", false, "", "", "Mount Jackson, Mount Pierce, and Mount Eisenhower", "us/new-hampshire/mount-jackson-mount-pierce-and-mount-eisenhower"],
   [28, "North Kinsman Mountain", 4293, "Kinsman Range", false, "", "", "North Kinsman and South Kinsman Trail via Fishin Jimmy Trail", "us/new-hampshire/north-kinsman-and-south-kinsman-trail-via-lonesome-lake-and-appalachian-trail"],
@@ -860,6 +872,13 @@ const PEAKS = [
   [48, "Mount Tecumseh", 4003, "Sandwich Range", false, "", "", "Mount Tecumseh Trail via Waterville Trailhead", "us/new-hampshire/mount-tecumseh-trail-via-waterville-trailhead"],
 ];
 
+/* ── Trail stats (distance mi, elevation gain ft) from AllTrails, keyed by AllTrails slug ── */
+const TRAILS = {
+  "us/new-hampshire/mount-lafayette-and-franconia-ridge-trail-loop": { distance: 8.6, elevGain: 3809 },
+  "us/new-hampshire/mount-osceola-and-east-osceola": { distance: 7.9, elevGain: 2854 },
+  "us/new-hampshire/mount-liberty-and-mount-flume-via-whitehouse-liberty-springs-and-franconia-ridge-tr": { distance: 9.6, elevGain: 4137 },
+};
+
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 }
@@ -876,6 +895,19 @@ function updateStats() {
   document.getElementById('stat-remaining').textContent = 48 - done;
   document.getElementById('hero-progress-count').textContent = done;
   document.getElementById('hero-progress-fill').style.width = (done / 48 * 100) + '%';
+
+  const doneSlugs = new Set(PEAKS.filter(p => p[4]).map(p => p[8]));
+  let totalDistance = 0;
+  let totalElevGain = 0;
+  doneSlugs.forEach(slug => {
+    const stats = TRAILS[slug];
+    if (stats) {
+      totalDistance += stats.distance;
+      totalElevGain += stats.elevGain;
+    }
+  });
+  document.getElementById('stat-distance').textContent = totalDistance.toFixed(1) + ' mi';
+  document.getElementById('stat-elevgain').textContent = totalElevGain.toLocaleString() + "'";
 }
 
 const tbody = document.getElementById('checklist-body');
@@ -935,11 +967,12 @@ function renderComboTrails() {
   PEAKS.forEach(([rank, name, elev, range, done, date, trail, atName, atSlug]) => {
     if (!atSlug) return;
     if (!groups[atSlug]) groups[atSlug] = { atName, atSlug, peaks: [] };
-    groups[atSlug].peaks.push({ rank, name });
+    groups[atSlug].peaks.push({ rank, name, done });
   });
 
   const combos = Object.values(groups)
     .filter(g => g.peaks.length > 1)
+    .filter(g => !g.peaks.every(p => p.done))
     .sort((a, b) => a.peaks[0].rank - b.peaks[0].rank);
 
   const list = document.getElementById('combo-list');
