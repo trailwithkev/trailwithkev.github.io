@@ -48,7 +48,7 @@ jobs:
             exit 1
           fi
           npx --yes staticrypt@3 itineraries/washington.html \
-            -d _site \
+            -d _site/itineraries \
             -c false \
             --short
 
