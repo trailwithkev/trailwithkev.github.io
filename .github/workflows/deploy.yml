@@ -1,0 +1,69 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Copy site into build output
+        run: |
+          mkdir -p _site
+          rsync -a \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='_site' \
+            --exclude='node_modules' \
+            ./ _site/
+
+      # Each password-protected page gets its own secret and its own step.
+      # To protect another page later, copy this step, point it at the new
+      # file, and use a new secret name (e.g. secrets.OTHER_PAGE_PASSWORD).
+      - name: Password-protect itineraries/washington.html (PNW)
+        env:
+          STATICRYPT_PASSWORD: ${{ secrets.PNW_PASSWORD }}
+        run: |
+          if [ -z "$STATICRYPT_PASSWORD" ]; then
+            echo "::error::PNW_PASSWORD secret is not set. Add it under Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+          npx --yes staticrypt@3 itineraries/washington.html \
+            -d _site \
+            -c false \
+            --short
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

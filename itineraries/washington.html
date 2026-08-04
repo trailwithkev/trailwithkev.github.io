@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Washington State · TrailWithKev</title>
+<title>PNW National Parks · TrailWithKev</title>
 <meta name="description" content="11-day Pacific Northwest road trip through Olympic, Mount Rainier, and North Cascades National Parks plus Bavarian Leavenworth — alpine ridgelines, mountain goats, orchard towns, and larch-lined lakes.">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="TrailWithKev">
-<meta property="og:title" content="Washington State · TrailWithKev">
+<meta property="og:title" content="PNW National Parks · TrailWithKev">
 <meta property="og:description" content="11-day Pacific Northwest road trip through Olympic, Mount Rainier, and North Cascades National Parks plus Bavarian Leavenworth — alpine ridgelines, mountain goats, orchard towns, and larch-lined lakes.">
 <meta property="og:url" content="https://trailwithkev.github.io/itineraries/washington.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Washington State · TrailWithKev">
+<meta name="twitter:title" content="PNW National Parks · TrailWithKev">
 <meta name="twitter:description" content="11-day Pacific Northwest road trip through Olympic, Mount Rainier, and North Cascades National Parks plus Bavarian Leavenworth — alpine ridgelines, mountain goats, orchard towns, and larch-lined lakes.">
 <link rel="icon" type="image/jpeg" href="/public/favicon.jpg?v=2">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -482,6 +482,40 @@ a.stop-card:hover .stop-link-hint { color: var(--gray-6); }
   line-height: 1.6;
 }
 
+/* ─── FLIGHT TABLE ─── */
+.flight-table-wrap {
+  margin: 14px 0 0;
+  border: 0.5px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.flight-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.flight-table th {
+  text-align: left;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  color: var(--gray-5);
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+}
+.flight-table td {
+  padding: 10px 14px;
+  color: var(--pure-white);
+  border-bottom: 0.5px solid rgba(255,255,255,0.05);
+}
+.flight-table tr:last-child td { border-bottom: none; }
+.flight-table td.flight-time { color: var(--summit); font-weight: 600; white-space: nowrap; }
+html.light .flight-table-wrap { border-color: rgba(0,0,0,0.08); }
+html.light .flight-table th { background: rgba(0,0,0,0.03); color: #6e6e73; border-bottom-color: rgba(0,0,0,0.08); }
+html.light .flight-table td { color: #1d1d1f; border-bottom-color: rgba(0,0,0,0.06); }
+
 /* ─── EVENT ROWS ─── */
 .event-row {
   display: grid;
@@ -570,11 +604,28 @@ a.stop-card:hover .stop-link-hint { color: var(--gray-6); }
   letter-spacing: 0.02em;
   white-space: nowrap;
 }
+a.event-pill {
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+a.event-pill:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.22);
+}
+html.light a.event-pill:hover { background: rgba(0,0,0,0.09); border-color: rgba(0,0,0,0.2); }
 .event-pill.pill-a {
   background: rgba(255,69,58,0.1);
   border-color: rgba(255,69,58,0.3);
   color: #ff6b63;
 }
+.event-pill.pill-at {
+  background: rgba(48,209,88,0.15);
+  border-color: rgba(48,209,88,0.4);
+  color: #30d158;
+  font-weight: 600;
+  cursor: pointer;
+}
+html.light .event-pill.pill-at { background: rgba(0,130,50,0.08); border-color: rgba(0,130,50,0.3); color: #006e28; }
 .event-pill.pill-w {
   background: rgba(219,164,52,0.08);
   border-color: rgba(219,164,52,0.25);
@@ -834,62 +885,6 @@ html.light .nav-hamburger { color: #636366; }
 html.light .nav-instagram { color: #636366; }
 html.light .nav-instagram:hover { color: #000; }
 
-/* ─── MOUNTAIN SIDE DECORATIONS ─── */
-.mountain-left, .mountain-right {
-  position: fixed;
-  top: 52px;
-  bottom: 0;
-  width: 240px;
-  pointer-events: none;
-  z-index: 1;
-  overflow: hidden;
-  display: none;
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-@media (min-width: 1460px) {
-  .mountain-left, .mountain-right { display: block; }
-  body.past-hero .mountain-left, body.past-hero .mountain-right { opacity: 1; }
-  body.in-footer .mountain-left, body.in-footer .mountain-right { opacity: 0; }
-}
-.mountain-left {
-  left: 0;
-  mask: linear-gradient(to bottom, transparent 0%, black 28%, black 100%),
-        linear-gradient(to right, black 0%, black 65%, transparent 100%);
-  mask-composite: intersect;
-  -webkit-mask: linear-gradient(to bottom, transparent 0%, black 28%, black 100%),
-                linear-gradient(to right, black 0%, black 65%, transparent 100%);
-  -webkit-mask-composite: source-in;
-}
-.mountain-right {
-  right: 0;
-  mask: linear-gradient(to bottom, transparent 0%, black 28%, black 100%),
-        linear-gradient(to right, transparent 0%, black 35%, black 100%);
-  mask-composite: intersect;
-  -webkit-mask: linear-gradient(to bottom, transparent 0%, black 28%, black 100%),
-                linear-gradient(to right, transparent 0%, black 35%, black 100%);
-  -webkit-mask-composite: source-in;
-}
-.mountain-left svg, .mountain-right svg {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-.mountain-right svg { transform: scaleX(-1); }
-.mt-far  { fill: rgba(48,140,80,0.07); }
-.mt-mid  { fill: rgba(38,120,65,0.15); }
-.mt-near { fill: rgba(30,100,55,0.25); }
-.mt-mound { fill: rgba(190,150,80,0.3); }
-.mt-steam { fill: rgba(225,235,238,0.24); }
-.mt-band { fill: none; stroke: rgba(38,120,65,0.09); stroke-width: 0.7; }
-html.light .mt-far  { fill: rgba(60,150,90,0.07); }
-html.light .mt-mid  { fill: rgba(50,130,75,0.12); }
-html.light .mt-near { fill: rgba(40,110,60,0.18); }
-html.light .mt-mound { fill: rgba(175,130,60,0.35); }
-html.light .mt-steam { fill: rgba(210,225,232,0.55); }
-html.light .mt-band { stroke: rgba(50,130,75,0.10); }
 </style>
 </head>
 <body>
@@ -935,41 +930,6 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
 </nav>
 
-<!-- Mountain side decorations -->
-<div class="mountain-left" aria-hidden="true">
-  <svg viewBox="0 0 240 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-    <path class="mt-far" d="M0,900 L0,435 C25,415 50,400 80,382 C110,362 140,348 170,330 C195,314 215,302 240,288 L240,900 Z"/>
-    <path class="mt-mid" d="M0,900 L0,540 L20,518 L32,524 L48,500 L64,478 L72,484 L88,460 L102,440 L110,446 L124,422 L138,402 L145,408 L156,385 L166,368 L172,374 L184,350 L194,335 L198,340 L210,315 L220,300 L226,306 L232,285 L238,270 L240,262 L240,900 Z"/>
-    <path class="mt-near" d="M0,900 L0,650 L18,628 L28,635 L42,612 L52,618 L62,598 L75,575 L82,582 L92,558 L105,535 L112,542 L120,520 L133,498 L140,504 L148,485 L158,465 L165,472 L172,452 L182,432 L188,438 L196,418 L206,398 L214,390 L220,374 L226,380 L230,360 L238,342 L240,335 L240,900 Z"/>
-    <path class="mt-band" d="M55,622 L80,606 L108,590 L135,573 L158,558 L180,544"/>
-    <path class="mt-band" d="M100,556 L126,540 L152,524 L176,510 L200,494 L220,482"/>
-    <path class="mt-mound" d="M10,900 L10,795 C10,782 20,774 32,774 C44,774 54,782 54,795 L54,808 C60,808 65,814 65,821 L65,900 Z"/>
-    <ellipse class="mt-steam" cx="34" cy="740" rx="15" ry="22"/>
-    <ellipse class="mt-steam" cx="30" cy="670" rx="20" ry="28"/>
-    <ellipse class="mt-steam" cx="38" cy="590" rx="26" ry="34"/>
-    <ellipse class="mt-steam" cx="28" cy="500" rx="31" ry="38"/>
-    <ellipse class="mt-steam" cx="36" cy="405" rx="35" ry="42"/>
-    <ellipse class="mt-steam" cx="26" cy="305" rx="38" ry="44"/>
-    <ellipse class="mt-steam" cx="34" cy="205" rx="40" ry="46"/>
-  </svg>
-</div>
-<div class="mountain-right" aria-hidden="true">
-  <svg viewBox="0 0 240 900" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg">
-    <path class="mt-far" d="M0,900 L0,435 C25,415 50,400 80,382 C110,362 140,348 170,330 C195,314 215,302 240,288 L240,900 Z"/>
-    <path class="mt-mid" d="M0,900 L0,540 L20,518 L32,524 L48,500 L64,478 L72,484 L88,460 L102,440 L110,446 L124,422 L138,402 L145,408 L156,385 L166,368 L172,374 L184,350 L194,335 L198,340 L210,315 L220,300 L226,306 L232,285 L238,270 L240,262 L240,900 Z"/>
-    <path class="mt-near" d="M0,900 L0,650 L18,628 L28,635 L42,612 L52,618 L62,598 L75,575 L82,582 L92,558 L105,535 L112,542 L120,520 L133,498 L140,504 L148,485 L158,465 L165,472 L172,452 L182,432 L188,438 L196,418 L206,398 L214,390 L220,374 L226,380 L230,360 L238,342 L240,335 L240,900 Z"/>
-    <path class="mt-band" d="M55,622 L80,606 L108,590 L135,573 L158,558 L180,544"/>
-    <path class="mt-band" d="M100,556 L126,540 L152,524 L176,510 L200,494 L220,482"/>
-    <path class="mt-mound" d="M10,900 L10,795 C10,782 20,774 32,774 C44,774 54,782 54,795 L54,808 C60,808 65,814 65,821 L65,900 Z"/>
-    <ellipse class="mt-steam" cx="34" cy="740" rx="15" ry="22"/>
-    <ellipse class="mt-steam" cx="30" cy="670" rx="20" ry="28"/>
-    <ellipse class="mt-steam" cx="38" cy="590" rx="26" ry="34"/>
-    <ellipse class="mt-steam" cx="28" cy="500" rx="31" ry="38"/>
-    <ellipse class="mt-steam" cx="36" cy="405" rx="35" ry="42"/>
-    <ellipse class="mt-steam" cx="26" cy="305" rx="38" ry="44"/>
-    <ellipse class="mt-steam" cx="34" cy="205" rx="40" ry="46"/>
-  </svg>
-</div>
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero">
@@ -1021,11 +981,11 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <svg class="hero-mountains" viewBox="0 0 1440 300" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M0,300 L0,240 L80,190 L160,215 L260,130 L360,60 L450,100 L560,40 L660,85 L760,25 L850,70 L960,35 L1060,80 L1160,50 L1260,95 L1360,70 L1440,120 L1440,300 Z" fill="white"/>
   </svg>
-  <div class="hero-eyebrow">Washington State</div>
+  <div class="hero-eyebrow">PNW National Parks</div>
   <div class="hero-number">11</div>
   <div class="hero-number-label">days in the Pacific Northwest</div>
   <div class="hero-title">Olympic, Rainier &amp; <span>the North Cascades</span></div>
-  <div class="hero-subtitle">Olympic NP · Mount Rainier NP · Leavenworth · North Cascades NP · Seattle</div>
+  <div class="hero-subtitle">Olympic NP · Mount Rainier NP · Leavenworth · North Cascades NP · Mount Baker · Seattle</div>
   <div class="hero-stats">
     <div class="stat-chip"><span class="chip-icon">🗓️</span> <strong>11</strong> <span class="chip-sub">Days</span></div>
     <div class="stat-chip"><span class="chip-icon">🏔️</span> <strong>3</strong> <span class="chip-sub">National Parks</span></div>
@@ -1042,7 +1002,7 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
 <div class="section">
   <div class="section-eyebrow">Trip at a Glance</div>
   <div class="section-title">Eleven Days in the <span>Evergreen State</span></div>
-  <div class="section-body">Three of Washington's national parks plus a Bavarian mountain town in between — a late-night drive to the Olympic Peninsula for the Mt Storm King scramble above Lake Crescent and mountain goats on Hurricane Ridge, wildflower meadows and glacier views on Mount Rainier's Skyline and Burroughs trails, orchard-town hiking and beer gardens in Leavenworth, and larch-lined alpine lakes in the North Cascades before closing out in Seattle.</div>
+  <div class="section-body">Three of Washington's national parks plus a Bavarian mountain town and a volcano in between — a late-night drive to the Olympic Peninsula for the Mt Storm King scramble above Lake Crescent and mountain goats on Hurricane Ridge, wildflower meadows and a fire lookout on Mount Rainier's Skyline and Sunrise trails, orchard-town hiking and Colchuck Lake near Leavenworth, and larch-lined alpine lakes plus Mount Baker in the North Cascades before closing out in Seattle.</div>
 
   <div class="overview-row">
     <div class="overview-cell">
@@ -1054,7 +1014,7 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       <div class="overview-label">National Parks</div>
     </div>
     <div class="overview-cell">
-      <div class="overview-num" style="color:var(--teal)">8+</div>
+      <div class="overview-num" style="color:var(--teal)">10+</div>
       <div class="overview-label">Major Hikes</div>
     </div>
     <div class="overview-cell">
@@ -1072,7 +1032,7 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
 <div class="section">
   <div class="section-eyebrow">Route &amp; Stops</div>
   <div class="section-title">The Pacific Northwest <span>Loop</span></div>
-  <div class="section-body">Fly into Seattle late on Day 1 and drive straight to the Olympic Peninsula for two nights near Port Angeles. Head south and east to Mount Rainier for two nights of wildflower meadows and alpine views, then over to Leavenworth for two nights in the Bavarian foothills. Finish with three nights in the North Cascades chasing larches and alpine lakes before looping back to Seattle to fly home.</div>
+  <div class="section-body">Fly into Seattle late on Day 1 and drive straight to the Olympic Peninsula for two nights near Port Angeles. Head south and east to Mount Rainier for two nights of wildflower meadows and alpine views, then over to Leavenworth for two nights in the Bavarian foothills. Finish with three nights in the North Cascades chasing larches, alpine lakes, and a day trip out to Mount Baker, then drive back to Seattle for a night out before exploring the city and flying home.</div>
 
   <div class="stops-grid">
 
@@ -1093,12 +1053,12 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
     <a class="stop-card" href="#day3">
       <div class="stop-num">Stop 02 · Days 3–5</div>
       <div class="stop-town">Mount Rainier</div>
-      <div class="stop-region">Washington · Cougar Rock</div>
+      <div class="stop-region">Washington · La Wis Wis</div>
       <div class="stop-role">2</div>
-      <div class="stop-role-label">nights at Cougar Rock</div>
+      <div class="stop-role-label">nights at La Wis Wis</div>
       <div class="stop-tags">
         <span class="stop-tag tag-green">Skyline Trail</span>
-        <span class="stop-tag tag-green">Burroughs Mountain</span>
+        <span class="stop-tag tag-green">Mount Fremont Lookout</span>
         <span class="stop-tag tag-green">Wildflowers</span>
       </div>
       <div class="stop-link-hint">View Days 3–5 ›</div>
@@ -1111,9 +1071,9 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       <div class="stop-role">2</div>
       <div class="stop-role-label">nights near Leavenworth</div>
       <div class="stop-tags">
-        <span class="stop-tag tag-amber">Icicle Gorge</span>
+        <span class="stop-tag tag-amber">Colchuck Lake</span>
         <span class="stop-tag tag-amber">Bavarian Village</span>
-        <span class="stop-tag tag-amber">Alpine Hiking</span>
+        <span class="stop-tag tag-amber">Hot Springs</span>
       </div>
       <div class="stop-link-hint">View Days 5–7 ›</div>
     </a>
@@ -1121,13 +1081,13 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
     <a class="stop-card" href="#day7">
       <div class="stop-num">Stop 04 · Days 7–10</div>
       <div class="stop-town">North Cascades</div>
-      <div class="stop-region">Washington · Colonial Creek</div>
+      <div class="stop-region">Washington · Marblemount</div>
       <div class="stop-role">3</div>
-      <div class="stop-role-label">nights at Colonial Creek</div>
+      <div class="stop-role-label">nights at Marblemount</div>
       <div class="stop-tags">
-        <span class="stop-tag tag-blue">Diablo Lake</span>
-        <span class="stop-tag tag-blue">Maple Pass Loop</span>
         <span class="stop-tag tag-blue">Cascade Pass</span>
+        <span class="stop-tag tag-blue">Mount Baker</span>
+        <span class="stop-tag tag-blue">Maple Pass Loop</span>
       </div>
       <div class="stop-link-hint">View Days 7–10 ›</div>
     </a>
@@ -1151,11 +1111,10 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">1</div>
     <div class="day-block-info">
-      <div class="day-block-title">Arrive Seattle Late Night · Drive to Port Angeles · Hike Mt Storm King</div>
+      <div class="day-block-title">Arrive Seattle Late Night · Drive to Port Angeles</div>
       <div class="day-block-meta">
         <span class="day-block-meta-item">✈️ Late-night landing at SEA</span>
-        <span class="day-block-meta-item">⛺ Camp at Salish Trails RV &amp; Campground</span>
-        <span class="day-block-meta-item">🥾 Mt Storm King</span>
+        <span class="day-block-meta-item">🌯 Dinner at California Burrito</span>
       </div>
     </div>
     <div class="day-block-label">Fri, Sept 4 — Day 1 of 11</div>
@@ -1164,6 +1123,35 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-events">
 
     <div class="drive-note">🚗&nbsp; Salish Trails RV &amp; Campground (80 O'Brien Rd, Port Angeles, WA 98362) is ~3 hrs from SEA via US-101 around Hood Canal — with a late flight, plan on rolling in well after midnight.</div>
+
+    <div class="flight-table-wrap">
+      <table class="flight-table">
+        <thead>
+          <tr>
+            <th>Traveler(s)</th>
+            <th>Arrival</th>
+            <th>Airport</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Het, Avee, Jaimin, Naiti, Viral</td>
+            <td class="flight-time">10:34 PM</td>
+            <td>SEA</td>
+          </tr>
+          <tr>
+            <td>Kevin</td>
+            <td class="flight-time">10:49 PM</td>
+            <td>SEA</td>
+          </tr>
+          <tr>
+            <td>Yuvraj, Bansari, Shubh, Ghehna</td>
+            <td class="flight-time">11:59 PM</td>
+            <td>SEA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
@@ -1182,6 +1170,22 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
     </div>
 
     <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Late Night</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌯 Dinner at California Burrito</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Quick bite close to the airport before the long overnight drive out to the Peninsula.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=California+Burrito%2C+Des+Moines%2C+WA" target="_blank" rel="noopener">California Burrito, Des Moines, WA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
       <div class="event-time-col" data-type="drive">
         <div class="event-time">Overnight</div>
       </div>
@@ -1192,50 +1196,7 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
         </div>
         <div class="event-desc">~3 hr overnight drive west via US-101, skirting Hood Canal — quiet roads this late, but watch for deer.</div>
         <div class="event-pills">
-          <span class="event-pill">80 O'Brien Rd, Port Angeles, WA 98362</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="event-row">
-      <div class="event-time-col" data-type="rest">
-        <div class="event-time">Early Morning</div>
-      </div>
-      <div class="event-content">
-        <div class="event-title-row">
-          <div class="event-title">⛺ Set Up Camp — Salish Trails RV &amp; Campground</div>
-          <span class="event-badge badge-camp">Camp</span>
-        </div>
-        <div class="event-desc">Home base for both Olympic nights, just outside Port Angeles. Pitch the tent as the sun comes up and grab a few hours before the day gets going.</div>
-      </div>
-    </div>
-
-    <div class="event-row">
-      <div class="event-time-col" data-type="drive">
-        <div class="event-time">Morning</div>
-      </div>
-      <div class="event-content">
-        <div class="event-title-row">
-          <div class="event-title">🛒 Groceries — Walmart, Port Angeles</div>
-          <span class="event-badge badge-rest">Errand</span>
-        </div>
-        <div class="event-desc">Stock up on food, water, and camp supplies in town before heading out — options thin out fast west of Port Angeles.</div>
-      </div>
-    </div>
-
-    <div class="event-row">
-      <div class="event-time-col" data-type="hike">
-        <div class="event-time">Afternoon</div>
-      </div>
-      <div class="event-content">
-        <div class="event-title-row">
-          <div class="event-title">🥾 Hike Mt Storm King</div>
-          <span class="event-badge badge-hike">Iconic Hike</span>
-        </div>
-        <div class="event-desc">A steep, exposed scramble above Lake Crescent, with fixed ropes on the final push — one of the best view-to-effort payoffs on the Peninsula. Take it slow after a night with no sleep.</div>
-        <div class="event-pills">
-          <span class="event-pill">~4 mi round trip · ~2,000 ft gain</span>
-          <span class="event-pill pill-a">Rope section near the summit</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Salish+Trails+RV+%26+Campground%2C+80+O%27Brien+Rd%2C+Port+Angeles%2C+WA+98362" target="_blank" rel="noopener">Salish Trails RV &amp; Campground, 80 O'Brien Rd, Port Angeles, WA 98362</a>
         </div>
       </div>
     </div>
@@ -1250,10 +1211,12 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">2</div>
     <div class="day-block-info">
-      <div class="day-block-title">Sol Duc Falls · Hurricane Ridge · Mountain Goats</div>
+      <div class="day-block-title">Storm King · Hoh Rainforest · Second Beach Sunset</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">💦 Sol Duc Falls</span>
-        <span class="day-block-meta-item">🐐 Hurricane Ridge mountain goats</span>
+        <span class="day-block-meta-item">⛺ Camp at Salish Trails RV &amp; Campground</span>
+        <span class="day-block-meta-item">🥾 Mt Storm King</span>
+        <span class="day-block-meta-item">🌲 Hoh Rainforest</span>
+        <span class="day-block-meta-item">🌊 Second Beach Sunset</span>
       </div>
     </div>
     <div class="day-block-label">Sat, Sept 5 — Day 2 of 11</div>
@@ -1261,51 +1224,187 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Sol Duc Falls trailhead is ~40 min from Salish Trails; Hurricane Ridge is ~45 min in the opposite direction — do Sol Duc first thing, then loop back through Port Angeles for Hurricane Ridge. Keep distance from goats, they're drawn to salt and can be aggressive.</div>
+    <div class="drive-note">🚗&nbsp; Mt Storm King trailhead is ~25 min from Salish Trails. Hoh Rainforest is ~1.5 hrs west of Lake Crescent, Second Beach is ~1 hr 15 min further from Hoh, and it's ~2 hrs back to camp in Port Angeles from there. Rialto Beach is closed, so Second Beach (also near La Push) replaces it.</div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="hike">
-        <div class="event-time">Morning</div>
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">5:00 AM</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">💦 Sol Duc Falls Trail</div>
-          <span class="event-badge badge-hike">Hike</span>
+          <div class="event-title">⛺ Set Up Camp — Salish Trails RV &amp; Campground</div>
+          <span class="event-badge badge-camp">Camp</span>
         </div>
-        <div class="event-desc">A short, easy hike through old-growth forest to a striking three-way waterfall split by basalt columns.</div>
+        <div class="event-desc">Group splits in two — half pitch camp while the other half runs groceries, so everyone's ready to roll out together by 7.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">5:00 AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🛒 Groceries — Walmart, Port Angeles</div>
+          <span class="event-badge badge-rest">Errand</span>
+        </div>
+        <div class="event-desc">Other half of the group runs into town for food, water, and camp supplies while camp gets set up. Grab snacks for the Storm King hike too — no chance to restock after this.</div>
         <div class="event-pills">
-          <span class="event-pill">1.6 mi round trip</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Walmart+Supercenter%2C+Port+Angeles%2C+WA" target="_blank" rel="noopener">Walmart Supercenter, Port Angeles, WA</a>
         </div>
       </div>
     </div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="wildlife">
-        <div class="event-time">Afternoon</div>
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">7:00 AM</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🐐 Hurricane Ridge — Alpine Meadows &amp; Mountain Goats</div>
-          <span class="event-badge badge-wildlife">Wildlife</span>
+          <div class="event-title">🚗 Drive to Olympic National Park</div>
+          <span class="event-badge badge-drive">Drive</span>
         </div>
-        <div class="event-desc">Sweeping views back into the interior Olympic Mountains — and the best odds on this trip of spotting mountain goats grazing the ridgeline meadows. Stay well back and never approach; give them the trail.</div>
+        <div class="event-desc">Group regroups and heads into the park toward the Mt Storm King trailhead at Lake Crescent.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">8:00 AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Hike Mt Storm King</div>
+          <span class="event-badge badge-hike">Iconic Hike</span>
+        </div>
+        <div class="event-desc">A steep, exposed scramble above Lake Crescent, with fixed ropes on the final push — one of the best view-to-effort payoffs on the Peninsula.</div>
         <div class="event-pills">
-          <span class="event-pill">Hurricane Hill Trail — 3.2 mi</span>
-          <span class="event-pill">Binoculars recommended</span>
+          <span class="event-pill">4.65 mi round trip · 3–5 hrs · Strenuous</span>
+          <span class="event-pill pill-a">Rope section near the summit</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Marymere+Falls+Trailhead%2C+227693+Olympic+Hwy%2C+Port+Angeles%2C+WA+98363" target="_blank" rel="noopener">Marymere Falls Trailhead, 227693 Olympic Hwy, Port Angeles, WA 98363</a>
+          <a href="https://www.alltrails.com/trail/us/washington/mount-storm-king" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="us/washington/mount-storm-king" aria-label="View Mount Storm King on AllTrails">🔗 AllTrails</a>
         </div>
       </div>
     </div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">Evening</div>
+        <div class="event-time">Midday</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🍽️ Dinner at Salish Trails</div>
+          <div class="event-title">🥪 Lunch at Lake Crescent</div>
+          <span class="event-badge badge-rest">Lunch</span>
+        </div>
+        <div class="event-desc">Burritos or anything packable, right at the lake after coming off the trail — no drive back into town needed.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">4:00 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌲 Arrive Hoh Rainforest — Hoh Visitor Center</div>
+          <span class="event-badge badge-drive">Arrival</span>
+        </div>
+        <div class="event-desc">~1.5 hr drive from Lake Crescent into the Hoh Rainforest, one of the largest temperate rainforests in the country.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Hoh+Rain+Forest+Visitor+Center%2C+18113+Upper+Hoh+Rd%2C+Forks%2C+WA+98331" target="_blank" rel="noopener">Hoh Rain Forest Visitor Center, 18113 Upper Hoh Rd, Forks, WA 98331</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">4:30 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Hall of Mosses Trail</div>
+          <span class="event-badge badge-hike">Easy Walk</span>
+        </div>
+        <div class="event-desc">A short loop through moss-draped old-growth trees — one of the most photographed spots in the park.</div>
+        <div class="event-pills">
+          <span class="event-pill">0.8 mi round trip · Easy</span>
+          <a href="https://www.alltrails.com/trail/us/washington/hoh-rain-forest-hall-of-moss" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="us/washington/hoh-rain-forest-hall-of-moss" aria-label="View Hall of Mosses Trail on AllTrails">🔗 AllTrails</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="wildlife">
+        <div class="event-time">6:00 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌊 Second Beach — Sunset</div>
+          <span class="event-badge badge-wildlife">Beach</span>
+        </div>
+        <div class="event-desc">~1 hr 15 min drive from Hoh. Rialto Beach is closed, so Second Beach near La Push swaps in — a short hike through the forest opens up to sea stacks and driftwood, good for sunset.</div>
+        <div class="event-pills">
+          <span class="event-pill">Short hike in from parking</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Olympic+Discovery+Trail%2C+La+Push%2C+WA+98350" target="_blank" rel="noopener">Olympic Discovery Trail, La Push, WA 98350</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">8:30 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍕 Dinner — Domino's Pizza</div>
           <span class="event-badge badge-rest">Dinner</span>
         </div>
-        <div class="event-desc">Back to camp for dinner — last night on the Peninsula before the drive to Rainier tomorrow.</div>
+        <div class="event-desc">Quick pizza stop on the way back to camp — options thin out this late, so plan ahead.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Domino%27s+Pizza%2C+Port+Angeles%2C+WA" target="_blank" rel="noopener">Domino's Pizza, Port Angeles, WA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">9:00 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🛒 Walmart — Groceries for Next Day</div>
+          <span class="event-badge badge-rest">Errand</span>
+        </div>
+        <div class="event-desc">Stock up on breakfast and snacks for the drive to Rainier tomorrow.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Walmart+Supercenter%2C+Port+Angeles%2C+WA" target="_blank" rel="noopener">Walmart Supercenter, Port Angeles, WA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">9:30 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive Back to Camp — Port Angeles</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc">~2 hr drive back to Salish Trails.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Night</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">😴 Sleep</div>
+          <span class="event-badge badge-rest">Rest</span>
+        </div>
+        <div class="event-desc">Long day — last night on the Peninsula before the drive to Rainier tomorrow.</div>
       </div>
     </div>
 
@@ -1319,11 +1418,11 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">3</div>
     <div class="day-block-info">
-      <div class="day-block-title">Lake Crescent Morning · Drive to Mount Rainier · Cougar Rock Campground</div>
+      <div class="day-block-title">Hurricane Ridge · Drive to Mount Rainier · La Wis Wis Campground</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">🌄 Lake Crescent &amp; Marymere Falls</span>
+        <span class="day-block-meta-item">🌄 Hurricane Ridge Trail</span>
         <span class="day-block-meta-item">🚗 Drive to Rainier</span>
-        <span class="day-block-meta-item">⛺ Camp at Cougar Rock</span>
+        <span class="day-block-meta-item">⛺ Camp at La Wis Wis</span>
       </div>
     </div>
     <div class="day-block-label">Sun, Sept 6 — Day 3 of 11</div>
@@ -1331,7 +1430,36 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Cougar Rock Campground is ~3.5 hrs from Port Angeles via US-101 and WA-7/706 — grab any last groceries in Ashford before entering the park, no cell service inside.</div>
+    <div class="drive-note">🚗&nbsp; Hurricane Ridge Visitor Center is ~45 min from Salish Trails. From Port Angeles it's a long ~4 hr drive south and east to Mount Rainier's Packwood area — grab groceries and fuel in Packwood before heading to camp, options thin out fast once you're near the park.</div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">6:00 AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">⛺ Wake Up · Break Camp</div>
+          <span class="event-badge badge-rest">Camp</span>
+        </div>
+        <div class="event-desc">Tent wrap-up in the morning at Salish Trails before heading up to Hurricane Ridge.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">9:00 – 10:00 AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive to Hurricane Ridge Visitor Center</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc">~45 min drive up into the park.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Hurricane+Ridge+Visitor+Center%2C+Port+Angeles%2C+WA+98362" target="_blank" rel="noopener">Hurricane Ridge Visitor Center, Port Angeles, WA 98362</a>
+        </div>
+      </div>
+    </div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
@@ -1339,28 +1467,42 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🌄 Lake Crescent &amp; Marymere Falls — Quick Stop</div>
-          <span class="event-badge badge-hike">Easy Walk</span>
+          <div class="event-title">🥾 Hurricane Ridge Trail</div>
+          <span class="event-badge badge-hike">Moderate Hike</span>
         </div>
-        <div class="event-desc">A last easy walk on the Peninsula before the long drive south — Marymere Falls is a short forested loop right off the highway, with Lake Crescent's deep blue water as a backdrop.</div>
+        <div class="event-desc">Alpine meadow trail with sweeping views of the Olympic Mountains — mountain goats are common along the ridge.</div>
         <div class="event-pills">
-          <span class="event-pill">1.8 mi round trip</span>
+          <span class="event-pill">3.5 mi · Moderate</span>
+          <a href="https://www.alltrails.com/trail/us/washington/sunrise-ridge-trail-to-mount-angeles" class="event-pill pill-at" target="_blank" rel="noopener" data-at-slug="us/washington/sunrise-ridge-trail-to-mount-angeles" aria-label="View Hurricane Ridge Trail on AllTrails">🔗 AllTrails</a>
         </div>
       </div>
     </div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="drive">
-        <div class="event-time">Midday</div>
+        <div class="event-time">12:00 – 1:00 PM</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🚗 Break Camp · Drive to Mount Rainier</div>
+          <div class="event-title">🥪 Drive to Port Angeles — Lunch</div>
           <span class="event-badge badge-drive">Drive</span>
         </div>
-        <div class="event-desc">Long drive south and east around Puget Sound to the Nisqually entrance of Mount Rainier National Park. Stock up on groceries and fuel in Ashford before the park entrance — options thin out fast once inside.</div>
+        <div class="event-desc">~45 min drive back down to Port Angeles for lunch before the long drive to Rainier.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">5:00 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive to Mount Rainier National Park</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc">~4 hr drive south and east to the Packwood / La Wis Wis area on the park's southwest side.</div>
         <div class="event-pills">
-          <span class="event-pill">~3.5 hrs</span>
+          <span class="event-pill">~4 hrs</span>
         </div>
       </div>
     </div>
@@ -1371,10 +1513,61 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">⛺ Arrive &amp; Set Up Camp — Cougar Rock Campground</div>
+          <div class="event-title">⛺ Arrive &amp; Set Up Camp — La Wis Wis, Packwood</div>
           <span class="event-badge badge-camp">Camp</span>
         </div>
-        <div class="event-desc">Cougar Rock sits inside the park near the Nisqually entrance, a short drive from Paradise. Set up camp and get oriented before the light fades — Christine Falls and Narada Falls are quick roadside stops on the way in if there's time.</div>
+        <div class="event-desc">Set up camp and rest up after the long driving day.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=La+Wis+Wis+Campground%2C+Packwood%2C+WA" target="_blank" rel="noopener">La Wis Wis Campground, Packwood, WA</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Evening</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍽️ Dinner Options — Packwood</div>
+          <span class="event-badge badge-rest">Dinner</span>
+        </div>
+        <div class="event-desc">Dinner at camp or head out — veg-friendly options in town.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Cruisers+Pizza%2C+Packwood%2C+WA" target="_blank" rel="noopener">Cruisers Pizza</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Nachos+Mexican+Restaurant%2C+Packwood%2C+WA" target="_blank" rel="noopener">Nachos Mexican Restaurant</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Cascade+Restaurant%2C+Packwood%2C+WA" target="_blank" rel="noopener">Cascade Restaurant</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Night</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🍺 Brewery Options — Packwood</div>
+          <span class="event-badge badge-rest">Drinks</span>
+        </div>
+        <div class="event-desc">A beer before the campfire, if there's energy left.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Packwood+Brewing+Co%2C+Packwood%2C+WA" target="_blank" rel="noopener">Packwood Brewing Co.</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Longmire+Springs+Brewing%2C+Packwood%2C+WA" target="_blank" rel="noopener">Longmire Springs Brewing</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Night</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🔥 Campfire &amp; Sleep</div>
+          <span class="event-badge badge-rest">Rest</span>
+        </div>
+        <div class="event-desc">Campfire at La Wis Wis before turning in — long hike at Paradise tomorrow.</div>
       </div>
     </div>
 
@@ -1388,10 +1581,11 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">4</div>
     <div class="day-block-info">
-      <div class="day-block-title">Skyline Trail · Paradise · Wildflower Meadows</div>
+      <div class="day-block-title">Skyline Trail · Reflection Lake · Mount Fremont Lookout</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">🥾 Skyline Trail Loop</span>
-        <span class="day-block-meta-item">💐 Wildflower meadows at Paradise</span>
+        <span class="day-block-meta-item">🥾 Skyline Trail &amp; Paramount Point</span>
+        <span class="day-block-meta-item">💦 Myrtle &amp; Narada Falls</span>
+        <span class="day-block-meta-item">🌄 Mount Fremont Fire Lookout</span>
       </div>
     </div>
     <div class="day-block-label">Mon, Sept 7 — Day 4 of 11</div>
@@ -1399,21 +1593,64 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Paradise is ~20 min from Cougar Rock — arrive early, the lot fills up by mid-morning even in September.</div>
+    <div class="drive-note">🚗&nbsp; Paradise is ~45 min from La Wis Wis — arrive early, the lot fills up by mid-morning even in September. Mount Fremont Lookout is on the opposite side of the mountain near Sunrise, ~1.5–2 hrs from Paradise via Stevens Canyon Rd and SR-410 — plan the drive so you land the sunset (or catch it at sunrise the next morning if timing's too tight).</div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="hike">
-        <div class="event-time">Morning</div>
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">6:00 AM</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🥾 Skyline Trail Loop — Paradise</div>
-          <span class="event-badge badge-hike">Hike</span>
+          <div class="event-title">☀️ Wake Up</div>
+          <span class="event-badge badge-rest">Camp</span>
         </div>
-        <div class="event-desc">The signature Rainier day hike — a 5.5-mile loop climbing through late-season wildflower meadows to Panorama Point, with the mountain looming directly overhead the entire way.</div>
+        <div class="event-desc">Early start at La Wis Wis to beat the Paradise parking crowds.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">8:00 – 8:30 AM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Skyline Trail — Paramount Point</div>
+          <span class="event-badge badge-hike">Strenuous Hike</span>
+        </div>
+        <div class="event-desc">The signature Rainier day hike, extended out to Paramount Point — climbing through late-season wildflower meadows with the mountain looming directly overhead the entire way.</div>
         <div class="event-pills">
-          <span class="event-pill">5.5 mi · ~1,700 ft gain</span>
-          <span class="event-pill">Best views of Rainier's summit</span>
+          <span class="event-pill">6.2 mi · Strenuous</span>
+          <span class="event-pill">3–5 hrs</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Paradise%2C+Mount+Rainier+National+Park%2C+WA" target="_blank" rel="noopener">Skyline Trailhead, Paradise</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">1:00 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥪 Lunch</div>
+          <span class="event-badge badge-rest">Lunch</span>
+        </div>
+        <div class="event-desc">Refuel at Paradise before the afternoon round of shorter walks.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">2:00 PM</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">💦 Myrtle Falls</div>
+          <span class="event-badge badge-hike">Easy Walk</span>
+        </div>
+        <div class="event-desc">A short walk from the Skyline trailhead to Myrtle Falls, framed perfectly against the mountain.</div>
+        <div class="event-pills">
+          <span class="event-pill">1 mi round trip · Easy</span>
         </div>
       </div>
     </div>
@@ -1424,26 +1661,76 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">💦 Myrtle Falls &amp; Paradise Visitor Center</div>
+          <div class="event-title">💧 Narada Falls &amp; Reflection Lake</div>
           <span class="event-badge badge-iconic">Scenic</span>
         </div>
-        <div class="event-desc">A short walk from the Skyline trailhead to Myrtle Falls, framed perfectly against the mountain. Pop into the visitor center for trail conditions and ranger talks.</div>
+        <div class="event-desc">Quick roadside stops on the way out of Paradise — Narada Falls drops right next to the parking area, and Reflection Lake mirrors the mountain on a calm afternoon.</div>
         <div class="event-pills">
-          <span class="event-pill">0.8 mi round trip</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Narada+Falls%2C+Mount+Rainier+National+Park%2C+WA" target="_blank" rel="noopener">Narada Falls</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Reflection+Lakes%2C+Mount+Rainier+National+Park%2C+WA" target="_blank" rel="noopener">Reflection Lake</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Afternoon</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Bench &amp; Snow Lakes</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">A quieter trail off Stevens Canyon Road passing two alpine lakes on the way back toward the east side of the park.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Bench+and+Snow+Lakes+Trailhead%2C+Stevens+Canyon+Rd%2C+Ashford%2C+WA" target="_blank" rel="noopener">Bench &amp; Snow Lakes Trailhead</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Evening</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive to Sunrise</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc">Over to the Sunrise side of the park for the Mount Fremont Lookout hike.</div>
+        <div class="event-pills">
+          <span class="event-pill">~1.5–2 hrs</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Sunset</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🌄 Mount Fremont Fire Lookout</div>
+          <span class="event-badge badge-hike">Moderate Hike</span>
+        </div>
+        <div class="event-desc">A historic fire lookout tower with sweeping views of Rainier, the Sunrise valley, and out toward Mount Baker — timed for sunset.</div>
+        <div class="event-pills">
+          <span class="event-pill">6 mi round trip · Moderate</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Sunrise+Visitor+Center%2C+Mount+Rainier+National+Park%2C+WA" target="_blank" rel="noopener">Sunrise Visitor Center Trailhead</a>
         </div>
       </div>
     </div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">Evening</div>
+        <div class="event-time">Night</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
           <div class="event-title">🔥 Campfire &amp; Stargazing</div>
           <span class="event-badge badge-rest">Camp</span>
         </div>
-        <div class="event-desc">Dinner at camp, then a campfire if there's a burn ban exception — Rainier's dark skies are worth staying up for on a clear night.</div>
+        <div class="event-desc">Late drive back to camp — dinner and a fire if there's energy left. Rainier's dark skies are worth staying up for on a clear night.</div>
       </div>
     </div>
 
@@ -1457,10 +1744,10 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">5</div>
     <div class="day-block-info">
-      <div class="day-block-title">Sunrise &amp; Burroughs Mountain Trail · Drive to Leavenworth</div>
+      <div class="day-block-title">Sourdough Trail · Naches Peak Loop · Drive to Leavenworth</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">🌅 Sunrise (White River side)</span>
-        <span class="day-block-meta-item">🥾 Burroughs Mountain Trail</span>
+        <span class="day-block-meta-item">🥾 Sourdough Trail</span>
+        <span class="day-block-meta-item">🥾 Naches Peak Loop</span>
         <span class="day-block-meta-item">🚗 Drive to Leavenworth</span>
       </div>
     </div>
@@ -1469,38 +1756,68 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Sunrise is ~1.5 hrs from Cougar Rock around the east side of the mountain — leave camp before dawn. From Sunrise it's another ~2.5–3 hrs to Leavenworth via Chinook Pass (SR-410) and US-2 — confirm the pass is still open before you go, it can close with early snow.</div>
+    <div class="drive-note">🚗&nbsp; Sourdough Trail and Naches Peak Loop are both along SR-410 near Chinook Pass, on the way out toward Leavenworth — no need to backtrack. From there it's ~3–3.5 hrs on to Leavenworth via US-12/US-97 and US-2.</div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="drive">
-        <div class="event-time">Pre-Dawn</div>
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">6:00 AM</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🚗 Drive to Sunrise — Highest Point Reachable by Car</div>
-          <span class="event-badge badge-drive">Drive</span>
+          <div class="event-title">⛺ Wake Up · Pack Tent</div>
+          <span class="event-badge badge-rest">Camp</span>
         </div>
-        <div class="event-desc">Sunrise Point catches the first light hitting Rainier's summit — worth the early alarm and the long way around.</div>
+        <div class="event-desc">Break camp at La Wis Wis for the last time — full day ahead before setting up again near Leavenworth.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Morning</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚿 Showers</div>
+          <span class="event-badge badge-rest">Errand</span>
+        </div>
+        <div class="event-desc">Packwood RV Park is the most likely option for showers on the way out.</div>
         <div class="event-pills">
-          <span class="event-pill">~1.5 hr drive</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Packwood+RV+Park%2C+Packwood%2C+WA" target="_blank" rel="noopener">Packwood RV Park</a>
+          <a class="event-pill" href="https://www.nps.gov/mora/learn/management/upload/Showers-and-Laundromats.docx" target="_blank" rel="noopener">NPS Showers &amp; Laundromats List</a>
         </div>
       </div>
     </div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
-        <div class="event-time">Morning</div>
+        <div class="event-time">Midday</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🏔️ Burroughs Mountain Trail</div>
-          <span class="event-badge badge-hike">Iconic Hike</span>
+          <div class="event-title">🥾 Sourdough Trail</div>
+          <span class="event-badge badge-hike">Moderate Hike</span>
         </div>
-        <div class="event-desc">One of the best views in the Cascades — an alpine tundra trail leading to the closest you can get to Rainier's glaciers without a permit. Push to Second Burroughs for the full payoff if legs and weather allow.</div>
+        <div class="event-desc">A quick ridge hike near Chinook Pass to stretch the legs before the longer drive.</div>
         <div class="event-pills">
-          <span class="event-pill">9 mi round trip to Second Burroughs</span>
-          <span class="event-pill">~2,900 ft gain</span>
-          <span class="event-pill pill-w">Check for snow/ice in early Sept</span>
+          <span class="event-pill">3 mi · Moderate · ~1 hr</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Chinook+Pass%2C+WA" target="_blank" rel="noopener">Chinook Pass Trailhead</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Midday</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Naches Peak Loop</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">Alpine lakes and wildflower meadows in a loop right off Chinook Pass — one of the most scenic easy hikes on the way out of Rainier.</div>
+        <div class="event-pills">
+          <span class="event-pill">3.6 mi · Easy–Moderate · 1–1.5 hrs</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Naches+Peak+Loop+Trailhead%2C+Chinook+Pass%2C+WA" target="_blank" rel="noopener">Naches Peak Loop Trailhead</a>
         </div>
       </div>
     </div>
@@ -1511,12 +1828,12 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🚗 Break Camp · Drive to Leavenworth via Chinook Pass</div>
+          <div class="event-title">🚗 Drive to Leavenworth</div>
           <span class="event-badge badge-drive">Drive</span>
         </div>
-        <div class="event-desc">East over Chinook Pass and down US-2 into the dry side of the Cascades — a striking change in scenery from alpine glaciers to pine and orchard country.</div>
+        <div class="event-desc">On to the dry side of the Cascades — a striking change in scenery from alpine meadows to pine and orchard country.</div>
         <div class="event-pills">
-          <span class="event-pill">~2.5–3 hrs</span>
+          <span class="event-pill">~3–3.5 hrs</span>
         </div>
       </div>
     </div>
@@ -1527,10 +1844,10 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">⛺ Set Up Camp Near Leavenworth · Stroll the Bavarian Village</div>
+          <div class="event-title">⛺ Set Up Camp Near Leavenworth</div>
           <span class="event-badge badge-camp">Camp</span>
         </div>
-        <div class="event-desc">Set up camp just outside town, then walk the Bavarian-themed village for dinner — a strange, welcome contrast after five days in the backcountry.</div>
+        <div class="event-desc">Set up camp just outside town — a strange, welcome contrast after several days in the backcountry.</div>
       </div>
     </div>
 
@@ -1544,10 +1861,11 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">6</div>
     <div class="day-block-info">
-      <div class="day-block-title">Icicle Gorge Loop · Leavenworth Bavarian Village</div>
+      <div class="day-block-title">Colchuck Lake · Leavenworth Restaurants &amp; Hot Springs</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">🥾 Icicle Gorge Loop</span>
-        <span class="day-block-meta-item">🍺 Bavarian Village</span>
+        <span class="day-block-meta-item">🥾 Colchuck Lake</span>
+        <span class="day-block-meta-item">🍽️ Leavenworth Restaurants</span>
+        <span class="day-block-meta-item">♨️ Hot Springs</span>
       </div>
     </div>
     <div class="day-block-label">Wed, Sept 9 — Day 6 of 11</div>
@@ -1555,7 +1873,7 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Icicle Creek Road trailheads are 15–20 min from town — fill up on gas before heading up the canyon, and grab a Northwest Forest Pass if you don't already have one. Colchuck Lake is a tougher, longer option nearby for stronger hikers wanting more elevation.</div>
+    <div class="drive-note">🚗&nbsp; The Stuart Lake / Colchuck Lake trailhead is ~20 min up Icicle Creek Road from town — grab a Northwest Forest Pass and get an early start, the lot fills fast. Scenic Hot Springs is a ~44 min drive from Leavenworth.</div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="hike">
@@ -1563,28 +1881,13 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🥾 Icicle Gorge Loop</div>
-          <span class="event-badge badge-hike">Hike</span>
+          <div class="event-title">🥾 Colchuck Lake Hike</div>
+          <span class="event-badge badge-hike">Iconic Hike</span>
         </div>
-        <div class="event-desc">An easy loop along Icicle Creek through pine forest and granite gorge — a good leg-stretcher after five straight days of bigger mountain hikes.</div>
+        <div class="event-desc">A steep climb up Icicle Creek Canyon to a turquoise alpine lake sitting right below Dragontail and Colchuck Peaks — one of the best payoffs in the Enchantments zone.</div>
         <div class="event-pills">
-          <span class="event-pill">3.4 mi loop · easy grade</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="event-row">
-      <div class="event-time-col" data-type="iconic">
-        <div class="event-time">Afternoon</div>
-      </div>
-      <div class="event-content">
-        <div class="event-title-row">
-          <div class="event-title">🍺 Bavarian Village — Leavenworth Town</div>
-          <span class="event-badge badge-iconic">Scenic</span>
-        </div>
-        <div class="event-desc">A Bavarian-themed town tucked into the Cascade foothills — half-timbered storefronts, German bakeries, and beer gardens along the main strip. Good spot to slow down for an afternoon.</div>
-        <div class="event-pills">
-          <span class="event-pill">Front Street shops &amp; bakeries</span>
+          <span class="event-pill">11 mi round trip · Strenuous</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Stuart+Lake+Trailhead%2C+Icicle+Creek+Rd%2C+Leavenworth%2C+WA" target="_blank" rel="noopener">Stuart Lake Trailhead</a>
         </div>
       </div>
     </div>
@@ -1595,10 +1898,48 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🍽️ Dinner in Leavenworth</div>
+          <div class="event-title">🍽️ Dinner Options — Leavenworth</div>
           <span class="event-badge badge-rest">Dinner</span>
         </div>
-        <div class="event-desc">German food and a local beer in town before heading back to camp for the night.</div>
+        <div class="event-desc">Back into town for dinner after the hike.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=La+Javelina%2C+Leavenworth%2C+WA" target="_blank" rel="noopener">La Javelina</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Gustav%27s%2C+Leavenworth%2C+WA" target="_blank" rel="noopener">Gustav's</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Wok+About+Mongolian+Grill%2C+Leavenworth%2C+WA" target="_blank" rel="noopener">Wok About Mongolian Grill</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Evening</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚿 Showers</div>
+          <span class="event-badge badge-rest">Errand</span>
+        </div>
+        <div class="event-desc">Club West in town, or combine with the drive out to Scenic Hot Springs.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Club+West%2C+Leavenworth%2C+WA" target="_blank" rel="noopener">Club West</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Scenic+Hot+Springs%2C+WA" target="_blank" rel="noopener">Scenic Hot Springs (44 min drive)</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="rest">
+        <div class="event-time">Night</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">♨️ Hot Springs — The Springs</div>
+          <span class="event-badge badge-rest">Soak</span>
+        </div>
+        <div class="event-desc">Soak the trail soreness out before heading back to camp.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=The+Springs%2C+Leavenworth%2C+WA" target="_blank" rel="noopener">The Springs</a>
+        </div>
       </div>
     </div>
 
@@ -1612,11 +1953,11 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">7</div>
     <div class="day-block-info">
-      <div class="day-block-title">Leavenworth Morning · Drive to North Cascades · Diablo Lake</div>
+      <div class="day-block-title">Drive to North Cascades · Diablo Overlook &amp; Thunder Knob</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">☕ Leavenworth bakery run</span>
-        <span class="day-block-meta-item">🚗 Drive to Colonial Creek</span>
-        <span class="day-block-meta-item">💎 Diablo Lake Overlook</span>
+        <span class="day-block-meta-item">🚗 Drive to North Cascades</span>
+        <span class="day-block-meta-item">⛺ Camp at Marblemount</span>
+        <span class="day-block-meta-item">🥾 Diablo Overlook &amp; Thunder Knob</span>
       </div>
     </div>
     <div class="day-block-label">Thu, Sept 10 — Day 7 of 11</div>
@@ -1624,7 +1965,7 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Leavenworth to Colonial Creek Campground is ~3 hrs via US-2 and WA-20 — Stevens Pass is usually clear this early in September. Fuel up and grab groceries before Marblemount, the last real stop before the park.</div>
+    <div class="drive-note">🚗&nbsp; Leavenworth to Marblemount is ~4.5 hrs — Stevens Pass is usually clear this early in September. Fuel up and grab groceries in Marblemount, the last real stop before the park.</div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
@@ -1632,10 +1973,10 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">☕ Bakery Run &amp; Break Camp — Leavenworth</div>
+          <div class="event-title">⛺ Camp Wrap-Up · Shower</div>
           <span class="event-badge badge-rest">Errand</span>
         </div>
-        <div class="event-desc">One last coffee and pastry in town before packing up and heading north into the North Cascades.</div>
+        <div class="event-desc">Break camp near Leavenworth and grab a shower before the long drive north.</div>
       </div>
     </div>
 
@@ -1645,42 +1986,46 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🚗 Drive to North Cascades — Colonial Creek Campground</div>
+          <div class="event-title">🚗 Drive to North Cascades — Marblemount</div>
           <span class="event-badge badge-drive">Drive</span>
         </div>
-        <div class="event-desc">West on US-2 then north on WA-20 (the North Cascades Highway) into the park. Stock up in Marblemount — services are sparse past it.</div>
+        <div class="event-desc">North on US-97 then west on WA-20 (the North Cascades Highway) into the park. Stock up in Marblemount — services are sparse past it.</div>
         <div class="event-pills">
-          <span class="event-pill">~3 hrs</span>
+          <span class="event-pill">~4.5 hrs</span>
           <span class="event-pill">Last groceries in Marblemount</span>
         </div>
       </div>
     </div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="drive">
+      <div class="event-time-col" data-type="rest">
         <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">⛺ Arrive &amp; Set Up Camp — Colonial Creek Campground</div>
+          <div class="event-title">⛺ Arrive &amp; Set Up Camp — Marblemount</div>
           <span class="event-badge badge-camp">Camp</span>
         </div>
-        <div class="event-desc">Right on the shore of Diablo Lake, dead center in the park — a great base for the next few days.</div>
+        <div class="event-desc">Base camp for the next several days in the North Cascades.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Marblemount%2C+WA" target="_blank" rel="noopener">Marblemount, WA</a>
+        </div>
       </div>
     </div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="iconic">
+      <div class="event-time-col" data-type="hike">
         <div class="event-time">Evening</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">💎 Diablo Lake Overlook — Sunset</div>
-          <span class="event-badge badge-iconic">Iconic</span>
+          <div class="event-title">🥾 Diablo Lake Overlook &amp; Thunder Knob Trail</div>
+          <span class="event-badge badge-hike">Easy Hike</span>
         </div>
-        <div class="event-desc">The lake's glacial-blue color comes from suspended rock flour — most striking in late light. A quick pullout stop on WA-20.</div>
+        <div class="event-desc">A quick roadside overlook of Diablo Lake's glacial-blue water, then a short easy trail up to Thunder Knob for a wider view over the lake — good for evening light.</div>
         <div class="event-pills">
-          <span class="event-pill">Roadside pullout</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Diablo+Lake+Overlook%2C+WA-20%2C+WA" target="_blank" rel="noopener">Diablo Lake Overlook</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Thunder+Knob+Trailhead%2C+Colonial+Creek+Campground%2C+WA" target="_blank" rel="noopener">Thunder Knob Trailhead</a>
         </div>
       </div>
     </div>
@@ -1695,10 +2040,9 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">8</div>
     <div class="day-block-info">
-      <div class="day-block-title">Maple Pass Loop · Washington Pass Overlook</div>
+      <div class="day-block-title">Cascade Pass &amp; Sahale Arm</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">🥾 Maple Pass Loop</span>
-        <span class="day-block-meta-item">🍂 Washington Pass Overlook</span>
+        <span class="day-block-meta-item">🥾 Cascade Pass &amp; Sahale Arm</span>
       </div>
     </div>
     <div class="day-block-label">Fri, Sept 11 — Day 8 of 11</div>
@@ -1706,37 +2050,35 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Rainy Pass trailhead is ~45 min east of Colonial Creek on WA-20 — arrive by mid-morning, the lot is small and popular.</div>
+    <div class="drive-note">🚗&nbsp; Cascade Pass trailhead is ~50 min up the gravel Cascade River Road from Marblemount — high-clearance recommended but not required.</div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="hike">
+      <div class="event-time-col" data-type="rest">
         <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🥾 Maple Pass Loop</div>
-          <span class="event-badge badge-hike">Iconic Hike</span>
+          <div class="event-title">☀️ Wake Up</div>
+          <span class="event-badge badge-rest">Camp</span>
         </div>
-        <div class="event-desc">Widely regarded as one of the best day hikes in Washington — a full loop past Lake Ann, over an alpine ridge, with panoramic views the whole way. Early September can catch the first larches turning gold at higher elevation.</div>
-        <div class="event-pills">
-          <span class="event-pill">7.2 mi loop · ~2,000 ft gain</span>
-          <span class="event-pill">Lake Ann viewpoint</span>
-        </div>
+        <div class="event-desc">Early start — Cascade Pass and Sahale Arm is a full, long day.</div>
       </div>
     </div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="iconic">
-        <div class="event-time">Afternoon</div>
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Day</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🍂 Washington Pass Overlook</div>
-          <span class="event-badge badge-iconic">Scenic</span>
+          <div class="event-title">🥾 Cascade Pass &amp; Sahale Arm</div>
+          <span class="event-badge badge-hike">Iconic Hike</span>
         </div>
-        <div class="event-desc">A short paved path to a viewpoint over the jagged Liberty Bell group — one of the most dramatic roadside views on WA-20.</div>
+        <div class="event-desc">Switchbacks up through meadows to a high alpine pass surrounded by glaciated peaks, then further up the ridge onto Sahale Arm — one of the classic North Cascades approaches, done as a single long day out and back.</div>
         <div class="event-pills">
-          <span class="event-pill">0.3 mi paved</span>
+          <span class="event-pill">~12 mi round trip to Sahale Arm</span>
+          <span class="event-pill">Full day · strenuous</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Cascade+Pass+Trailhead%2C+Cascade+River+Rd%2C+Marblemount%2C+WA" target="_blank" rel="noopener">Cascade Pass Trailhead</a>
         </div>
       </div>
     </div>
@@ -1747,10 +2089,10 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🍽️ Dinner at Colonial Creek</div>
+          <div class="event-title">🍽️ Dinner at Camp</div>
           <span class="event-badge badge-rest">Dinner</span>
         </div>
-        <div class="event-desc">Back to camp for dinner — legs will be tired after Maple Pass.</div>
+        <div class="event-desc">Back to Marblemount for dinner — legs will be tired after Sahale Arm.</div>
       </div>
     </div>
 
@@ -1764,10 +2106,11 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">9</div>
     <div class="day-block-info">
-      <div class="day-block-title">Cascade Pass Trail · Ross Lake Overlook</div>
+      <div class="day-block-title">Mount Baker · Artist Point · Ptarmigan Ridge</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">🥾 Cascade Pass Trail</span>
-        <span class="day-block-meta-item">🏞️ Ross Lake Overlook</span>
+        <span class="day-block-meta-item">🚗 Drive to Mount Baker</span>
+        <span class="day-block-meta-item">🌄 Artist Point</span>
+        <span class="day-block-meta-item">🥾 Ptarmigan Ridge &amp; Table Mountain</span>
       </div>
     </div>
     <div class="day-block-label">Sat, Sept 12 — Day 9 of 11</div>
@@ -1775,48 +2118,95 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Cascade Pass trailhead is ~50 min up the gravel Cascade River Road from Marblemount — high-clearance recommended but not required.</div>
+    <div class="drive-note">🚗&nbsp; Mount Baker's Artist Point is ~2.5 hrs from Marblemount via WA-20 and SR-542 — a day trip out and back to camp.</div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="hike">
+      <div class="event-time-col" data-type="rest">
         <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🥾 Cascade Pass Trail</div>
-          <span class="event-badge badge-hike">Hike</span>
+          <div class="event-title">☀️ Wake Up</div>
+          <span class="event-badge badge-rest">Camp</span>
         </div>
-        <div class="event-desc">Switchbacks up through meadows to a high alpine pass surrounded by glaciated peaks — one of the classic North Cascades approaches, with the option to push further to Sahale Arm for those with energy left.</div>
+        <div class="event-desc">Early start for the drive out to Mount Baker.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Morning</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive to Mount Baker</div>
+          <span class="event-badge badge-drive">Drive</span>
+        </div>
+        <div class="event-desc">Out to the Mount Baker Highway (SR-542) toward Artist Point, the end of the road.</div>
         <div class="event-pills">
-          <span class="event-pill">7.4 mi round trip · ~1,800 ft gain</span>
-          <span class="event-pill">Extend to Sahale Arm for more</span>
+          <span class="event-pill">~2.5 hrs</span>
         </div>
       </div>
     </div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="iconic">
-        <div class="event-time">Afternoon</div>
+        <div class="event-time">Midday</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🏞️ Ross Lake Overlook</div>
+          <div class="event-title">🌄 Artist Point</div>
           <span class="event-badge badge-iconic">Scenic</span>
         </div>
-        <div class="event-desc">A quick roadside pullout on WA-20 looking down over Ross Lake's turquoise water, worth the two-minute stop on the way back to camp.</div>
+        <div class="event-desc">One of the most photographed viewpoints in the Cascades — Mount Baker and Mount Shuksan both visible from the parking area.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Artist+Point%2C+Mount+Baker%2C+WA" target="_blank" rel="noopener">Artist Point</a>
+        </div>
       </div>
     </div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="rest">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Afternoon</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Ptarmigan Ridge</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">A ridgeline trail out from Artist Point with close-up views of Mount Baker's glaciers the whole way.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Ptarmigan+Ridge+Trailhead%2C+Artist+Point%2C+Mount+Baker%2C+WA" target="_blank" rel="noopener">Ptarmigan Ridge Trailhead</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Afternoon</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Table Mountain</div>
+          <span class="event-badge badge-hike">Hike</span>
+        </div>
+        <div class="event-desc">A short, steep climb onto the flat-topped plateau above Artist Point — sweeping views back down over the parking area and out to both volcanoes.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Table+Mountain+Trailhead%2C+Artist+Point%2C+Mount+Baker%2C+WA" target="_blank" rel="noopener">Table Mountain Trailhead</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
         <div class="event-time">Evening</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🔥 Last Night — Campfire at Colonial Creek</div>
-          <span class="event-badge badge-rest">Camp</span>
+          <div class="event-title">🚗 Drive Back to Camp — Marblemount</div>
+          <span class="event-badge badge-drive">Drive</span>
         </div>
-        <div class="event-desc">Final night in the mountains — a campfire on the shore of Diablo Lake to close things out before heading to Seattle.</div>
+        <div class="event-desc">~2.5 hr drive back to camp.</div>
       </div>
     </div>
 
@@ -1830,11 +2220,11 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">10</div>
     <div class="day-block-info">
-      <div class="day-block-title">Drive to Seattle · Explore the City · Overnight in Seattle</div>
+      <div class="day-block-title">Maple Pass Loop · Alpine Lakes · Drive to Seattle</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">🚗 Drive to Seattle</span>
-        <span class="day-block-meta-item">🏙️ Pike Place Market</span>
-        <span class="day-block-meta-item">🏨 Stay overnight in Seattle</span>
+        <span class="day-block-meta-item">🥾 Maple Pass Loop</span>
+        <span class="day-block-meta-item">🏞️ Alpine Lakes</span>
+        <span class="day-block-meta-item">🌃 Seattle Nightlife</span>
       </div>
     </div>
     <div class="day-block-label">Sun, Sept 13 — Day 10 of 11</div>
@@ -1842,18 +2232,70 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Colonial Creek to Seattle is ~2.5 hrs via WA-20 and I-5 — break camp early to leave the afternoon free in the city.</div>
+    <div class="drive-note">🚗&nbsp; Rainy Pass trailhead is ~45 min east of Marblemount on WA-20 — arrive by mid-morning, the lot is small and popular. Last full day in the North Cascades — pick from the lake options below depending on energy and time, then drive to Seattle (~2.5 hrs) by nightfall.</div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="drive">
+      <div class="event-time-col" data-type="rest">
         <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🚗 Break Camp · Drive to Seattle</div>
+          <div class="event-title">⛺ Tent Wrap-Up</div>
+          <span class="event-badge badge-rest">Camp</span>
+        </div>
+        <div class="event-desc">Break down camp at Marblemount before heading out for the day.</div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Morning</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🥾 Maple Pass Loop</div>
+          <span class="event-badge badge-hike">Iconic Hike</span>
+        </div>
+        <div class="event-desc">Widely regarded as one of the best day hikes in Washington — a full loop past Lake Ann, over an alpine ridge, with panoramic views the whole way. Early September can catch the first larches turning gold at higher elevation.</div>
+        <div class="event-pills">
+          <span class="event-pill">7.2 mi loop · ~2,000 ft gain</span>
+          <span class="event-pill">~5 hrs</span>
+          <span class="event-pill">Lake Ann viewpoint</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Rainy+Pass+Trailhead%2C+WA-20%2C+WA" target="_blank" rel="noopener">Rainy Pass Trailhead</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="hike">
+        <div class="event-time">Afternoon</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🏞️ More Alpine Lakes — As Time Allows</div>
+          <span class="event-badge badge-hike">Optional</span>
+        </div>
+        <div class="event-desc">A cluster of nearby lake options along WA-20 for whatever's left of the afternoon — pick and choose rather than trying all of them.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Hidden+Lake+Trailhead%2C+Cascade+River+Rd%2C+WA" target="_blank" rel="noopener">Hidden Lake (optional)</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Rainy+Lake+Trailhead%2C+WA-20%2C+WA" target="_blank" rel="noopener">Rainy Lake</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Cutthroat+Lake+Trailhead%2C+WA-20%2C+WA" target="_blank" rel="noopener">Cutthroat Lake</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Thornton+Lakes+Trailhead%2C+WA-20%2C+WA" target="_blank" rel="noopener">Thornton Lake</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Blue+Lake+Trailhead%2C+WA-20%2C+WA" target="_blank" rel="noopener">Blue Lake</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="drive">
+        <div class="event-time">Evening</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🚗 Drive to Seattle</div>
           <span class="event-badge badge-drive">Drive</span>
         </div>
-        <div class="event-desc">Last pack-up of the campgrounds, then back down WA-20 and I-5 toward the city.</div>
+        <div class="event-desc">Final night in the mountains wraps up here — break camp at Marblemount and head back down WA-20 and I-5 into the city.</div>
         <div class="event-pills">
           <span class="event-pill">~2.5 hrs</span>
         </div>
@@ -1862,30 +2304,14 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
 
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">Afternoon</div>
+        <div class="event-time">Night</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🐟 Pike Place Market &amp; Waterfront</div>
-          <span class="event-badge badge-rest">Sightseeing</span>
+          <div class="event-title">🌃 Seattle Nightlife</div>
+          <span class="event-badge badge-rest">Nightlife</span>
         </div>
-        <div class="event-desc">Check into a hotel and shake off the road dust, then wander Pike Place — fish throwing, coffee, and the waterfront.</div>
-        <div class="event-pills">
-          <span class="event-pill">Original Starbucks nearby</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="event-row">
-      <div class="event-time-col" data-type="rest">
-        <div class="event-time">Evening</div>
-      </div>
-      <div class="event-content">
-        <div class="event-title-row">
-          <div class="event-title">🍽️ Dinner in Seattle · Stay Overnight</div>
-          <span class="event-badge badge-rest">Dinner</span>
-        </div>
-        <div class="event-desc">A real bed for the first time in ten days — dinner in the city and an early-ish night before the last day.</div>
+        <div class="event-desc">Check into a hotel and get a real bed for the first time in over a week, then head out — a real change of pace after ten days in the backcountry.</div>
       </div>
     </div>
 
@@ -1899,10 +2325,11 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   <div class="day-block-header" onclick="toggleDay(this)">
     <div class="day-block-num">11</div>
     <div class="day-block-info">
-      <div class="day-block-title">Seattle Morning · Fly Home</div>
+      <div class="day-block-title">Explore Seattle · Fly Home</div>
       <div class="day-block-meta">
-        <span class="day-block-meta-item">🏙️ Explore Seattle</span>
-        <span class="day-block-meta-item">✈️ Flight home in the evening</span>
+        <span class="day-block-meta-item">🏙️ Pike Place Market</span>
+        <span class="day-block-meta-item">🎡 Space Needle &amp; Chihuly Garden</span>
+        <span class="day-block-meta-item">✈️ Flights home in the evening</span>
       </div>
     </div>
     <div class="day-block-label">Mon, Sept 14 — Day 11 of 11</div>
@@ -1910,31 +2337,76 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   </div>
   <div class="day-block-events">
 
-    <div class="drive-note">🚗&nbsp; Return the rental car with time to spare before an evening flight — allow extra time for Sea-Tac traffic and rental return lines.</div>
+    <div class="drive-note">🚗&nbsp; Full day in the city — hotel's already booked from last night. Return the rental car with time to spare before evening flights, and allow extra time for Sea-Tac traffic and rental return lines.</div>
+
+    <div class="flight-table-wrap">
+      <table class="flight-table">
+        <thead>
+          <tr>
+            <th>Traveler(s)</th>
+            <th>Departure</th>
+            <th>Airport</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Yuvraj, Bansari, Shubh, Ghehna</td>
+            <td class="flight-time">7:59 PM</td>
+            <td>SEA</td>
+          </tr>
+          <tr>
+            <td>Het, Avee, Jaimin, Naiti, Viral</td>
+            <td class="flight-time">10:01 PM</td>
+            <td>SEA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <div class="event-row">
-      <div class="event-time-col" data-type="iconic">
+      <div class="event-time-col" data-type="rest">
         <div class="event-time">Morning</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">🏙️ Space Needle &amp; Chihuly Garden and Glass</div>
+          <div class="event-title">🐟 Pike Place Market &amp; Waterfront</div>
+          <span class="event-badge badge-rest">Sightseeing</span>
+        </div>
+        <div class="event-desc">Fish throwing, coffee, and the waterfront to start the last morning in the city.</div>
+        <div class="event-pills">
+          <span class="event-pill">Original Starbucks nearby</span>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Pike+Place+Market%2C+Seattle%2C+WA" target="_blank" rel="noopener">Pike Place Market</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="event-row">
+      <div class="event-time-col" data-type="iconic">
+        <div class="event-time">Midday</div>
+      </div>
+      <div class="event-content">
+        <div class="event-title-row">
+          <div class="event-title">🎡 Space Needle &amp; Chihuly Garden and Glass</div>
           <span class="event-badge badge-iconic">Sightseeing</span>
         </div>
-        <div class="event-desc">A last morning of sightseeing before the flight — Seattle Center is walkable and easy to fit in before checkout.</div>
+        <div class="event-desc">Seattle Center is walkable and easy to fit in before checkout — a last round of sightseeing before heading to the airport.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Space+Needle%2C+Seattle%2C+WA" target="_blank" rel="noopener">Space Needle</a>
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Chihuly+Garden+and+Glass%2C+Seattle%2C+WA" target="_blank" rel="noopener">Chihuly Garden and Glass</a>
+        </div>
       </div>
     </div>
 
     <div class="event-row">
       <div class="event-time-col" data-type="rest">
-        <div class="event-time">Midday</div>
+        <div class="event-time">Afternoon</div>
       </div>
       <div class="event-content">
         <div class="event-title-row">
           <div class="event-title">🧳 Check Out · Return Rental Car</div>
           <span class="event-badge badge-rest">Errand</span>
         </div>
-        <div class="event-desc">Pack up, grab a last meal in the city, and head to Sea-Tac with plenty of buffer before the flight.</div>
+        <div class="event-desc">Pack up, grab a last meal in the city, and head to Sea-Tac with plenty of buffer before the flights.</div>
       </div>
     </div>
 
@@ -1944,12 +2416,13 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">✈️ Flight Home — Seattle–Tacoma International (SEA)</div>
+          <div class="event-title">✈️ Flights Home — Seattle–Tacoma International (SEA)</div>
           <span class="event-badge badge-drive">Flight</span>
         </div>
         <div class="event-desc">End of an eleven-day loop through Olympic, Rainier, Leavenworth, and the North Cascades — mountains, mountain goats, alpine lakes, and a Bavarian village in between.</div>
         <div class="event-pills">
-          <span class="event-pill">Seattle–Tacoma Intl (SEA)</span>
+          <span class="event-pill">Shubh's group · 7:59 PM</span>
+          <span class="event-pill">Het's group · 10:01 PM</span>
         </div>
       </div>
     </div>
@@ -1960,7 +2433,7 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
 
 <!-- ═══════════════════ FOOTER ═══════════════════ -->
 <footer>
-  <strong>TrailWithKev</strong> · Washington State<br>
+  <strong>TrailWithKev</strong> · PNW National Parks<br>
   <a href="https://www.instagram.com/trailwithkev/" class="footer-instagram" target="_blank" rel="noopener noreferrer">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
       <defs><linearGradient id="ig-grad-f" x1="0%" y1="100%" x2="100%" y2="0%"><stop offset="0%" stop-color="#FCAF45"/><stop offset="50%" stop-color="#E1306C"/><stop offset="100%" stop-color="#833AB4"/></linearGradient></defs>
@@ -2013,20 +2486,6 @@ html.light .mt-band { stroke: rgba(50,130,75,0.10); }
   window.addEventListener('resize', resize);
 })();
 
-/* ── Side mountains: show after hero, hide over footer ── */
-(function () {
-  const hero = document.querySelector('.hero');
-  if (!hero) return;
-  new IntersectionObserver(([entry]) => {
-    document.body.classList.toggle('past-hero', !entry.isIntersecting);
-  }, { threshold: 0 }).observe(hero);
-  const footer = document.querySelector('footer');
-  if (!footer) return;
-  new IntersectionObserver(([entry]) => {
-    document.body.classList.toggle('in-footer', entry.isIntersecting);
-  }, { threshold: 0 }).observe(footer);
-})();
-
 /* ── Theme toggle ── */
 function toggleTheme(){
   document.documentElement.classList.toggle('light');
@@ -2075,6 +2534,20 @@ document.querySelectorAll('a.stop-card').forEach(card => {
     });
   });
 })();
+
+// ── AllTrails smart links — open app on mobile, web on desktop ────────────────
+document.addEventListener('click', function(e) {
+  const el = e.target.closest('a.pill-at');
+  if (!el) return;
+  const slug = el.dataset.atSlug;
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (isMobile && slug) {
+    e.preventDefault();
+    window.location = 'alltrails://explore/trail/' + slug;
+    setTimeout(() => { window.location = 'https://www.alltrails.com/trail/' + slug; }, 1500);
+  }
+  // desktop: let the default href open in new tab normally
+});
 </script>
 </body>
 </html>
