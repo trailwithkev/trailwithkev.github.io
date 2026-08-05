@@ -14,6 +14,7 @@
 <meta name="twitter:title" content="PNW National Parks · TrailWithKev">
 <meta name="twitter:description" content="11-day Pacific Northwest road trip through Olympic, Mount Rainier, and North Cascades National Parks plus Bavarian Leavenworth — alpine ridgelines, mountain goats, orchard towns, and larch-lined lakes.">
 <link rel="icon" type="image/jpeg" href="/public/favicon.jpg?v=2">
+<link rel="manifest" href="/manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -1069,7 +1070,7 @@ html.light .nav-instagram:hover { color: #000; }
       <div class="stop-town">Leavenworth</div>
       <div class="stop-region">Washington · Bavarian Village</div>
       <div class="stop-role">2</div>
-      <div class="stop-role-label">nights near Leavenworth</div>
+      <div class="stop-role-label">nights at Alpine RV Park &amp; Campground</div>
       <div class="stop-tags">
         <span class="stop-tag tag-amber">Colchuck Lake</span>
         <span class="stop-tag tag-amber">Bavarian Village</span>
@@ -1844,10 +1845,13 @@ html.light .nav-instagram:hover { color: #000; }
       </div>
       <div class="event-content">
         <div class="event-title-row">
-          <div class="event-title">⛺ Set Up Camp Near Leavenworth</div>
+          <div class="event-title">⛺ Set Up Camp — Alpine RV Park &amp; Campground</div>
           <span class="event-badge badge-camp">Camp</span>
         </div>
         <div class="event-desc">Set up camp just outside town — a strange, welcome contrast after several days in the backcountry.</div>
+        <div class="event-pills">
+          <a class="event-pill" href="https://www.google.com/maps/search/?api=1&query=Alpine+RV+Park+%26+Campground%2C+9825+Duncan+Rd%2C+Leavenworth%2C+WA+98826" target="_blank" rel="noopener">Alpine RV Park & Campground, 9825 Duncan Rd, Leavenworth, WA 98826</a>
+        </div>
       </div>
     </div>
 
@@ -2548,6 +2552,13 @@ document.addEventListener('click', function(e) {
   }
   // desktop: let the default href open in new tab normally
 });
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>

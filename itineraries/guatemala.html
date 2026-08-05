@@ -16,6 +16,7 @@
 <meta name="twitter:description" content="Guatemala itinerary — volcano hikes, Antigua, and an overnight on Acatenango watching Fuego erupt.">
 <meta name="twitter:image" content="https://trailwithkev.github.io/img/og-guatemala.jpg">
 <link rel="icon" type="image/jpeg" href="/public/favicon.jpg?v=2">
+<link rel="manifest" href="/manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -2292,5 +2293,12 @@ function initMap() {
 window.addEventListener('load', initMap);
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

@@ -16,6 +16,7 @@
 <meta name="twitter:description" content="6-day itinerary through Banff and Jasper National Parks — Moraine Lake, Plain of Six Glaciers, Icefields Parkway, and more.">
 <meta name="twitter:image" content="https://trailwithkev.github.io/img/og-rockies.jpg">
 <link rel="icon" type="image/jpeg" href="/public/favicon.jpg?v=2">
+<link rel="manifest" href="/manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -2605,5 +2606,12 @@ document.addEventListener('click', function(e) {
 });
 </script>
 
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
+</script>
 </body>
 </html>

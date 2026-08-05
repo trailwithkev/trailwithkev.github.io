@@ -6,6 +6,7 @@
 <title>Terms & Conditions · TrailWithKev</title>
 <meta name="description" content="Terms and conditions for TrailWithKev — a personal travel and hiking itinerary site.">
 <link rel="icon" type="image/jpeg" href="/public/favicon.jpg?v=2">
+<link rel="manifest" href="/manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -253,6 +254,13 @@ html.light footer a:hover { color: #000; }
 function toggleTheme() {
   document.documentElement.classList.toggle('light');
   try { localStorage.setItem('theme', document.documentElement.classList.contains('light') ? 'light' : 'dark'); } catch(e){}
+}
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
 }
 </script>
 </body>

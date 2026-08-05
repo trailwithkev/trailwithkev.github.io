@@ -14,6 +14,7 @@
 <meta name="twitter:title" content="Montana &amp; Wyoming · TrailWithKev">
 <meta name="twitter:description" content="12-day camping trip through Yellowstone, Grand Teton, and Glacier National Parks — wolves in Lamar Valley, Old Faithful, Grinnell Glacier, and more.">
 <link rel="icon" type="image/jpeg" href="/public/favicon.jpg?v=2">
+<link rel="manifest" href="/manifest.json">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -2484,6 +2485,13 @@ document.querySelectorAll('a.stop-card').forEach(card => {
     });
   });
 })();
+</script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>
