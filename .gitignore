@@ -146,3 +146,8 @@ vite.config.ts.timestamp-*
 DESIGN_IDEAS.md
 .claude/
 .idea/
+# Raw/unencoded video source footage — never commit, use public/nh48-hero.mp4 (compressed) instead
+public/nh48-hero.mov
+
+# macOS
+.DS_Store
