@@ -151,9 +151,9 @@ html.light .nav-hamburger { color: #636366; }
 .hero-video-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0.8) 100%);
+  background: linear-gradient(180deg, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.46) 45%, rgba(0,0,0,0.8) 100%);
 }
-html.light .hero-video-overlay { background: linear-gradient(180deg, rgba(240,237,232,0.78) 0%, rgba(240,237,232,0.55) 45%, rgba(240,237,232,0.85) 100%); }
+html.light .hero-video-overlay { background: linear-gradient(180deg, rgba(240,237,232,0.85) 0%, rgba(240,237,232,0.68) 45%, rgba(240,237,232,0.9) 100%); }
 
 .hero-glow {
   position: absolute;
@@ -185,6 +185,7 @@ html.light .hero-sun { display: block; animation: sun-pulse 4s ease-in-out infin
   color: var(--summit);
   margin-bottom: 24px;
   position: relative; z-index: 2;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.65);
 }
 .hero-number {
   font-size: clamp(120px, 20vw, 220px);
@@ -194,14 +195,16 @@ html.light .hero-sun { display: block; animation: sun-pulse 4s ease-in-out infin
   color: var(--pure-white);
   margin-bottom: 8px;
   position: relative; z-index: 2;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.65);
 }
 .hero-number-label {
   font-size: clamp(20px, 3vw, 32px);
   font-weight: 300;
-  color: var(--gray-5);
+  color: rgba(255,255,255,0.82);
   letter-spacing: -0.02em;
   margin-bottom: 40px;
   position: relative; z-index: 2;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.65);
 }
 .hero-title {
   font-size: clamp(30px, 4.6vw, 52px);
@@ -211,16 +214,18 @@ html.light .hero-sun { display: block; animation: sun-pulse 4s ease-in-out infin
   margin-bottom: 16px;
   line-height: 1.1;
   position: relative; z-index: 2;
+  text-shadow: 0 2px 24px rgba(0,0,0,0.7), 0 1px 4px rgba(0,0,0,0.65);
 }
 .hero-title span { color: var(--summit); }
 .hero-subtitle {
   font-size: clamp(16px, 2.4vw, 20px);
   font-weight: 400;
-  color: var(--gray-5);
+  color: rgba(255,255,255,0.82);
   max-width: 620px;
   margin: 0 auto 48px;
   letter-spacing: -0.01em;
   position: relative; z-index: 2;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.65);
 }
 
 .hero-progress-wrap {
@@ -231,8 +236,10 @@ html.light .hero-sun { display: block; animation: sun-pulse 4s ease-in-out infin
 .hero-progress-bar {
   height: 10px;
   border-radius: 980px;
-  background: rgba(255,255,255,0.1);
-  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.16);
+  border: 1px solid rgba(255,255,255,0.28);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   overflow: hidden;
 }
 .hero-progress-fill {
@@ -245,8 +252,9 @@ html.light .hero-sun { display: block; animation: sun-pulse 4s ease-in-out infin
 .hero-progress-label {
   margin-top: 10px;
   font-size: 13px;
-  color: var(--gray-5);
+  color: rgba(255,255,255,0.82);
   font-weight: 500;
+  text-shadow: 0 2px 16px rgba(0,0,0,0.7), 0 1px 3px rgba(0,0,0,0.65);
 }
 .hero-progress-label strong { color: var(--pure-white); }
 
@@ -579,14 +587,14 @@ html.light .nav-links a:hover { color: #000; }
 html.light .nav-links { background: rgba(240,237,232,0.97); }
 html.light .hero { background: #f0ede8; }
 html.light .hero-glow { opacity: 0; }
-html.light .hero-eyebrow { color: #1a8f3d; }
-html.light .hero-number { color: #000; }
-html.light .hero-number-label { color: #636366; }
-html.light .hero-title { color: #000; }
-html.light .hero-title span { color: #1a8f3d; }
-html.light .hero-subtitle { color: #636366; }
-html.light .hero-progress-bar { background: rgba(0,0,0,0.08); border-color: rgba(0,0,0,0.16); }
-html.light .hero-progress-label { color: #636366; }
+html.light .hero-eyebrow { color: #0f7a34; text-shadow: 0 2px 18px rgba(255,255,255,0.85), 0 1px 3px rgba(255,255,255,0.9); }
+html.light .hero-number { color: #000; text-shadow: 0 2px 22px rgba(255,255,255,0.85), 0 1px 4px rgba(255,255,255,0.9); }
+html.light .hero-number-label { color: #1d1d1f; text-shadow: 0 2px 18px rgba(255,255,255,0.85), 0 1px 3px rgba(255,255,255,0.9); }
+html.light .hero-title { color: #000; text-shadow: 0 2px 22px rgba(255,255,255,0.85), 0 1px 4px rgba(255,255,255,0.9); }
+html.light .hero-title span { color: #0f7a34; }
+html.light .hero-subtitle { color: #1d1d1f; text-shadow: 0 2px 18px rgba(255,255,255,0.85), 0 1px 3px rgba(255,255,255,0.9); }
+html.light .hero-progress-bar { background: rgba(255,255,255,0.55); border-color: rgba(0,0,0,0.22); }
+html.light .hero-progress-label { color: #1d1d1f; text-shadow: 0 2px 16px rgba(255,255,255,0.85), 0 1px 3px rgba(255,255,255,0.9); }
 html.light .hero-progress-label strong { color: #000; }
 html.light .section-divider { background: rgba(0,0,0,0.1); }
 html.light .section-eyebrow { color: #1a8f3d; }
